@@ -1,2 +1,0 @@
-# modulo
-New architecture module
