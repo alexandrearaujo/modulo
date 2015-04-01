@@ -1,0 +1,38 @@
+{
+	"name": "modulo",
+	"description": "bower components for modulo UI.",
+    "version": "1.0.0",
+    "dependencies": {
+    	"systemjs": "systemjs/systemjs#~0.14.1",
+    	"jquery": "latest",
+    	"bootstrap": "latest",
+    	"less": "latest",
+    	"es6-module-loader": "ModuleLoader/es6-module-loader#~0.14.0",
+        "curl": "latest",
+        "font-awesome": "latest",
+        "google-code-prettify": "latest"
+    	
+    },
+    "overrides": {
+     	"jquery": {
+            "ignore": ["*.json"]
+        },
+        "curl": {
+            "ignore": ["dist/**", "src/curl/**"]
+        },
+        "bootstrap": {
+            "ignore": [
+                "js/**", "img/**", "less/**", "docs/build/**",
+                "docs/examples/**", "docs/templates/**", "docs/*.html"
+            ]
+        },
+        "font-awesome": {
+            "ignore": ["css/**", "less/**", "scss/**", "src/**"]
+        },
+        "google-code-prettify": {
+            "ignore": ["styles/**"]
+        }
+    },
+    "devDependencies": {
+    }
+}

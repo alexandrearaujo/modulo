@@ -1,0 +1,8 @@
+src/lib
+node_modules
+npm-debug.log
+.cram/
+dist/
+/dist
+target
+/target
