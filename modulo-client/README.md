@@ -1,4 +1,4 @@
-# Sagan client module
+# Modulo client module
 
 This module holds all web resources that make the client application of spring.io:
 
@@ -19,15 +19,15 @@ This module is using several tools for its own build system:
 You'll need a 0.10.x version of [node.js](http://nodejs.org) installed on your system.
 Usage of the [Node Version Manager (nvm)](https://github.com/creationix/nvm) is perfectly fine.
 
-## Making changes in sagan-client
+## Making changes in modulo-client
 
 When running the application with:
 
 ```
-$ gradle :sagan-site:bootRun
+$ gradle :modulo-server-front:bootRun
 ```
 
-Resources in sagan-client are served directly from the sagan-client module, so you can develop against the
+Resources in modulo-client are served directly from the modulo-client module, so you can develop against the
 unoptimized version of the client.
 
 ## Details about the JavaScript build
