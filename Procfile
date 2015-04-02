@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT -jar modulo-server-front/target/modulo-server-front-1.0.0-SNAPSHOT.jar
