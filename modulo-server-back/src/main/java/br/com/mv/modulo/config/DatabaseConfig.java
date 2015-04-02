@@ -18,6 +18,7 @@ public abstract class DatabaseConfig {
         dataSource.setMaxActive(3);
         dataSource.setMaxIdle(3);
         dataSource.setMinIdle(1);
+        dataSource.setInitialSize(1);
         dataSource.setTestOnBorrow(false);
         dataSource.setTestOnReturn(false);
     }
@@ -48,6 +49,26 @@ class StandaloneDatabaseConfig extends DatabaseConfig {
         dataSource.setUrl(dbUrl);
         dataSource.setUsername(username);
         dataSource.setPassword(password);
+        dataSource.setValidationQuery("SELECT 1");
+
+        configureDataSource(dataSource);
+
+        return dataSource;
+    }
+}
+
+@Configuration
+@Profile(ModuloProfiles.DEFAULT)
+class DefaultDatabaseConfig extends DatabaseConfig {
+
+    @Bean
+    public DataSource dataSource() {
+        org.apache.tomcat.jdbc.pool.DataSource dataSource = new org.apache.tomcat.jdbc.pool.DataSource();
+
+        dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
+        dataSource.setUrl("jdbc:oracle:thin:@192.168.254.17:1521:dev4");
+        dataSource.setUsername("dbamvfor");
+        dataSource.setPassword("dbamvfor");
         dataSource.setValidationQuery("SELECT 1");
 
         configureDataSource(dataSource);
