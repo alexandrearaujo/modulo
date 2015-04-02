@@ -4,7 +4,7 @@
     "description": "Modulo sample",
     "repository" : {
     	"type" : "git",
-    	"url" : "https://git.assembla.com/dispensacao.git"
+    	"url" : "https://github.com/alexandrearaujo/modulo.git"
   	},
     "dependencies": {
     },

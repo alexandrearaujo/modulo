@@ -61,16 +61,6 @@
 	</repositories>
 	
 	<pluginRepositories>
-<!-- 		<pluginRepository> -->
-<!-- 			<id>MVProxy</id> -->
-<!-- 			<name>MV Proxy Repository</name> -->
-<!-- 			<url>http://echo.mvfor.local/nexus/content/groups/public</url> -->
-<!-- 			<snapshots> -->
-<!-- 				<enabled>false</enabled> -->
-<!-- 			</snapshots> -->
-<!-- 			<layout>default</layout> -->
-<!-- 		</pluginRepository> -->
-		
 		<pluginRepository>
 			<id>spring-snapshots</id>
 			<name>Spring Snapshots</name>
@@ -87,6 +77,16 @@
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
+		</pluginRepository>
+		
+		<pluginRepository>
+			<id>MVProxy</id>
+			<name>MV Proxy Repository</name>
+			<url>http://echo.mvfor.local/nexus/content/groups/public</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+<!-- 			<layout>default</layout> -->
 		</pluginRepository>
 	</pluginRepositories>
 </project>
