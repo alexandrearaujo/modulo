@@ -41,6 +41,7 @@ dependencies {
     //versionManagement 'io.spring.platform:platform-bom:2.0.0.BUILD-SNAPSHOT@properties'
 
     compile "org.springframework.boot:spring-boot-starter-data-jpa"
+    compile "org.springframework.boot:spring-boot-starter-data-rest"
     compile "com.fasterxml.jackson.datatype:jackson-datatype-hibernate4"
     compile "com.oracle.drivers:ojdbc7:12.1.0.1"
     compile "org.apache.commons:commons-lang3"

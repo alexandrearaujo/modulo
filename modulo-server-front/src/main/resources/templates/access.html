@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+ 	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="decorator"
+	  class="no-js">
+
+	<div layout:fragment="content">
+		<div class="outer">
+			<div class="inner bg-light lter fill" align="center" style="padding-top: 5%;">
+				<div class="row-fluid">
+					<div class="col-md-*">
+						<img alt="Soul MV" th:src="@{/img/login/logo_soul.png}" />
+		                <h3 th:text="#{sorry} + ','"></h3>
+	    	            <h2 th:text="#{permissionDenied}"></h2>
+					</div>
+				</div>
+				
+				<div class="row-fluid">
+					<div class="col-md-*">
+						<a type="button" class="btn btn-default" onclick="history.go(-1);" data:original-title="#{voltar}" data-toggle="tooltip">
+		                    <i class="fa fa-reply mv-color-green"></i>
+		                </a>
+		                
+						<a type="button" class="btn btn-default" href="/dispensacao" data:original-title="#{home}" data-toggle="tooltip">
+		                    <i class="fa fa-home mv-color-green"></i>
+		                </a>
+					</div>
+				</div>
+	        </div>
+		</div>
+	</div>    
+</html>

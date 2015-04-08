@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org"
+	xmlns:data="https://github.com/mxab/thymeleaf-extras-data-attribute"
+	class="no-js">
+<head>
+	<meta charset="UTF-8"></meta>
+	<meta id="Viewport" name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no"></meta>
+	<title>TESTE</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+	
+	<script th:inline="javascript">
+		var baseUrl = /*[[@{/}]]*/'../static/';
+	</script>
+	
+	<script data:curl-run="@{/run.js}" th:src="@{/lib/curl/src/curl.js}" src="../static/lib/curl/src/curl.js" async="async"></script>
+</head>
+<body>
+	<div class="jumbotron">
+		<h1>
+			<label th:text="Olá">Hello</label>
+		</h1>
+		
+		<p class="lead">Bem vindo ao Sistema de dispensação de
+			medicamentos do Hospital das Clínicas de São Paulo.
+		</p>
+	</div>
+</body>
+</html>

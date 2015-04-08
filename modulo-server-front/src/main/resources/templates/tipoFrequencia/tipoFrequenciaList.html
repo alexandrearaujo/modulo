@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:th="http://www.thymeleaf.org"
+	  layout:decorator="decorator"
+	  class="no-js">
+		
+	<form layout:fragment="form" id="listForm" class="form fill" action="#"
+		  th:action="@{/tipoFrequencia/list}" th:object="${tipoFrequencia}" th:method="post">
+		<fieldset>
+			<legend th:text="#{listTipoFrequencia}"></legend>
+			
+			<div class="row-fluid">
+				<div class="col-xs-12 col-md-5">
+					<div th:replace="fragments/layout :: text-field(idField=descFrequencia, label=descricao, field=descricaoFrequencia, maxLength=100)"></div>
+				</div>
+		
+				<div class="col-xs-4 col-md-3">
+					<div th:replace="fragments/layout :: number-field(idField=periodicidadeHoras, label=periodicidadeHoras, field=periodicidade,
+																	  maxLength=2, minValue=1, maxValue=24)"></div>
+				</div>
+			
+				<div class="col-xs-4 col-md-2">
+					<div th:replace="fragments/layout :: time-field(idField=horarioInicial, label=horarioInicial, field=horarioInicial,
+																	minuteStep=1,defaultTime=false, template=false)"></div>
+				</div>
+			
+				<div class="col-xs-4 col-md-2">
+		                 	<div th:replace="fragments/layout :: search-group-button(btnClear=false)"></div>
+				</div>
+			</div>
+		</fieldset>
+
+		<div class="table-responsive" id="results">
+	  		<div class="col-xs-12 col-md-12">
+				<table class="table table-condensed table-bordered table-striped table-hover fixed-table">
+					<thead>
+						<tr>
+							<th th:text="#{descricao}"></th>
+							<th th:text="#{descricaoImpressaoReceita}" class="hidden-xs hidden-sm"></th>
+							<th th:text="#{periodicidadeHoras}"></th>
+							<th th:text="#{horarioInicial}"></th>
+							<th th:text="#{acoes}"></th>
+						</tr>
+					</thead>
+	
+					<tbody>
+						<tr th:if="${page == null ? true : page.content.empty}">
+							<td colspan="5" align="center" th:text="#{noRows}"></td>
+						</tr>
+						
+						<tr th:each="tipoFrequencia : ${page?.content}">
+							<td th:if="${tipoFrequencia?.descricaoFrequencia?.length() > 30}" rel="tooltip" th:attr="data-original-title=${tipoFrequencia?.descricaoFrequencia}"  th:text="${tipoFrequencia?.descricaoFrequencia}"></td>
+							<td th:unless="${tipoFrequencia?.descricaoFrequencia?.length() > 30}" th:text="${tipoFrequencia?.descricaoFrequencia}"></td>
+							
+							<td th:if="${tipoFrequencia?.impressaoReceita?.length() > 16}" rel="tooltip" th:attr="data-original-title=${tipoFrequencia?.impressaoReceita}"  th:text="${tipoFrequencia?.impressaoReceita}"></td>
+							<td th:unless="${tipoFrequencia?.impressaoReceita?.length() > 16}" th:text="${tipoFrequencia?.impressaoReceita}"></td>
+							
+							<td th:text="${tipoFrequencia.periodicidade}"></td>
+							<td th:text="${#dates.format(tipoFrequencia.horarioInicial, 'HH:mm')}"></td>
+							<td>
+								<a data:original-title="#{editar}" data:toggle="tooltip" th:href="@{/tipoFrequencia/edit(id=${tipoFrequencia.id})}" class="btn btn-default" type="button">
+							  		<i class="fa fa-edit mv-color-green"></i>
+								</a>
+								
+								<th:block th:replace="fragments/layout :: confirmation(idEntity=${tipoFrequencia.id}, idField=${'btnExclusao' + tipoFrequencia.id},
+									singleton=true, title=confirmExclusion, defaultFunction=true, tooltip=excluir,
+									placement=left, popout=true, method='/dispensacao/tipoFrequencia/delete')"/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<div th:replace="fragments/layout :: paginationbar(method='/dispensacao/tipoFrequencia/listPaginated', idToRender='results')"></div>
+	        </div>
+		</div>
+  
+		<div th:replace="fragments/layout :: default-crud-bar(newButton=true, urlNew='/tipoFrequencia/new')"></div>
+	</form>
+	
+	<th:block layout:fragment="scripts" th:with="defaultValidator=true">
+		<th:block th:replace="fragments/layout :: scripts(defaultValidator=true, idForm='listForm')"></th:block>
+		<script type="text/javascript">
+			$("td[rel='tooltip']").tooltip({
+			    'selector': '',
+			    'placement': 'top',
+			    'container':'body'
+			  });
+		</script>
+	</th:block>
+</html>

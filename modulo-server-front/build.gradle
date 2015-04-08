@@ -51,14 +51,13 @@ dependencies {
     compile project(':modulo-client')
     
     compile("org.springframework.boot:spring-boot-starter-actuator")
-    compile("org.springframework.boot:spring-boot-starter-data-rest")
     compile("org.springframework.boot:spring-boot-starter-remote-shell")
-    compile "org.springframework.boot:spring-boot-starter-security"
+    //compile "org.springframework.boot:spring-boot-starter-security"
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 	compile("org.eclipse.jetty:jetty-servlets")
 	compile("org.thymeleaf.extras:thymeleaf-extras-conditionalcomments")
 	compile("com.github.mxab.thymeleaf.extras:thymeleaf-extras-data-attribute")
 	compile("org.thymeleaf.extras:thymeleaf-extras-java8time:2.1.0.RELEASE")
-	compile("org.thymeleaf.extras:thymeleaf-extras-springsecurity4:2.1.2.RELEASE")
+	//compile("org.thymeleaf.extras:thymeleaf-extras-springsecurity4:2.1.2.RELEASE")
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" class="no-js">
+<head th:replace="fragments/layout :: htmlhead" />
+<link th:href="@{/css/mvFragments/login.css}" rel="stylesheet"/>
+
+<body th:background="@{/img/login/background.png}">
+	<div class="container containter-login login-size">
+		<div class="row">
+			<div class="col-md-7">
+				<img alt="Soul MV" th:src="@{/img/login/logo_soul.png}" />
+			</div>
+		</div>
+		<div th:replace="fragments/layout :: alerts"></div>
+		<div class="alert alert-danger" role="alert" th:if="${param.error}" th:text="#{invalidUserPass}"></div>
+		<div class="well">
+			<form class="form-signin" th:action="@{/login}" th:method="post">
+				<div class="row">
+					<div class="form-group">
+					   <label for="username" th:text="#{username}"></label>
+					   <input id="username" type="text" class="form-control" name="username" />
+					 </div>
+					  
+					<div class="form-group">
+					   <label for="#{password}" th:text="#{password}"></label>
+					   <input id="#{password}" type="password" class="form-control" name="password" />
+					 </div>
+				</div>
+				
+				<div class="row">
+				  <div class="col-md-1 pull-left login-button">
+				  	<button class="btn btn-default mv-color-green" type="submit">
+						<i class="fa fa-key"></i>
+					</button>
+				  </div>
+				  <div class="col-md-8 pull-right">
+					<p class="system-info">
+						<span th:text="#{systemVersion}"></span> <span th:text="${version}"></span> <br/> 
+						<span th:text="#{databaseVersion}"></span> <span th:text="${session.versaoBanco}"></span>
+					</p>
+				  </div>
+				</div>
+			</form>
+		</div>
+	</div> <!-- /container -->
+	
+	<th:block th:replace="fragments/layout :: scripts"></th:block>
+</body>
+</html>

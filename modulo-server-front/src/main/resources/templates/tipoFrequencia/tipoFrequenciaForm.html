@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:th="http://www.thymeleaf.org"
+	  layout:decorator="decorator"
+	  class="no-js">
+						
+	<form layout:fragment="form" class="form" role="form" action="#" id="tipoFrequenciaForm"
+		  th:action="@{/tipoFrequencia/save/}" method="post" th:object="${tipoFrequencia}">
+		<fieldset>
+			<legend th:text="#{cadastroTipoFrequencia}"></legend>
+			
+			<div class="row-fluid">
+		  		<div class="col-xs-8 col-sm-9 col-md-9 col-lg-9">
+					<div th:replace="fragments/layout :: text-field(idField=descFrequencia, label=descricao, field=descricaoFrequencia,
+																	maxLength=50, required=true)"></div>
+				</div>
+				
+		  		<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+					<div th:replace="fragments/layout :: number-field(idField=periodicidade, label=periodicidadeHoras, disabled=existsItemSolicitacao,
+																	  field=periodicidade, maxLength=2, minValue=1, maxValue=24, required=true,
+																	  onchange='clearDetalheTipoFrequencia()')"></div>
+				</div>
+			</div>
+			
+			<div class="row-fluid">
+				<div class="col-sm-12 col-md-12 col-lg-12">
+					<div th:replace="fragments/layout :: text-field(idField=descImpressaoReceita, label=descricaoImpressaoReceita,
+					                                                field=impressaoReceita, maxLength=150)"></div>
+				</div>
+			</div>
+		</fieldset>
+		
+		<fieldset>
+			<legend th:text="#{horariosMedicacao}"></legend>
+			
+			<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-2" style="padding-left: 30px;">
+					<div th:replace="fragments/layout :: time-field(idField=horarioInicial, label=horarioInicial, field=horarioInicial, minuteStep=1,
+																	template=false, defaultTime=false,
+																	disabled=existsItemSolicitacao, required=true, onchange='clearDetalheTipoFrequencia()')"></div>
+				</div>
+				
+				<div class="col-sm-3 col-md-2 col-lg-2">
+					<div class="row top-buffer">
+						<button type="submit" id="btnIncluirHorarioMedicacao" class="btn btn-default mv-color-green" th:disabled="${existsItemSolicitacao}"
+								name="adicionarHorarioMedicacao" role="button" data:original-title="#{adicionar}" data:toggle="tooltip">
+							<i class="fa fa-plus"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		
+			<div class="table-responsive" id="detalheTipoFrequenciaTable">
+				<div class="col-xs-12 col-md-12">
+					<table id="bootstrapTable" data-classes="table table-condensed table-striped table-hover"
+						   data-toggle="table" data-cache="false" data-height="320">
+					<thead>
+						<tr>
+							<th th:text="#{horario}"></th>
+							<th th:text="#{descricaoMedicao}"></th>
+						</tr>
+					</thead>
+				
+					<tbody>
+						<tr th:each="detalheTipoFrequencia : *{detalhes}">
+							<td th:text="${#dates.format(detalheTipoFrequencia.horaMedicacao, 'HH:mm')}"></td>
+							
+							<td>
+								 <input type="text" class="form-control" th:maxlength="150"
+									   th:value="*{detalhes[__${detalheTipoFrequenciaStat.index}__].descricaoMedicamento}"
+									   th:field="*{detalhes[__${detalheTipoFrequenciaStat.index}__].descricaoMedicamento}"
+									   th:id="descricaoMedicamento"/>
+							</td>
+						</tr>
+					</tbody>
+					</table>
+				</div>
+			</div>
+			<div th:replace="fragments/layout :: default-crud-bar(save=true, cancel=true, urlReturn='/tipoFrequencia/returnToList')"></div>
+		</fieldset>   
+	</form>
+	
+	<th:block layout:fragment="scripts" th:with="defaultValidator=true">
+		<th:block th:replace="fragments/layout :: scripts(defaultValidator=true, idForm='tipoFrequenciaForm')"></th:block>
+		<script th:inline="javascript">
+		/*<![CDATA[*/
+	     	function clearDetalheTipoFrequencia(){
+				var $tbody = $('tbody');
+				var lines = $tbody.find('tr');
+				if(lines != null && (lines.length == 1 && lines.text() != "Sem Registro " || lines.length > 1)){
+					 $.get(
+							 /*[[@{/tipoFrequencia/clearDetalhes}]]*/,
+							 $('#descFrequencia, #periodicidade, #descImpressaoReceita, #horarioInicial').serialize(), 
+							 function(data) {
+						  		$('#detalheTipoFrequenciaTable').html(data);
+						  		$('#bootstrapTable').bootstrapTable();
+						});
+				}
+			}
+		/*]]>*/
+		</script>
+	</th:block>
+</html>
