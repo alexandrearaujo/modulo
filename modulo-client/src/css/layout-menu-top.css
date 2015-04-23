@@ -1,0 +1,76 @@
+@CHARSET "ISO-8859-1";
+/*Begin - MV Layout-menu-top*/
+.app-title{
+	color:black !important;
+	font-size: 16px;
+	line-height: 2; 
+	margin: 0px;
+	margin-left: 0.6%; 
+}
+
+.app-system-info p.text-nowrap{
+	color:black !important;
+	font-size: 11px;	
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+@media screen and (max-width: 940px) {
+	.app-system-info{
+		display: none;
+	}
+}
+
+.grouped-menu .btn-menu-top{
+	height: 35px;
+	width: 35px;
+}
+
+.grouped-menu .btn-menu-top a{
+	padding-top: 9px;
+	padding-left: 12px;
+	margin-left: -4px !important;
+}
+
+.grouped-menu .btn-menu-top a:hover{
+	-moz-box-shadow:    inset 0 0 10px #919090;
+	-webkit-box-shadow: inset 0 0 10px #919090;
+	box-shadow:         inset 0 0 10px #919090;
+}
+
+.navbar .divider-vertical{
+	height: 36px;
+	margin: 0 4px;
+	border-right: 1px solid #C3C3C3;
+	border-left: 1px solid #DBDBDB;
+}
+
+button.navbar-toggle.collapsed{
+	background-color: #D8D8D8;	
+	margin: 1px 11px 0px 0px;
+}
+
+button.navbar-toggle.collapsed:HOVER{
+	background-color: #EDEDED;	
+}
+
+div.collapse.navbar-collapse.grouped-menu.in, .collapsing{
+	background-color: #f8f8f8;
+	border-bottom-color: #101010;
+	-webkit-box-shadow: 0px 6px 6px #888888;
+    -moz-box-shadow:    0px 6px 6px #888888;
+	box-shadow: 0px 6px 6px #888888;
+}
+
+.navbar-default {
+	background-color: #f8f8f8;
+	border-color: #e7e7e7;
+}
+/*End - MV Layout-menu-top*/
+
+/* TODO separa tipos de icones*/
+.menu-top-icons{
+	min-width: 18px;
+	min-height: 18px;
+	font-size: 18px;
+}

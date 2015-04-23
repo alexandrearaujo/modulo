@@ -32,60 +32,30 @@
 	
 	<repositories>
 		<repository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
-			<url>https://repo.spring.io/snapshot</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		
-		<repository>
-			<id>spring-milestones</id>
-			<name>Spring libs snaphots</name>
-			<url>https://repo.spring.io/libs-snapshot</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
+			<id>spring-release</id>
+			<name>Spring Releases</name>
+			<url>https://repo.spring.io/release</url>
 		</repository>
 		
 		<repository>
 			<id>MVProxy</id>
 			<name>MV Proxy Repository</name>
 			<url>http://echo.mvfor.local/nexus/content/groups/public</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
 <!-- 			<layout>default</layout> -->
 		</repository>
 	</repositories>
 	
 	<pluginRepositories>
 		<pluginRepository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
-			<url>https://repo.spring.io/snapshot</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-		
-		<pluginRepository>
-			<id>spring-milestones</id>
-			<name>Spring libs snaphots</name>
-			<url>https://repo.spring.io/libs-snapshot</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
+			<id>spring-release</id>
+			<name>Spring Releases</name>
+			<url>https://repo.spring.io/release</url>
 		</pluginRepository>
 		
 		<pluginRepository>
 			<id>MVProxy</id>
 			<name>MV Proxy Repository</name>
 			<url>http://echo.mvfor.local/nexus/content/groups/public</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
 <!-- 			<layout>default</layout> -->
 		</pluginRepository>
 	</pluginRepositories>

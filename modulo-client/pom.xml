@@ -25,9 +25,10 @@
 						<goals>
 							<goal>install-node-and-npm</goal>
 						</goals>
+<!-- 						<phase>generate-resources</phase> -->
 						<configuration>
-							<nodeVersion>v0.12.1/</nodeVersion>
-							<npmVersion>1.4.9</npmVersion>
+							<nodeVersion>v0.12.2</nodeVersion>
+							<npmVersion>2.7.6</npmVersion>
 						</configuration>
 					</execution>
 					
@@ -36,20 +37,144 @@
 						<goals>
 							<goal>npm</goal>
 						</goals>
-						<configuration>
-					        <arguments>install</arguments>
-					    </configuration>
+<!-- 					    <phase>generate-resources</phase> -->
+<!-- 						<configuration> -->
+<!-- 					        <arguments>install</arguments> -->
+<!-- 					    </configuration> -->
 					</execution>
-
+					
 					<execution>
-						<id>npm build</id>
-						<goals>
-							<goal>npm</goal>
-						</goals>
+					    <id>bower install</id>
+					    <goals>
+					        <goal>bower</goal>
+					    </goals>
+<!-- 					    <configuration> -->
+<!-- 					        <arguments>install</arguments> -->
+<!-- 					    </configuration> -->
+					</execution>   
+
+<!-- 					<execution> -->
+<!-- 						<id>npm build</id> -->
+<!-- 						<goals> -->
+<!-- 							<goal>npm</goal> -->
+<!-- 						</goals> -->
+<!-- 						<configuration> -->
+<!-- 							<arguments>run build</arguments> -->
+<!-- 						</configuration> -->
+<!-- 						<phase>generate-resources</phase> -->
+<!-- 					</execution> -->
+					
+					<execution>
+			            <id>gulp less</id>
+			            <goals>
+			                <goal>gulp</goal>
+			            </goals>
 						<configuration>
-							<arguments>run build</arguments>
-						</configuration>
-					</execution>
+							<srcdir>${basedir}\src\less</srcdir>
+					        <arguments>less</arguments>
+					    </configuration>
+			        </execution>
+			        
+			        <execution>
+			            <id>gulp copy-assets</id>
+			            <goals>
+			                <goal>gulp</goal>
+			            </goals>
+						<configuration>
+							<triggerfile>${basedir}\src\cache.manifest</triggerfile>
+					        <arguments>copy-assets</arguments>
+					    </configuration>
+			        </execution>
+			        
+			        <execution>
+			            <id>gulp optimize-and-copy-css</id>
+			            <goals>
+			                <goal>gulp</goal>
+			            </goals>
+						<configuration>
+							<srcdir>${basedir}\src\css</srcdir>
+					        <arguments>optimize-and-copy-css</arguments>
+					    </configuration>
+			        </execution>
+			        
+			        <execution>
+			            <id>gulp copy-components</id>
+			            <goals>
+			                <goal>gulp</goal>
+			            </goals>
+						<configuration>
+							<srcdir>${basedir}\src\components</srcdir>
+							<outputdir>${basedir}\dist</outputdir>
+					        <arguments>copy-components-js</arguments>
+					    </configuration>
+			        </execution>
+			        
+			        <execution>
+			            <id>gulp copy-app-js</id>
+			            <goals>
+			                <goal>gulp</goal>
+			            </goals>
+						<configuration>
+							<srcdir>${basedir}\src\app</srcdir>
+							<outputdir>${basedir}\dist</outputdir>
+					        <arguments>copy-app-js</arguments>
+					    </configuration>
+			        </execution>
+			        
+			        <execution>
+			            <id>gulp copy-bower-libs</id>
+			            <goals>
+			                <goal>gulp</goal>
+			            </goals>
+						<configuration>
+							<srcdir>${basedir}\src\lib</srcdir>
+					        <arguments>copy-bower-libs</arguments>
+					    </configuration>
+			        </execution>
+			        
+			        <execution>
+			            <id>gulp copy-images</id>
+			            <goals>
+			                <goal>gulp</goal>
+			            </goals>
+						<configuration>
+							<srcdir>${basedir}\src\img</srcdir>
+					        <arguments>copy-images</arguments>
+					    </configuration>
+			        </execution>
+			        
+			        <execution>
+			            <id>gulp copy-components-to-target</id>
+			            <goals>
+			                <goal>gulp</goal>
+			            </goals>
+						<configuration>
+							<srcdir>${basedir}\src\components</srcdir>
+					        <arguments>copy-components-to-target</arguments>
+					    </configuration>
+			        </execution>
+			        
+			        <execution>
+			            <id>gulp copy-app-to-target</id>
+			            <goals>
+			                <goal>gulp</goal>
+			            </goals>
+						<configuration>
+							<srcdir>${basedir}\src\app</srcdir>
+					        <arguments>copy-app-js-to-target</arguments>
+					    </configuration>
+			        </execution>
+			        
+			        <execution>
+			            <id>gulp copy-css-to-target</id>
+			            <goals>
+			                <goal>gulp</goal>
+			            </goals>
+						<configuration>
+							<srcdir>${basedir}\src\css</srcdir>
+					        <arguments>copy-css-to-target</arguments>
+					    </configuration>
+			        </execution>
 				</executions>
 			</plugin>
 
@@ -63,10 +188,10 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.build.directory}/classes/static</outputDirectory>
+							<outputDirectory>${project.build.directory}\classes\static</outputDirectory>
 							<resources>
 								<resource>
-									<directory>${basedir}/dist</directory>
+									<directory>${basedir}\dist</directory>
 								</resource>
 							</resources>
 						</configuration>

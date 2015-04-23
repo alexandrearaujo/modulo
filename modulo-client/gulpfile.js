@@ -1,95 +1,88 @@
-var gulpFilter = require('gulp-filter'),
-    cram = require('gulp-cram'),
-    uglify = require('gulp-uglify'),
-    bowerSrc = require('gulp-bower-src'),
+'use strict';
+
+var uglify = require('gulp-uglify'),
+	mainBowerFiles = require('main-bower-files'),
     sourcemaps = require('gulp-sourcemaps'),
     cssMinify = require('gulp-minify-css'),
     imagemin = require('gulp-imagemin'),
     pngcrush = require('imagemin-pngcrush'),
+    concat = require('gulp-concat'),
     less = require('gulp-less'),
+    gulpFilter = require('gulp-filter'),
     gulp = require('gulp'),
-    path = require('path'),
-    Builder = require('systemjs-builder');
+    path = require('path');
 
 var paths = {
 	run: 'src/run.js',
     baseUrl: 'file:' + process.cwd() + '/src/',
-    bowerLibs: ['src/lib/**', '!src/lib/*/test/*'],
+    bowerLibs: ['src/lib'],
     css: {
         files: ['src/css/*.css'],
         root: 'src/css'
     },
-    less: ['src/less/*'],
+    less: ['src/less/**'],
     assets: ["src/cache.manifest"],
     images: ["src/img*/**"],
+    components: ['src/components/**'],
+    app: ['src/app/**'],
     destination: './dist/'
 };
 
 // Optimize application CSS files and copy to "dist" folder
 gulp.task('optimize-and-copy-css', function() {
     return gulp.src(paths.css.files)
-        .pipe(cssMinify({root : paths.css.root, noRebase: true}))
+    	.pipe(sourcemaps.init())
+        .pipe(cssMinify({root : paths.css.root}))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(paths.destination + 'css'));
 });
 
-// Optimize application JavaScript files and copy to "dist" folder
-//gulp.task('optimize-and-copy-js', function(cb) {
-//    var builder = new Builder({
-//        baseURL: paths.baseUrl,
-//        map: {
-//        	jquery: paths.baseUrl + 'lib/jquery/dist/jquery.min'
-//        }
-//    });
-//    builder.build('app/app', paths.destination + 'app/app.js', { minify: true, sourceMaps: true })
-//        .then(function() {
-//            cb();
-//        })
-//        .catch(function(err) {
-//            cb(err);
-//        });
-//});
-
-//cram and uglify JavaScript source files
-gulp.task('build-modules', function() {
-    var opts = {
-        includes: [ 'curl/loader/legacy', 'curl/loader/cjsm11'],
-        excludes: ['gmaps']
-    };
-
-    return cram(paths.run, opts).into('run.js')
-        .pipe(sourcemaps.init())
-        .pipe(uglify())
-        .pipe(sourcemaps.write("./"))
-        .pipe(gulp.dest(paths.destination));
+gulp.task('copy-css-to-target', function() {
+    return gulp.src('dist/css/**')
+	        .pipe(gulp.dest('./target/classes/static/css'));
 });
 
-// Optimize bower-managed JavaScript dependencies and copy to "dist" folder
-gulp.task('copy-bower-lib', function() {
-    return gulp.src(paths.bowerLibs)
-        .pipe(gulp.dest(paths.destination + 'lib'));
+gulp.task('copy-components-js', function() {
+	return gulp.src(paths.components)
+	.pipe(sourcemaps.init())
+	.pipe(uglify().on('error', function(e) { console.log('\x07',e.message); return this.end(); }))
+	.pipe(concat('components.js'))
+	.pipe(sourcemaps.write("./"))
+	.pipe(gulp.dest(paths.destination + 'components'));
+});
+
+gulp.task('copy-components-to-target', function() {
+    return gulp.src('dist/components/**')
+	        .pipe(gulp.dest('./target/classes/static/components'));
+});
+
+gulp.task('copy-app-js', function() {
+	return gulp.src(paths.app)
+	.pipe(sourcemaps.init())
+	.pipe(uglify().on('error', function(e) { console.log('\x07',e.message); return this.end(); }))
+	.pipe(sourcemaps.write("./"))
+	.pipe(gulp.dest(paths.destination + 'app'));
+});
+
+gulp.task('copy-app-js-to-target', function() {
+    return gulp.src('dist/app/**')
+	        .pipe(gulp.dest('./target/classes/static/app'));
 });
 
 //copy main bower files (see bower.json) and optimize js
-//gulp.task('bower-files', function() {
-//    var filter = gulpFilter(["**/*.js", "!**/*.min.js"]);
-//    return bowerSrc()
-//        .pipe(sourcemaps.init())
-//        .pipe(filter)
-//        .pipe(uglify())
-//        .pipe(filter.restore())
-//        .pipe(sourcemaps.write("./"))
-//        .pipe(gulp.dest(paths.destination + 'lib'));
-//})
-
+gulp.task('copy-bower-libs', function() {
+    return gulp.src(mainBowerFiles(), { base: 'src/lib/' })
+	        .pipe(gulp.dest(paths.destination + 'lib'));
+});
 
 gulp.task('copy-images', function() {
     return gulp.src(paths.images)
-        .pipe(imagemin({
-            progressive: true,
-            svgoPlugins: [{removeViewBox: false}],
-            use: [pngcrush()]
-        }))
-        .pipe(gulp.dest(paths.destination + '/img'))
+	        .pipe(imagemin({
+	            progressive: true,
+	            svgoPlugins: [{removeViewBox: false}],
+	            use: [pngcrush()]
+	        }))
+	        .pipe(gulp.dest(paths.destination));
 });
 
 //copy assets
@@ -105,5 +98,4 @@ gulp.task('less', function () {
         .pipe(gulp.dest(paths.destination + '/css'));
 });
 
-gulp.task('build', ['optimize-and-copy-css', 'build-modules', 'copy-bower-lib',
-    'copy-images', 'less', 'copy-assets'], function(){});
+gulp.task('default', ['less'], function(){});

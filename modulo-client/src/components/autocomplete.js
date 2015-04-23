@@ -47,8 +47,7 @@ AutoComplete.prototype.autocomplete = function(vurl,target,fncName,possuiParamet
 	
 	var promise = AutoComplete.prototype.bloodHound.initialize();
 
-	promise
-	.fail(function() { console.log('err!'); });
+	promise.fail(function() { console.log('err!'); });
 
 	$('#'+target['objeto']).blur(function(){
 		if(this.value == ''){

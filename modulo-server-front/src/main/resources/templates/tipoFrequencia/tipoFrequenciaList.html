@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-BR"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:data="https://github.com/mxab/thymeleaf-extras-data-attribute"
 	  xmlns:th="http://www.thymeleaf.org"
 	  layout:decorator="decorator"
 	  class="no-js">
 		
 	<form layout:fragment="form" id="listForm" class="form fill" action="#"
-		  th:action="@{/tipoFrequencia/list}" th:object="${tipoFrequencia}" th:method="post">
+		  th:action="@{/tipoFrequencia/list}" th:method="post">
 		<fieldset>
 			<legend th:text="#{listTipoFrequencia}"></legend>
 			
 			<div class="row-fluid">
 				<div class="col-xs-12 col-md-5">
-					<div th:replace="fragments/layout :: text-field(idField=descFrequencia, label=descricao, field=descricaoFrequencia, maxLength=100)"></div>
+					<div th:replace="fragments/layout-input :: text-field(idField=descFrequencia, label=descricao, maxLength=100,
+															   field='${tipoFrequencia.descricaoFrequencia}')"></div>
 				</div>
 		
 				<div class="col-xs-4 col-md-3">
-					<div th:replace="fragments/layout :: number-field(idField=periodicidadeHoras, label=periodicidadeHoras, field=periodicidade,
-																	  maxLength=2, minValue=1, maxValue=24)"></div>
+					<div th:replace="fragments/layout-input :: number-field(idField=periodicidadeHoras, label=periodicidadeHoras, field='${tipoFrequencia.periodicidade}',
+															   maxLength=2, minValue=1, maxValue=24)"></div>
 				</div>
 			
 				<div class="col-xs-4 col-md-2">
-					<div th:replace="fragments/layout :: time-field(idField=horarioInicial, label=horarioInicial, field=horarioInicial,
-																	minuteStep=1,defaultTime=false, template=false)"></div>
+					<div th:replace="fragments/layout-temporal :: time-field(idField=horarioInicial, label=horarioInicial, field='${tipoFrequencia.horarioInicial}',
+																  minuteStep=1,defaultTime=false, template=false)"></div>
 				</div>
 			
 				<div class="col-xs-4 col-md-2">
-		                 	<div th:replace="fragments/layout :: search-group-button(btnClear=false)"></div>
+		                 	<div th:replace="fragments/layout-bar :: search-group-button(btnClear=false)"></div>
 				</div>
 			</div>
 		</fieldset>
@@ -50,16 +52,19 @@
 						</tr>
 						
 						<tr th:each="tipoFrequencia : ${page?.content}">
-							<td th:if="${tipoFrequencia?.descricaoFrequencia?.length() > 30}" rel="tooltip" th:attr="data-original-title=${tipoFrequencia?.descricaoFrequencia}"  th:text="${tipoFrequencia?.descricaoFrequencia}"></td>
+							<td th:if="${tipoFrequencia?.descricaoFrequencia?.length() > 30}" th:attr="data-original-title=${tipoFrequencia?.descricaoFrequencia}"
+								th:text="${tipoFrequencia?.descricaoFrequencia}"></td>
 							<td th:unless="${tipoFrequencia?.descricaoFrequencia?.length() > 30}" th:text="${tipoFrequencia?.descricaoFrequencia}"></td>
 							
-							<td th:if="${tipoFrequencia?.impressaoReceita?.length() > 16}" rel="tooltip" th:attr="data-original-title=${tipoFrequencia?.impressaoReceita}"  th:text="${tipoFrequencia?.impressaoReceita}"></td>
+							<td th:if="${tipoFrequencia?.impressaoReceita?.length() > 16}" th:attr="data-original-title=${tipoFrequencia?.impressaoReceita}"
+								th:text="${tipoFrequencia?.impressaoReceita}"></td>
 							<td th:unless="${tipoFrequencia?.impressaoReceita?.length() > 16}" th:text="${tipoFrequencia?.impressaoReceita}"></td>
 							
 							<td th:text="${tipoFrequencia.periodicidade}"></td>
 							<td th:text="${#dates.format(tipoFrequencia.horarioInicial, 'HH:mm')}"></td>
 							<td>
-								<a data:original-title="#{editar}" data:toggle="tooltip" th:href="@{/tipoFrequencia/edit(id=${tipoFrequencia.id})}" class="btn btn-default" type="button">
+								<a data:original-title="#{editar}" data:toggle="tooltip" th:href="@{/tipoFrequencia/edit(id=${tipoFrequencia.id})}"
+								   class="btn btn-default" type="button">
 							  		<i class="fa fa-edit mv-color-green"></i>
 								</a>
 								
@@ -71,11 +76,11 @@
 					</tbody>
 				</table>
 				
-				<div th:replace="fragments/layout :: paginationbar(method='/dispensacao/tipoFrequencia/listPaginated', idToRender='results')"></div>
+				<div th:replace="fragments/layout-bar :: paginationbar(method='/dispensacao/tipoFrequencia/listPaginated', idToRender='results')"></div>
 	        </div>
 		</div>
   
-		<div th:replace="fragments/layout :: default-crud-bar(newButton=true, urlNew='/tipoFrequencia/new')"></div>
+		<div th:replace="fragments/layout-bar :: default-crud-bar(newButton=true, urlNew='/tipoFrequencia/new')"></div>
 	</form>
 	
 	<th:block layout:fragment="scripts" th:with="defaultValidator=true">

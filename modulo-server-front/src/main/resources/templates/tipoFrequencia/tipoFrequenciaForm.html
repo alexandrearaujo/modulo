@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-BR"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:data="https://github.com/mxab/thymeleaf-extras-data-attribute"
 	  xmlns:th="http://www.thymeleaf.org"
 	  layout:decorator="decorator"
 	  class="no-js">
 						
 	<form layout:fragment="form" class="form" role="form" action="#" id="tipoFrequenciaForm"
-		  th:action="@{/tipoFrequencia/save/}" method="post" th:object="${tipoFrequencia}">
+		  th:action="@{/tipoFrequencia/save/}" method="post">
 		<fieldset>
 			<legend th:text="#{cadastroTipoFrequencia}"></legend>
 			
 			<div class="row-fluid">
 		  		<div class="col-xs-8 col-sm-9 col-md-9 col-lg-9">
-					<div th:replace="fragments/layout :: text-field(idField=descFrequencia, label=descricao, field=descricaoFrequencia,
+					<div th:replace="fragments/layout-input :: text-field(idField=descFrequencia, label=descricao, field='${tipoFrequencia.descricaoFrequencia}',
 																	maxLength=50, required=true)"></div>
 				</div>
 				
 		  		<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
-					<div th:replace="fragments/layout :: number-field(idField=periodicidade, label=periodicidadeHoras, disabled=existsItemSolicitacao,
-																	  field=periodicidade, maxLength=2, minValue=1, maxValue=24, required=true,
+					<div th:replace="fragments/layout-input :: number-field(idField=periodicidade, label=periodicidadeHoras, disabled=existsItemSolicitacao,
+																	  field='${tipoFrequencia.periodicidade}', maxLength=2, minValue=1, maxValue=24, required=true,
 																	  onchange='clearDetalheTipoFrequencia()')"></div>
 				</div>
 			</div>
 			
 			<div class="row-fluid">
 				<div class="col-sm-12 col-md-12 col-lg-12">
-					<div th:replace="fragments/layout :: text-field(idField=descImpressaoReceita, label=descricaoImpressaoReceita,
-					                                                field=impressaoReceita, maxLength=150)"></div>
+					<div th:replace="fragments/layout-input :: text-field(idField=descImpressaoReceita, label=descricaoImpressaoReceita,
+					                                                field='${tipoFrequencia.impressaoReceita}', maxLength=150)"></div>
 				</div>
 			</div>
 		</fieldset>
@@ -36,9 +37,9 @@
 			
 			<div class="row">
 				<div class="col-sm-3 col-md-3 col-lg-2" style="padding-left: 30px;">
-					<div th:replace="fragments/layout :: time-field(idField=horarioInicial, label=horarioInicial, field=horarioInicial, minuteStep=1,
-																	template=false, defaultTime=false,
-																	disabled=existsItemSolicitacao, required=true, onchange='clearDetalheTipoFrequencia()')"></div>
+					<div th:replace="fragments/layout-temporal :: time-field(idField=horarioInicial, label=horarioInicial, field='${tipoFrequencia.horarioInicial}', minuteStep=1,
+																  template=false, defaultTime=false,
+																  disabled=existsItemSolicitacao, required=true, onchange='clearDetalheTipoFrequencia()')"></div>
 				</div>
 				
 				<div class="col-sm-3 col-md-2 col-lg-2">
@@ -63,13 +64,13 @@
 					</thead>
 				
 					<tbody>
-						<tr th:each="detalheTipoFrequencia : *{detalhes}">
+						<tr th:each="detalheTipoFrequencia : ${tipoFrequencia.detalhes}">
 							<td th:text="${#dates.format(detalheTipoFrequencia.horaMedicacao, 'HH:mm')}"></td>
 							
 							<td>
 								 <input type="text" class="form-control" th:maxlength="150"
-									   th:value="*{detalhes[__${detalheTipoFrequenciaStat.index}__].descricaoMedicamento}"
-									   th:field="*{detalhes[__${detalheTipoFrequenciaStat.index}__].descricaoMedicamento}"
+									   th:value="${tipoFrequencia.detalhes[__${detalheTipoFrequenciaStat.index}__].descricaoMedicamento}"
+									   th:field="${tipoFrequencia.detalhes[__${detalheTipoFrequenciaStat.index}__].descricaoMedicamento}"
 									   th:id="descricaoMedicamento"/>
 							</td>
 						</tr>
@@ -77,7 +78,7 @@
 					</table>
 				</div>
 			</div>
-			<div th:replace="fragments/layout :: default-crud-bar(save=true, cancel=true, urlReturn='/tipoFrequencia/returnToList')"></div>
+			<div th:replace="fragments/layout-bar :: default-crud-bar(save=true, cancel=true, urlReturn='/tipoFrequencia/returnToList')"></div>
 		</fieldset>   
 	</form>
 	

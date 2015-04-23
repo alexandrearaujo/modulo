@@ -37,18 +37,17 @@
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-remote-shell</artifactId>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
 		</dependency>
 		
 		<dependency>
@@ -72,11 +71,11 @@
 			<version>LATEST</version>
 		</dependency>
 		
-<!-- 		<dependency> -->
-<!--             <groupId>org.thymeleaf.extras</groupId> -->
-<!--             <artifactId>thymeleaf-extras-springsecurity4</artifactId> -->
-<!--             <version>LATEST</version> -->
-<!--         </dependency> -->
+		<dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+            <version>LATEST</version>
+        </dependency>
 	</dependencies>
 	
 	<build>

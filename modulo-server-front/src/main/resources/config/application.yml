@@ -1,0 +1,69 @@
+liquibase:
+    enabled: false
+    changeLog: classpath:/db/changelog/db.changelog-master.xml
+    defaultSchema: dbamvfor
+#security:
+#    basic:
+#        enabled: false
+server:
+    context-path: /modulo
+    #port: 8443
+    #ssl:
+    #    key-store: keystore.jks
+    #    key-alias: tomcat
+    #    key-store-password: tomcatmvfor
+    #tomcat:
+    #    compression: 4096
+    #    compressableMimeTypes: application/json,application/xml
+spring:
+    application:
+        name: estratificacao
+    datasource:
+        #jndi-name: java:jboss/datasources/bootdemo
+        driverClassName: oracle.jdbc.OracleDriver
+        url: jdbc:oracle:thin:@192.168.254.17:1521:dev4
+        username: dbamvfor
+        password: dbamvfor
+        initialize: false
+        initial-size: 1
+        max-active: 3
+        min-idle: 1
+        max-idle: 3
+        max-wait: 15000
+    data:
+        jpa:
+            repositories: 
+                enabled: true
+    jpa:
+        database: oracle
+        database_platform: org.hibernate.dialect.Oracle10gDialect
+        show-sql: true
+        open-in-view: true
+    mail:
+        host: localhost
+        port: 25
+#        protocol: smtp
+#        smtp:
+#            auth: false
+#            starttls.enable: false
+#        from: me@localhost
+#        username:
+#        password:
+    messages:
+        basename: messages/messages
+        encoding: UTF-8
+        cache-seconds: -1
+#    profiles:
+#        active: default
+    resources:
+        cache-period: 31556926
+#        cache-period: 1
+    thymeleaf:
+        cache: false
+#MV Report Print Server URL
+#reportPrintServerURI: http://192.168.254.85:8082/relatorios/
+
+#URL de sistemas que precisam carregar a aplicação embarcada(Ex: PEP)
+externalServersWhiteListedAllowFrames: http://192.168.254.132:9090/mvpep/, http://localhost:9090/mvpep/
+
+#logging.level.org.springframework.security: DEBUG

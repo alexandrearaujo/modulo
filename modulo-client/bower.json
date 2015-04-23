@@ -3,36 +3,126 @@
 	"description": "bower components for modulo UI.",
     "version": "1.0.0",
     "dependencies": {
-    	"systemjs": "systemjs/systemjs#~0.14.1",
-    	"jquery": "latest",
-    	"bootstrap": "latest",
-    	"less": "latest",
-    	"es6-module-loader": "ModuleLoader/es6-module-loader#~0.14.0",
-        "curl": "latest",
-        "font-awesome": "latest",
-        "google-code-prettify": "latest"
-    	
+    "bootstrap": "latest",
+    "bootstrap-confirmation2": "latest",
+    "bootstrap-datepicker": "latest",
+    "bootstrap-table": "latest",
+    "bootstrap-timepicker": "latest",
+    "bootstrapvalidator": "latest",
+    "font-awesome": "latest",
+    "iCheck": "latest",
+    "jasny-bootstrap": "latest",
+    "jquery": "latest",
+    "jQuery-Mask-Plugin": "latest",
+    "knockout": "latest",
+    "less": "latest",
+    "remarkable-bootstrap-notify": "latest",
+    "screenfull": "latest",
+    "typeahead.js": "latest"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.min.css",
+        "dist/css/bootstrap.css.map",
+        "dist/css/bootstrap-theme.min.css",
+        "dist/css/bootstrap-theme.css.map",
+        "dist/js/bootstrap.min.js"
+      ]
     },
-    "overrides": {
-     	"jquery": {
-            "ignore": ["*.json"]
-        },
-        "curl": {
-            "ignore": ["dist/**", "src/curl/**"]
-        },
-        "bootstrap": {
-            "ignore": [
-                "js/**", "img/**", "less/**", "docs/build/**",
-                "docs/examples/**", "docs/templates/**", "docs/*.html"
-            ]
-        },
-        "font-awesome": {
-            "ignore": ["css/**", "less/**", "scss/**", "src/**"]
-        },
-        "google-code-prettify": {
-            "ignore": ["styles/**"]
-        }
+    "bootstrap-confirmation2": {
+      "main": [
+        "bootstrap-confirmation.min.js"
+      ]
     },
-    "devDependencies": {
+    "bootstrap-datepicker": {
+      "main": [
+        "dist/css/bootstrap-datepicker3.min.css",
+        "dist/js/bootstrap-datepicker.min.js",
+        "dist/locales/bootstrap-datepicker.pt-BR.min.js"
+      ]
+    },
+    "bootstrap-table": {
+      "main": [
+        "dist/bootstrap-table.min.css",
+        "dist/bootstrap-table.min.js",
+        "dist/locale/bootstrap-table-pt-BR.min.js"
+      ]
+    },
+    "bootstrap-timepicker": {
+      "main": [
+        "css/bootstrap-timepicker.min.css",
+        "js/bootstrap-timepicker.min.js"
+      ]
+    },
+    "bootstrapvalidator": {
+      "main": [
+        "dist/css/bootstrapValidator.min.css",
+        "dist/js/bootstrapValidator.min.js",
+        "dist/js/language/pt_BR.js"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "css/font-awesome.min.css",
+        "css/font-awesome.css.map",
+        "fonts/**"
+      ]
+    },
+    "iCheck": {
+      "main": [
+        "icheck.min.js",
+        "skins/minimal/blue.css",
+        "skins/minimal/blue.png"
+      ]
+    },
+    "jasny-bootstrap": {
+      "main": [
+        "dist/css/jasny-bootstrap.min.css",
+        "dist/css/jasny-bootstrap.css.map",
+        "dist/js/jasny-bootstrap.min.js"
+      ]
+    },
+    "jquery": {
+      "main": [
+        "dist/jquery.min.js",
+        "dist/jquery.min.map"
+      ]
+    },
+    "jQuery-Mask-Plugin": {
+      "main": [
+        "dist/jquery.mask.min.js"
+      ]
+    },
+    "knockout": {
+      "main": [
+        "dist/knockout.js"
+      ]
+    },
+    "less": {
+      "main": [
+        "dist/less.min.js"
+      ]
+    },
+    "remarkable-bootstrap-notify": {
+      "main": [
+        "dist/bootstrap-notify.min.js"
+      ]
+    },
+    "screenfull": {
+      "main": [
+        "dist/screenfull.js"
+      ]
+    },
+    "typeahead.js": {
+      "main": [
+        "dist/typeahead.bundle.min.js"
+      ]
     }
+  },
+  "devDependencies": {},
+  "resolutions": {
+	"jquery": "2.1.3",
+    "bootstrap": "3.3.4"
+  }
 }
