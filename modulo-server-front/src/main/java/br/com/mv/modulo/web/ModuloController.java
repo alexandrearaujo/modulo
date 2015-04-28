@@ -9,7 +9,7 @@ public class ModuloController {
 
 	@RequestMapping("/")
     public String index(Model model) {
-        return "teste";
+        return "index";
     }
 	
 }

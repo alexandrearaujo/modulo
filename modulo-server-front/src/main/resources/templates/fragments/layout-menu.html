@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR"
  xmlns:th="http://www.thymeleaf.org"
- xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
  xmlns:data="https://github.com/mxab/thymeleaf-extras-data-attribute"
  class="no-js">
 <meta charset="UTF-8"/>
@@ -67,7 +67,7 @@
 		     
 		     <div class="nav navbar-nav topnav app-system-info">
 		    	<p class="navbar-text text-nowrap hidden-xs">
-		    		<span th:text="'| ' + #{systemVersion}"></span> <span th:text="${version}"></span> <span th:text="'| ' + #{databaseVersion}"/> <span th:text="${session.versaoBanco}"></span>
+		    		<span th:text="'| ' + #{systemVersion}"></span> <span th:text="${version}"></span> <span th:text="'| ' + #{databaseVersion}"></span> <span th:text="${session.versaoBanco}"></span>
 		    		<br/> <span th:text="${#dates.format(#dates.createToday(), 'dd/MM/YYYY')}"></span> <span th:text="${#dates.format(#dates.createNow(), 'hh:mm:ss')}"> </span> <span id="relogio"></span> 
 		    	</p>
 		    </div>

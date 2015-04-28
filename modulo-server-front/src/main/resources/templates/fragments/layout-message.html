@@ -64,7 +64,6 @@
 		</div>
 	</div>
        
-       
 	<th:block th:fragment="confirmation">
 		<span data:original-title="${tooltip} != null ? #{${tooltip}} : ''" data:toggle="tooltip">
 			<a class="btn btn-default confirmation-callback" type="button" th:id="${idField}"
@@ -79,8 +78,16 @@
 				data:placement="${placement}"
 				data:singleton="${singleton}"
 				data:popout="${popout}"
+				data:method="${method}"
+				data:idToExclude = "${idToExclude}"
+				data:defaultFunction = "${defaultFunction}"
+				data:ajaxFunctio ="${ajaxFunction}"
+				data:msgSave="#{ctrl.message.success.save}"
+				data:idButtonSearch="${idButtonSearch}"
+				data:funcao="${funcao}"
 				th:onclick="${onclick}"
 				th:disabled="${disabled}">
+		
 				<th:block th:switch="${type}">
 				  <p th:case="null"><i class="fa fa-trash mv-color-green"></i></p>
 				  <p th:case="cancel"><i class="fa fa-ban mv-color-green"></i></p>
@@ -88,45 +95,6 @@
 				</th:block>
 			</a>
 		</span>
-		
-		<script th:inline="javascript">
-		/*<![CDATA[*/
-            $(function() {
-            	$('#'+[[${idField}]]).confirmation({
-            		onConfirm: function() { 
-            			var idToExclude = $(this).attr('data-id');
-    					var url = [[${method}]] + '?id='+idToExclude;
-    					
-    					if ([[${defaultFunction}]] == true) {
-	    					window.location=url; 
-    					} else if ([[${ajaxFunction}]] == true) {
-    						$.ajax({
-    							url: url,
-    							async: false,
-    							success: function(result) {
-    								$.alertSuccess([[#{ctrl.message.success.save}]]);
-    								if (result.status) {
-   										var rowCount = $('tbody#tbody_list tr').length;
-   										
-   										if (rowCount > 1) {
-   											$(button).parent().parent().remove();
-   										} else {
-   											var idButtonSearch = [[${idButtonSearch}]];    											
-   											$('#' + idButtonSearch).click();
-   										}
-   									}
-    							}
-    						});
-    					}
-						if ([[${funcao}]] != null) {
-    						var f = new Function([[${funcao}]].replace('()', '('+this.attr("data-id")+')'));
-    						f.call();
-    					}
-           			}
-            	});
-            });
-		/*]]>*/
-		</script>
 	</th:block>
 </body>
 </html>

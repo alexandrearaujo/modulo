@@ -24,7 +24,7 @@
 			
 				<div class="col-xs-4 col-md-2">
 					<div th:replace="fragments/layout-temporal :: time-field(idField=horarioInicial, label=horarioInicial, field='${tipoFrequencia.horarioInicial}',
-																  minuteStep=1,defaultTime=false, template=false)"></div>
+																  minuteStep=1,defaultTime=false, template=false, onchange='printa()')"></div>
 				</div>
 			
 				<div class="col-xs-4 col-md-2">

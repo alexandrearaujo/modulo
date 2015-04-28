@@ -16,6 +16,7 @@
     "jQuery-Mask-Plugin": "latest",
     "knockout": "latest",
     "less": "latest",
+    "metisMenu": "latest",
     "remarkable-bootstrap-notify": "latest",
     "screenfull": "latest",
     "typeahead.js": "latest"
@@ -102,6 +103,12 @@
     "less": {
       "main": [
         "dist/less.min.js"
+      ]
+    },
+    "metisMenu": {
+      "main": [
+        "dist/metisMenu.min.css",
+        "dist/metisMenu.min.js"
       ]
     },
     "remarkable-bootstrap-notify": {

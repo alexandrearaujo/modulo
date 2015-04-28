@@ -12,6 +12,14 @@
 		<version>1.0.0-SNAPSHOT</version>
 		<relativePath>../</relativePath>
 	</parent>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>uniform</artifactId>
+			<version>LATEST</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>

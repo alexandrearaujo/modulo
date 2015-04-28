@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" class="no-js">
 <head th:replace="fragments/layout :: htmlhead" />
-<link th:href="@{/css/mvFragments/login.css}" rel="stylesheet"/>
+<link th:href="@{/css/login.css}" rel="stylesheet"/>
 
 <body th:background="@{/img/login/background.png}">
 	<div class="container containter-login login-size">
@@ -10,7 +10,7 @@
 				<img alt="Soul MV" th:src="@{/img/login/logo_soul.png}" />
 			</div>
 		</div>
-		<div th:replace="fragments/layout :: alerts"></div>
+		<div th:replace="fragments/layout-message :: alerts"></div>
 		<div class="alert alert-danger" role="alert" th:if="${param.error}" th:text="#{invalidUserPass}"></div>
 		<div class="well">
 			<form class="form-signin" th:action="@{/login}" th:method="post">

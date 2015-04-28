@@ -208,37 +208,13 @@
 		</div>
 		
 		<div class="bootstrap-timepicker">
-			<input type="text" class="form-control" th:id="${idField}" th:field="__${field}__" th:disabled="${#bools.isTrue(__${disabled}__)}"
+			<input type="text" class="form-control time-field" th:id="${idField}" th:field="__${field}__" th:disabled="${#bools.isTrue(__${disabled}__)}"
 				   data:minute-step="${minuteStep}" data:default-time="${defaultTime}"
-				   th:autofocus="${autofocus}" data:template="${template}" data:bv-notempty="${required}" th:placeholder="${placeholder}" th:onchange="${onchange}"/>
+				   th:autofocus="${autofocus}" data:template="${template}" data:bv-notempty="${required}" th:placeholder="${placeholder}" th:onchange="${onchange}"
+				    data:field="__${dataField}__" />
 				   
 		    <input type="hidden" class="form-control" th:id="previous-value-+${idField}" th:field="__${field}__" th:disabled="disabled"/>
 		</div>
-		
-		<script th:inline="javascript">
-		/*<![CDATA[*/
-			$(function() {
-				$('#' + [[${idField}]]).timepicker({
-				    	showMeridian : false,
-			    	showInputs: false,
-			    	disableFocus: true
-			    })
-			});
-		
-			if($('#' + [[${idField}]]).attr('onchange') !== undefined){
-				$('#' + [[${idField}]]).off("onchange");
-				$('#' + [[${idField}]]).removeAttr("onchange");
-			}
-			$('#' + [[${idField}]]).on('change', function(){
-				var currentValue = $(this).val();
-		  	    var previousValue = $('#previous-value-' + [[${idField}]]).val(); 
-		  	    if(currentValue != previousValue){
-		  	    	var f = new Function([[${onchange}]]);
-					f.call();
-		  	    }
-			});
-		/*]]>*/
-		</script>
 	</div>
 </body>
 </html>
