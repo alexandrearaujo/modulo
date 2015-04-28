@@ -28,5 +28,6 @@ jQuery(document).ajaxComplete( function(){
 
 jQuery(document).ready(function(){
 	setBtnConfirmation();
-	setTimeField();
+	initTimeField();
+	initDateField();
 });

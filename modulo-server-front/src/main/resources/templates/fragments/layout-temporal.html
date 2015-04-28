@@ -17,40 +17,21 @@
 			</label>
 		</div>
 		
-		<div class="input-group date ui-datepicker" th:classappend="create-date-picker+${idField}">
-			<input th:if="${field}" type="text" class="form-control" th:id="${idField}" th:field="__${field}__" th:disabled="${disabled}"
-			 	   th:autofocus="${autofocus}" data:bv-notempty="${requiredPeriodo}?${requiredPeriodo}:${required}" th:placeholder="${placeholder}"/>
+		<div class="input-group date ui-datepicker date-field">
+			<input th:if="${field}" type="text" class="form-control data-field-input" th:id="${idField}" th:field="__${field}__" th:disabled="${disabled}"
+			 	   th:autofocus="${autofocus}" data:bv-notempty="${requiredPeriodo}?${requiredPeriodo}:${required}" th:placeholder="${placeholder}"
+			 	   data:startDate="${startDate}" data:endDate="${endDate}" th:name="${idField}"
+					/>
 			 	   
-			<input th:unless="${field}" type="text" class="form-control" th:id="${idField}" th:disabled="${disabled}"
-			 	   th:autofocus="${autofocus}" data:bv-notempty="${requiredPeriodo}?${requiredPeriodo}:${required}" th:placeholder="${placeholder}"/>
+			<input th:unless="${field}" type="text" class="form-control data-field-input" th:id="${idField}" th:disabled="${disabled}"
+			 	   th:autofocus="${autofocus}" data:bv-notempty="${requiredPeriodo}?${requiredPeriodo}:${required}" th:placeholder="${placeholder}"
+			 	    data:startDate="${startDate}" data:endDate="${endDate}" th:name="${idField}"
+			 	    />
 			
 			<span th:id="${idIcon}" class="input-group-addon btn" th:disabled="${disabledIcon}">
 				<span class="glyphicon glyphicon-calendar"></span>
 			</span>
 		</div>
-		
-		<script th:inline="javascript">
-	  	/*<![CDATA[*/
-		  $(function(){
-				var $field = $('#'+[[${idField}]]);
-				  
-				$('.create-date-picker' + [[${idField}]] ).datepicker({
-				 todayHighlight: true,
-			     autoclose: true,
-			     format: "dd/mm/yyyy",
-			     startDate: [[${startDate}]],
-			     endDate: [[${endDate}]],
-			     language:"pt-BR"
-			    });
-			   
-			    $('#'+[[${idField}]]).mask('99/99/9999');
-			    
-			    $field.change(function (){
-			    	$(this.form).bootstrapValidator('revalidateField',$('#'+[[${idField}]]).attr('name'));
-			    });
-			});
-		 /*]]>*/
-		</script>
 	</div>
 
 

@@ -26,7 +26,15 @@
 					<div th:replace="fragments/layout-temporal :: time-field(idField=horarioInicial, label=horarioInicial, field='${tipoFrequencia.horarioInicial}',
 																  minuteStep=1,defaultTime=false, template=false, onchange='printa()')"></div>
 				</div>
+			</div>
 			
+			<div class="row-fluid">
+				<div class="col-xs-4 col-md-2">
+					<div
+						th:replace="fragments/layout-temporal :: date-field(idIcon=iconeDateField, idField='dataConsulta', label=solicitacaoMedicamento.dataProximaConsulta, 
+																			field=${dataProximaConsulta}, required=true)"></div>
+				</div>
+				
 				<div class="col-xs-4 col-md-2">
 		                 	<div th:replace="fragments/layout-bar :: search-group-button(btnClear=false)"></div>
 				</div>
