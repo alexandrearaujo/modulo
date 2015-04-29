@@ -13,9 +13,9 @@
 	background: none;
 }
 
-.navbar  {
-	/*background-image: url("/estratificacao/img/ApplicationControlBarSkin.png");
-	background-repeat: repeat-x;*/
+.navbar {
+	background-image: url("/modulo/img/ApplicationControlBarSkin.png");
+	background-repeat: repeat-x;
 }
 
 .navbar-default {

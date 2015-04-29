@@ -1,4 +1,3 @@
-@CHARSET "ISO-8859-1";
 html {
 	min-height: 100%;
 	position: relative
@@ -150,7 +149,8 @@ body {
 	background: rgba(110, 110, 110, 0.25)
 }
 
-.chosen-container-single .chosen-single, .chosen-container-multi .chosen-choices li.search-field input[type="text"]	{
+.chosen-container-single .chosen-single, .chosen-container-multi .chosen-choices li.search-field input[type="text"]
+	{
 	height: auto !important
 }
 
@@ -524,4 +524,100 @@ div.uploader {
 
 .bg-light.lter, .bg-light>.lter {
 	background-color: #fff !important
+}
+
+.bg-brillant {
+	background: url("../img/pattern/brillant.png") repeat
+}
+
+.bg-always_grey {
+	background: url("../img/pattern/always_grey.png") repeat
+}
+
+.bg-retina_wood {
+	background: url("../img/pattern/retina_wood.png") repeat
+}
+
+.bg-low_contrast_linen {
+	background: url("../img/pattern/low_contrast_linen.png") repeat
+}
+
+.bg-egg_shell {
+	background: url("../img/pattern/egg_shell.png") repeat
+}
+
+.bg-cartographer {
+	background: url("../img/pattern/cartographer.png") repeat
+}
+
+.bg-batthern {
+	background: url("../img/pattern/batthern.png") repeat
+}
+
+.bg-noisy_grid {
+	background: url("../img/pattern/noisy_grid.png") repeat
+}
+
+.bg-diamond_upholstery {
+	background: url("../img/pattern/diamond_upholstery.png") repeat
+}
+
+.bg-greyfloral {
+	background: url("../img/pattern/greyfloral.png") repeat
+}
+
+.bg-white_tiles {
+	background: url("../img/pattern/white_tiles.png") repeat
+}
+
+.bg-gplaypattern {
+	background: url("../img/pattern/gplaypattern.png") repeat
+}
+
+.bg-arches {
+	background: url("../img/pattern/arches.png") repeat
+}
+
+.bg-purty_wood {
+	background: url("../img/pattern/purty_wood.png") repeat
+}
+
+.bg-diagonal_striped_brick {
+	background: url("../img/pattern/diagonal_striped_brick.png") repeat
+}
+
+.bg-large_leather {
+	background: url("../img/pattern/large_leather.png") repeat
+}
+
+.bg-bo_play_pattern {
+	background: url("../img/pattern/bo_play_pattern.png") repeat
+}
+
+.bg-irongrip {
+	background: url("../img/pattern/irongrip.png") repeat
+}
+
+.bg-wood_1 {
+	background: url("../img/pattern/wood_1.png") repeat
+}
+
+.bg-pool_table {
+	background: url("../img/pattern/pool_table.png") repeat
+}
+
+.bg-crissXcross {
+	background: url("../img/pattern/crissXcross.png") repeat
+}
+
+.bg-rip_jobs {
+	background: url("../img/pattern/rip_jobs.png") repeat
+}
+
+.bg-random_grey_variations {
+	background: url("../img/pattern/random_grey_variations.png") repeat
+}
+
+.bg-carbon_fibre {
+	background: url("../img/pattern/carbon_fibre.png") repeat
 }

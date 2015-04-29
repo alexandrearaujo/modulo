@@ -1,4 +1,3 @@
-/* adaptações da tela de Solicitacao de medicamentos */
 body {
 	background-color: #F9F9F9;
 }
@@ -193,9 +192,6 @@ fieldset legend ul > li > hr {
 	width: 90%;
 }
 
-/* Fim */
-
-/* Adaptações para o modal */
 .modal-content {
 	border-radius: 0px;
 	background-color: #F7F7F7;
@@ -238,5 +234,3 @@ fieldset legend ul > li > hr {
 .date-field-periodo div.calendar {
 	border-radius: 0px !important;	
 }
-
-/* Fim */

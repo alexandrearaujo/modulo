@@ -13,7 +13,6 @@ var uglify = require('gulp-uglify'),
     path = require('path');
 
 var paths = {
-	run: 'src/run.js',
     baseUrl: 'file:' + process.cwd() + '/src/',
     bowerLibs: ['src/lib'],
     css: {

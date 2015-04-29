@@ -120,6 +120,16 @@ function numbersOnly(){
 	});
 }
 
+function ajaxSetup(){
+	$.ajaxSetup({
+		beforeSend: function( xhr ) {
+			var token = $("meta[name='_csrf']").attr("content");
+			var header = $("meta[name='_csrf_header']").attr("content");
+			xhr.setRequestHeader(header, token);
+	 	}
+	});
+}
+
 function formatMask() {
 	$('.cns').mask('999.9999.9999.9999');
 	$(".cpf").mask("999.999.999-99");

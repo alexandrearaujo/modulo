@@ -1,7 +1,7 @@
 {
-    "name": "estratificacao",
-    "version": "1.49.0",
-    "description": "Estratificação de Risco",
+    "name": "modulo",
+    "version": "1.0.0",
+    "description": "Módulo",
     "repository" : {
     	"type" : "git",
     	"url" : "https://github.com/alexandrearaujo/modulo.git"
