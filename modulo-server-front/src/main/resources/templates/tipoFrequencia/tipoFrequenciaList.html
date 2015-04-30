@@ -60,7 +60,7 @@
 						</tr>
 						
 						<tr th:each="tipoFrequencia : ${page?.content}">
-							<td th:if="${tipoFrequencia?.descricaoFrequencia?.length() > 30}" th:attr="data-original-title=${tipoFrequencia?.descricaoFrequencia}"
+							<td th:if="${tipoFrequencia?.descricaoFrequencia?.length() > 30}" data:original-title="${tipoFrequencia?.descricaoFrequencia}"
 								th:text="${tipoFrequencia?.descricaoFrequencia}"></td>
 							<td th:unless="${tipoFrequencia?.descricaoFrequencia?.length() > 30}" th:text="${tipoFrequencia?.descricaoFrequencia}"></td>
 							
@@ -76,7 +76,7 @@
 							  		<i class="fa fa-edit mv-color-green"></i>
 								</a>
 								
-								<th:block th:replace="fragments/layout :: confirmation(idEntity=${tipoFrequencia.id}, idField=${'btnExclusao' + tipoFrequencia.id},
+								<th:block th:replace="fragments/layout-message :: confirmation(idEntity=${tipoFrequencia.id}, idField=${'btnExclusao' + tipoFrequencia.id},
 									singleton=true, title=confirmExclusion, defaultFunction=true, tooltip=excluir,
 									placement=left, popout=true, method='/dispensacao/tipoFrequencia/delete')"/>
 							</td>
