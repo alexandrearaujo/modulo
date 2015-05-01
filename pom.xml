@@ -32,32 +32,32 @@
 	
 	
 	<repositories>
-<!-- 		<repository> -->
-<!-- 			<id>spring-release</id> -->
-<!-- 			<name>Spring Releases</name> -->
-<!-- 			<url>https://repo.spring.io/release</url> -->
-<!-- 		</repository> -->
-		
 		<repository>
 			<id>MVProxy</id>
 			<name>MV Proxy Repository</name>
 			<url>http://echo.mvfor.local/nexus/content/groups/public</url>
 			<layout>default</layout>
 		</repository>
+		
+		<repository>
+			<id>spring-release</id>
+			<name>Spring Releases</name>
+			<url>https://repo.spring.io/release</url>
+		</repository>
 	</repositories>
 	
 	<pluginRepositories>
-<!-- 		<pluginRepository> -->
-<!-- 			<id>spring-release</id> -->
-<!-- 			<name>Spring Releases</name> -->
-<!-- 			<url>https://repo.spring.io/release</url> -->
-<!-- 		</pluginRepository> -->
-		
 		<pluginRepository>
 			<id>MVProxy</id>
 			<name>MV Proxy Repository</name>
 			<url>http://echo.mvfor.local/nexus/content/groups/public</url>
 			<layout>default</layout>
+		</pluginRepository>
+		
+		<pluginRepository>
+			<id>spring-release</id>
+			<name>Spring Releases</name>
+			<url>https://repo.spring.io/release</url>
 		</pluginRepository>
 	</pluginRepositories>
 </project>

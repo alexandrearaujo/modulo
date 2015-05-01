@@ -54,10 +54,10 @@
 		</dependency>
 		
 		<dependency>
-			<groupId>com.oracle.drivers</groupId>
-			<artifactId>ojdbc7</artifactId>
-			<version>12.1.0.1</version>
-		</dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>LATEST</version>
+        </dependency>
 		
 		<dependency>
 			<groupId>org.apache.commons</groupId>

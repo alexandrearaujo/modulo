@@ -34,9 +34,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private String[] externalServersWhiteListedAllowFrames;
 	
 	@Override
-    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(buildDaoAuthenticationProvider());
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+            .inMemoryAuthentication()
+                .withUser("USER").password("USER").roles("USER");
     }
+	
+//	@Override
+//    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
+//        auth.authenticationProvider(buildDaoAuthenticationProvider());
+//    }
 	
 //	@Override
 //	protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
