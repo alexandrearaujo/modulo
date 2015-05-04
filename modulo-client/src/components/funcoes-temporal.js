@@ -46,6 +46,7 @@ function initDateField(){
 	jQuery.each(targets, function(i, target){ 
 		if( target !== undefined){
 			var jQueryTarget = $(target);
+			/* TODO remover [0] procurar outra forma de pegar o elemento...*/
 			var jQueryInputDateField = jQuery(jQueryTarget.find('.data-field-input')[0]);
 			var startDate = jQueryInputDateField.attr('data-startdate');
 			var endDate = jQueryInputDateField.attr('data-endDate');
@@ -63,17 +64,13 @@ function initDateField(){
 			if(endDate != null)
 				confDatePicker.endDate = endDate;
 			
-			console.log(confDatePicker);
-			console.log(jQueryTarget);
 			jQueryTarget.datepicker(confDatePicker);
 			
-			console.log(jQueryInputDateField);
 			
 			jQueryInputDateField.mask('99/99/9999');
 			
 			jQueryInputDateField.change(function (){
 				var targetName = jQueryInputDateField.attr('name');
-				console.log('name: '+targetName);
 		    	$(this.form).bootstrapValidator('revalidateField', targetName );
 		    });
 		}
