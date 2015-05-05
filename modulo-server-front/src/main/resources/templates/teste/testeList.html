@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:data="https://github.com/mxab/thymeleaf-extras-data-attribute"
+	  xmlns:th="http://www.thymeleaf.org"
+	  layout:decorator="decorator"
+	  class="no-js">
+		
+	<form layout:fragment="form" id="listForm" class="form fill" action="#" th:action="@{/teste/list}" th:method="post">
+		<fieldset>
+			<legend th:text="#{listTeste}"></legend>
+			
+			<div class="row-fluid">
+				<div class="col-xs-12 col-md-5">
+					<div th:replace="fragments/layout-input :: text-field(idField=descTeste, label=descricao, maxLength=200, field='${teste.descricao}')"></div>
+				</div>
+				
+				<div class="col-xs-4 col-md-2">
+                 	<div th:replace="fragments/layout-bar :: search-group-button(btnClear=false)"></div>
+				</div>
+			</div>
+		</fieldset>
+		
+		<div class="table-responsive" id="results">
+	  		<div class="col-xs-12 col-md-12">
+				<table class="table table-condensed table-bordered table-striped table-hover fixed-table">
+					<thead>
+						<tr>
+							<th th:text="#{descricao}"></th>
+						</tr>
+					</thead>
+	
+					<tbody>
+						<tr th:if="${page == null ? true : page.content.empty}">
+							<td colspan="5" align="center" th:text="#{noRows}"></td>
+						</tr>
+						
+						<tr th:each="teste : ${page?.content}">
+							<td th:if="${teste?.descricao?.length() > 30}" data:original-title="${teste?.descricao}"
+								th:text="${teste?.descricao}"></td>
+							<td th:unless="${teste?.descricao?.length() > 30}" th:text="${teste?.descricao}"></td>
+							
+							<td>
+								<a data:original-title="#{editar}" data:toggle="tooltip" th:href="@{/teste/edit(id=${teste.id})}"
+								   class="btn btn-default" type="button">
+							  		<i class="fa fa-edit mv-color-green"></i>
+								</a>
+								
+								<th:block th:replace="fragments/layout-message :: confirmation(idEntity=${teste.id}, idField=${'btnExclusao' + teste.id},
+									singleton=true, title=confirmExclusion, defaultFunction=true, tooltip=excluir,
+									placement=left, popout=true, method='/modulo/teste/delete')"/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<div th:replace="fragments/layout-bar :: paginationbar(method='/modulo/teste/listPaginated', idToRender='results')"></div>
+	        </div>
+		</div>
+  
+		<div th:replace="fragments/layout-bar :: default-crud-bar(newButton=true, urlNew='/teste/new')"></div>
+	</form>
+	
+	<th:block layout:fragment="scripts" th:with="defaultValidator=true">
+		<th:block th:replace="fragments/layout :: scripts(defaultValidator=true, idForm='listForm')"></th:block>
+		<script type="text/javascript">
+			$("td[rel='tooltip']").tooltip({
+			    'selector': '',
+			    'placement': 'top',
+			    'container':'body'
+			  });
+		</script>
+	</th:block>
+</html>

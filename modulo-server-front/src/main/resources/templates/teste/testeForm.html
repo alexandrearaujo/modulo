@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:data="https://github.com/mxab/thymeleaf-extras-data-attribute"
+	  xmlns:th="http://www.thymeleaf.org"
+	  layout:decorator="decorator"
+	  class="no-js">
+						
+	<form layout:fragment="form" class="form" role="form" action="#" id="tipoFrequenciaForm" th:action="@{/teste/save}" method="post">
+		<fieldset>
+			<legend th:text="#{cadastroTeste}"></legend>
+			<div class="row-fluid">
+				<div class="col-sm-12 col-md-12 col-lg-12">
+					<div th:replace="fragments/layout-input :: text-field(idField=descTeste, label=descricao, field='${teste.descricao}', maxLength=200)"></div>
+				</div>
+			</div>
+			
+			<div th:replace="fragments/layout-bar :: default-crud-bar(save=true, cancel=true, urlReturn='/teste/returnToList')"></div>
+		</fieldset>
+	</form>
+</html>
