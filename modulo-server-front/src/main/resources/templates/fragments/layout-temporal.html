@@ -34,8 +34,7 @@
 		</div>
 	</div>
 
-
-	<!-- Date-Field-Periodo -->
+<!-- Date-Field-Periodo -->
 	 <div class="date-field-periodo input-daterange form-group pull-left" th:fragment="date-field-periodo">
 	 	<label th:if="${idField}" class="input-group control-label" th:classappend="${requiredPeriodo} ? 'required' : ''" for="${name}" th:id="__${idField}__+Label">
 			<span th:text="#{${labelPeriodo}}"></span>
@@ -45,135 +44,47 @@
 			<span th:text="#{${labelPeriodo}}"></span>
 		</label>
 	   <div class="input-group date">
-	       <input th:if="${field}" class="input-small form-control" th:classappend="create-date-picker-+${idField}" type="text" th:id="${idField}" th:field="__${field}__"
+	       <input th:if="${field}" class="input-small form-control" th:classappend="create-date-picker-start-date" type="text" th:id="${idField}" th:field="__${field}__"
 	       		  th:disabled="${disabledStartDate}" th:autofocus="${autofocus}" data:bv-notempty="${requiredPeriodo}?${requiredPeriodo}:${required}"
-	       		  th:placeholder="${placeholder}"/>
+	       		  th:placeholder="${placeholder}"
+	       		  data:startDate="${startDate}"
+	       		  data:endDate="${endDate}"
+	       		  data:idForm="${idForm}"
+	       		  data:requiredPeriodo="${requiredPeriodo}"
+	       		  />
 	       		  
-	       <input th:unless="${field}" class="input-small form-control" th:classappend="create-date-picker-+${idField}" type="text" th:id="${idField}"
+	       <input th:unless="${field}" class="input-small form-control" th:classappend="create-date-picker-start-date" type="text" th:id="${idField}"
 	       		  th:disabled="${disabledStartDate}" th:autofocus="${autofocus}" data:bv-notempty="${requiredPeriodo}?${requiredPeriodo}:${required}"
-	       		  th:placeholder="${placeholder}"/>
+	       		  th:placeholder="${placeholder}"
+	       		  data:startDate="${startDate}"
+	       		  data:endDate="${endDate}"
+	       		  data:idForm="${idForm}"
+	       		  data:requiredPeriodo="${requiredPeriodo}"
+	       		  />
 			
 			<div class="input-group-addon calendar btn startDate" data:target="${idField}"><span class="glyphicon glyphicon-calendar"></span></div>
 	        <span  class="input-group-addon to">&nbsp; a &nbsp;</span>
 	       
-	       <input th:if="${field}" class="input-small form-control" th:classappend="create-date-picker-+${idFieldEndDate}" type="text" th:id="${idFieldEndDate}"
+	       <input th:if="${field}" class="input-small form-control" th:classappend="create-date-picker-end-date" type="text" th:id="${idFieldEndDate}"
 	       		  th:field="__${fieldEndDate}__" th:disabled="${disabledEndDate}" th:autofocus="${autofocusEndDate}"
-	       		  data:bv-notempty="${requiredPeriodoEndDate}?${requiredPeriodoEndDate}:${requiredEndDate}" th:placeholder="${placeholderEndDate}" />
+	       		  data:bv-notempty="${requiredPeriodoEndDate}?${requiredPeriodoEndDate}:${requiredEndDate}" th:placeholder="${placeholderEndDate}" 
+	       		  data:startDate="${startDate}"
+	       		  data:endDate="${endDate}"
+	       		  data:idForm="${idForm}"
+	       		  data:requiredPeriodoEndDate="${requiredPeriodoEndDate}"
+	       		  />
 	       
-	       <input th:unless="${field}" class="input-small form-control" th:classappend="create-date-picker-+${idFieldEndDate}" type="text" th:id="${idFieldEndDate}"
+	       <input th:unless="${field}" class="input-small form-control" th:classappend="create-date-picker-end-date" type="text" th:id="${idFieldEndDate}"
 	       		  th:disabled="${disabledEndDate}" th:autofocus="${autofocusEndDate}"
-	       		  data:bv-notempty="${requiredPeriodoEndDate}?${requiredPeriodoEndDate}:${requiredEndDate}" th:placeholder="${placeholderEndDate}" />
+	       		  data:bv-notempty="${requiredPeriodoEndDate}?${requiredPeriodoEndDate}:${requiredEndDate}" th:placeholder="${placeholderEndDate}" 
+	       		  data:startDate="${startDate}"
+	       		  data:endDate="${endDate}"
+	       		  data:idForm="#${idForm}"
+	       		  data:requiredPeriodoEndDate="${requiredPeriodoEndDate}"
+	       		  />
 			
 			<div class="input-group-addon calendar btn endDate"  data:target="${idFieldEndDate}"><span class="glyphicon glyphicon-calendar"></span></div>
 	   </div>
-	   <script th:if="${disabledStartDate}" th:inline="javascript">
-	   	/**
-	   	 *
-		 * Inicia datas com padrão MV e faz as seguintes Validações:
-		 * - formato da data - 99/99/9999;
-  		 * - Data do período final iniciando apartir da data do período inicial;
-  		 * Parametros obrigatórios:
-		 * @param {String} idField //id da data inicial
-		 * @param {String} idFieldEndDate //id da data final
-		 * @param {String} idForm //id do formulário
-		 * Opcional:
-		 * @param {Booelan} disabledStartDate // desabilita a primeira data;
-		 * @param {Booelan} disabledEndDate // desabilita a segunda data;
-		 * @result Um componente com duas datas validadas para perído.
-		 *
-		 */
-		/*<![CDATA[*/
-		    $('.input-group-addon.calendar.btn.startDate').attr("disabled", true);
-		/*]]>*/
-		</script>
-		 <script th:if="${disabledEndDate}" th:inline="javascript">
-		/*<![CDATA[*/
-				 $('.input-group-addon.calendar.btn.endDate').attr("disabled", true);
-		/*]]>*/
-		</script>
-		<script th:inline="javascript" th:unless="${disabledStartDate}">
-	  	/*<![CDATA[*/
-           $(function(){
-				var $fieldStartDate = $('#'+[[${idField}]]);
-				var $fieldEndDate = $('#'+[[${idFieldEndDate}]]);
-				var $form = $('#'+ [[${idForm}]]);
-				  
-				$('.create-date-picker-' + [[${idField}]] ).datepicker({
-				 todayHighlight: true,
-			     autoclose: true,
-			     format: "dd/mm/yyyy",
-			     defaultDate: +7,
-			     startDate: [[${startDate}]],
-			     endDate: [[${endDate}]],
-			     language:"pt-BR"
-			    });
-			   
-				$fieldStartDate.mask('99/99/9999');
-			    
-			    $fieldStartDate.change(function (){
-			    	$(this.form).bootstrapValidator('revalidateField',$('#'+[[${idField}]]).attr('name'));
-			    });
-			    
-			    $('.input-group-addon.calendar.btn.startDate').on('click', '', function(){
-					var calendar = '#'+$(this).attr('data-target');
-					$(calendar).datepicker('show');
-				});
-			    
-			    $fieldStartDate.datepicker({
-					autoclose : true,
-					format : "dd/mm/yyyy",
-					language : "pt-BR"
-				}).on(
-						'changeDate',
-						function(e) {
-							$fieldStartDate.datepicker('hide');
-							$fieldEndDate.datepicker("setStartDate",e.date);
-							$fieldEndDate.datepicker("setDate");
-							$form.bootstrapValidator('revalidateField',[[${idField}]]);
-							$form.bootstrapValidator('revalidateField',[[${idFieldEndDate}]]);
-						});
-			  });
-		 /*]]>*/
-		</script>
-		<script th:inline="javascript" th:unless="${disabledEndDate}">
-	  	/*<![CDATA[*/
-		  	$(function(){
-		  	    var $fieldEndDate = $('#'+[[${idFieldEndDate}]]);
-		  	  	var $form = $('#'+ [[${idForm}]]);
-				  
-				$('.create-date-picker-' + [[${idFieldEndDate}]] ).datepicker({
-				 todayHighlight: true,
-			     autoclose: true,
-			     format: "dd/mm/yyyy",
-			     startDate: [[${startDate}]],
-			     endDate: [[${endDate}]],
-			     language:"pt-BR"
-			    });
-				
-			    $fieldEndDate.mask('99/99/9999');
-			    
-			    $('.input-group-addon.calendar.btn.endDate').on('click', '', function(){
-					var calendar = '#'+$(this).attr('data-target');
-					$(calendar).datepicker('show');
-				});
-			    
-			    $fieldEndDate.change(function (){
-			    	$(this.form).bootstrapValidator('revalidateField',$fieldEndDate.attr('name'));
-			    });
-			    
-			    $fieldEndDate.datepicker({
-					autoclose : true,
-					format : "dd/mm/yyyy",
-					language : "pt-BR"
-				}).on(
-						'changeDate',
-						function(e) {
-							$fieldEndDate.datepicker('hide');
-							$form.bootstrapValidator('revalidateField',[[${idFieldEndDate}]]);
-						});
-		  	});
-	  	/*]]>*/
-		</script>
 	</div>
 	
 	<!-- Time-Field -->
@@ -197,5 +108,6 @@
 		    <input type="hidden" class="form-control" th:id="previous-value-+${idField}" th:field="__${field}__" th:disabled="disabled"/>
 		</div>
 	</div>
+	
 </body>
 </html>
