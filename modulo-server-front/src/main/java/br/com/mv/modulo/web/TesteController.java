@@ -18,14 +18,4 @@ public class TesteController extends GenericCrudController<Teste> {
 	public TesteController(GenericMessages genericMessages,	TesteBusiness testeBusiness) {
 		super(genericMessages, testeBusiness);
 	}
-
-	@Override
-	public String getListPageName() {
-		return "teste/testeList";
-	}
-
-	@Override
-	public String getFormPageName() {
-		return "teste/testeForm";
-	}
 }
