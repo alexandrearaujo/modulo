@@ -30,4 +30,5 @@ jQuery(document).ready(function(){
 	setBtnConfirmation();
 	initTimeField();
 	initDateField();
+	initDateFieldPeriodo();
 });
