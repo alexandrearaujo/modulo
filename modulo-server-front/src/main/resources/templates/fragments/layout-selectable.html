@@ -16,7 +16,7 @@
 				<span th:text="#{${label}}"></span>
 			</label>
 		</div>
-			<select th:name="${nameField}" th:field="__${field}__" class="form-control" th:title="${title}"
+			<select th:name="${nameField}" th:field="__${field}__" class="form-control select-field" th:title="${title}"
 				    th:disabled="${disabled}" data:bv-notempty="${required}" th:autofocus="${autofocus}" 
 				    th:onblur="${onblur}" th:onchange="${onchange}" th:placeholder="${placeholder}" th:id="${idcomponente}">
 				   <option th:if="${prompt}" th:text="${textPrompt}" th:value="${valuePrompt}" />
@@ -24,13 +24,6 @@
 				   <option th:if="${listEnum}" th:each="i : ${listEnum}" th:text="#{${i}}" th:value="${i}"/>
 			</select>
 			<input th:hidden="true" th:id="${idField}" th:value="${fieldid}" />
-			<script th:inline="javascript">
-			/*<![CDATA[*/
-				$(function() {
-					fncBlurCombo();
-				});
-			/*]]>*/
-			</script>
 	</div>
 	
 	

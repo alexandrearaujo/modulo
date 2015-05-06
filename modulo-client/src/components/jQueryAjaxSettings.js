@@ -34,4 +34,5 @@ jQuery(document).ready(function(){
 	initPaginationBar();
 	initNumberField();
 	initCheckboxField();
+	fncBlurCombo();
 });
