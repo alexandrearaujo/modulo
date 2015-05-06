@@ -19,6 +19,7 @@ function initCheckboxField(){
 /**
  * Radio-Field
  */
+
 function initRadioField(){
 	$('.radio-field').iCheck({
    		radioClass: 'iradio_minimal-blue radio'
