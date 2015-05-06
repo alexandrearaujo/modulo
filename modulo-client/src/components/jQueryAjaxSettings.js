@@ -32,4 +32,5 @@ jQuery(document).ready(function(){
 	initDateField();
 	initDateFieldPeriodo();
 	initPaginationBar();
+	initNumberField();
 });

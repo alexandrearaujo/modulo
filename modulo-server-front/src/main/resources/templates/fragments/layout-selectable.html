@@ -36,21 +36,10 @@
 	
 	<!-- Checkbox-Field -->
 	<label th:fragment="checkbox-field" class="checkbox-inline">
-		<input type="checkbox" th:disabled="${disabled}" th:id="${idField}" th:field="__${field}__" th:onchange="${onchange}" th:checked="${checked}"/>
+		<input type="checkbox" th:disabled="${disabled}" th:id="${idField}" th:field="__${field}__" th:onchange="${onchange}" 
+		th:checked="${checked}" class="checkbox-field"
+		/>
 		<span th:text="#{${label}}" data:original-title="${tooltip} != null ? #{${tooltip}} : ''" data:toggle="tooltip"></span>
-		<script th:inline="javascript">
-		 $(function(){
-		  $('#' + [[${idField}]]).iCheck({
-		   checkboxClass: 'icheckbox_minimal-blue'
-		    });
-		 });
-		</script>
-		<script th:inline="javascript" th:if="${onchange}">
-			$('#' + [[${idField}]]).on('ifChanged', function(){
-				var f = new Function([[${onchange}]]);
-				f.call();
-			});	
-		</script>
 	</label>
 
 	
