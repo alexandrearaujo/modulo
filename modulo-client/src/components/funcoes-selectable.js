@@ -1,22 +1,17 @@
 /**
  * Checkbox-Field
  */
-
 function initCheckboxField(){
-	
-}
-/*
-<script th:inline="javascript">
-		 $(function(){
-		  $('#' + [[${idField}]]).iCheck({
-		   checkboxClass: 'icheckbox_minimal-blue'
-		    });
-		 });
-		</script>
-		<script th:inline="javascript" th:if="${onchange}">
-			$('#' + [[${idField}]]).on('ifChanged', function(){
-				var f = new Function([[${onchange}]]);
+	var targets = $('.checkbox-field');
+	jQuery.each(targets, function(i, target){ 
+		if( target !== undefined){
+			var jQueryTarget = $(target);
+			jQueryTarget.iCheck({ checkboxClass: 'icheckbox_minimal-blue' });
+			jQueryTarget.on('ifChanged', function(){
+				var functionName = jQueryTarget.attr('data-onchange');
+				var f = new Function(functionName);
 				f.call();
-			});	
-		</script>
-*/
+			});
+		}
+	});
+}
