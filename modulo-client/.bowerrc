@@ -1,3 +1,5 @@
 {
-    "directory": "src/lib"
+    "directory": "src/lib",
+    "strict-ssl": false,
+    "https-proxy": "http://192.168.254.250:3128"
 }
