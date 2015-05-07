@@ -52,15 +52,8 @@
 	
 	<!-- Radio-Field -->
 	<label th:fragment="radio-field" class="radio-inline">
-	    <input type="radio" th:id="${idField}" th:name="${nameField}" th:field="__${field}__" th:onchange="${onchange}" th:value="${value}" th:checked="${checked}"/>
+	    <input class="radio-field" type="radio" th:id="${idField}" th:name="${nameField}" th:field="__${field}__" th:onchange="${onchange}" th:value="${value}" th:checked="${checked}"/>
 	    <span th:text="#{${label}}"></span>
-	 	<script th:inline="javascript">
-			$(function(){
-				$('#' + [[${idField}]]).iCheck({
-			   		radioClass: 'iradio_minimal-blue radio'
-			  	});
-			});
-		</script>
 	</label>
 </body>
 </html>
