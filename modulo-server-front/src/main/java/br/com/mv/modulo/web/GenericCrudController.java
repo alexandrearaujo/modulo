@@ -26,12 +26,12 @@ import br.com.mv.modulo.business.GenericCrudBusiness;
 import br.com.mv.modulo.exception.GenericMessages;
 import br.com.mv.modulo.model.type.EnumTipoMensagem;
 
-
 public abstract class GenericCrudController<T> {
-	
 	protected Page<T> page;
 	protected final GenericMessages genericMessages;
 	private final GenericCrudBusiness<T> genericCrudBusiness;
+	private final int DEFAULT_INITIAL_PAGINATION_PAGE = 0;
+	private final int DEFAULT_PAGINATION_SIZE = 7;
 	private Class<T> clazz = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 	
 	@Autowired
@@ -50,28 +50,24 @@ public abstract class GenericCrudController<T> {
 	
 	@RequestMapping(value="/list", method = RequestMethod.POST)
 	public String findModel(@ModelAttribute T t, Model model, @AuthenticationPrincipal User usuario) {
-		Pageable pageable = new PageRequest(0, 7, Sort.DEFAULT_DIRECTION, "cidadaoPaciente.nome");
-		this.page = genericCrudBusiness.listModel(t, pageable);
-		
-		model.addAttribute("page", this.page);
-		model.addAttribute(getModelName(), t);
-		
+		listModel(t, DEFAULT_INITIAL_PAGINATION_PAGE, DEFAULT_PAGINATION_SIZE, model);
 		return getListPageName();
 	}
 	
 	@RequestMapping(value="/listPaginated", method = RequestMethod.GET)
 	public String findModelPaginated(@ModelAttribute T t, 
-											  @RequestParam(value = "page", defaultValue = "") Integer page,
-											  @RequestParam(value = "size", defaultValue = "") Integer size, 
-											  @RequestParam(value = "idToRender", defaultValue = "") String idToRender,
-											  Model model) {
-		Pageable pageable = new PageRequest(page, size, Sort.DEFAULT_DIRECTION, "cidadaoPaciente.nome");
-		this.page = genericCrudBusiness.listModel(t, pageable);
-		
+									 @RequestParam(value = "page", defaultValue = "") Integer page,
+									 @RequestParam(value = "size", defaultValue = "") Integer size, 
+									 @RequestParam(value = "idToRender", defaultValue = "") String idToRender,
+									 Model model) {
+		listModel(t, page, size, model);
+		return getListPageName() + " :: #" + idToRender;
+	}
+	
+	private void listModel(T t, Integer page, Integer size, Model model) {
+		this.page = genericCrudBusiness.listModel(t, getPageable(page, size));
 		model.addAttribute("page", this.page);
 		model.addAttribute(getModelName(), t);
-		
-		return getListPageName() + " :: #" + idToRender;
 	}
 	
 	@RequestMapping(value="/new", method = RequestMethod.GET)
@@ -103,7 +99,7 @@ public abstract class GenericCrudController<T> {
 					   RedirectAttributes redirectAttrs, Model model, SessionStatus status) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("org.springframework.validation.BindingResult.strategy", bindingResult);
-            model.addAttribute("devolucaoMedicamento", t);
+            model.addAttribute(getModelName(), t);
     		return getFormPageName();
         } else {
         	try {
@@ -139,9 +135,7 @@ public abstract class GenericCrudController<T> {
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		}
-		Pageable pageable = new PageRequest(0, 7, Sort.DEFAULT_DIRECTION, "descricao");
-		
-		this.page = genericCrudBusiness.listModel(object, pageable);
+		this.page = genericCrudBusiness.listModel(object, getPageable(DEFAULT_INITIAL_PAGINATION_PAGE, DEFAULT_PAGINATION_SIZE));
 		
 		instantiateModel(model, usuario, true);
 		model.addAttribute("page", this.page);
@@ -160,7 +154,33 @@ public abstract class GenericCrudController<T> {
 		model.addAttribute(getModelName(), object);
 	}
 	
-	public abstract String getListPageName();
-	public abstract String getFormPageName();
+	protected Pageable getPageable(Integer page, Integer size) {
+		Pageable pageable;
+		if (StringUtils.isNotEmpty(getFieldToSortList())) {
+			pageable = new PageRequest(page, size, Sort.DEFAULT_DIRECTION, getFieldToSortList());
+		} else {
+			pageable = new PageRequest(page, size);
+		}
+		return pageable;
+	}
 	
+	protected String getFieldToSortList() {
+		return null;
+	}
+	
+	protected int getDefaultPaginationSize() {
+		return DEFAULT_PAGINATION_SIZE;
+	}
+	
+	protected String getListPageName() {
+		return getModelUrlMapping() + "List";
+	}
+
+	protected String getFormPageName() {
+		return getModelUrlMapping() + "Form";
+	}
+	
+	private String getModelUrlMapping() {
+		return getModelName() + "/" + getModelName();
+	}
 }

@@ -3,13 +3,11 @@ package br.com.mv.modulo.business;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.mv.modulo.exception.GenericException;
 import br.com.mv.modulo.repository.GenericCrudRepository;
 
-@Service
 public abstract class GenericCrudBusiness<T> {
 	
 	private final GenericCrudRepository<T> genericCrudRepository;
