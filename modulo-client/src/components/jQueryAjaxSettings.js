@@ -31,4 +31,5 @@ jQuery(document).ready(function(){
 	initTimeField();
 	initDateField();
 	initDateFieldPeriodo();
+	initPaginationBar();
 });
