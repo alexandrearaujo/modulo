@@ -30,10 +30,10 @@ public class Teste implements Serializable {
 	@Id
     @SequenceGenerator(name = "SEQ_TESTE", sequenceName = "SEQ_TESTE", allocationSize = 0)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator ="SEQ_TESTE" )
-    @Column(name = "CD_TESTE", length = 8, nullable = false)
+    @Column(name = "ID", length = 8, nullable = false)
     private Long id;
 	
-	@Column(name = "DS_TESTE")
+	@Column(name = "TESTE")
     @NotNull
     @Size(max = 100)
     private String descricao;

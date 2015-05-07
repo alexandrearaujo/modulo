@@ -6,19 +6,17 @@
 	  layout:decorator="decorator"
 	  class="no-js">
 		
-	<form layout:fragment="form" id="listForm" class="form fill" action="#"
-		  th:action="@{/teste/list}" th:method="post">
+	<form layout:fragment="form" id="listForm" class="form fill" action="#" th:action="@{/teste/list}" th:method="post">
 		<fieldset>
-			<legend th:text="#{listTipoFrequencia}"></legend>
+			<legend th:text="#{listTeste}"></legend>
 			
 			<div class="row-fluid">
 				<div class="col-xs-12 col-md-5">
-					<div th:replace="fragments/layout-input :: text-field(idField=descTeste, label=descricao, maxLength=100,
-															   field='${teste.descricao}')"></div>
+					<div th:replace="fragments/layout-input :: text-field(idField=descTeste, label=descricao, maxLength=200, field='${teste.descricao}')"></div>
 				</div>
 				
 				<div class="col-xs-4 col-md-2">
-		                 	<div th:replace="fragments/layout-bar :: search-group-button(btnClear=false)"></div>
+                 	<div th:replace="fragments/layout-bar :: search-group-button(btnClear=false)"></div>
 				</div>
 			</div>
 		</fieldset>
