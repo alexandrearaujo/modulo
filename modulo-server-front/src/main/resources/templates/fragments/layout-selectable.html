@@ -36,8 +36,8 @@
 	
 	<!-- Checkbox-Field -->
 	<label th:fragment="checkbox-field" class="checkbox-inline">
-		<input type="checkbox" th:disabled="${disabled}" th:id="${idField}" th:field="__${field}__" th:onchange="${onchange}" 
-		th:checked="${checked}" class="checkbox-field"
+		<input type="checkbox" th:disabled="${disabled}" th:id="${idField}" th:field="__${field}__"
+		th:checked="${checked}" class="checkbox-field" data:onchange="${onchange}" th:value="${__${value}__}"
 		/>
 		<span th:text="#{${label}}" data:original-title="${tooltip} != null ? #{${tooltip}} : ''" data:toggle="tooltip"></span>
 	</label>

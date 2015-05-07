@@ -33,4 +33,5 @@ jQuery(document).ready(function(){
 	initDateFieldPeriodo();
 	initPaginationBar();
 	initNumberField();
+	initCheckboxField();
 });
