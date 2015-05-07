@@ -1,6 +1,8 @@
 package br.com.mv.modulo.web;
 
 import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.Arrays;
 
 import javax.validation.Valid;
 
@@ -32,7 +34,9 @@ public abstract class GenericCrudController<T> {
 	private final GenericCrudBusiness<T> genericCrudBusiness;
 	private final int DEFAULT_INITIAL_PAGINATION_PAGE = 0;
 	private final int DEFAULT_PAGINATION_SIZE = 7;
-	private Class<T> clazz = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+	private Type type = Arrays.stream(((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()).findFirst().get();
+//	private Class<T> clazz = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+	private Class<?> clazz = (Class<?>) type;
 	
 	@Autowired
 	public GenericCrudController(GenericMessages genericMessages, GenericCrudBusiness<T> genericCrudBusiness) {
@@ -127,15 +131,7 @@ public abstract class GenericCrudController<T> {
 	
 	@RequestMapping(value={"/returnToList"}, method = RequestMethod.GET)
 	public String returnToListAndFindAll(@AuthenticationPrincipal User usuario, Model model) {
-		T object = null;
-		try {
-			object = clazz.newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		}
-		this.page = genericCrudBusiness.listModel(object, getPageable(DEFAULT_INITIAL_PAGINATION_PAGE, DEFAULT_PAGINATION_SIZE));
+		this.page = genericCrudBusiness.listModel(createNewObject(), getPageable(DEFAULT_INITIAL_PAGINATION_PAGE, DEFAULT_PAGINATION_SIZE));
 		
 		instantiateModel(model, usuario, true);
 		model.addAttribute("page", this.page);
@@ -143,15 +139,18 @@ public abstract class GenericCrudController<T> {
 	}
 	
 	protected void instantiateModel(Model model, @AuthenticationPrincipal User usuario, boolean isList) {
-		T object = null;
+		model.addAttribute(getModelName(), createNewObject());
+	}
+	
+	@SuppressWarnings("unchecked")
+	private T createNewObject() {
+		T t = null;
 		try {
-			object = clazz.newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
+			t = (T) clazz.newInstance();
+		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
-		model.addAttribute(getModelName(), object);
+		return t;
 	}
 	
 	protected Pageable getPageable(Integer page, Integer size) {
