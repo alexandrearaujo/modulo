@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd
+         http://www.liquibase.org/xml/ns/dbchangelog-ext
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <preConditions>
+        <dbms type="postgresql"/>
+    </preConditions>
+
+    <changeSet author="Alexandre Araujo" id="insert_cidadao" objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+        <preConditions onError="HALT" onFail="MARK_RAN" onSqlOutput="IGNORE">
+            <sqlCheck expectedResult="0">SELECT COUNT(1) FROM TB_CIDADAO </sqlCheck>
+        </preConditions>
+
+        <sql splitStatements="true" stripComments="true">
+        	insert into TB_CIDADAO (NM_CIDADAO, DT_NASCIMENTO) values ('MARIA JOSEFA DA SILVA', to_date('10/10/70','DD/MM/RR'));
+        </sql>
+
+        <comment>Carga inicial de cidadao</comment>
+    </changeSet>
+    
+    <changeSet author="Alexandre Araujo" id="insert_profissional" objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+        <preConditions onError="HALT" onFail="MARK_RAN" onSqlOutput="IGNORE">
+            <sqlCheck expectedResult="0">SELECT COUNT(1) FROM TB_PROFISSIONAL</sqlCheck>
+        </preConditions>
+
+        <sql splitStatements="true" stripComments="true">
+        	insert into TB_PROFISSIONAL (CD_CIDADAO,CD_PROFISSIONAL,SN_HABILITADO) values ('1','116848','1');
+
+        </sql>
+
+        <comment>Carga inicial de PROFISSIONAL</comment>
+    </changeSet>
+    
+    <changeSet author="Alexandre Araujo" id="insert_usuario" objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+        <preConditions onError="HALT" onFail="MARK_RAN" onSqlOutput="IGNORE">
+            <sqlCheck expectedResult="0">SELECT COUNT(1) FROM USUARIO</sqlCheck>
+        </preConditions>
+
+        <sql splitStatements="true" stripComments="true">
+        	insert into USUARIO (CD_USUARIO,DS_LOGIN,DS_SENHA,TP_ADMINISTRADOR,SN_HABILITADO,SN_PRIMEIRO_LOGIN,SN_REDEFINIR_SENHA,DT_EXPIRACAO,DH_ATUALIZACAO) values ('1','ADM','F36977EAE6B22283B047EC46C780757F','2','1','0','0',to_date('16/04/09','DD/MM/RR'),to_timestamp('16/04/09 00:00:00,000000000','DD/MM/RR HH24:MI:SSXFF'));
+        </sql>
+
+        <comment>Carga inicial de USUARIO</comment>
+    </changeSet>
+	
+	<changeSet author="Alexandre Araujo" id="insert_usuario_profissional" objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+        <preConditions onError="HALT" onFail="MARK_RAN" onSqlOutput="IGNORE">
+            <sqlCheck expectedResult="0">SELECT COUNT(1) FROM USUARIO_PROFISSIONAL</sqlCheck>
+        </preConditions>
+
+        <sql splitStatements="true" stripComments="true">
+        	insert into USUARIO_PROFISSIONAL (CD_USUARIO, CD_CIDADAO) values ('1','1');
+        </sql>
+
+        <comment>Carga inicial de USUARIO_PROFISSIONAL</comment>
+    </changeSet>
+</databaseChangeLog>

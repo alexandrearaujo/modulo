@@ -1,7 +1,6 @@
 liquibase:
-    enabled: false
+    enabled: true
     changeLog: classpath:/db/changelog/db.changelog-master.xml
-    defaultSchema: dbamvfor
 security:
     basic:
         enabled: false
@@ -17,7 +16,7 @@ server:
     #    compressableMimeTypes: application/json,application/xml
 spring:
     application:
-        name: estratificacao
+        name: modulo
     datasource:
         #jndi-name: java:jboss/datasources/bootdemo
         driverClassName: org.postgresql.Driver
