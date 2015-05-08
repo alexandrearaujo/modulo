@@ -16,7 +16,7 @@
 				<span th:text="#{${label}}"></span>
 			</label>
 		</div>
-			<select th:name="${nameField}" th:field="__${field}__" class="form-control" th:title="${title}"
+			<select th:name="${nameField}" th:field="__${field}__" class="form-control select-field" th:title="${title}"
 				    th:disabled="${disabled}" data:bv-notempty="${required}" th:autofocus="${autofocus}" 
 				    th:onblur="${onblur}" th:onchange="${onchange}" th:placeholder="${placeholder}" th:id="${idcomponente}">
 				   <option th:if="${prompt}" th:text="${textPrompt}" th:value="${valuePrompt}" />
@@ -24,33 +24,15 @@
 				   <option th:if="${listEnum}" th:each="i : ${listEnum}" th:text="#{${i}}" th:value="${i}"/>
 			</select>
 			<input th:hidden="true" th:id="${idField}" th:value="${fieldid}" />
-			<script th:inline="javascript">
-			/*<![CDATA[*/
-				$(function() {
-					fncBlurCombo();
-				});
-			/*]]>*/
-			</script>
 	</div>
 	
 	
 	<!-- Checkbox-Field -->
 	<label th:fragment="checkbox-field" class="checkbox-inline">
-		<input type="checkbox" th:disabled="${disabled}" th:id="${idField}" th:field="__${field}__" th:onchange="${onchange}" th:checked="${checked}"/>
+		<input type="checkbox" th:disabled="${disabled}" th:id="${idField}" th:field="__${field}__"
+		th:checked="${checked}" class="checkbox-field" data:onchange="${onchange}" th:value="${__${value}__}"
+		/>
 		<span th:text="#{${label}}" data:original-title="${tooltip} != null ? #{${tooltip}} : ''" data:toggle="tooltip"></span>
-		<script th:inline="javascript">
-		 $(function(){
-		  $('#' + [[${idField}]]).iCheck({
-		   checkboxClass: 'icheckbox_minimal-blue'
-		    });
-		 });
-		</script>
-		<script th:inline="javascript" th:if="${onchange}">
-			$('#' + [[${idField}]]).on('ifChanged', function(){
-				var f = new Function([[${onchange}]]);
-				f.call();
-			});	
-		</script>
 	</label>
 
 	
@@ -63,15 +45,8 @@
 	
 	<!-- Radio-Field -->
 	<label th:fragment="radio-field" class="radio-inline">
-	    <input type="radio" th:id="${idField}" th:name="${nameField}" th:field="__${field}__" th:onchange="${onchange}" th:value="${value}" th:checked="${checked}"/>
+	    <input class="radio-field" type="radio" th:id="${idField}" th:name="${nameField}" th:field="__${field}__" th:onchange="${onchange}" th:value="${value}" th:checked="${checked}"/>
 	    <span th:text="#{${label}}"></span>
-	 	<script th:inline="javascript">
-			$(function(){
-				$('#' + [[${idField}]]).iCheck({
-			   		radioClass: 'iradio_minimal-blue radio'
-			  	});
-			});
-		</script>
 	</label>
 </body>
 </html>

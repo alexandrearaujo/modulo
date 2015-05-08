@@ -60,7 +60,7 @@
 		
 		
 	<!-- Number-Field -->
-	<div class="form-group" th:fragment="number-field">
+	<div class="form-group number-field" th:fragment="number-field">
 		<div>
 			<label th:if="${idField}" class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField}" th:id="__${idField}__+Label">
 				<span th:text="#{${label}}"></span>
@@ -74,24 +74,10 @@
 		<div>
 			<input type="number" class="form-control" th:id="${idField}" th:field="__${field}__" th:maxlength="${maxLength}" th:min="${minValue}" th:max="${maxValue}"
 				   th:autofocus="${autofocus}" data:bv-notempty="${required}" th:placeholder="${placeholder}" th:disabled="${#bools.isTrue(__${disabled}__)}"
-				   th:onblur="${onblur}" th:onchange="${onchange}" />
-				   
-			<input type="hidden" class="form-control" th:id="previous-value-+${idField}" th:field="__${field}__" th:disabled="disabled"/>
+				   th:onblur="${onblur}" 
+				   data:onchange="${onchange}" 
+				   data:previousValue="__${field}__"/>
 		</div>
-		<script th:inline="javascript">
-			if($('#' + [[${idField}]]).attr('onchange') !== undefined){
-				$('#' + [[${idField}]]).off("onchange");
-				$('#' + [[${idField}]]).removeAttr("onchange");
-			}
-			$('#' + [[${idField}]]).on('change', function(){
-				var currentValue = $(this).val();
-		  	    var previousValue = $('#previous-value-' + [[${idField}]]).val(); 
-		  	    if(currentValue != previousValue){
-		  	    	var f = new Function([[${onchange}]]);
-					f.call();
-		  	    }
-			});	
-		</script>
 	</div>
 
 

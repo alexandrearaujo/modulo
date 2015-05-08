@@ -55,15 +55,20 @@
 
 
 	<!-- PaginationBar -->
-	<div th:fragment="paginationbar">
-		<nav class="text-center" th:if="${page != null and page.totalPages > 0}">
+	<div class="paginationbar" th:fragment="paginationbar">
+		<nav class="text-center" th:if="${page != null and page.totalPages > 0}" 
+			data:totalPages="${page?.totalPages}"
+			data:size="${page?.size}"
+			data:idToRender="${idToRender}"
+			data:method="${method}"
+		>
+		
 			<ul class="pagination">
 				<li th:class="${page != null ? page.first : ''} ? 'disabled' : ''">
 					<span th:if="${page?.first}">
 						<i class="glyphicon glyphicon-backward mv-color-blue"></i>
 					</span>
-					<a class="mv-color-blue" th:unless="${page?.first}" href="#"
-					   onclick="getPage(page=0)" th:title="#{primeiraPagina}">
+					<a class="mv-color-blue" th:unless="${page?.first}" href="#" data:number="0" th:title="#{primeiraPagina}" >
 					   <i class="glyphicon glyphicon-backward mv-color-blue"></i>
 					</a>
 				</li>
@@ -72,18 +77,18 @@
 					<span th:unless="${page?.hasPrevious()}">
 						<i class="glyphicon glyphicon glyphicon-play inverted-icon mv-color-blue"></i>
 					</span>
-					<a th:if="${page?.hasPrevious()}" onclick="getPage(this)" href="#" th:title="#{paginaAnterior}">
+					<a th:if="${page?.hasPrevious()}" href="#" th:title="#{paginaAnterior}">
 						<i class="glyphicon glyphicon glyphicon-play inverted-icon mv-color-blue"></i>
 					</a>
 				</li>
 
 				<li th:if="${page != null and page.totalPages != 0}"
 					th:each="pageNo : ${#numbers.sequence(0, (page != null ? (page.totalPages - 1) : 1))}"
-					th:class="${page?.number eq pageNo} ? 'active' : ''">
-					<a th:if="${page?.number eq pageNo}" href="javascript:void(0);" th:id="active">
+					th:class="${page?.number eq pageNo} ? 'active' : ''" data:activeNumber="${pageNo + 1}">
+					<a th:if="${page?.number eq pageNo}" href="javascript:void(0);">
 					   	<span th:text="${pageNo + 1}"></span>
 					</a>
-					<a th:unless="${(page != null ? (page.number eq pageNo) : true)}" onclick="getPage(this.text)" href="#">
+					<a th:unless="${(page != null ? (page.number eq pageNo) : true)}" href="#" data:number="${pageNo + 1}">
 						<span th:text="${pageNo + 1}"></span>
 					</a>
 				</li>
@@ -92,7 +97,7 @@
 					<span th:unless="${page?.hasNext()}">
 						<i class="glyphicon glyphicon glyphicon-play mv-color-blue"></i>
 					</span>
-					<a th:if="${page?.hasNext()}" onclick="getPage(this)" href="#" th:title="#{proximaPagina}">
+					<a th:if="${page?.hasNext()}" href="#" th:title="#{proximaPagina}">
 					 <i	class="glyphicon glyphicon glyphicon-play mv-color-blue"></i>
 					</a>
 				</li>
@@ -101,43 +106,12 @@
 					<span th:if="${page?.last}">
 						<i class="glyphicon glyphicon glyphicon-forward mv-color-blue"></i>
 					</span>
-					<a th:unless="${page?.last}" href="#" onclick="getPage(this)" th:title="#{ultimaPagina}">
+					<a th:unless="${page?.last}" href="#" th:title="#{ultimaPagina}"  data:number="${page?.last}" >
 						<i class="glyphicon glyphicon glyphicon-forward mv-color-blue"></i>
 					</a>
 				</li>
 			</ul>
 		</nav>
-		<script th:inline="javascript">
-	    /*<![CDATA[*/
-			function getPage() {
-				var page;
-				var activeNumber = Number(document.getElementById('active').text);
-				var $next = arguments[0] instanceof HTMLElement ? $(arguments[0]): null;
-					
-				if ($next != null && $next.children().hasClass('glyphicon-forward')) {
-					page = [[${page?.totalPages}]] - 1;
-				} else if ($next != null && $next.children().hasClass('glyphicon-play inverted-icon')) {
-					page = activeNumber - 2;
-				} else if ($next != null && $next.children().hasClass('glyphicon-play')) {
-					page = activeNumber;
-				} else {
-					var number = Number(arguments[0]);
-					
-					if (number > 0) {
-						number = number - 1;
-					} else {
-						number = 0;
-					}
-					
-					page = number;
-				}
-				var size = [[${page?.size}]];
-				var idToRender = [[${idToRender}]];
-				var url = [[${method}]] + '?page='+page+'&size='+size+'&idToRender='+idToRender;
-				$('#' + idToRender).load(url);
-			}
-		/*]]>*/
-		</script>
 	</div>
 </body>
 </html>
