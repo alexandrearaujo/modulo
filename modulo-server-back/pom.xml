@@ -13,7 +13,6 @@
 		<relativePath>../</relativePath>
 	</parent>
 
-	
 	<dependencies>
 		<dependency>
 			<groupId>br.com.mv</groupId>

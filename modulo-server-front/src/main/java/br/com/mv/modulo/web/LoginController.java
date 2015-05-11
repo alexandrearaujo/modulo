@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import br.com.mv.geral.model.User;
 import br.com.mv.modulo.business.VersaoBusiness;
-import br.com.mv.modulo.model.UserRoles;
 
 @Controller
 @RequestMapping("/login")
@@ -58,12 +57,14 @@ public class LoginController {
 	}
 	
 	private String redirect(User usuario) {
-		if (usuario.hasRole(UserRoles.MEDICO.getValue())) {
-			return "redirect:/solicitacaoMedicamento/";
-		} else if (usuario.hasRole(UserRoles.ADMIN.getValue())) {
-			return "redirect:/";
-		} else {
-			return "redirect:/dispensacaoMedicamento/list";
-		}
+//		if (usuario.hasRole(UserRoles.MEDICO.getValue())) {
+//			return "redirect:/solicitacaoMedicamento/";
+//		} else if (usuario.hasRole(UserRoles.ADMIN.getValue())) {
+//			return "redirect:/";
+//		} else {
+//			return "redirect:/dispensacaoMedicamento/list";
+//		}
+		
+		return "redirect:/";
 	}
 }
