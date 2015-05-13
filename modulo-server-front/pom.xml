@@ -108,6 +108,18 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			    <configuration>
+					<includes>
+						<include>
+							<groupId>br.com.mv</groupId>
+							<artifactId>modulo-client</artifactId>
+						</include>
+						<include>
+							<groupId>br.com.mv</groupId>
+							<artifactId>modulo-server-back</artifactId>
+						</include>
+					</includes>
+		        </configuration>
 				<dependencies>
 			        <dependency>
 			            <groupId>org.springframework</groupId>
