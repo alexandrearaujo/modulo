@@ -93,12 +93,5 @@
 	
 	<th:block layout:fragment="scripts" th:with="defaultValidator=true">
 		<th:block th:replace="fragments/layout :: scripts(defaultValidator=true, idForm='listForm')"></th:block>
-		<script type="text/javascript">
-			$("td[rel='tooltip']").tooltip({
-			    'selector': '',
-			    'placement': 'top',
-			    'container':'body'
-			  });
-		</script>
 	</th:block>
 </html>

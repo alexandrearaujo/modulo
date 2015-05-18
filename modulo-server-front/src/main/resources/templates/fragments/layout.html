@@ -142,35 +142,9 @@
 		    <!-- funcoes genéricas -->
 			<script th:src="@{/components/components.js}"></script>
 			
-			<!-- Jquery MV -->
-			<script type="text/javascript" th:src="@{/app/jquery.mv.js}"></script>
-			
 			<!-- Plugins -->
 			<script th:src="@{/lib/bootstrap-table/dist/bootstrap-table.min.js}"></script>
 			<script th:src="@{/lib/bootstrap-table/dist/locale/bootstrap-table-pt-BR.min.js}"></script>
-			
-			<script th:inline="javascript" th:if="${defaultValidator}">
-				$(document).ready(function() {
-				    $('#' + [[${idForm}]]).bootstrapValidator({});
-				});
-			</script>
-
-			<script th:inline="javascript">
-				$(function(){
-					ajaxSetup();
-					formatMask();
-					fncUppercase();
-					numbersOnly();
-				});
-				
-				$( document ).ajaxComplete(function( event,request, settings ) {
-					$('[data-toggle="tooltip"]').tooltip();
-					formatMask();
-					fncUppercase();
-					numbersOnly();
-				});
-				
-			</script>
 		</th:block>
 	</body>
 </html>
