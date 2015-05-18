@@ -19,7 +19,7 @@
     "metisMenu": "latest",
     "remarkable-bootstrap-notify": "latest",
     "screenfull": "latest",
-    "typeahead.js": "latest"
+    "typeahead.js": "0.10.5"
   },
   "overrides": {
     "bootstrap": {

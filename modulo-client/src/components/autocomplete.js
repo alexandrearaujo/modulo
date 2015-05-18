@@ -1,11 +1,10 @@
 var onSelected;
 var required;
 
-function AutoComplete(){
-}
+function AutoComplete(){}
 
 AutoComplete.prototype.autocomplete = function(vurl,target,fncName,possuiParametros){
-	var idHidden = target['idHidden'];
+	 var idHidden = target['idHidden'];
 	 AutoComplete.prototype.bloodHound = new Bloodhound({
 		datumTokenizer: function(d) {
 			return Bloodhound.tokenizers.whitespace(d.val);
@@ -47,7 +46,8 @@ AutoComplete.prototype.autocomplete = function(vurl,target,fncName,possuiParamet
 	
 	var promise = AutoComplete.prototype.bloodHound.initialize();
 
-	promise.fail(function() { console.log('err!'); });
+	promise
+	.fail(function() { console.log('err!'); });
 
 	$('#'+target['objeto']).blur(function(){
 		if(this.value == ''){
@@ -55,10 +55,6 @@ AutoComplete.prototype.autocomplete = function(vurl,target,fncName,possuiParamet
 			if($(this).required()){
 				$(this.form).bootstrapValidator('revalidateField', $('#'+idHidden).prop('name'));
 			}
-			
-//			if(required == true){
-//		 		  $(this.form).bootstrapValidator('revalidateField', $('#'+idHidden).prop('name'));
-//				}	
 		}
 	});
 	
@@ -80,10 +76,6 @@ AutoComplete.prototype.autocomplete = function(vurl,target,fncName,possuiParamet
 	 	if($(this).required()){
 			$(this.form).bootstrapValidator('revalidateField', $('#'+idHidden).prop('name'));
 		}	
-		
-//		if(required == true){
-//	 		  $(this.form).bootstrapValidator('revalidateField', $('#'+idHidden).prop('name'));
-//			}	
 	});
 } 
 
@@ -101,4 +93,32 @@ function setarValor(campo,valor){
 
 function log(valor){
 	console.log(valor);
+}
+
+function initAutoComplete(){
+	var arrayInputs = $('.typeahead.input-autocomplete');
+	jQuery.each(arrayInputs, function(i, input){ 
+		if( input !== undefined){
+			var jQueryTarget = $(input);
+			
+			var targetArray = [];	 
+			var url = jQueryTarget.attr('data-url');
+			var parametros = jQueryTarget.attr('data-parametros');
+			var possuiParametros = jQueryTarget.attr('data-possuiParametros');
+		
+			if(parametros != null || parametros !== undefined) {
+			   	url = url.concat(parametros);
+			 	possuiParametros = true; 
+			}
+			
+			targetArray['objeto']     =   jQueryTarget.attr('data-objeto');
+			targetArray['lista']      =   jQueryTarget.attr('data-lista');
+			targetArray['onSelected'] =   jQueryTarget.attr('data-onSelected');
+			targetArray['idHidden']   =   jQueryTarget.attr('data-idHidden');
+			var possuiParametros =   parametros!=null; 
+			var funcaoNome       =   jQueryTarget.attr('data-funcaoNome');
+			
+			AutoComplete.prototype.autocomplete(url,targetArray,funcaoNome,possuiParametros);
+		}
+	});
 }

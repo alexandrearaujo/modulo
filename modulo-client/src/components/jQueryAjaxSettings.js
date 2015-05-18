@@ -35,4 +35,5 @@ jQuery(document).ready(function(){
 	initNumberField();
 	initCheckboxField();
 	fncBlurCombo();
+	initAutoComplete();
 });
