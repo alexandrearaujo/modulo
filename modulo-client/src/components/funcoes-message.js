@@ -43,6 +43,7 @@ function setBtnConfirmation(){
 }
 
 (function($) {
+	
     $.fn.message = function(message, type){
     	$.message(message, type, this.prop("id"));
     }
