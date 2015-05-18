@@ -32,12 +32,6 @@
 	
 	
 	<repositories>
-<!-- 		<repository> -->
-<!-- 			<id>spring-release</id> -->
-<!-- 			<name>Spring Releases</name> -->
-<!-- 			<url>https://repo.spring.io/release</url> -->
-<!-- 		</repository> -->
-		
 		<repository>
 			<id>MVProxy</id>
 			<name>MV Proxy Repository</name>
@@ -47,12 +41,6 @@
 	</repositories>
 	
 	<pluginRepositories>
-<!-- 		<pluginRepository> -->
-<!-- 			<id>spring-release</id> -->
-<!-- 			<name>Spring Releases</name> -->
-<!-- 			<url>https://repo.spring.io/release</url> -->
-<!-- 		</pluginRepository> -->
-		
 		<pluginRepository>
 			<id>MVProxy</id>
 			<name>MV Proxy Repository</name>
@@ -60,4 +48,18 @@
 			<layout>default</layout>
 		</pluginRepository>
 	</pluginRepositories>
+	
+	<distributionManagement>
+		<repository>
+			<id>MVNexus</id>
+			<name>Internal Releases</name>
+			<url>http://echo.mvfor.local/nexus/content/repositories/releases/</url>
+		</repository>
+		
+		<snapshotRepository>
+			<id>MVNexus</id>
+			<name>Internal Snapshots</name>
+			<url>http://echo.mvfor.local/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>

@@ -41,5 +41,14 @@ public class ApplicationTests {
 				"http://localhost:" + this.port + "/modulo", HttpMethod.GET, new HttpEntity<Void>(headers), String.class);
 		assertEquals(HttpStatus.OK, entity.getStatusCode());
 	}
+	
+	@Test
+	public void testResources() throws Exception {
+		HttpHeaders headers = new HttpHeaders();
+		headers.setAccept(Arrays.asList(MediaType.TEXT_HTML));
+		ResponseEntity<String> entityResource = new TestRestTemplate().exchange(
+				"http://localhost:" + this.port + "/modulo/lib/bootstrap/dist/css/bootstrap.min.css", HttpMethod.GET, new HttpEntity<Void>(headers), String.class);
+		assertEquals(HttpStatus.OK, entityResource.getStatusCode());
+	}
 
 }
