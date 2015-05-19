@@ -24,70 +24,39 @@
 		
 		<!-- Font Awesome -->
 		<link rel="stylesheet" type="text/css" media="all" th:href="@{/lib/font-awesome/css/font-awesome.min.css}"/>
-			  
-		<!-- Metis core stylesheet -->
-    	<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}"/>
-    	
-		<!-- Buttons Style -->
-    	<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/buttons.css}"/>
-    	
-		<!-- Left Side Style -->
-		<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/left.css}"/>
-		
-		<!-- Menu Style -->
-		<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/menu.css}"/>
-		
-		<!-- Content Style -->
-		<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/content.css}"/>
-		
-		<!-- MetisMenu CSS -->
-	    <link rel="stylesheet" type="text/css" media="all" th:href="@{/lib/metisMenu/dist/metisMenu.min.css}"/>
-	    
-    	<!-- Uniform JS default CSS -->
-		<link rel="stylesheet" type="text/css" th:href="@{/webjars/uniform/2.1.2/themes/default/css/uniform.default.min.css}"/>
-		
-    	<!-- Jasny Bootstrap Customization Latest compiled and minified CSS -->
-		<link rel="stylesheet" type="text/css" th:href="@{/lib/jasny-bootstrap/dist/css/jasny-bootstrap.min.css}"/>
 		
 		<link rel="stylesheet" type="text/css" media="all" th:href="@{/lib/bootstrapvalidator/dist/css/bootstrapValidator.min.css}"/>
 			
-		<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/dispensacao.css}"/>
-		
 		<link rel="stylesheet" type="text/css" media="all" th:href="@{/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css}"/>
 		
 		<link rel="stylesheet" type="text/css" media="all" th:href="@{/lib/bootstrap-timepicker/css/bootstrap-timepicker.min.css}"/>
-			  
-		<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/animate.css}"/>
-			  
-		<!-- Jquery core Javascript -->
-		<script type="text/javascript" th:src="@{/lib/jquery/dist/jquery.min.js}"></script>
 
-		<!--  ###	TESTE MODERNIZR  ###  -->
-<!-- 		<script type="text/javascript" src="http://modernizr.com/downloads/modernizr-latest.js" -->
-<!-- 		        th:src="@{/webjars/modernizr/2.8.3/modernizr.min.js}"></script> -->
-			        
 		<!-- iCheck -->
 	    <link th:href="@{/lib/iCheck/skins/minimal/blue.css}" rel="stylesheet"/>
 		
-		<!-- Plugins -->
+		<!-- Bootstrap-table -->
 		<link th:href="@{/lib/bootstrap-table/dist/bootstrap-table.min.css}" rel="stylesheet"/>
-			        
-		<!-- MV css -->
+		
+		<!-- Menu Style -->
+		<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/menu.css}"/>
+			
+		<!-- MV Theme -->
+		<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/dispensacao.css}"/>
 	    <link th:href="@{/css/mv.css}" rel="stylesheet"/>
-	    
-	    <!-- MV Fragments -->
 	    <link th:href="@{/css/mv-colors.css}" rel="stylesheet"/>
 	    <link th:href="@{/css/layout-menu-top.css}" rel="stylesheet"/>
 	    <link th:href="@{/css/layout-menu-left.css}" rel="stylesheet"/>
 	    <link th:href="@{/css/footer.css}" rel="stylesheet"/>	
 	    
-	    <!-- MV Pep -->
+	    <!-- MV Theme Pep -->
 		<link th:if="${session.externalRequest}" rel="stylesheet" type="text/css" media="all" th:href="@{/css/mvpep.css}"/> 	    
+		
+		<!-- Jquery core Javascript -->
+		<script type="text/javascript" th:src="@{/lib/jquery/dist/jquery.min.js}"></script>
 	</head>
 
 
 	<body>
-      	<!-- Scripts JS -->
       	<th:block th:fragment="scripts">
 	        <!-- Bootstrap core JavaScript-->
 			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/bootstrap/dist/js/bootstrap.min.js}"></script>
@@ -111,40 +80,28 @@
 	        
 	        <!-- Metis Menu Plugin JavaScript -->
 		    <script type="text/javascript" charset="UTF-8" th:src="@{/lib/metisMenu/dist/metisMenu.min.js}"></script>
-			
+		    
 		    <!-- Screenfull -->
 		    <script type="text/javascript" charset="UTF-8" th:src="@{/lib/screenfull/dist/screenfull.js}"></script>
 		    
-		    <!-- Uniform JS -->
-		    <script type="text/javascript" charset="UTF-8" th:src="@{/webjars/uniform/2.1.2/jquery.uniform.min.js}"></script>
-		    
-		    <!-- Janys Latest compiled and minified JavaScript -->
-			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/jasny-bootstrap/dist/js/jasny-bootstrap.min.js}"></script>
-
 			<!-- Bootstrap growl -->
 			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js}"></script>
 			
 			<!-- iCheck -->
 			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/iCheck/icheck.min.js}"></script>
-			
-			<!-- Bootstrap code validation -->
-			<!--<script type="text/javascript" charset="UTF-8" th:src="@{/js/bootlint.min.js}"></script> -->
 			        
-		    <!-- Metis core scripts -->
-		    <script type="text/javascript" charset="UTF-8" th:src="@{/app/core.min.js}"></script>
-		    
 		    <!-- Jquery mask -->
 		    <script type="text/javascript" th:src="@{/lib/jQuery-Mask-Plugin/dist/jquery.mask.min.js}"></script>
 			
 			<!-- Confirmation -->
 			<script type="text/javascript" th:src="@{/lib/bootstrap-confirmation2/bootstrap-confirmation.min.js}"></script>			
 			
-		    <!-- funcoes genéricas -->
-			<script th:src="@{/components/components.js}"></script>
-			
-			<!-- Plugins -->
+			<!-- bootstrap-table -->
 			<script th:src="@{/lib/bootstrap-table/dist/bootstrap-table.min.js}"></script>
 			<script th:src="@{/lib/bootstrap-table/dist/locale/bootstrap-table-pt-BR.min.js}"></script>
+			
+			 <!-- Modulo Components -->
+			<script th:src="@{/components/components.js}"></script>
 		</th:block>
 	</body>
 </html>
