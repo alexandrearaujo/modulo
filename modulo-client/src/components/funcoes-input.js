@@ -21,3 +21,35 @@ function initNumberField(){
 		}
 	});
 }
+
+function fncUppercase(){
+	$("input").keyup(function(e){
+		var textUpperCase = $(this).val().toUpperCase();
+		if(window.getSelection().toString() == $(this).val()){
+			$(this).val(textUpperCase);
+			$(this).select();
+		}else{
+			$(this).val(textUpperCase);
+		}
+	});
+	$("textarea").keyup(function(e){
+		var textUpperCase = $(this).val().toUpperCase();
+		if(window.getSelection().toString() == $(this).val()){
+			$(this).val(textUpperCase);
+			$(this).select();
+		}else{
+			$(this).val(textUpperCase);
+		}
+	});
+}
+
+function numbersOnly(){
+	jQuery('.numbersOnly').keyup(function () { 
+	    this.value = this.value.replace(/[^0-9\.]/g,'');
+	});
+}
+
+function formatMask() {
+	$('.cns').mask('999.9999.9999.9999');
+	$(".cpf").mask("999.999.999-99");
+}

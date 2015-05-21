@@ -22,6 +22,8 @@ html, body, .container-fluid.main, .row.main {
 .right-side {
 	height: 91%;
 	overflow-y: auto;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 .fill {

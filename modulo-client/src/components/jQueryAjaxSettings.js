@@ -24,6 +24,14 @@ function ajaxSetup(){
 
 jQuery(document).ajaxComplete( function(){
 	setBtnConfirmation();
+	$('[data-toggle="tooltip"]').tooltip();
+	$("td[rel='tooltip']").tooltip({
+	    'placement': 'top',
+	    'container':'body'
+	  });
+	formatMask();
+	fncUppercase();
+	numbersOnly();
 });
 
 jQuery(document).ready(function(){
@@ -35,4 +43,13 @@ jQuery(document).ready(function(){
 	initNumberField();
 	initCheckboxField();
 	fncBlurCombo();
+	initAutoComplete();
+	formatMask();
+	fncUppercase();
+	numbersOnly();
+	$('form').bootstrapValidator({});
+	$("td[rel='tooltip']").tooltip({
+	    'placement': 'top',
+	    'container':'body'
+	  });
 });
