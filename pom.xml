@@ -33,13 +33,6 @@
 	
 	<repositories>
 		<repository>
-			<id>MVProxy</id>
-			<name>MV Proxy Repository</name>
-			<url>http://echo.mvfor.local/nexus/content/groups/public</url>
-			<layout>default</layout>
-		</repository>
-		
-		<repository>
 			<id>spring-release</id>
 			<name>Spring Releases</name>
 			<url>https://repo.spring.io/release</url>
@@ -47,13 +40,6 @@
 	</repositories>
 	
 	<pluginRepositories>
-		<pluginRepository>
-			<id>MVProxy</id>
-			<name>MV Proxy Repository</name>
-			<url>http://echo.mvfor.local/nexus/content/groups/public</url>
-			<layout>default</layout>
-		</pluginRepository>
-		
 		<pluginRepository>
 			<id>spring-release</id>
 			<name>Spring Releases</name>
