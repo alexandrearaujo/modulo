@@ -35,7 +35,6 @@ public abstract class GenericCrudController<T> {
 	private final int DEFAULT_INITIAL_PAGINATION_PAGE = 0;
 	private final int DEFAULT_PAGINATION_SIZE = 7;
 	private Type type = Arrays.stream(((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()).findFirst().get();
-//	private Class<T> clazz = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 	private Class<?> clazz = (Class<?>) type;
 	
 	@Autowired

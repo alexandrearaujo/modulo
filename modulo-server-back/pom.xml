@@ -12,6 +12,10 @@
 		<version>1.0.0-SNAPSHOT</version>
 		<relativePath>../</relativePath>
 	</parent>
+	
+	<properties>
+		<spring-security.version>LATEST</spring-security.version>
+	</properties>
 
 	<dependencies>
 		<dependency>
