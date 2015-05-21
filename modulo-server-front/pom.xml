@@ -53,6 +53,20 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>org.springframework.test.htmlunit</groupId>
+        	<artifactId>spring-test-htmlunit</artifactId>
+        	<version>LATEST</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+        	<artifactId>spring-security-test</artifactId>
+        	<version>LATEST</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
@@ -85,8 +99,8 @@
 		
 		<dependency>
             <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-springsecurity3</artifactId>
-<!--             <version>LATEST</version> -->
+            <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+            <version>LATEST</version>
         </dependency>
         
         <dependency>
@@ -113,6 +127,18 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			    <configuration>
+					<includes>
+						<include>
+							<groupId>br.com.mv</groupId>
+							<artifactId>modulo-client</artifactId>
+						</include>
+						<include>
+							<groupId>br.com.mv</groupId>
+							<artifactId>modulo-server-back</artifactId>
+						</include>
+					</includes>
+		        </configuration>
 				<dependencies>
 			        <dependency>
 			            <groupId>org.springframework</groupId>

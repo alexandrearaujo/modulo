@@ -46,4 +46,18 @@
 			<url>https://repo.spring.io/release</url>
 		</pluginRepository>
 	</pluginRepositories>
+	
+	<distributionManagement>
+		<repository>
+			<id>MVNexus</id>
+			<name>Internal Releases</name>
+			<url>http://echo.mvfor.local/nexus/content/repositories/releases/</url>
+		</repository>
+		
+		<snapshotRepository>
+			<id>MVNexus</id>
+			<name>Internal Snapshots</name>
+			<url>http://echo.mvfor.local/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>

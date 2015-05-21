@@ -11,8 +11,8 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.authentication.dao.ReflectionSaltSource;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -23,7 +23,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import br.com.mv.geral.controleacesso.authentication.util.PasswordEncoderImpl;
 import br.com.mv.modulo.business.UserBusiness;
 
-@EnableWebMvcSecurity
+@EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
@@ -103,10 +103,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
          	 .accessDeniedPage("/access")
          	 .and()
 		 .headers()
-		 	 .cacheControl()
-		 	 .contentTypeOptions()
-		 	 .addHeaderWriter(new XFrameOptionsHeaderWriter(new WhiteListedAllowFromStrategy(Arrays.asList(externalServersWhiteListedAllowFrames))))
-		 	 .httpStrictTransportSecurity()
-		 	 .xssProtection();
+		 	 .addHeaderWriter(new XFrameOptionsHeaderWriter(new WhiteListedAllowFromStrategy(Arrays.asList(externalServersWhiteListedAllowFrames))));
 	}
 }

@@ -1,4 +1,6 @@
-
+/*
+ * Begin - TODO Remover essas funcionalidades pois o bootstrapTable já faz isso de forma nativa.
+ */
 $.fn.selectedItem = function(){
 	if(this.is('table') && this.hasClass('selectable')){
 		var tr = this.find('.selected');
@@ -34,3 +36,6 @@ $(function(){
 		}
 	})
 });
+/*
+ * End - TODO Remover essas funcionalidades pois o bootstrapTable já faz isso de forma nativa.
+ */

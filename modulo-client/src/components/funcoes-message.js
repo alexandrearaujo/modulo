@@ -41,3 +41,43 @@ function setBtnConfirmation(){
 		}
 	});
 }
+
+(function($) {
+	
+    $.fn.message = function(message, type){
+    	$.message(message, type, this.prop("id"));
+    }
+    
+    $.messageError = function(jqXHR, modal) {
+    	var response = $.parseJSON(jqXHR.responseText);
+    	$.message(response.ex, response.messageType, modal);
+    };
+    
+    $.message = function(message, type, modal) {
+    	$.growl({
+    		message: message,
+    		url: document.URL
+    	},{
+    		element: modal == null ? document.body : "#" + modal,
+    		delay: 4000,
+    		type: type
+    	});
+    };
+    
+    $.alertSuccess = function(message, modal) {
+    	$.message(message, 'success', modal);
+    };
+    
+    $.alertInfo = function(message, modal) {
+    	$.message(message, 'info', modal);
+    };
+    
+    $.alertError = function(message, modal) {
+    	$.message(message, 'danger', modal);
+    };
+    
+    $.alertWarning = function(message, modal) {
+    	$.message(message, 'warning', modal);
+    };
+    
+}(jQuery));

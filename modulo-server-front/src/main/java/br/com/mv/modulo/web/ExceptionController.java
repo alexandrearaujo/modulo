@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.http.HttpStatus;
@@ -23,12 +25,12 @@ import br.com.mv.modulo.utils.ModuloEmailSender;
 
 @Controller
 @ControllerAdvice
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ExceptionController {
 	
 	private Exception exception;
 	
-	@Autowired
-	private ModuloEmailSender dispensacaoMailSender;
+	private final ModuloEmailSender moduloMailSender;
 
 	
 	@ExceptionHandler(Exception.class)
@@ -58,7 +60,7 @@ public class ExceptionController {
 	@RequestMapping(value = "/sendException")
 	public String sendException(Model model) {
         
-		dispensacaoMailSender.sendException(exception);
+		moduloMailSender.sendException(exception);
 		
 		model.addAttribute("exception", exception);
 		model.addAttribute("timestamp", new Date());

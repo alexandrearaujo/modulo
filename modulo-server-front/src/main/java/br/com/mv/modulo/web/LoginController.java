@@ -2,6 +2,8 @@ package br.com.mv.modulo.web;
 
 import javax.servlet.http.HttpSession;
 
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -13,20 +15,15 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import br.com.mv.geral.model.User;
 import br.com.mv.modulo.business.VersaoBusiness;
-import br.com.mv.modulo.model.UserRoles;
 
 @Controller
 @RequestMapping("/login")
 @SessionAttributes(types = User.class)
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class LoginController {
 
 	private final VersaoBusiness versaoBusiness;
 	
-	
-	@Autowired
-	public LoginController(VersaoBusiness versaoBusiness) {
-		this.versaoBusiness = versaoBusiness;
-	}
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String tologin(Model model, HttpSession session) {
@@ -57,13 +54,7 @@ public class LoginController {
 		return redirect(usuario);
 	}
 	
-	private String redirect(User usuario) {
-		if (usuario.hasRole(UserRoles.MEDICO.getValue())) {
-			return "redirect:/solicitacaoMedicamento/";
-		} else if (usuario.hasRole(UserRoles.ADMIN.getValue())) {
-			return "redirect:/";
-		} else {
-			return "redirect:/dispensacaoMedicamento/list";
-		}
+	private String redirect(User usuario) {		
+		return "redirect:/";
 	}
 }

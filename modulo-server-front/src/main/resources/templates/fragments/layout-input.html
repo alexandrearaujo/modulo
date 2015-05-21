@@ -95,37 +95,52 @@
 		</div>
 	
 		<div class="form-group">
-			<input th:if="${fieldHidden}" th:required="${required}" th:name="${nameHidden}" th:hidden="true"
-				   th:field="__${fieldHidden}__" th:id="${idHidden}" data:bv-notempty="${required}" data:bv-excluded="${required != null and required == true} ? false : null"/> 
-			<input th:unless="${fieldHidden}" th:required="${required}" th:name="${nameHidden}" th:hidden="true"
-			       th:id="${idHidden}" data:bv-notempty="${required}" data:bv-excluded="${required != null and required == true} ? false : null"/> 
+		
+			<input th:if="${fieldHidden}" th:required="${required}" th:name="${nameHidden}" th:hidden="true" class="input-autocomplete"
+				   th:field="__${fieldHidden}__" th:id="${idHidden}" data:bv-notempty="${required}" data:bv-excluded="${required != null and required == true} ? false : null"
+				   data:objeto="${idCampo}"
+				   data:lista="${lista}"
+				   data:onSelected="${onSelected}"
+				   data:idHidden="${idHidden}"
+				   data:url="${endpoint}"
+				   data:parametros="${keys}"
+				   data:possuiParametros="${keys != null ? true:false}"
+				   data:funcaoNome="${fncName}" />
+				   
+				    
+			<input th:unless="${fieldHidden}" th:required="${required}" th:name="${nameHidden}" th:hidden="true" class="input-autocomplete"
+			       th:id="${idHidden}" data:bv-notempty="${required}" data:bv-excluded="${required != null and required == true} ? false : null"
+			       data:objeto="${idCampo}"
+				   data:lista="${lista}"
+				   data:onSelected="${onSelected}"
+				   data:idHidden="${idHidden}"
+				   data:url="${endpoint}"
+				   data:parametros="${keys}"
+				   data:possuiParametros="${keys != null ? true:false}"
+				   data:funcaoNome="${fncName}" />
 		 	
-			<input th:if="${field}" th:id="${idCampo}" type="text" th:name="${nameField} == null ? ${idCampo} : ${nameField}"
-				   th:value="${field}" th:disabled="${disabled}" th:onblur="${onblur}" class="form-control typeahead"/>
-			<input th:unless="${field}" th:id="${idCampo}" type="text" name="${idCampo}" class="form-control typeahead" th:onblur="${onblur}" th:disabled="${disabled}"/>
+			<input th:if="${field}" th:id="${idCampo}" type="text" th:name="${nameField} == null ? ${idCampo} : ${nameField}" 
+				   th:value="${field}" th:disabled="${disabled}" th:onblur="${onblur}" class="form-control typeahead input-autocomplete"
+				   data:objeto="${idCampo}"
+				   data:lista="${lista}"
+				   data:onSelected="${onSelected}"
+				   data:idHidden="${idHidden}"
+				   data:url="${endpoint}"
+				   data:parametros="${keys}"
+				   data:possuiParametros="${keys != null ? true:false}"
+				   data:funcaoNome="${fncName}" />
+				   
+				   
+			<input th:unless="${field}" th:id="${idCampo}" type="text" th:name="${idCampo}" class="form-control typeahead input-autocomplete" th:onblur="${onblur}" th:disabled="${disabled}"
+				   data:objeto="${idCampo}"
+				   data:lista="${lista}"
+				   data:onSelected="${onSelected}"
+				   data:idHidden="${idHidden}"
+				   data:url="${endpoint}"
+				   data:parametros="${keys}"
+				   data:possuiParametros="${keys != null ? true:false}"
+				   data:funcaoNome="${fncName}" />
 		</div>
-	
-		<script th:inline="javascript">
-			$(function() {
-				var target=[];	 
-				var url = [[${endpoint}]];
-				var parametros = [[${keys}]];
-				var possuiParametros = false;
-			
-				if(parametros != null) {
-				   	url = url.concat(parametros);
-				 	possuiParametros = true; 
-				}
-			   		
-				target['objeto']     =   [[${idCampo}]];
-				target['lista']      =   [[${lista}]];
-				target['onSelected'] =   [[${onSelected}]];
-				target['idHidden']   =   [[${idHidden}]];
-				var possuiParametros =   parametros!=null; 
-				var funcaoNome       =   [[${fncName}]];
-				AutoComplete.prototype.autocomplete(url,target,funcaoNome,possuiParametros);
-			});
-		</script>
 	</div>
 </body>
 </html>

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import javax.validation.Valid;
 
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -30,6 +32,7 @@ import br.com.mv.modulo.model.type.EnumTipoMensagem;
 @Controller
 @SessionAttributes(types = TipoFrequencia.class)
 @RequestMapping("/tipoFrequencia")
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class TipoFrequenciaController {
 	
 	private final TipoFrequenciaBusiness tipoFrequenciaBusiness;
@@ -38,12 +41,6 @@ public class TipoFrequenciaController {
 	
 	private Page<TipoFrequencia> page;
 
-	
-	@Autowired
-	public TipoFrequenciaController(TipoFrequenciaBusiness tipoFrequenciaBusiness, GenericMessages genericMessages) {
-		this.tipoFrequenciaBusiness = tipoFrequenciaBusiness;
-		this.genericMessages = genericMessages;
-	}
 	
 	@RequestMapping(value={"/", "/list"}, method = RequestMethod.GET)
 	public String tolist(Model model) {
