@@ -19,7 +19,8 @@ var paths = {
         files: ['src/css/*.css'],
         root: 'src/css'
     },
-    less: ['src/less/**'],
+    less: ['src/less/*.less'],
+    lessComponents: ['src/less/components/*.less'],
     assets: ["src/cache.manifest"],
     images: ["src/img*/**"],
     components: ['src/components/**'],
@@ -92,8 +93,20 @@ gulp.task('copy-assets', function() {
 
 gulp.task('less', function () {
     return gulp.src(paths.less)
+    	.pipe(sourcemaps.init())
         .pipe(less())
         .pipe(cssMinify({noRebase: true}))
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(paths.destination + '/css'));
+});
+
+gulp.task('lessComponents', function () {
+    return gulp.src(paths.lessComponents)
+    	.pipe(sourcemaps.init())
+        .pipe(less())
+        .pipe(cssMinify({noRebase: true}))
+        .pipe(sourcemaps.write())
+        .pipe(concat('components.css'))
         .pipe(gulp.dest(paths.destination + '/css'));
 });
 

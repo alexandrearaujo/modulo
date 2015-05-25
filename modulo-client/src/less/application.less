@@ -1,5 +1,5 @@
-@import "variables.less";
-@import "mixins.less";
+@import "utils/variables.less";
+@import "utils/mixins.less";
 
 @mobile-600: ~"(min-height : 600px)";
 @desktop-768: ~"(min-width : 768px)";
@@ -59,6 +59,15 @@ html, body, .container-fluid.main, .row.main {
 		margin: 2px 0;
 		text-align: right;
 	}	
+	
+	.logo-bar {
+		width: 125px;
+		height: 27px;
+		float: left;
+		padding-right: 3px;
+		padding-top: 2px;
+		padding-left: 2px;
+	}
 } 
 
 .navbar-brand{
@@ -89,16 +98,8 @@ html, body, .container-fluid.main, .row.main {
 	background-color: transparent;
 }
 
-.checkbox-inline, .radio-inline{
-	padding-left: 0px !important;
-}
-
 .top-buffer { 
 	margin-top:24px;
-}
-
-.bootstrap-timepicker {
-	height: 30px;
 }
 
 .form {
