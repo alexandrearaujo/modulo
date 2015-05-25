@@ -16,6 +16,7 @@
 	<properties>
 		<start-class>br.com.mv.modulo.Application</start-class>
 		<tomcat.version>LATEST</tomcat.version>
+		<spring-security.version>LATEST</spring-security.version>
 	</properties>
 	
 	<dependencies>
@@ -62,7 +63,6 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
         	<artifactId>spring-security-test</artifactId>
-        	<version>LATEST</version>
 			<scope>test</scope>
 		</dependency>
 		
