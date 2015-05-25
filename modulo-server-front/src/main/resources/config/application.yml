@@ -17,7 +17,7 @@ server:
     #    compressableMimeTypes: application/json,application/xml
 spring:
     application:
-        name: estratificacao
+        name: modulo
     datasource:
         #jndi-name: java:jboss/datasources/bootdemo
         driverClassName: oracle.jdbc.OracleDriver

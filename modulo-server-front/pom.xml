@@ -16,6 +16,8 @@
 	<properties>
 		<start-class>br.com.mv.modulo.Application</start-class>
 		<tomcat.version>LATEST</tomcat.version>
+		<spring-security.version>LATEST</spring-security.version>
+		<httpclient.version>LATEST</httpclient.version>
 	</properties>
 	
 	<dependencies>
@@ -53,6 +55,26 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>org.springframework.test.htmlunit</groupId>
+        	<artifactId>spring-test-htmlunit</artifactId>
+        	<version>LATEST</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+        	<artifactId>selenium-htmlunit-driver</artifactId>
+        	<version>LATEST</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+        	<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
@@ -85,8 +107,8 @@
 		
 		<dependency>
             <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-springsecurity3</artifactId>
-<!--             <version>LATEST</version> -->
+            <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+            <version>LATEST</version>
         </dependency>
         
         <dependency>

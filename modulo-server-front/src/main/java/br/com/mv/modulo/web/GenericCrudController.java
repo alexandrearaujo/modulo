@@ -13,7 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -35,7 +35,6 @@ public abstract class GenericCrudController<T> {
 	private final int DEFAULT_INITIAL_PAGINATION_PAGE = 0;
 	private final int DEFAULT_PAGINATION_SIZE = 7;
 	private Type type = Arrays.stream(((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()).findFirst().get();
-//	private Class<T> clazz = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 	private Class<?> clazz = (Class<?>) type;
 	
 	@Autowired

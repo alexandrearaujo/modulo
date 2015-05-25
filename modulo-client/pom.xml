@@ -25,7 +25,6 @@
 						<goals>
 							<goal>install-node-and-npm</goal>
 						</goals>
-<!-- 						<phase>generate-resources</phase> -->
 						<configuration>
 							<nodeVersion>v0.12.2</nodeVersion>
 							<npmVersion>2.7.6</npmVersion>
@@ -37,10 +36,6 @@
 						<goals>
 							<goal>npm</goal>
 						</goals>
-<!-- 					    <phase>generate-resources</phase> -->
-<!-- 						<configuration> -->
-<!-- 					        <arguments>install</arguments> -->
-<!-- 					    </configuration> -->
 					</execution>
 					
 					<execution>
@@ -48,21 +43,7 @@
 					    <goals>
 					        <goal>bower</goal>
 					    </goals>
-<!-- 					    <configuration> -->
-<!-- 					        <arguments>install</arguments> -->
-<!-- 					    </configuration> -->
 					</execution>   
-
-<!-- 					<execution> -->
-<!-- 						<id>npm build</id> -->
-<!-- 						<goals> -->
-<!-- 							<goal>npm</goal> -->
-<!-- 						</goals> -->
-<!-- 						<configuration> -->
-<!-- 							<arguments>run build</arguments> -->
-<!-- 						</configuration> -->
-<!-- 						<phase>generate-resources</phase> -->
-<!-- 					</execution> -->
 					
 					<execution>
 			            <id>gulp less</id>
