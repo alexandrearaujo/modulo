@@ -4,6 +4,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Arrays;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.apache.commons.lang3.StringUtils;
@@ -62,9 +63,21 @@ public abstract class GenericCrudController<T> {
 									 @RequestParam(value = "page", defaultValue = "") Integer page,
 									 @RequestParam(value = "size", defaultValue = "") Integer size, 
 									 @RequestParam(value = "idToRender", defaultValue = "") String idToRender,
-									 Model model) {
+									 Model model,
+						 			 HttpServletRequest request) {
 		listModel(t, page, size, model);
-		return getListPageName() + " :: #" + idToRender;
+		if(isAjax(request))
+			return getListPageName() + " :: #" + idToRender;
+		else 
+			return getListPageName(); 
+	}
+	
+	protected boolean isAjax(HttpServletRequest request){
+		String header = request.getHeader("x-requested-with");
+		if(header != null && header.equals("XMLHttpRequest"))
+			return true;
+		else
+			return false;
 	}
 	
 	private void listModel(T t, Integer page, Integer size, Model model) {
