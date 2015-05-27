@@ -5,6 +5,7 @@ function initPaginationBar(){
 	$('body').on( "click", ".pagination a", function() {
 		var page;
 		var jQueryPaginationContainer = $(this).parents('.paginationbar nav');
+		var isAjax = JSON.parse(jQueryPaginationContainer.attr('data-ajax'));
 		var totalPages = jQueryPaginationContainer.attr('data-totalPages');
 		var size = jQueryPaginationContainer.attr('data-size');
 		var idToRender = jQueryPaginationContainer.attr('data-idToRender');
@@ -29,6 +30,11 @@ function initPaginationBar(){
 			page = number;
 		}
 		var url = method + '?page='+page+'&size='+size+'&idToRender='+idToRender;
-		$('#' + idToRender).load(url);
+		
+		if(isAjax)
+			$('#' + idToRender).load(url);
+		else
+			window.location.href = window.location.origin+url;
+		
 	});
 }

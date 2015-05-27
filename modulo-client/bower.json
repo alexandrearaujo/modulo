@@ -11,11 +11,9 @@
     "bootstrapvalidator": "latest",
     "font-awesome": "latest",
     "iCheck": "latest",
-    "jasny-bootstrap": "latest",
     "jquery": "latest",
     "jQuery-Mask-Plugin": "latest",
     "knockout": "latest",
-    "less": "latest",
     "metisMenu": "latest",
     "remarkable-bootstrap-notify": "latest",
     "screenfull": "latest",
@@ -82,13 +80,6 @@
         "skins/minimal/blue.png"
       ]
     },
-    "jasny-bootstrap": {
-      "main": [
-        "dist/css/jasny-bootstrap.min.css",
-        "dist/css/jasny-bootstrap.css.map",
-        "dist/js/jasny-bootstrap.min.js"
-      ]
-    },
     "jquery": {
       "main": [
         "dist/jquery.min.js",
@@ -103,11 +94,6 @@
     "knockout": {
       "main": [
         "dist/knockout.js"
-      ]
-    },
-    "less": {
-      "main": [
-        "dist/less.min.js"
       ]
     },
     "metisMenu": {

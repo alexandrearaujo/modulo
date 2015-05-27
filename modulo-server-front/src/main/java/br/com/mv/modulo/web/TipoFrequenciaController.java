@@ -2,6 +2,7 @@ package br.com.mv.modulo.web;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import lombok.RequiredArgsConstructor;
@@ -66,14 +67,24 @@ public class TipoFrequenciaController {
 											  @RequestParam(value = "page", defaultValue = "") Integer page,
 											  @RequestParam(value = "size", defaultValue = "") Integer size, 
 											  @RequestParam(value = "idToRender", defaultValue = "") String idToRender,
-											  Model model) {
+											  Model model,
+											  HttpServletRequest request) {
 		Pageable pageable = new PageRequest(page, size, Sort.DEFAULT_DIRECTION, "descricaoFrequencia");
 		this.page = tipoFrequenciaBusiness.listTipoFrequencia(tipoFrequencia, pageable);
-		
 		model.addAttribute("page", this.page);
 		model.addAttribute("tipoFrequencia", tipoFrequencia);
-		
-		return "tipoFrequencia/tipoFrequenciaList :: #" + idToRender;
+		if(isAjax(request))
+			return "tipoFrequencia/tipoFrequenciaList :: #" + idToRender;
+		else
+			return "tipoFrequencia/tipoFrequenciaList";
+	}
+	
+	private boolean isAjax(HttpServletRequest request){
+		String header = request.getHeader("x-requested-with");
+		if(header != null && header.equals("XMLHttpRequest"))
+			return true;
+		else
+			return false;
 	}
 	
 	@RequestMapping(value="/new", method = RequestMethod.GET)

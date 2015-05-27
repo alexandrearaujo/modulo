@@ -16,6 +16,8 @@
 	<properties>
 		<start-class>br.com.mv.modulo.Application</start-class>
 		<tomcat.version>LATEST</tomcat.version>
+		<spring-security.version>LATEST</spring-security.version>
+		<httpclient.version>LATEST</httpclient.version>
 	</properties>
 	
 	<dependencies>
@@ -60,9 +62,15 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+        	<artifactId>selenium-htmlunit-driver</artifactId>
+        	<version>LATEST</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
 			<groupId>org.springframework.security</groupId>
         	<artifactId>spring-security-test</artifactId>
-        	<version>LATEST</version>
 			<scope>test</scope>
 		</dependency>
 		
