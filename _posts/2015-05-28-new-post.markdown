@@ -1,0 +1,8 @@
+---
+layout: post
+title:  "Novo post"
+date:   2015-05-28 15:50:59
+categories: posts
+---
+testando essa bagaça é nois mano! 
+:D
