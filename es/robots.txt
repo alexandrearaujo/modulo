@@ -3,4 +3,4 @@
 # Allow crawling of all content
 User-agent: *
 Disallow:
-Sitemap: teste/sitemap.xml
+Sitemap: http://alexandrearaujo.github.io/modulo/sitemap.xml
