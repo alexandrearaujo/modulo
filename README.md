@@ -1,4 +1,4 @@
 Documentação MVFor
 ====================
 
-http://alexandrearaujo.github.io/modulo
+https://github.com/alexandrearaujo/modulo

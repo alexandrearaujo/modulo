@@ -5,8 +5,8 @@ version: 1.0.0
 # url of the download button
 downloadUrl: https://github.com/alexandrearaujo/modulo/
 
-highlighter: rouge
-destination: _gh_pages
+#highlighter: rouge 
+#for github pages
 
 # list of additional links on the right of the top menu
 headerLinks:
@@ -25,6 +25,11 @@ header:
   color1: "#208C81"
   color2: "#104E70"
   trianglify: true
+
+# google analytics
+analytics:
+  account:
+  domain:
 
 # github buttons
 githubButton:
