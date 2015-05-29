@@ -21,7 +21,7 @@ spring:
     datasource:
         #jndi-name: java:jboss/datasources/bootdemo
         driverClassName: oracle.jdbc.OracleDriver
-        url: jdbc:oracle:thin:@192.168.254.17:1521:dev4
+        url: jdbc:oracle:thin:@192.168.254.17:1521:sml
         username: dbamvfor
         password: dbamvfor
         initialize: false

@@ -6,8 +6,8 @@
 <meta charset="UTF-8"/>
 <body>
 	<!-- Alerts -->
-	<div th:fragment="alerts" class='alerts'>
-		<div th:if="${info != null}">
+	<th:block th:fragment="alerts">
+		<th:block th:if="${info != null}">
 			<script th:inline="javascript">
 				$(function(){
 					$.notify({
@@ -19,9 +19,9 @@
 					});
 				});
 			</script>
-		</div>
+		</th:block>
 	
-		<div th:if="${success != null}">
+		<th:block th:if="${success != null}">
 			<script th:inline="javascript">
 				$(function(){
 					$.notify({
@@ -33,9 +33,9 @@
 					});
 				});
 			</script>
-		</div>
+		</th:block>
 		
-		<div th:if="${danger != null}">
+		<th:block th:if="${danger != null}">
 			<script th:inline="javascript">
 				$(function(){
 					$.notify({
@@ -47,9 +47,9 @@
 					});
 				});
 			</script>
-		</div>
+		</th:block>
 		
-		<div th:if="${error != null}">
+		<th:block th:if="${warning != null}">
 			<script th:inline="javascript">
 				$(function(){
 					$.notify({
@@ -57,12 +57,12 @@
 						url: [[${urlScreen}]],
 					},{
 						delay: 3000,
-						type: 'danger'
+						type: 'warning'
 					});
 				});
 			</script>
-		</div>
-	</div>
+		</th:block>
+	</th:block>
        
 	<th:block th:fragment="confirmation">
 		<span data:original-title="${tooltip} != null ? #{${tooltip}} : ''" data:toggle="tooltip">

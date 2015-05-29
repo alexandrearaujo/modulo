@@ -9,6 +9,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
@@ -31,13 +32,14 @@ public class LoginControllerTests extends TestsConfig {
 			   .andExpect(redirectedUrl("/login/selectVinculo"));
 	}
 	
-//	@Test
-//	public void testSelectVinculo() throws Exception {	
-//		mockMvc.perform(get("/login/selectVinculo").with(user(ADMIN_USER_NAME)))
-//	           .andExpect(status().isFound())
-//	           .andExpect(redirectedUrl("/"))
-//	           .andExpect(authenticated().withUsername(ADMIN_USER_NAME));
-//	}
+	@Test
+	@Ignore
+	public void testSelectVinculo() throws Exception {	
+		mockMvc.perform(get("/login/selectVinculo").with(user(ADMIN_USER_NAME)))
+	           .andExpect(status().isOk())
+	           .andExpect(redirectedUrl("/"))
+	           .andExpect(authenticated().withUsername(ADMIN_USER_NAME));
+	}
 	
 	@Test
     public void withUserSuccess() throws Exception {

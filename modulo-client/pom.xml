@@ -26,8 +26,8 @@
 							<goal>install-node-and-npm</goal>
 						</goals>
 						<configuration>
-							<nodeVersion>v0.12.2</nodeVersion>
-							<npmVersion>2.7.6</npmVersion>
+							<nodeVersion>v0.12.4</nodeVersion>
+							<npmVersion>2.11.1</npmVersion>
 						</configuration>
 					</execution>
 					
@@ -102,18 +102,6 @@
 			        </execution>
 			        
 			        <execution>
-			            <id>gulp copy-app-js</id>
-			            <goals>
-			                <goal>gulp</goal>
-			            </goals>
-						<configuration>
-							<srcdir>${basedir}\src\app</srcdir>
-							<outputdir>${basedir}\dist</outputdir>
-					        <arguments>copy-app-js</arguments>
-					    </configuration>
-			        </execution>
-			        
-			        <execution>
 			            <id>gulp copy-bower-libs</id>
 			            <goals>
 			                <goal>gulp</goal>
@@ -132,39 +120,6 @@
 						<configuration>
 							<srcdir>${basedir}\src\img</srcdir>
 					        <arguments>copy-images</arguments>
-					    </configuration>
-			        </execution>
-			        
-			        <execution>
-			            <id>gulp copy-components-to-target</id>
-			            <goals>
-			                <goal>gulp</goal>
-			            </goals>
-						<configuration>
-							<srcdir>${basedir}\src\components</srcdir>
-					        <arguments>copy-components-to-target</arguments>
-					    </configuration>
-			        </execution>
-			        
-			        <execution>
-			            <id>gulp copy-app-to-target</id>
-			            <goals>
-			                <goal>gulp</goal>
-			            </goals>
-						<configuration>
-							<srcdir>${basedir}\src\app</srcdir>
-					        <arguments>copy-app-js-to-target</arguments>
-					    </configuration>
-			        </execution>
-			        
-			        <execution>
-			            <id>gulp copy-css-to-target</id>
-			            <goals>
-			                <goal>gulp</goal>
-			            </goals>
-						<configuration>
-							<srcdir>${basedir}\src\css</srcdir>
-					        <arguments>copy-css-to-target</arguments>
 					    </configuration>
 			        </execution>
 				</executions>
