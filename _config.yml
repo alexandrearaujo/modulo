@@ -1,0 +1,44 @@
+# name of the software
+name: MVFor
+# current version of the software
+version: 1.0.0
+# url of the download button
+downloadUrl: https://github.com/alexandrearaujo/modulo/
+
+highlighter: rouge
+
+# list of additional links on the right of the top menu
+headerLinks:
+  - title: GitHub
+    url: https://github.com/alexandrearaujo/modulo
+
+# list if additional links on the footer
+footerLinks:
+  - title: GitHub
+    url: https://github.com/alexandrearaujo/modulo
+  - title: Issues
+    url: https://github.com/alexandrearaujo/modulo/issues?state=open
+
+# header
+header:
+  color1: "#208C81"
+  color2: "#104E70"
+  trianglify: true
+
+# google analytics
+analytics:
+  account:
+  domain:
+
+# github buttons
+githubButton:
+  user: alexandrearaujo
+  repo: modulo
+
+exclude: ['README.md', 'LICENSE', 'bower.json', 'Gemfile.lock', 'Gemfile']
+
+gems:
+  - jekyll-mentions
+  - jemoji
+  - jekyll-redirect-from
+  - jekyll-sitemap
