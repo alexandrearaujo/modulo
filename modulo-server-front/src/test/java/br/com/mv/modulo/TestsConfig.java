@@ -3,11 +3,9 @@ package br.com.mv.modulo;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 
 import org.apache.commons.lang3.StringUtils;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
-import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -18,14 +16,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.htmlunit.MockMvcWebClientBuilder;
-import org.springframework.test.web.servlet.htmlunit.webdriver.MockMvcHtmlUnitDriverBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
-
-import com.gargoylesoftware.htmlunit.WebClient;
-
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
@@ -37,10 +30,6 @@ public abstract class TestsConfig {
 	
 	protected MockMvc mockMvc;
 
-	protected WebClient webClient;
-	
-	protected WebDriver webDriver;
-	
 	protected RestTemplate template;
 	
 	protected final static String ADMIN_USER_NAME = "ADM";
@@ -54,26 +43,10 @@ public abstract class TestsConfig {
 	              .webAppContextSetup(webContext)
 	              .apply(springSecurity())
 	              .build();
-        
-		webClient = MockMvcWebClientBuilder
-					.mockMvcSetup(mockMvc)
-					.contextPath(contextPath)
-					.createWebClient();
-		
-		webDriver = MockMvcHtmlUnitDriverBuilder
-				    .mockMvcSetup(mockMvc)
-				    .contextPath(contextPath)
-				    .createDriver();
 		
 		template = new TestRestTemplate();
     }
 
-	@After
-	public void cleanup() {
-		webClient.close();
-		webDriver.close();
-	}
-	
 	@Value("${server.port}")
 	protected int port;
 

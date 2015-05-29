@@ -66,18 +66,20 @@ public abstract class GenericCrudController<T> {
 									 Model model,
 						 			 HttpServletRequest request) {
 		listModel(t, page, size, model);
-		if(isAjax(request))
+		if(isAjax(request)) {
 			return getListPageName() + " :: #" + idToRender;
-		else 
+		} else {
 			return getListPageName(); 
+		}
 	}
 	
 	protected boolean isAjax(HttpServletRequest request){
 		String header = request.getHeader("x-requested-with");
-		if(header != null && header.equals("XMLHttpRequest"))
+		if(header != null && header.equals("XMLHttpRequest")) {
 			return true;
-		else
+		} else {
 			return false;
+		}
 	}
 	
 	private void listModel(T t, Integer page, Integer size, Model model) {

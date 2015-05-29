@@ -61,8 +61,7 @@
 			data:size="${page?.size}"
 			data:idToRender="${idToRender}"
 			data:method="${method}"
-			data:ajax="${ajax == null ? true:ajax}"
-		>
+			data:ajax="${ajax == null ? true:ajax}">
 		
 			<ul class="pagination">
 				<li th:class="${page != null ? page.first : ''} ? 'disabled' : ''">
