@@ -52,18 +52,18 @@
 			            </goals>
 						<configuration>
 							<srcdir>${basedir}\src\less</srcdir>
-					        <arguments>less</arguments>
+					        <arguments>optimize-and-copy-less</arguments>
 					    </configuration>
 			        </execution>
 			        
 			        <execution>
-			            <id>gulp less Components</id>
+			            <id>gulp less components</id>
 			            <goals>
 			                <goal>gulp</goal>
 			            </goals>
 						<configuration>
 							<srcdir>${basedir}\src\less\components</srcdir>
-					        <arguments>lessComponents</arguments>
+					        <arguments>optimize-and-copy-less-components</arguments>
 					    </configuration>
 			        </execution>
 			        
@@ -97,7 +97,7 @@
 						<configuration>
 							<srcdir>${basedir}\src\components</srcdir>
 							<outputdir>${basedir}\dist</outputdir>
-					        <arguments>copy-components-js</arguments>
+					        <arguments>optimize-and-copy-components-js</arguments>
 					    </configuration>
 			        </execution>
 			        
@@ -108,7 +108,7 @@
 			            </goals>
 						<configuration>
 							<srcdir>${basedir}\src\lib</srcdir>
-					        <arguments>copy-bower-libs</arguments>
+					        <arguments>optimize-and-copy-bower-libs</arguments>
 					    </configuration>
 			        </execution>
 			        
@@ -119,7 +119,7 @@
 			            </goals>
 						<configuration>
 							<srcdir>${basedir}\src\img</srcdir>
-					        <arguments>copy-images</arguments>
+					        <arguments>optimize-and-copy-images</arguments>
 					    </configuration>
 			        </execution>
 				</executions>

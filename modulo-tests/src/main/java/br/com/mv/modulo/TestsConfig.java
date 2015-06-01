@@ -12,7 +12,6 @@ import org.springframework.boot.test.TestRestTemplate;
 import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -52,8 +51,6 @@ public abstract class TestsConfig {
 	protected String contextPath;
 
 	private String hostSuffix;
-
-	protected static Authentication authentication;
 
 	protected HttpStatus getReturnStatus() {
 		return getResponseEntity().getStatusCode();

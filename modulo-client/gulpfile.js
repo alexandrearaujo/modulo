@@ -37,7 +37,7 @@ gulp.task('optimize-and-copy-css', function() {
     		   .pipe(gulp.dest(paths.destination + 'css'));
 });
 
-gulp.task('copy-components-js', function() {
+gulp.task('optimize-and-copy-components-js', function() {
 	return gulp.src(paths.components)
 			   .pipe(changed(paths.destination + 'components'))
 			   .pipe(sourcemaps.init())
@@ -47,13 +47,13 @@ gulp.task('copy-components-js', function() {
 			   .pipe(gulp.dest(paths.destination + 'components'));
 });
 
-gulp.task('copy-bower-libs', function() {
+gulp.task('optimize-and-copy-bower-libs', function() {
     return gulp.src(mainBowerFiles(), { base: 'src/lib/' })
     		   .pipe(changed(paths.destination + 'lib'))
 	           .pipe(gulp.dest(paths.destination + 'lib'));
 });
 
-gulp.task('copy-images', function() {
+gulp.task('optimize-and-copy-images', function() {
     return gulp.src(paths.images)
     	       .pipe(changed(paths.destination))
 	           .pipe(imagemin({
@@ -70,7 +70,7 @@ gulp.task('copy-assets', function() {
                .pipe(gulp.dest(paths.destination))
 });
 
-gulp.task('less', function () {
+gulp.task('optimize-and-copy-less', function () {
     return gulp.src(paths.less)
     		   .pipe(changed(paths.destination + '/css'))
 	    	   .pipe(sourcemaps.init())
@@ -81,7 +81,7 @@ gulp.task('less', function () {
 	    	   .on('error', gutil.log);
 });
 
-gulp.task('lessComponents', function () {
+gulp.task('optimize-and-copy-less-components', function () {
     return gulp.src(paths.lessComponents)
     		   .pipe(changed(paths.destination + '/css'))
     	       .pipe(sourcemaps.init())

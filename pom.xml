@@ -29,22 +29,24 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 		<tomcat.version>LATEST</tomcat.version>
+		<spring-security.version>LATEST</spring-security.version>
 	</properties>
-	
 	
 	<repositories>
 		<repository>
-			<id>spring-release</id>
-			<name>Spring Releases</name>
-			<url>https://repo.spring.io/release</url>
+			<id>MVProxy</id>
+			<name>MV Proxy Repository</name>
+			<url>http://echo.mvfor.local/nexus/content/groups/public</url>
+			<layout>default</layout>
 		</repository>
 	</repositories>
 	
 	<pluginRepositories>
 		<pluginRepository>
-			<id>spring-release</id>
-			<name>Spring Releases</name>
-			<url>https://repo.spring.io/release</url>
+			<id>MVProxy</id>
+			<name>MV Proxy Repository</name>
+			<url>http://echo.mvfor.local/nexus/content/groups/public</url>
+			<layout>default</layout>
 		</pluginRepository>
 	</pluginRepositories>
 	
