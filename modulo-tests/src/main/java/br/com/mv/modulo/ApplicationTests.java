@@ -7,7 +7,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
-public class ApplicationTests extends TestsConfig {
+public class ApplicationTests extends ModuloTestsConfig {
 
 	@Test
 	public void testHome() throws Exception {

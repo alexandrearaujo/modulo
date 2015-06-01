@@ -7,13 +7,17 @@ import org.openqa.selenium.support.FindBy;
 public class AbstractPage {
 	
 	protected WebDriver driver;
+	private String context;
+	private int port;
 
 	@FindBy(css = "label.error, .alert-error")
 	private WebElement errors;
 
 	
-	public AbstractPage(WebDriver driver) {
+	public AbstractPage(WebDriver driver, String context, int port) {
 		this.driver = driver;
+		this.context = context;
+		this.port = port;
 	}
 
 	
@@ -21,13 +25,8 @@ public class AbstractPage {
 		return errors.getText();
 	}
 
-    static void get(WebDriver driver, String relativeUrl) {
-        String url = "http://localhost:8080/modulo/" + relativeUrl;
-        driver.get(url);
-    }
-    
     protected void get(String relativeUrl) {
-    	String url = "http://localhost:8080/modulo/" + relativeUrl;
+    	String url = "http://localhost:" + port + context + relativeUrl;
     	driver.get(url);
     }
 }

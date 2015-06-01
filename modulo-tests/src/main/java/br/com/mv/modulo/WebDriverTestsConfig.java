@@ -20,7 +20,7 @@ public abstract class WebDriverTestsConfig extends TestsConfig {
 			    .contextPath(contextPath)
 			    .createDriver();
 		
-		LoginPage loginPage = new LoginPage(webDriver);
+		LoginPage loginPage = new LoginPage(webDriver, contextPath, port);
 		loginPage.login(ADMIN_USER_NAME, ADMIN_PASSWORD);
 	}
 	

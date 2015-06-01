@@ -3,7 +3,6 @@ package br.com.mv.modulo.webdriver.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends AbstractPage {
@@ -14,13 +13,12 @@ public class LoginPage extends AbstractPage {
 	@CacheLookup
     private WebElement password;
 
-    @FindBy(id="login")
     @CacheLookup
-    private WebElement submit;
+    private WebElement login;
 
     
-    public LoginPage(WebDriver driver) {
-        super(driver);
+    public LoginPage(WebDriver driver, String context, int port) {
+        super(driver, context, port);
         get("/login");
         PageFactory.initElements(driver, this);
     }
@@ -29,6 +27,6 @@ public class LoginPage extends AbstractPage {
     public void login(String username, String password) {
         this.username.sendKeys(username);
         this.password.sendKeys(password);
-        this.submit.click();
+        this.login.click();
     }
 }

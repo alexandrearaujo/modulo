@@ -13,10 +13,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import br.com.mv.modulo.TestsConfig;
+import br.com.mv.modulo.ModuloTestsConfig;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class LoginControllerTests extends TestsConfig {
+public class LoginControllerTests extends ModuloTestsConfig {
 	
 	@Test
 	public void testLoginGet() throws Exception {

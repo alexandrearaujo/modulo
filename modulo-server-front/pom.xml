@@ -17,7 +17,7 @@
 		<start-class>br.com.mv.modulo.Application</start-class>
 		<tomcat.version>LATEST</tomcat.version>
 		<spring-security.version>LATEST</spring-security.version>
-		<httpclient.version>LATEST</httpclient.version>
+<!-- 		<httpclient.version>LATEST</httpclient.version> -->
 	</properties>
 	
 	<dependencies>
@@ -48,38 +48,38 @@
 <!-- 			<artifactId>spring-boot-starter-remote-shell</artifactId> -->
 <!-- 		</dependency> -->
 		
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.boot</groupId> -->
+<!-- 			<artifactId>spring-boot-starter-test</artifactId> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
 		
-		<dependency>
-			<groupId>org.springframework.test.htmlunit</groupId>
-        	<artifactId>spring-test-htmlunit</artifactId>
-        	<version>LATEST</version>
-			<scope>test</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.test.htmlunit</groupId> -->
+<!--         	<artifactId>spring-test-htmlunit</artifactId> -->
+<!--         	<version>LATEST</version> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
 		
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-        	<artifactId>selenium-htmlunit-driver</artifactId>
-        	<version>LATEST</version>
-			<scope>test</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.seleniumhq.selenium</groupId> -->
+<!--         	<artifactId>selenium-htmlunit-driver</artifactId> -->
+<!--         	<version>LATEST</version> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
 		
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-        	<artifactId>selenium-support</artifactId>
-        	<version>LATEST</version>
-			<scope>test</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.seleniumhq.selenium</groupId> -->
+<!--         	<artifactId>selenium-support</artifactId> -->
+<!--         	<version>LATEST</version> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
 		
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-        	<artifactId>spring-security-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.security</groupId> -->
+<!--         	<artifactId>spring-security-test</artifactId> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -163,17 +163,17 @@
 			    </dependencies>
 			</plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>test-jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-jar-plugin</artifactId> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<goals> -->
+<!-- 							<goal>test-jar</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
 		</plugins>
 	</build>
 </project>
