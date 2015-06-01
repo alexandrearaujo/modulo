@@ -13,7 +13,7 @@ node
 
 # Eclipse
 # > the following should be created by `./gradlew eclipse`
-.classpath
+#.classpath
 .project
 # > ignore all eclipse settings by default
 .settings
