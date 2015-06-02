@@ -1,0 +1,223 @@
+---
+layout: default
+title: Componentes
+description: Documentação dos componentes reutilizáveis construídos com base no Thymeleaf, Bootstrap, Html 5, CSS 3 e JS. 
+---
+
+<section class="bs-docs-section">
+  <h1 id="Introdução" class="page-header">Introdução</h1>
+
+  <div class="bs-callout bs-callout-info" id="callout-type-b-i-elems">
+    <h4 id="alternate-elements">Atenção!</h4>
+    <p>
+    	Todos os componentes listados na documentação são formados por um conjunto de de tecnologias que juntas
+    	vão oferecer uma melhoria na agilidade do desenvolvimento de formulários e tela.
+    </p>
+    <p>
+    	Para que seja possível uma boa compreenção do que está por trás dos nossos componentes de front-end é
+    	recomendável que você estudo as tecnologias listadas abaixo:
+    </p>
+	<ul>
+		<li> <b>Twitter Bootstrap</b> - Usado como framework base do nosso front-end, ou seja nosso tema é uma extensão direta dele.
+			<ul>
+				<li> <a href="http://getbootstrap.com/" target="_blank">Documentação</a> </li>
+			</ul>
+	    </li>
+	    </br>
+	    <li> <b>Thymeleaf</b> - É um template engine para XHTML e HTML5 que pode trabalhar tanto em ambientes web e não web. Ele  possui um módulo para integração com Spring MVC, de modo que você pode usá-lo como um substituto das famosas JSP's.
+
+			<ul>
+				<li> <a href="http://www.thymeleaf.org/documentation.html" target="_blank">Documentação</a> </li>
+				<li> <a href="http://itutorial.thymeleaf.org/" target="_blank">Tutorial Interativo</a> </li>
+				<li> <a href="https://github.com/thymeleaf/thymeleaf-extras-eclipse-plugin" target="_blank">Plugin para Eclipse</a> </li>
+			</ul>
+	    </li>
+	    </br>
+	    <li> <b>HTML 5</b> - Nova especificação do HTML.
+
+			<ul>
+				<li> <a href="http://www.w3schools.com/html/html5_intro.asp" target="_blank">Documentação pela W3schools</a> </li>
+				<li> <a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML/HTML5" target="_blank">Documentação / Tutoriais pela Mozilla</a> </li>
+			</ul>
+	    </li>
+	    </br>
+	    <li> <b>CSS 3</b> - Nova especificação do CSS.
+
+			<ul>
+				<li> <a href="http://www.w3schools.com/css/css3_intro.asp" target="_blank">Documentação pela W3schools</a> </li>
+				<li> <a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS" target="_blank">Documentação / Tutoriais pela Mozilla</a> </li>
+			</ul>
+	    </li>
+ 		</br>
+	    <li> <b>LESS</b> - A linguagem dinâmica de estilos.
+
+			<ul>
+				<li> <a href="http://lesscss.org/" target="_blank">Documentação</a> </li>
+				<li> <a href="http://lesscss.loopinfinito.com.br/" target="_blank">Mini curso</a> </li>
+			</ul>
+	    </li>
+
+
+
+	    
+
+
+	    </br>
+	    <li> <b>JavaScript</b>
+			<ul>
+				<li> <a href="http://www.w3schools.com/js/" target="_blank">Documentação pela W3schools</a> </li>
+				<li> <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript" target="_blank">Documentação / Tutoriais pela Mozilla</a> </li>
+			</ul>
+	    </li>
+
+	    </br>
+	    <li> <b>jQuery</b>
+			<ul>
+				<li> <a href="http://try.jquery.com/" target="_blank">Curso gratuito</a> </li>
+				<li> <a href="http://api.jquery.com/" target="_blank">Documentação</a> </li>
+				<li> <a href="http://www.w3schools.com/jquery/" target="_blank">Documentação pela W3schools</a> </li>
+			</ul>
+	    </li>
+	</ul>
+  </div>
+
+</section>
+
+
+<!-- Temporal ==================================================================================================== -->
+<section class="bs-docs-section">
+  <h1 id="installation" class="page-header">Temporal</h1>
+
+   <blockquote>
+    Fornecer componentes para entradas do tipo data, período e temporal.
+  </blockquote>
+
+  <h2 id="time-field-doc">Time Field</h2>
+  <p>Time field fornece um componente para entrada de dados temporal como horas, minutos e etc...</p>
+  <p>O componente foi criado usando a lib <a href="http://jdewit.github.io/bootstrap-timepicker/" target="_blank">Bootstrap Timepicker</a></p>
+	<div class="bs-example" data-example-id="simple-thumbnails">
+		<div class="row">
+		  <div class="col-xs-4 col-md-2">
+				<div class="form-group">
+					<div>
+						<label class="control-label" for="Modulo Server Front Module">
+							<span>Horário</span>
+						</label>
+					</div>
+				
+					<div class="bootstrap-timepicker">
+						<input type="text" class="form-control time-field" id="horarioInicial" data-minute-step="1" data-default-time="false" data-template="false" name="horarioInicial" value="">
+							   
+					    <input type="hidden" class="form-control" id="previous-value-horarioInicial" disabled="disabled" name="horarioInicial" value="">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% highlight html %}
+<div class="col-sm-3 col-md-3 col-lg-2">
+	<div th:replace="fragments/layout-temporal :: time-field(
+								field='${objeto.atributo}',
+								idField=horario, 
+								label=horario, 
+								minuteStep=1,
+								template=false)">
+	</div>
+</div>
+{% endhighlight %}
+
+<h2>Atributos / Opções</h2>
+<p>Atributos com <b>*</b> são obrigatórios.</p>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <colgroup>
+        <col class="col-xs-1">
+        <col class="col-xs-1">
+        <col class="col-xs-7">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Atributo</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td>label</td>
+          <td>messages.properties</td>
+          <td>String que faz referência ao messages/internacionalização do módulo.</td>
+        </tr>
+
+        <tr>
+          <td>field</td>
+          <td>th:field</td>
+          <td>Atributo do bean que faz a integração do Spring MVC ou seja o binding.</td>
+        </tr>
+
+        <tr>
+          <td>idField</td>
+          <td>String</td>
+          <td>Id do input, o mesmo deve ser único.</td>
+        </tr>
+
+		<tr>
+          <td>disabled</td>
+          <td>Boolean</td>
+          <td>Informa se o elemento está desativado ou não.</td>
+        </tr>
+
+        <tr>
+          <td>name</td>
+          <td>String</td>
+          <td>Name do elemento HTML.</td>
+        </tr>
+
+		<tr>
+          <td>placeholder</td>
+          <td>String</td>
+          <td>Placeholder do input.</td>
+        </tr>
+
+        <tr>
+          <td>required</td>
+          <td>Boolean</td>
+          <td>Informa se o elemento é obrigatório ou não.</td>
+        </tr>
+
+		<tr>
+          <td>onchange</td>
+          <td>Função</td>
+          <td>Nome da funação que será invocada no evento onchange do input, caso os valores sejam modificados.</td>
+        </tr>
+
+        <tr>
+          <td>idcomponente</td>
+          <td>String</td>
+          <td>Id da label, o mesmo deve ser único.</td>
+        </tr>
+
+
+        <tr>
+          <td>autofocus</td>
+          <td>Boolean</td>
+          <td>Define foco automático no input.</td>
+        </tr>
+
+		<tr>
+          <td>minute-step</td>
+          <td>Integer</td>
+          <td>Define o a iteração dos minutos. Ex: minute-step=5, só valores de 5 em 5.</td>
+        </tr>
+        
+        <tr>
+          <td>template</td>
+          <td>Boolean</td>
+          <td>Recomendado false. Para mais informações veja a documentação no tópico <a href="http://jdewit.github.io/bootstrap-timepicker/" target="_blank">template</a>.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</section>

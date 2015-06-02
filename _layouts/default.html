@@ -140,5 +140,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.1.2/trianglify.min.js"></script>
   <script>trianglify('{{site.header.color1}}', '{{site.header.color2}}');</script>
   {% endif %}
+
+  <script src="{{site.github.url}}/assets/js/lib/bootstrap-timepicker.min.js"></script>
+  <script src="{{site.github.url}}/assets/js/components/temporal.js"></script>
+
+  <script type="text/javascript">
+    jQuery(document).ready(function(){
+       initTimeField(); 
+    });
+  </script>
 </body>
 </html>
