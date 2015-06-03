@@ -8,7 +8,8 @@
 	<!-- Select-Field -->
 	<div class="form-group" th:fragment="select-field">
 		<div>
-			<label th:if="${idcomponente}" class="control-label" th:classappend="${required} ? 'required' : ''" for="${name}" th:id="__${idcomponente}__+Label">
+			<label th:if="${idcomponente}" class="control-label" th:classappend="${required} ? 'required' : ''" for="${name}"
+			       th:id="__${idcomponente}__+Label">
 				<span th:text="#{${label}}"></span>
 			</label>
 			
@@ -28,25 +29,22 @@
 	
 	
 	<!-- Checkbox-Field -->
-	<label th:fragment="checkbox-field" class="checkbox-inline">
+	<div class="checkbox" th:classappend="${classCss}" th:fragment="checkbox-field">
 		<input type="checkbox" th:disabled="${disabled}" th:id="${idField}" th:field="__${field}__"
-		th:checked="${checked}" class="checkbox-field" data:onchange="${onchange}" th:value="${__${value}__}"
-		/>
-		<span th:text="#{${label}}" data:original-title="${tooltip} != null ? #{${tooltip}} : ''" data:toggle="tooltip"></span>
-	</label>
+			   th:checked="${checked}" data:onchange="${onchange}" th:value="${__${value}__}"/>
+		<label th:for="${idField}">
+			<span th:text="#{${label}}" data:original-title="${tooltip} != null ? #{${tooltip}} : ''" data:toggle="tooltip"></span>
+		</label>
+	</div>
 
 	
-	<label th:fragment="radio-field-normal">
-	    <input type="radio" th:id="${idField}" th:name="${nameField}" th:field="__${field}__" th:onchange="${onchange}" th:value="${value}" th:checked="${checked}"
-	    	   th:required="${required}"/>
-	    <span th:text="#{${label}}" style="font-weight: normal;"></span>
-	</label>
-	
-	
 	<!-- Radio-Field -->
-	<label th:fragment="radio-field" class="radio-inline">
-	    <input class="radio-field" type="radio" th:id="${idField}" th:name="${nameField}" th:field="__${field}__" th:onchange="${onchange}" th:value="${value}" th:checked="${checked}"/>
-	    <span th:text="#{${label}}"></span>
-	</label>
+	<div class="radio" th:classappend="${classCss}" th:fragment="radio-field">
+	    <input type="radio" th:id="${idField}" th:name="${nameField}" th:field="__${field}__" th:onchange="${onchange}"
+	    	   th:value="${value}" th:checked="${checked}" th:required="${required}"/>
+		<label th:for="${idField}">
+		    <span th:text="#{${label}}" style="font-weight: normal;"></span>
+		</label>
+	</div>
 </body>
 </html>

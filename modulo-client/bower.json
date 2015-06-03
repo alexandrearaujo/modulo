@@ -3,6 +3,7 @@
 	"description": "bower components for modulo UI.",
     "version": "1.0.0",
     "dependencies": {
+    "awesome-bootstrap-checkbox": "latest",
     "bootstrap": "latest",
     "bootstrap-confirmation2": "latest",
     "bootstrap-datepicker": "latest",
@@ -10,7 +11,6 @@
     "bootstrap-timepicker": "latest",
     "bootstrapvalidator": "latest",
     "font-awesome": "latest",
-    "iCheck": "latest",
     "jquery": "latest",
     "jQuery-Mask-Plugin": "latest",
     "knockout": "latest",
@@ -20,6 +20,11 @@
     "typeahead.js": "0.10.5"
   },
   "overrides": {
+  	"awesome-bootstrap-checkbox": {
+      "main": [
+        "awesome-bootstrap-checkbox.css"
+      ]
+    },
     "bootstrap": {
       "main": [
         "dist/css/bootstrap.min.css",
@@ -71,13 +76,6 @@
         "css/font-awesome.min.css",
         "css/font-awesome.css.map",
         "fonts/**"
-      ]
-    },
-    "iCheck": {
-      "main": [
-        "icheck.min.js",
-        "skins/minimal/blue.css",
-        "skins/minimal/blue.png"
       ]
     },
     "jquery": {
