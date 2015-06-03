@@ -16,6 +16,9 @@
   <link href="{{site.github.url}}/assets/css/style.css" rel="stylesheet">
   <link href="{{site.github.url}}/assets/images/favicon.ico" rel="shortcut icon" >
 
+  <link href="{{site.github.url}}/assets/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+  <link href="{{site.github.url}}/assets/css/bootstrap-timepicker.min.css" rel="stylesheet">
+
   <style>
     #content {
       background:{{site.header.color1}};
@@ -141,12 +144,18 @@
   <script>trianglify('{{site.header.color1}}', '{{site.header.color2}}');</script>
   {% endif %}
 
-  <script src="{{site.github.url}}/assets/js/lib/bootstrap-timepicker.min.js"></script>
+  <!-- Components -->
+  <script src="{{site.github.url}}/assets/js/lib/jquery.mask.min.js"></script>
+  <script src="{{site.github.url}}/assets/js/lib/bootstrap-datepicker.min.js"></script>
+  <script src="{{site.github.url}}/assets/js/lib/locales/bootstrap-datepicker.pt-BR.min.js"></script>
+  <script src="{{site.github.url}}/assets/js/lib/bootstrap-timepicker.min.js"></script>  
+
   <script src="{{site.github.url}}/assets/js/components/temporal.js"></script>
 
   <script type="text/javascript">
     jQuery(document).ready(function(){
        initTimeField(); 
+       initDateField();
     });
   </script>
 </body>

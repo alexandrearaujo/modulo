@@ -220,4 +220,143 @@ description: Documentação dos componentes reutilizáveis construídos com base
     </table>
   </div>
 
+<!-- Date-Field ================================================================================================= -->
+<h2 id="date-field-doc">Date Field</h2>
+<p>Date field fornece um componente para entrada de datas no formato: dd/mm/yyyy</p>
+
+<p>O componente foi criado usando a lib <a href="http://bootstrap-datepicker.readthedocs.org/" target="_blank">Bootstrap datepicker</a> e no <a href="http://bootstrapvalidator.com" target="_blank">Bootstrap Validator</a>
+  </p>
+  <div class="bs-example" data-example-id="simple-thumbnails">
+    <div class="row">
+
+      <div class="col-xs-4">
+        <div class="date-field form-group">
+          <div>
+            <label class="control-label required" for="dataConsulta" id="dataConsultaLabel">
+              <span>Data da Consulta</span>
+            </label>
+          </div>
+          
+          <div class="input-group date ui-datepicker date-field">
+            <input type="text" class="form-control data-field-input" id="dataConsulta" name="dataConsulta" data-bv-notempty="true" autocomplete="off" data-bv-field="dataConsulta">
+            
+            <span class="input-group-addon btn" id="iconeDateField">
+              <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% highlight html %}
+<div class="col-xs-4">
+  <div th:replace="fragments/layout-temporal :: date-field(
+                                                            field='${objeto.dataConsulta}', 
+                                                            idField='dataConsulta',
+                                                            label=dataConsulta, 
+                                                            idIcon=iconeDateField, 
+                                                            required=true">)">
+  </div>
+</div>
+{% endhighlight %}
+
+<h2>Atributos / Opções</h2>
+<p>Atributos com <b>*</b> são obrigatórios.</p>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <colgroup>
+        <col class="col-xs-1">
+        <col class="col-xs-1">
+        <col class="col-xs-7">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Atributo</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td>label</td>
+          <td>messages.properties</td>
+          <td>String que faz referência ao messages/internacionalização do módulo.</td>
+        </tr>
+
+        <tr>
+          <td>field</td>
+          <td>th:field</td>
+          <td>Atributo do bean que faz a integração do Spring MVC ou seja o binding.</td>
+        </tr>
+
+        <tr>
+          <td>idField</td>
+          <td>String</td>
+          <td>Id do input, o mesmo deve ser único.</td>
+        </tr>
+
+        <tr>
+          <td>disabled</td>
+          <td>Boolean</td>
+          <td>Informa se o elemento está desativado ou não.</td>
+        </tr>
+
+        <tr>
+          <td>name</td>
+          <td>String</td>
+          <td>Name do elemento HTML.</td>
+        </tr>
+
+         <tr>
+          <td>placeholder</td>
+          <td>String</td>
+          <td>Placeholder do input.</td>
+        </tr>
+
+        <tr>
+          <td>required</td>
+          <td>Boolean</td> 
+          <td>Informa se o elemento é obrigatório ou não.</td>
+        </tr>
+        
+        <tr>
+          <td>autofocus</td>
+          <td>Boolean</td>
+          <td>Define foco automático no input.</td>
+        </tr>
+
+        <tr>
+          <td>withLabel</td>
+          <td>Boolean</td>
+          <td>Define ser haverá label ou não.</td>
+        </tr>
+
+        <tr>
+          <td>idIcon</td>
+          <td>String</td>
+          <td>Id do icone do calendário.</td>
+        </tr>
+
+        <tr>
+          <td>disabledIcon</td>
+          <td>String</td>
+          <td>Id do icone do calendário.</td>
+        </tr>
+
+        <tr>
+          <td>startDate</td>
+          <td>String</td>
+          <td>Data inicial do calendário.</td>
+        </tr>
+
+        <tr>
+          <td>endDate</td>
+          <td>String</td>
+          <td>Data final calendário.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
