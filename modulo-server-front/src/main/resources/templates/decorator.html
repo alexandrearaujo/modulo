@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR"
 	  xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	  class="no-js">
 	<head th:replace="fragments/layout :: htmlhead" />
 	
-	<body role="document" th:class="${#authentication != null and #authentication.principal != null ? (#authentication.principal.hasRole('MEDICO') or #authentication.principal.hasRole('USER') ? 'sidebar-left-hidden' : '') : ''}">
+	<body role="document">
 		<th:block th:unless="${session.externalRequest}">
-			<div th:replace="fragments/layout-menu :: menu-top"></div>
+			<div th:replace="fragments/layout-menu-top :: menu-top"></div>
 		</th:block>
 		
 		<div class="container-fluid main">
@@ -36,7 +36,7 @@
 			<footer th:replace="fragments/layout-footer :: footer"></footer>
 		</th:block>
 		
-		<div th:replace="fragments/layout-menu :: modal-help"></div>
+		<div th:replace="fragments/layout-menu-top :: modal-help"></div>
 		
 		<th:block layout:fragment="scripts">
 			<th:block th:replace="fragments/layout :: scripts" th:unless="${defaultValidator}"></th:block>

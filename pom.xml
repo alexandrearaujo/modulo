@@ -34,33 +34,29 @@
 	
 	<repositories>
 		<repository>
-			<id>MVProxy</id>
-			<name>MV Proxy Repository</name>
-			<url>http://echo.mvfor.local/nexus/content/groups/public</url>
-			<layout>default</layout>
+			<id>spring-release</id>
+			<name>Spring Releases</name>
+			<url>https://repo.spring.io/release</url>
 		</repository>
+		
+		<repository>
+            <id>spring-snapshots</id>
+            <url>http://repo.spring.io/libs-snapshot</url>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
 	</repositories>
 	
 	<pluginRepositories>
 		<pluginRepository>
-			<id>MVProxy</id>
-			<name>MV Proxy Repository</name>
-			<url>http://echo.mvfor.local/nexus/content/groups/public</url>
-			<layout>default</layout>
+			<id>spring-release</id>
+			<name>Spring Releases</name>
+			<url>https://repo.spring.io/release</url>
+		</pluginRepository>
+		
+		<pluginRepository>
+			<id>spring-snapshots</id>
+            <url>http://repo.spring.io/libs-snapshot</url>
+            <snapshots><enabled>true</enabled></snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-	
-	<distributionManagement>
-		<repository>
-			<id>MVNexus</id>
-			<name>Internal Releases</name>
-			<url>http://echo.mvfor.local/nexus/content/repositories/releases/</url>
-		</repository>
-		
-		<snapshotRepository>
-			<id>MVNexus</id>
-			<name>Internal Snapshots</name>
-			<url>http://echo.mvfor.local/nexus/content/repositories/snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
 </project>
