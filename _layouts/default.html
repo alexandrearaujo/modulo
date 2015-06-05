@@ -157,14 +157,18 @@
   <script src="{{site.github.url}}/assets/js/lib/bootstrapValidator.min.js"></script>
   <script src="{{site.github.url}}/assets/js/lib/language/pt_BR.js"></script>
         
-
+  <script src="{{site.github.url}}/assets/js/components/input.js"></script>
   <script src="{{site.github.url}}/assets/js/components/temporal.js"></script>
 
   <script type="text/javascript">
     jQuery(document).ready(function(){
+       fncUppercase();
+       numbersOnly();
+       formatMask();
        initTimeField(); 
        initDateField();
        initDateFieldPeriodo();
+       initNumberField();
     });
   </script>
 </body>

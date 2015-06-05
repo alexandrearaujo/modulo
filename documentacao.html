@@ -57,11 +57,6 @@ description: Documentação dos componentes reutilizáveis construídos com base
 			</ul>
 	    </li>
 
-
-
-	    
-
-
 	    </br>
 	    <li> <b>JavaScript</b>
 			<ul>
@@ -86,7 +81,7 @@ description: Documentação dos componentes reutilizáveis construídos com base
 
 <!-- Temporal ==================================================================================================== -->
 <section class="bs-docs-section">
-  <h1 id="installation" class="page-header">Temporal</h1>
+  <h1 id="temporal" class="page-header">Temporal</h1>
 
    <blockquote>
     Fornecer componentes para entradas do tipo data, período e temporal.
@@ -95,7 +90,7 @@ description: Documentação dos componentes reutilizáveis construídos com base
   <h2 id="time-field-doc">Time Field</h2>
   <p>Time field fornece um componente para entrada de dados temporal como horas, minutos e etc...</p>
   <p>O componente foi criado usando a lib <a href="http://jdewit.github.io/bootstrap-timepicker/" target="_blank">Bootstrap Timepicker</a></p>
-	<div class="bs-example" data-example-id="simple-thumbnails">
+	<div class="bs-example" >
 		<div class="row">
 		  <div class="col-xs-4 col-md-2">
 				<div class="form-group">
@@ -162,7 +157,7 @@ description: Documentação dos componentes reutilizáveis construídos com base
           <td>Id do input, o mesmo deve ser único.</td>
         </tr>
 
-		<tr>
+		    <tr>
           <td>disabled</td>
           <td>Boolean</td>
           <td>Informa se o elemento está desativado ou não.</td>
@@ -174,7 +169,7 @@ description: Documentação dos componentes reutilizáveis construídos com base
           <td>Name do elemento HTML.</td>
         </tr>
 
-		<tr>
+		    <tr>
           <td>placeholder</td>
           <td>String</td>
           <td>Placeholder do input.</td>
@@ -186,7 +181,7 @@ description: Documentação dos componentes reutilizáveis construídos com base
           <td>Informa se o elemento é obrigatório ou não.</td>
         </tr>
 
-		<tr>
+		    <tr>
           <td>onchange</td>
           <td>Função</td>
           <td>Nome da funação que será invocada no evento onchange do input, caso os valores sejam modificados.</td>
@@ -205,7 +200,7 @@ description: Documentação dos componentes reutilizáveis construídos com base
           <td>Define foco automático no input.</td>
         </tr>
 
-		<tr>
+		    <tr>
           <td>minute-step</td>
           <td>Integer</td>
           <td>Define o a iteração dos minutos. Ex: minute-step=5, só valores de 5 em 5.</td>
@@ -226,7 +221,7 @@ description: Documentação dos componentes reutilizáveis construídos com base
 
 <p>O componente foi criado usando a libs: <a href="http://bootstrap-datepicker.readthedocs.org/" target="_blank">Bootstrap datepicker</a>, <a href="http://bootstrapvalidator.com" target="_blank">Bootstrap Validator</a>
   </p>
-  <div class="bs-example" data-example-id="simple-thumbnails">
+  <div class="bs-example" >
     <div class="row">
 
       <div class="col-xs-4">
@@ -361,13 +356,13 @@ description: Documentação dos componentes reutilizáveis construídos com base
   </div>
 
 <!-- Date-Field-Peiodo================================================================================================= -->
-<h2 id="date-field-periodo">Date Field Periodo</h2>
+<h2 id="date-field-periodo-docs">Date Field Periodo</h2>
 <p>Date field fornece um conjunto de componentes para entrada de períodos de datas no formato: dd/mm/yyyy</p>
 <p>Ao selecinar a primeira data a segunda só permitirá data apartir da data selecionada inicialmente.</p>
 </br>
 <p>O componente foi criado usando a libs: <a href="http://bootstrap-datepicker.readthedocs.org/" target="_blank">Bootstrap datepicker</a>, <a href="http://bootstrapvalidator.com" target="_blank">Bootstrap Validator</a>
   </p>
-  <div class="bs-example" data-example-id="simple-thumbnails">
+  <div class="bs-example" >
     <div class="row">
       <form id="formDateFieldPeriodo">
         <div class="col-xs-6">
@@ -521,4 +516,410 @@ description: Documentação dos componentes reutilizáveis construídos com base
       </tbody>
     </table>
   </div>
+</section>
+
+<section class="bs-docs-section">
+  <h1 id="inputs" class="page-header">Input</h1>
+
+   <blockquote>
+    Fornecer componentes como autocomplete, inputs do tipo texto e numérico.
+  </blockquote>
+
+  <div class="bs-callout bs-callout-warning">
+    <h2 id="input-helper-doc">Helper class</h2>
+    <p>Segue algumas classes para auxiliar a criação de determinados tipos de inputs para entradas de dados específicos.</p>
+    <ul>
+      <li>
+        <code>.numbersOnly'</code> - Para campos que permitem apenas números.
+      </li>
+      <li>
+        <code>.cns'</code> - Formatação para campos CNS. EX: 999.9999.9999.9999;
+      </li>
+      <li>
+        <code>.cpf'</code> - Formatação para campos CPF. EX: 999.999.999-99;
+      </li>
+    </ul>
+  </div>
+
+  <h2 id="text-field-doc">Text field</h2>
+  <p>Text field fornece um componente para entrada de dados do tipo texto.</p>
+
+  <div class="bs-example" >
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="form-group">
+          <div>
+            <label class="control-label" id="descFrequenciaLabel">
+              <span>Texto</span>
+            </label>
+          </div>
+          
+          <div> 
+            <input type="text" class="form-control" id="descFrequencia" maxlength="50" autocomplete="off" name="descricaoFrequencia" value="" data-bv-field="descricaoFrequencia">
+          </div>
+          <small class="help-block" data-bv-validator="stringLength" data-bv-for="descricaoFrequencia" data-bv-result="NOT_VALIDATED" style="display: none;">
+            Por favor insira um valor com comprimento válido
+          </small>
+        </div>  
+      </div>
+    </div>
+  </div>
+{% highlight html %}
+<div class="col-xs-4">
+  <div th:replace="fragments/layout-input :: text-field(
+                                                        idField=idText, 
+                                                        label=labelText, 
+                                                        maxLength=50,
+                                                        field='${object.atribute}')">
+  </div>
+</div>
+{% endhighlight %}
+
+<h2>Atributos / Opções</h2>
+<p>Atributos com <b>*</b> são obrigatórios.</p>
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+    <colgroup>
+      <col class="col-xs-1">
+      <col class="col-xs-1">
+      <col class="col-xs-7">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Atributo</th>
+        <th>Tipo</th>
+        <th>Descrição</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>label</td>
+        <td>messages.properties</td>
+        <td>String que faz referência ao messages/internacionalização do módulo.</td>
+      </tr>
+
+      <tr>
+        <td>field</td>
+        <td>th:field</td>
+        <td>Atributo do bean que faz a integração do Spring MVC ou seja o binding.</td>
+      </tr>
+
+      <tr>
+        <td>idField</td>
+        <td>String</td>
+        <td>Id do input, o mesmo deve ser único.</td>
+      </tr>
+
+      <tr>
+        <td>disabled</td>
+        <td>Boolean</td>
+        <td>Informa se o elemento está desativado ou não.</td>
+      </tr>
+
+      <tr>
+        <td>nameField</td>
+        <td>String</td>
+        <td>Name do elemento HTML.</td>
+      </tr>
+
+      <tr>
+        <td>placeholder</td>
+        <td>String</td>
+        <td>Placeholder do input.</td>
+      </tr>
+
+      <tr>
+        <td>required</td>
+        <td>Boolean</td>
+        <td>Informa se o elemento é obrigatório ou não.</td>
+      </tr>
+      
+      <tr>
+        <td>autofocus</td>
+        <td>Boolean</td>
+        <td>Define foco automático no input.</td>
+      </tr>
+
+      <tr>
+        <td>maxLength</td>
+        <td>Integer</td>
+        <td>Qunatidade máxima de caracteres.</td>
+      </tr>
+
+      <tr>
+        <td>readonly</td>
+        <td>Boolean</td>
+        <td>Define se o campo é somente leitura.</td>
+      </tr>
+
+      <tr>
+        <td>autocomplete</td>
+        <td>Boolean</td>
+        <td>Habilita autocmoplete do html.</td>
+      </tr>
+
+      <tr>
+        <td>numRows</td>
+        <td>Integer</td>
+        <td>Caso esse atributo seja declara o input será substituido por uma textarea onde a quantidade de linhas 
+        será definida pelo numRows.</td>
+      </tr>
+
+      <tr>
+        <td>pattern</td>
+        <td>Expressão regular</td>
+        <td>Expressão regular aplicada ao input. Mais informações no <a href="http://www.w3schools.com/tags/att_input_pattern.asp" target="_blank">aqui</a>. </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<h2 id="text-number-field-doc">Text Number field</h2>
+  <p>Text Number Field fornece um componente para entrada de dados numéricos em um input text.</p>
+
+  <div class="bs-example" >
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="form-group">
+          <div>
+            <label class="control-label" id="periodicidadeHorasLabel">
+              <span>Numérico</span>
+            </label>
+          </div>
+          
+          <div>
+            <input type="text" class="form-control numbersOnly" data-fv-notempty-message="The gender is required" id="numerico" maxlength="2" autocomplete="off" name="periodicidade" value="" data-bv-field="periodicidade"> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% highlight html %}
+<div class="col-xs-4">
+  <div th:replace="fragments/layout-input :: text-number-field(
+                                                                idField=idNumerico, 
+                                                                label=labelNumerico, 
+                                                                field='${object.atribute}',
+                                                                minValue=1, 
+                                                                maxLength=2, 
+                                                                maxValue=24)">
+  </div>
+</div>
+{% endhighlight %}
+
+<h2>Atributos / Opções</h2>
+<p>Atributos com <b>*</b> são obrigatórios.</p>
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+    <colgroup>
+      <col class="col-xs-1">
+      <col class="col-xs-1">
+      <col class="col-xs-7">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Atributo</th>
+        <th>Tipo</th>
+        <th>Descrição</th>
+      </tr>
+    </thead>
+    <tbody>
+       <tr>
+        <td>label</td>
+        <td>messages.properties</td>
+        <td>String que faz referência ao messages/internacionalização do módulo.</td>
+      </tr>
+
+      <tr>
+        <td>field</td>
+        <td>th:field</td>
+        <td>Atributo do bean que faz a integração do Spring MVC ou seja o binding.</td>
+      </tr>
+
+      <tr>
+        <td>idField</td>
+        <td>String</td>
+        <td>Id do input, o mesmo deve ser único.</td>
+      </tr>
+
+      <tr>
+        <td>disabled</td>
+        <td>Boolean</td>
+        <td>Informa se o elemento está desativado ou não.</td>
+      </tr>
+
+      <tr>
+        <td>nameField</td>
+        <td>String</td>
+        <td>Name do elemento HTML.</td>
+      </tr>
+
+      <tr>
+        <td>placeholder</td>
+        <td>String</td>
+        <td>Placeholder do input.</td>
+      </tr>
+
+      <tr>
+        <td>required</td>
+        <td>Boolean</td>
+        <td>Informa se o elemento é obrigatório ou não.</td>
+      </tr>
+      
+      <tr>
+        <td>autofocus</td>
+        <td>Boolean</td>
+        <td>Define foco automático no input.</td>
+      </tr>
+
+      <tr>
+        <td>maxLength</td>
+        <td>Integer</td>
+        <td>Qunatidade máxima de caracteres.</td>
+      </tr>
+
+      <tr>
+        <td>readonly</td>
+        <td>Boolean</td>
+        <td>Define se o campo é somente leitura.</td>
+      </tr>
+
+      <tr>
+        <td>autocomplete</td>
+        <td>Boolean</td>
+        <td>Habilita autocmoplete do html.</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<h2 id="number-field-doc">Number field</h2>
+  <p>Number Field fornece um componente para entrada de dados numéricos.</p>
+
+  <div class="bs-example" >
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="form-group number-field">
+            <div>
+              <label class="control-label" id="numericoLabel">
+                <span>Campo Numérico</span>
+              </label>
+            </div>
+            
+            <div>
+              <input type="number" class="form-control" id="periodicidadeHoras" maxlength="2" min="1" max="24" name="idNumericoField" value="" data-bv-field="idNumericoField">
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% highlight html %}
+<div class="col-xs-4">
+  <div th:replace="fragments/layout-input :: number-field(
+                                                          idField=idNumerico, 
+                                                          label=labelNumerico, 
+                                                          field='${object.atribute}',
+                                                          minValue=1, 
+                                                          maxLength=2, 
+                                                          maxValue=24)">
+  </div>
+</div>
+{% endhighlight %}
+
+<h2>Atributos / Opções</h2>
+<p>Atributos com <b>*</b> são obrigatórios.</p>
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+    <colgroup>
+      <col class="col-xs-1">
+      <col class="col-xs-1">
+      <col class="col-xs-7">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Atributo</th>
+        <th>Tipo</th>
+        <th>Descrição</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>label</td>
+        <td>messages.properties</td>
+        <td>String que faz referência ao messages/internacionalização do módulo.</td>
+      </tr>
+
+      <tr>
+        <td>field</td>
+        <td>th:field</td>
+        <td>Atributo do bean que faz a integração do Spring MVC ou seja o binding.</td>
+      </tr>
+
+      <tr>
+        <td>idField</td>
+        <td>String</td>
+        <td>Id do input, o mesmo deve ser único.</td>
+      </tr>
+
+      <tr>
+        <td>disabled</td>
+        <td>Boolean</td>
+        <td>Informa se o elemento está desativado ou não.</td>
+      </tr>
+
+      <tr>
+        <td>nameField</td>
+        <td>String</td>
+        <td>Name do elemento HTML.</td>
+      </tr>
+
+      <tr>
+        <td>placeholder</td>
+        <td>String</td>
+        <td>Placeholder do input.</td>
+      </tr>
+
+      <tr>
+        <td>required</td>
+        <td>Boolean</td>
+        <td>Informa se o elemento é obrigatório ou não.</td>
+      </tr>
+      
+      <tr>
+        <td>autofocus</td>
+        <td>Boolean</td>
+        <td>Define foco automático no input.</td>
+      </tr>
+
+      <tr>
+        <td>minValue</td>
+        <td>Numérico</td>
+        <td>Especifica um valor mínimo para o input. Mais informações <a href="http://www.w3schools.com/tags/att_input_min.asp" target="_blank"> aqui</a>.</td>
+      </tr>
+
+      <tr>
+        <td>maxValue</td>
+        <td>Numérico</td>
+        <td>Especifica um valor mínimo para o input. Mais informações <a href="http://www.w3schools.com/tags/att_input_min.asp" target="_blank"> aqui</a>.</td>
+      </tr>
+
+      <tr>
+        <td>maxLength</td>
+        <td>Numérico</td>
+        <td>Especifica quantidade máxima de caracteres do input.<a href="http://www.w3schools.com/tags/att_input_maxlength.asp" target="_blank"> aqui</a>.</td>
+      </tr>
+
+      <tr>
+        <td>onchange</td>
+        <td>Função</td>
+        <td>Nome da funação que será invocada no evento onchange do input, caso os valores sejam modificados.</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+
 </section>
