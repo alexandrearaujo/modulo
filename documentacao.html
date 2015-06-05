@@ -224,7 +224,7 @@ description: Documentação dos componentes reutilizáveis construídos com base
 <h2 id="date-field-doc">Date Field</h2>
 <p>Date field fornece um componente para entrada de datas no formato: dd/mm/yyyy</p>
 
-<p>O componente foi criado usando a lib <a href="http://bootstrap-datepicker.readthedocs.org/" target="_blank">Bootstrap datepicker</a> e no <a href="http://bootstrapvalidator.com" target="_blank">Bootstrap Validator</a>
+<p>O componente foi criado usando a libs: <a href="http://bootstrap-datepicker.readthedocs.org/" target="_blank">Bootstrap datepicker</a>, <a href="http://bootstrapvalidator.com" target="_blank">Bootstrap Validator</a>
   </p>
   <div class="bs-example" data-example-id="simple-thumbnails">
     <div class="row">
@@ -354,7 +354,169 @@ description: Documentação dos componentes reutilizáveis construídos com base
         <tr>
           <td>endDate</td>
           <td>String</td>
-          <td>Data final calendário.</td>
+          <td>Data final do calendário.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+<!-- Date-Field-Peiodo================================================================================================= -->
+<h2 id="date-field-periodo">Date Field Periodo</h2>
+<p>Date field fornece um conjunto de componentes para entrada de períodos de datas no formato: dd/mm/yyyy</p>
+<p>Ao selecinar a primeira data a segunda só permitirá data apartir da data selecionada inicialmente.</p>
+</br>
+<p>O componente foi criado usando a libs: <a href="http://bootstrap-datepicker.readthedocs.org/" target="_blank">Bootstrap datepicker</a>, <a href="http://bootstrapvalidator.com" target="_blank">Bootstrap Validator</a>
+  </p>
+  <div class="bs-example" data-example-id="simple-thumbnails">
+    <div class="row">
+      <form id="formDateFieldPeriodo">
+        <div class="col-xs-6">
+          <div class="date-field-periodo input-daterange form-group pull-left">
+            <label class="input-group control-label required" for="Modulo Server Front Module" id="dataInicioLabel">
+              <span>Período de datas</span>
+            </label>
+            <div class="input-group date">
+              <input class="input-small form-control create-date-picker-start-date" type="text" id="dataInicio" data-bv-notempty="true" data-idform="listForm" data-requiredperiodo="true" name="horarioInicial" value="" autocomplete="off" data-bv-field="horarioInicial">
+
+              <div class="input-group-addon calendar btn startDate" data-target="dataInicio">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </div>
+              
+              <span class="input-group-addon to">&nbsp; a &nbsp;</span>
+               
+              <input class="input-small form-control create-date-picker-end-date" type="text" id="dataFim" data-idform="formDateFieldPeriodo" data-requiredPeriodoEndDate="true"name="horarioInicial" value="" autocomplete="off" data-bv-field="horarioInicial">
+               
+              <div class="input-group-addon calendar btn endDate" data-target="dataFim">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </div>
+            </div>
+            <small class="help-block" data-bv-validator="notEmpty" data-bv-for="horarioInicial" data-bv-result="NOT_VALIDATED" style="display: none;">Por favor insira um valor</small>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+{% highlight html %}
+<div class="col-xs-4">
+  <div th:replace="fragments/layout-temporal :: date-field-periodo(
+                                                                    idField='dataInicio', 
+                                                                    idFieldEndDate='dataFim', 
+                                                                    labelPeriodo=periodoDatas, 
+                                                                    field='${objeto.dataDeInicio}', 
+                                                                    fieldEndDate='${objeto.dataFinal}', 
+                                                                    idForm='formDateFieldPeriodo',
+                                                                    requiredPeriodo=true,
+                                                                    requiredPeriodoEndDate=true)">
+  </div>
+</div>
+{% endhighlight %}
+
+<h2>Atributos / Opções</h2>
+<p>Atributos com <b>*</b> são obrigatórios.</p>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <colgroup>
+        <col class="col-xs-1">
+        <col class="col-xs-1">
+        <col class="col-xs-7">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Atributo</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td>labelPeriodo</td>
+          <td>messages.properties</td>
+          <td>String que faz referência ao messages/internacionalização do módulo.</td>
+        </tr>
+
+        <tr>
+          <td>field</td>
+          <td>th:field</td>
+          <td>Atributo do bean que faz a integração do Spring MVC ou seja o binding da primeira data.</td>
+        </tr>
+
+        <tr>
+          <td>fieldEndDate</td>
+          <td>th:field</td>
+          <td>Atributo do bean que faz a integração do Spring MVC ou seja o binding da segunda data.</td>
+        </tr>
+
+        <tr>
+          <td>idField</td>
+          <td>String</td>
+          <td>Id do input da primeira data, o mesmo deve ser único.</td>
+        </tr>
+
+        <tr>
+          <td>idFieldEndDate</td>
+          <td>String</td>
+          <td>Id do input da segunda data, o mesmo deve ser único.</td>
+        </tr>
+
+        <tr>
+          <td>placeholder</td>
+          <td>String</td>
+          <td>Placeholder da primeira data.</td>
+        </tr>
+
+        <tr>
+          <td>placeholderEndDate</td>
+          <td>String</td>
+          <td>Placeholder da segunda data.</td>
+        </tr>
+
+        <tr>
+          <td>requiredPeriodo</td>
+          <td>Boolean</td> 
+          <td>Informa se a primeira data do período é obrigatório ou não.</td>
+        </tr>
+        
+        <tr>
+          <td>requiredPeriodoEndDate</td>
+          <td>Boolean</td> 
+          <td>Informa se a segunda data do período é obrigatório ou não.</td>
+        </tr>
+        
+        <tr>
+          <td>autofocus</td>
+          <td>Boolean</td>
+          <td>Define foco automático na primeira data.</td>
+        </tr>
+
+        <tr>
+          <td>autofocusEndDate</td>
+          <td>Boolean</td>
+          <td>Define foco automático no input da segunda data.</td>
+        </tr>
+  
+        <tr>
+          <td>startDate</td>
+          <td>String</td>
+          <td>Data inicial do calendário.</td>
+        </tr>
+
+        <tr>
+          <td>endDate</td>
+          <td>String</td>
+          <td>Data final do calendário.</td>
+        </tr>
+
+         <tr>
+          <td>disabledStartDate</td>
+          <td>Boolean</td>
+          <td>Informa se a primeira data está ativa ou não.</td>
+        </tr>
+
+        <tr>
+          <td>disabledEndDate</td>
+          <td>Boolean</td>
+          <td>Informa se a segunda data está ativa ou não.</td>
         </tr>
       </tbody>
     </table>
