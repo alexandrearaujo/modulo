@@ -8,6 +8,6 @@ import br.com.mv.geral.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-	public User findByLogin(String login);
+	public User findByLoginIgnoringCase(String login);
 
 }

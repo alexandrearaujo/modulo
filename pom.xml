@@ -32,23 +32,32 @@
 		<spring-security.version>LATEST</spring-security.version>
 	</properties>
 	
-	<repositories>
-		<repository>
-			<id>MVProxy</id>
-			<name>MV Proxy Repository</name>
-			<url>http://echo.mvfor.local/nexus/content/groups/public</url>
-			<layout>default</layout>
-		</repository>
-	</repositories>
-	
-	<pluginRepositories>
-		<pluginRepository>
-			<id>MVProxy</id>
-			<name>MV Proxy Repository</name>
-			<url>http://echo.mvfor.local/nexus/content/groups/public</url>
-			<layout>default</layout>
-		</pluginRepository>
-	</pluginRepositories>
+	<profiles>
+		<profile>
+			<id>env-mv-dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			
+			<repositories>
+				<repository>
+					<id>MVProxy</id>
+					<name>MV Proxy Repository</name>
+					<url>http://echo.mvfor.local/nexus/content/groups/public</url>
+					<layout>default</layout>
+				</repository>
+			</repositories>
+			
+			<pluginRepositories>
+				<pluginRepository>
+					<id>MVProxy</id>
+					<name>MV Proxy Repository</name>
+					<url>http://echo.mvfor.local/nexus/content/groups/public</url>
+					<layout>default</layout>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+	</profiles>
 	
 	<distributionManagement>
 		<repository>

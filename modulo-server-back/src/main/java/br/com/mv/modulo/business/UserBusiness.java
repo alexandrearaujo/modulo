@@ -17,7 +17,7 @@ public class UserBusiness {
 	UserRepository userRepository;
 	
 	public User findByLogin(String login) {
-		User user = userRepository.findByLogin(login);
+		User user = userRepository.findByLoginIgnoringCase(login);
 		Hibernate.initialize(user.getCidadao());
 		Hibernate.initialize(user.getCidadao().getProfissionalSigas().getVinculoProfissionals());
 		for (VinculoProfissionalSigas vinculoProfissionalSigas : user.getCidadao().getProfissionalSigas().getVinculoProfissionals()) {
