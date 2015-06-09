@@ -7,4 +7,3 @@ sudo gem install jekyll-mentions
 sudo gem install jemoji
 sudo gem install jekyll-redirect-from
 sudo gem install jekyll-sitemap
-jekyll serve --host 0.0.0.0 --watch
