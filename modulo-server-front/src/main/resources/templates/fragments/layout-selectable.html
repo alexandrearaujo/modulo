@@ -8,12 +8,12 @@
 	<!-- Select-Field -->
 	<div class="form-group" th:fragment="select-field">
 		<div>
-			<label th:if="${idcomponente}" class="control-label" th:classappend="${required} ? 'required' : ''" for="${name}"
+			<label th:if="${idcomponente}" class="control-label" th:classappend="${required} ? 'required' : ''" for="${nameField}"
 			       th:id="__${idcomponente}__+Label">
 				<span th:text="#{${label}}"></span>
 			</label>
 			
-			<label th:unless="${idcomponente}" class="control-label" th:classappend="${required} ? 'required' : ''" for="${name}">
+			<label th:unless="${idcomponente}" class="control-label" th:classappend="${required} ? 'required' : ''" for="${nameField}">
 				<span th:text="#{${label}}"></span>
 			</label>
 		</div>
@@ -24,7 +24,8 @@
 				   <option th:if="${list}" th:each="i : ${list}" th:text="${i.__${text}__}" th:value="${i.__${value}__}"/>
 				   <option th:if="${listEnum}" th:each="i : ${listEnum}" th:text="#{${i}}" th:value="${i}"/>
 			</select>
-			<input th:hidden="true" th:id="${idField}" th:value="${fieldid}" />
+			<!--  <input th:hidden="true" th:id="${idField}" th:value="${fieldid}" /> -->
+			
 	</div>
 	
 	

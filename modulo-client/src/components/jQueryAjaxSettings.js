@@ -41,7 +41,6 @@ jQuery(document).ready(function(){
 	initDateFieldPeriodo();
 	initPaginationBar();
 	initNumberField();
-	initCheckboxField();
 	fncBlurCombo();
 	initAutoComplete();
 	formatMask();
