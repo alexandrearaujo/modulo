@@ -975,7 +975,7 @@ description: Documentação dos componentes reutilizáveis construídos com base
   <div class="col-xs-4">
       <div th:replace="fragments/layout-selectable :: select-field(
                                                                       label=labelDoSelect, 
-                                                                      field='${itemDoSelect}',
+                                                                      field='${itemDoSelect.id}',
                                                                       list=${listOuEnums}, 
                                                                       text='atributoParaTextoDoOption', 
                                                                       value='atributoParaValueDoOption', 
@@ -1095,4 +1095,136 @@ description: Documentação dos componentes reutilizáveis construídos com base
       </tbody>
     </table>
   </div>
+
+  <h2 id="checkbox-field-doc">Checkbox Field</h2>
+    <p>Fornece um componente Checkbox.</p>
+    <p>O componente foi criado usando a libs: <a href="http://flatlogic.github.io/awesome-bootstrap-checkbox/demo/" target="_blank">Awesome Bootstrap Checkbox</a>
+
+    <div class="bs-example" >
+      <div class="row">
+          <div class="col-xs-4 col-md-4">
+            <div class="checkbox">
+              <input type="checkbox" id="isCidPadronizado" checked="checked" value="true">
+              <label>
+                <span data-original-title="" data-toggle="tooltip">CID Padronizado?</span>
+              </label>
+            </div>
+          </div>
+      </div>
+    </div>
+  {% highlight html %}
+  <div class="col-xs-4">
+    <div th:replace="fragments/layout-selectable :: checkbox-field(
+                                                                    idField='isCidPadronizado', 
+                                                                    value='${cidPadronizado}',
+                                                                    label=checkBoxCidPadronizado, 
+                                                                    checked='${isChecked}')">
+    </div>
+  </div>
+  {% endhighlight %}
+  <h2>Atributos / Opções</h2>
+  <p>Atributos com <b>*</b> são obrigatórios.</p>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <colgroup>
+        <col class="col-xs-1">
+        <col class="col-xs-1">
+        <col class="col-xs-7">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Atributo</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>label</td>
+          <td>messages.properties</td>
+          <td>String que faz referência ao messages/internacionalização do módulo.</td>
+        </tr>
+
+        <tr>
+          <td>idField</td>
+          <td>String</td>
+          <td>Id do input, o mesmo deve ser único.</td>
+        </tr>
+
+        <tr>
+          <td>name</td>
+          <td>String</td>
+          <td>Name do elemento HTML.</td>
+        </tr>
+
+        <tr>
+          <td>disabled</td>
+          <td>Boolean</td>
+          <td>Informa se o elemento está desativado ou não.</td>
+        </tr>
+
+        <tr>
+          <td>placeholder</td>
+          <td>String</td>
+          <td>Placeholder do input.</td>
+        </tr>
+
+        <tr>
+          <td>required</td>
+          <td>Boolean</td>
+          <td>Informa se o elemento é obrigatório ou não.</td>
+        </tr>
+        
+        <tr>
+          <td>autofocus</td>
+          <td>Boolean</td>
+          <td>Define foco automático no input.</td>
+        </tr>
+
+        <tr>
+          <td>checked</td>
+          <td>Boolean</td>
+          <td>Informa se o checkbox está checked ou não.</td>
+        </tr>
+
+        <tr>
+          <td>value</td>
+          <td>String</td>
+          <td>Value do checkbox.</td>
+        </tr>
+
+        <tr>
+          <td>addClassCss</td>
+          <td>String</td>
+          <td>String que será adicionada ao class do elmento. Helper class <a href="http://flatlogic.github.io/awesome-bootstrap-checkbox/demo/" target="_blank">aqui</a>.</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+
+
+
+
+<!-- ================================================= -->
+
+  <h2 id="radio-field-doc">Radio Field</h2>
+    <p>//TODO</p>
+
+    <div class="bs-example" >
+    <div class="row">
+      //TODO
+    </div>
+    </div>
+  {% highlight html %}
+  <div class="col-xs-4">
+  //TODO
+  </div>
+  {% endhighlight %}
+
+  <h2>Atributos / Opções</h2>
+  <p>Atributos com <b>*</b> são obrigatórios.</p>
+  //TODO
+
 </section>
