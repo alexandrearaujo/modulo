@@ -25,3 +25,7 @@ function fncBlurCombo(){
 	    $(vIdentificador).val($(vElemento).val());
 	});
 }
+
+function fixCheckboxWithThymeleaf(){
+	$('.checkbox input[type=hidden]').insertBefore($('.checkbox input[type=checkbox ]'));
+}

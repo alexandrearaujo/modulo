@@ -105,7 +105,8 @@
 				   data:url="${endpoint}"
 				   data:parametros="${keys}"
 				   data:possuiParametros="${keys != null ? true:false}"
-				   data:funcaoNome="${fncName}" />
+				   data:funcaoNome="${fncName}" 
+				   data:bind="${dataBind}" />
 				   
 				    
 			<input th:unless="${fieldHidden}" th:required="${required}" th:name="${nameHidden}" th:hidden="true" class="input-autocomplete"
@@ -117,7 +118,8 @@
 				   data:url="${endpoint}"
 				   data:parametros="${keys}"
 				   data:possuiParametros="${keys != null ? true:false}"
-				   data:funcaoNome="${fncName}" />
+				   data:funcaoNome="${fncName}" 
+				   data:bind="${dataBind}" />
 		 	
 			<input th:if="${field}" th:id="${idCampo}" type="text" th:name="${nameField} == null ? ${idCampo} : ${nameField}" 
 				   th:value="${field}" th:disabled="${disabled}" th:onblur="${onblur}" class="form-control typeahead input-autocomplete"
@@ -128,7 +130,8 @@
 				   data:url="${endpoint}"
 				   data:parametros="${keys}"
 				   data:possuiParametros="${keys != null ? true:false}"
-				   data:funcaoNome="${fncName}" />
+				   data:funcaoNome="${fncName}" 
+				   data:bind="${dataBind}" />
 				   
 				   
 			<input th:unless="${field}" th:id="${idCampo}" type="text" th:name="${idCampo}" class="form-control typeahead input-autocomplete" th:onblur="${onblur}" th:disabled="${disabled}"
@@ -139,7 +142,8 @@
 				   data:url="${endpoint}"
 				   data:parametros="${keys}"
 				   data:possuiParametros="${keys != null ? true:false}"
-				   data:funcaoNome="${fncName}" />
+				   data:funcaoNome="${fncName}" 
+				   data:bind="${dataBind}" />
 		</div>
 	</div>
 </body>

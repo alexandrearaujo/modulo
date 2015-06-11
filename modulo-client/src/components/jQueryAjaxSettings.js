@@ -3,23 +3,24 @@ function ajaxSetup(){
 	/*
 	 * Dispencacao
 	 */
-//	$.ajaxSetup({
-//		beforeSend: function( xhr ) {
-//			var token = $("meta[name='_csrf']").attr("content");
-//			var header = $("meta[name='_csrf_header']").attr("content");
-//			xhr.setRequestHeader(header, token);
-//	 	}
-//	});
+	$.ajaxSetup({
+		beforeSend: function( xhr ) {
+			var token = $("meta[name='_csrf']").attr("content");
+			var header = $("meta[name='_csrf_header']").attr("content");
+			xhr.setRequestHeader(header, token);
+	 	}
+	});
 	
 	/*
 	 * Estratificacao
 	 */
+	/* Default request without spring security
 	$.ajaxSetup({
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
          }
-    });
+    });*/
 }
 
 jQuery(document).ajaxComplete( function(){
@@ -42,6 +43,7 @@ jQuery(document).ready(function(){
 	initPaginationBar();
 	initNumberField();
 	fncBlurCombo();
+	fixCheckboxWithThymeleaf();
 	initAutoComplete();
 	formatMask();
 	fncUppercase();

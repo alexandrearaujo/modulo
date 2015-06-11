@@ -32,25 +32,31 @@
 	<!-- Checkbox-Field -->
 	<div class="checkbox" th:classappend="${addClassCss}" th:fragment="checkbox-field">
 		<input  type="checkbox" 
-				th:disabled="${disabled}"
 				th:id="${idField}"
 				th:name="${nameField}"
-				th:value="__${value}__"
-				th:checked="__${checked}__"
+				th:disabled="${disabled}"
+				th:field="__${field}__" 
+				th:value="__${value}__" 
 				th:autofocus="${autofocus}"
-				data:bv-notempty="${required}" />
-		<label>
-			<span th:text="#{${label}}" data:original-title="${tooltip} != null ? #{${tooltip}} : ''" data:toggle="tooltip"></span>
+				data:bv-notempty="${required}"/> 
+				
+		<label th:for="${nameField}">
+			<span th:text="#{${label}}" ></span>
 		</label>
 	</div>
 	
-	
-	<!-- Radio-Field -->
-	<div class="radio" th:classappend="${classCss}" th:fragment="radio-field">
-	    <input type="radio" th:id="${idField}" th:name="${nameField}" th:field="__${field}__" th:onchange="${onchange}"
-	    	   th:value="${value}" th:checked="${checked}" th:required="${required}"/>
-		<label th:for="${idField}">
-		    <span th:text="#{${label}}" style="font-weight: normal;"></span>
+	<div class="radio radio-inline" th:classappend="${addClassCss}" th:fragment="radio-field">
+		<input  type="radio" 
+				th:id="${idField}"
+				th:name="${nameField}"
+				th:disabled="${disabled}" 
+				th:field="__${field}__"
+				th:value="__${value}__" 
+				th:autofocus="${autofocus}"
+				data:bv-notempty="${required}" /> 
+			
+		<label th:for="${nameField}"> 
+			<span th:text="${label} != null ?  #{${label}}:#{geral.sim}"></span>
 		</label>
 	</div>
 
