@@ -1102,23 +1102,39 @@ description: Documentação dos componentes reutilizáveis construídos com base
 
     <div class="bs-example" >
       <div class="row">
-          <div class="col-xs-4 col-md-4">
-            <div class="checkbox">
-              <input type="checkbox" id="isCidPadronizado" checked="checked" value="true">
-              <label>
-                <span data-original-title="" data-toggle="tooltip">CID Padronizado?</span>
-              </label>
+          <div class="col-xs-4">
+            <div class="form-group">
+              <div>
+                <label class="control-label"> 
+                  <span>Dispensar no retorno ?</span>
+                </label>
+              </div>
+                      
+              <div class="checkbox">
+                <input type="hidden" name="_checkSim" value="on">
+                <input type="checkbox" id="checkSim" name="checkSim" value="true">
+                <label>
+                  <span>Sim</span>
+                </label>
+              </div>        
             </div>
           </div>
       </div>
     </div>
   {% highlight html %}
   <div class="col-xs-4">
-    <div th:replace="fragments/layout-selectable :: checkbox-field(
-                                                                    idField='isCidPadronizado', 
-                                                                    value='${cidPadronizado}',
-                                                                    label=checkBoxCidPadronizado, 
-                                                                    checked='${isChecked}')">
+    <div class="form-group">
+      <div>
+        <label class="control-label"> <span
+          th:text="#{dispensarRetorno}"></span>
+        </label>
+      </div>
+      <div th:replace="fragments/layout-selectable :: checkbox-field(
+                                                                      idField=checkSim, 
+                                                                      label=geral.sim, 
+                                                                      field='${object.atribute}',
+                                                                      value='${object.atribute}')">
+      </div>
     </div>
   </div>
   {% endhighlight %}
@@ -1152,6 +1168,12 @@ description: Documentação dos componentes reutilizáveis construídos com base
         </tr>
 
         <tr>
+          <td>field</td>
+          <td>th:field</td>
+          <td>Atributo do bean que faz a integração do Spring MVC ou seja o binding.</td>
+        </tr>
+
+        <tr>
           <td>nameField</td>
           <td>String</td>
           <td>Name do elemento HTML.</td>
@@ -1164,12 +1186,6 @@ description: Documentação dos componentes reutilizáveis construídos com base
         </tr>
 
         <tr>
-          <td>placeholder</td>
-          <td>String</td>
-          <td>Placeholder do input.</td>
-        </tr>
-
-        <tr>
           <td>required</td>
           <td>Boolean</td>
           <td>Informa se o elemento é obrigatório ou não.</td>
@@ -1179,12 +1195,6 @@ description: Documentação dos componentes reutilizáveis construídos com base
           <td>autofocus</td>
           <td>Boolean</td>
           <td>Define foco automático no input.</td>
-        </tr>
-
-        <tr>
-          <td>checked</td>
-          <td>Boolean</td>
-          <td>Informa se o checkbox está checked ou não.</td>
         </tr>
 
         <tr>
@@ -1212,42 +1222,53 @@ description: Documentação dos componentes reutilizáveis construídos com base
     <div class="bs-example" >
       <div class="row">
         <div class="col-xs-4 col-md-4">
-            <div class="radio">
-              <input type="radio" name="horarioInicial" value="1">
-               
-              <label>
-                 <span>Horário inicial</span>
-              </label> 
-            </div>
-
-            <div class="radio">
-              <input type="radio" name="horarioInicial" checked="checked" value="2">
-               
-              <label>
-                 <span>Horário inicial</span>
-              </label> 
+            <div class="form-group">
+              <div>
+                <label class="control-label required"> <span>Situação</span>
+                </label>
+              </div>
+                      
+              <div class="radio radio-inline">
+                <input type="radio" id="rdoSimAtivo" name="ativo" value="true" data-bv-notempty="true" data-bv-field="ativo"> 
+                  
+                <label> 
+                  <span>Sim</span>
+                </label>
+              </div>
+                      
+              <div class="radio radio-inline">
+                <input type="radio" id="rdoNaoAtivo" name="ativo" value="false" data-bv-notempty="true" checked="checked" data-bv-field="ativo"> 
+                  
+                <label> 
+                  <span>Não</span>
+                </label>
+              </div>
             </div>
         </div>
       </div>
     </div>
   {% highlight html %}
   <div class="col-xs-4">
-    <div class="col-xs-4 col-md-4">
-      <div th:replace="fragments/layout-selectable :: radio-field(
-                                                                  idField=rdoBoolean, 
-                                                                  label=cidPadronizado, 
-                                                                  value='${cidPadronizado}',
-                                                                  nameField=cidPadronizado
-                                                                  value=1)">
-      </div>
+    <div class="form-group">
+        <div>
+          <label class="control-label"> 
+            <span th:text="#{situacao}"></span>
+          </label>
+        </div>
 
-      <div th:replace="fragments/layout-selectable :: radio-field(
-                                                                  label=cidPadronizado, 
-                                                                  value='${cidPadronizado}',
-                                                                  nameField=cidPadronizado,
-                                                                  checked='true', 
-                                                                  value=2)">
-      </div>
+        <div th:replace="fragments/layout-selectable :: radio-field(
+                                                                    idField=rdoSimAtivo, 
+                                                                    label=geral.sim, 
+                                                                    field='${ativo}',
+                                                                    value=true)">
+        </div>
+
+        <div th:replace="fragments/layout-selectable :: radio-field(
+                                                                    idField=rdoNaoAtivo, 
+                                                                    label=geral.sim, 
+                                                                    field='${ativo}',
+                                                                    value=false)">
+        </div>
     </div>
   </div>
   {% endhighlight %}
@@ -1282,6 +1303,12 @@ description: Documentação dos componentes reutilizáveis construídos com base
         </tr>
 
         <tr>
+          <td>field</td>
+          <td>th:field</td>
+          <td>Atributo do bean que faz a integração do Spring MVC ou seja o binding.</td>
+        </tr>
+
+        <tr>
           <td>nameField</td>
           <td>String</td>
           <td>Name do elemento HTML.</td>
@@ -1294,12 +1321,6 @@ description: Documentação dos componentes reutilizáveis construídos com base
         </tr>
 
         <tr>
-          <td>placeholder</td>
-          <td>String</td>
-          <td>Placeholder do input.</td>
-        </tr>
-
-        <tr>
           <td>required</td>
           <td>Boolean</td>
           <td>Informa se o elemento é obrigatório ou não.</td>
@@ -1309,12 +1330,6 @@ description: Documentação dos componentes reutilizáveis construídos com base
           <td>autofocus</td>
           <td>Boolean</td>
           <td>Define foco automático no input.</td>
-        </tr>
-
-        <tr>
-          <td>checked</td>
-          <td>Boolean</td>
-          <td>Informa se o checkbox está checked ou não.</td>
         </tr>
 
         <tr>
