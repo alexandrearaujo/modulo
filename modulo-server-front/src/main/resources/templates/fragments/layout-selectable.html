@@ -30,14 +30,20 @@
 	
 	
 	<!-- Checkbox-Field -->
-	<div class="checkbox" th:classappend="${classCss}" th:fragment="checkbox-field">
-		<input type="checkbox" th:disabled="${disabled}" th:id="${idField}" th:field="__${field}__"
-			   th:checked="${checked}" data:onchange="${onchange}" th:value="${__${value}__}"/>
-		<label th:for="${idField}">
+	<div class="checkbox" th:classappend="${addClassCss}" th:fragment="checkbox-field">
+		<input  type="checkbox" 
+				th:disabled="${disabled}"
+				th:id="${idField}"
+				th:name="${nameField}"
+				th:value="__${value}__"
+				th:checked="__${checked}__"
+				th:autofocus="${autofocus}"
+				data:bv-notempty="${required}" />
+		<label>
 			<span th:text="#{${label}}" data:original-title="${tooltip} != null ? #{${tooltip}} : ''" data:toggle="tooltip"></span>
 		</label>
 	</div>
-
+	
 	
 	<!-- Radio-Field -->
 	<div class="radio" th:classappend="${classCss}" th:fragment="radio-field">
@@ -47,5 +53,6 @@
 		    <span th:text="#{${label}}" style="font-weight: normal;"></span>
 		</label>
 	</div>
+
 </body>
 </html>
