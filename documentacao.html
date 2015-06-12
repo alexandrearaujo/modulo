@@ -211,6 +211,12 @@ description: Documentação dos componentes reutilizáveis construídos com base
           <td>Boolean</td>
           <td>Recomendado false. Para mais informações veja a documentação no tópico <a href="http://jdewit.github.io/bootstrap-timepicker/" target="_blank">template</a>.</td>
         </tr>
+
+        <tr>
+          <td>dataBind</td>
+          <td>String</td>
+          <td>Atributo que referencia o bind knockoutjs para o lemento. Mais informações <a href="http://knockoutjs.com/documentation/binding-syntax.html" target="_blanck"> aqui</a>. </td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -350,6 +356,12 @@ description: Documentação dos componentes reutilizáveis construídos com base
           <td>endDate</td>
           <td>String</td>
           <td>Data final do calendário.</td>
+        </tr>
+
+        <tr>
+          <td>dataBind</td>
+          <td>String</td>
+          <td>Atributo que referencia o bind knockoutjs para o lemento. Mais informações <a href="http://knockoutjs.com/documentation/binding-syntax.html" target="_blanck"> aqui</a>. </td>
         </tr>
       </tbody>
     </table>
@@ -513,6 +525,18 @@ description: Documentação dos componentes reutilizáveis construídos com base
           <td>Boolean</td>
           <td>Informa se a segunda data está ativa ou não.</td>
         </tr>
+
+        <tr>
+          <td>dataBindStartDate</td>
+          <td>String</td>
+          <td>Atributo que referencia o bind knockoutjs para a primeira data. Mais informações <a href="http://knockoutjs.com/documentation/binding-syntax.html" target="_blanck"> aqui</a>. </td>
+        </tr>
+
+        <tr>
+          <td>dataBindEndDate</td>
+          <td>String</td>
+          <td>Atributo que referencia o bind knockoutjs para a segunda data. Mais informações <a href="http://knockoutjs.com/documentation/binding-syntax.html" target="_blanck"> aqui</a>. </td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -669,6 +693,12 @@ description: Documentação dos componentes reutilizáveis construídos com base
         <td>pattern</td>
         <td>Expressão regular</td>
         <td>Expressão regular aplicada ao input. Mais informações no <a href="http://www.w3schools.com/tags/att_input_pattern.asp" target="_blank">aqui</a>. </td>
+      </tr>
+
+      <tr>
+        <td>dataBind</td>
+        <td>String</td>
+        <td>Atributo que referencia o bind knockoutjs para o lemento. Mais informações <a href="http://knockoutjs.com/documentation/binding-syntax.html" target="_blanck"> aqui</a>. </td>
       </tr>
 
     </tbody>
@@ -917,6 +947,12 @@ description: Documentação dos componentes reutilizáveis construídos com base
         <td>Nome da funação que será invocada no evento onchange do input, caso os valores sejam modificados.</td>
       </tr>
 
+      <tr>
+        <td>dataBind</td>
+        <td>String</td>
+        <td>Atributo que referencia o bind knockoutjs para o lemento. Mais informações <a href="http://knockoutjs.com/documentation/binding-syntax.html" target="_blanck"> aqui</a>. </td>
+      </tr>
+
     </tbody>
   </table>
 </div>
@@ -1092,6 +1128,12 @@ description: Documentação dos componentes reutilizáveis construídos com base
           <td>Função</td>
           <td>Nome da funação que será invocada no evento onchange do input, caso os valores sejam modificados.</td>
         </tr>
+
+        <tr>
+          <td>dataBind</td>
+          <td>String</td>
+          <td>Atributo que referencia o bind knockoutjs para o lemento. Mais informações <a href="http://knockoutjs.com/documentation/binding-syntax.html" target="_blanck"> aqui</a>. </td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -1204,9 +1246,15 @@ description: Documentação dos componentes reutilizáveis construídos com base
         </tr>
 
         <tr>
-          <td>addClassCss</td>
+          <td>addClass</td>
           <td>String</td>
           <td>String que será adicionada ao class do elmento. Helper class <a href="http://flatlogic.github.io/awesome-bootstrap-checkbox/demo/" target="_blank">aqui</a>.</td>
+        </tr>
+
+        <tr>
+          <td>dataBind</td>
+          <td>String</td>
+          <td>Atributo que referencia o bind knockoutjs para o lemento. Mais informações <a href="http://knockoutjs.com/documentation/binding-syntax.html" target="_blanck"> aqui</a>. </td>
         </tr>
 
       </tbody>
@@ -1339,12 +1387,403 @@ description: Documentação dos componentes reutilizáveis construídos com base
         </tr>
 
         <tr>
-          <td>addClassCss</td>
+          <td>addClass</td>
           <td>String</td>
           <td>String que será adicionada ao class do elmento. Helper class <a href="http://flatlogic.github.io/awesome-bootstrap-checkbox/demo/" target="_blank">aqui</a>.</td>
+        </tr>
+
+        <tr>
+          <td>dataBind</td>
+          <td>String</td>
+          <td>Atributo que referencia o bind knockoutjs para o lemento. Mais informações <a href="http://knockoutjs.com/documentation/binding-syntax.html" target="_blanck"> aqui</a>. </td>
         </tr>
       </tbody>
     </table>
   </div>
 
+</section>
+
+<section class="bs-docs-section">
+  <h1 id="bar" class="page-header">Bar</h1>
+  <blockquote>
+    Fornece agrupamentos de botões para agilizar a criação de crud's.
+  </blockquote>
+
+  <h2 id="search-group-button-doc">Search Group Button</h2>
+    <p>Agrupamento de botões padrão para telas de listagem.</p>
+
+    <div class="bs-example" >
+      <div class="row">
+        <div class="col-xs-4 col-md-2">
+          <button type="submit" id="btnPesquisar" class="btn btn-default" data-original-title="Pesquisar" data-toggle="tooltip">
+            <i class="fa fa-search mv-color-green"></i>
+          </button>
+          
+          <button class="btn btn-default" type="reset" id="btnLimpar">
+            <i class="fa fa-eraser mv-color-green"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  {% highlight html %}
+  <div class="col-xs-4 col-md-2">
+    <div th:replace="fragments/layout-bar :: search-group-button(btnClear=true)"></div>
+  </div>
+  {% endhighlight %}
+
+  <h2>Atributos / Opções</h2>
+  <p>Atributos com <b>*</b> são obrigatórios.</p>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <colgroup>
+        <col class="col-xs-1">
+        <col class="col-xs-1">
+        <col class="col-xs-7">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Atributo</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>dataBindSearch</td>
+          <td>String</td>
+          <td>Atributo que referencia o bind knockoutjs para o button de busca. Mais informações <a href="http://knockoutjs.com/documentation/binding-syntax.html" target="_blanck"> aqui</a>. </td>
+        </tr>
+
+        <tr>
+          <td>btnClear</td>
+          <td>Boolean</td>
+          <td>Informa se se haverá botão para limpar o formulário ou não.</td>
+        </tr>
+        
+        <tr>
+          <td>dataBindClear</td>
+          <td>String</td>
+          <td>Atributo que referencia o bind knockoutjs para o button limpar. Mais informações <a href="http://knockoutjs.com/documentation/binding-syntax.html" target="_blanck"> aqui</a>. </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <h2 id="default-crud-bar-doc">Crud Bar</h2>
+    <p>Fornece um conjunto de botões com as ações padrões para um crud simples. </p>
+
+  <div class="bs-example" >
+    <div class="row">
+      <div class="row well crud-bar">
+        <div class="col-md-*">
+          <button class="btn btn-default" type="submit" id="btnSalvar" name="btnSalvar" data-placement="top" data-original-title="Salvar" data-toggle="tooltip">
+            
+              <i class="fa fa-save mv-color-green"></i>
+              
+           </button>
+           
+           <button class="btn btn-default" type="reset" id="btnLimpar" data-placement="top" data-original-title="Limpar" data-toggle="tooltip">
+            
+              <i class="fa fa-eraser mv-color-green"></i>
+           </button>
+          
+          <a type="button" class="btn btn-default" href="/demo/tipoFrequencia/list" data-placement="top" data-original-title="Voltar" data-toggle="tooltip">
+            
+              <i class="fa fa-reply mv-color-green"></i>
+          </a>
+          
+          <a class="btn btn-default" href="/demo/tipoFrequencia/new" data-placement="top" data-original-title="Novo" data-toggle="tooltip">
+            
+              <i class="fa fa-file mv-color-green"></i>
+              
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% highlight html %}
+  <div class="ol-md-*">
+    <div th:replace="fragments/layout-bar :: default-crud-bar(
+                                                                newButton=true, 
+                                                                urlNew='/tipoFrequencia/new', 
+                                                                cancelButton=true,
+                                                                urlCancel='/tipoFrequencia/list',
+                                                                saveButton=true, 
+                                                                clearButton=true)">
+    </div>
+
+  </div>
+  {% endhighlight %}
+
+  <h2>Atributos / Opções</h2>
+  <p>Atributos com <b>*</b> são obrigatórios.</p>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <colgroup>
+        <col class="col-xs-1">
+        <col class="col-xs-1">
+        <col class="col-xs-7">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Atributo</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>relativeBar</td>
+          <td>Boolean</td>
+          <td>Define se o elemento será fixado próximo ao footer ou se ele irá se posicionar de forma relativa ao final do container.</td>
+        </tr>
+
+         <tr>
+          <td>saveButton</td>
+          <td>Boolean</td>
+          <td>Define se a barra conterá o botão de salvar.</td>
+        </tr>
+
+        <tr>
+          <td>saveActionForm</td>
+          <td>String</td>
+          <td>Action do form que o saveButton irá disparar. Mais informações <a href="http://www.w3schools.com/tags/att_button_formaction.asp" target="_blanck"> aqui</a>.</td>
+        </tr>
+
+        <tr>
+          <td>disabledSaveButton</td>
+          <td>Boolean</td>
+          <td>Informa se o saveButton está desativado ou não.</td>
+        </tr>
+
+        <tr>
+          <td>dataBindSave</td>
+          <td>String</td>
+          <td>Atributo que referencia o bind knockoutjs para o saveButton. Mais informações <a href="http://knockoutjs.com/documentation/binding-syntax.html" target="_blanck"> aqui</a>. </td>
+        </tr>
+
+        <tr>
+          <td>clearButton</td>
+          <td>Boolean</td>
+          <td>Define se a barra conterá o botão limpar.</td>
+        </tr>
+
+        <tr>
+          <td>disabledClearButton</td>
+          <td>Boolean</td>
+          <td>Informa se o ClearButton está desativado ou não.</td>
+        </tr>
+
+        <tr>
+          <td>dataBindClear</td>
+          <td>String</td>
+          <td>Atributo que referencia o bind knockoutjs para o clearButton. Mais informações <a href="http://www.w3schools.com/tags/att_button_formaction.asp" target="_blanck"> aqui</a>.</td>
+        </tr>
+
+        <tr>
+          <td>cancelButton</td>
+          <td>Boolean</td>
+          <td>Define se a barra conterá o botão cancelar.</td>
+        </tr>
+
+        <tr>
+          <td>disabledCanceButton</td>
+          <td>Boolean</td>
+          <td>Informa se o cancelButton está desativado ou não.</td>
+        </tr>
+
+        <tr>
+          <td>urlCancel</td>
+          <td>String/url</td>
+          <td>Url para o atributo href do botão cancelar.</td>
+        </tr>
+
+        <tr>
+          <td>dataBindCancel</td>
+          <td>String</td>
+          <td>Atributo que referencia o bind knockoutjs para o cancelButton. Mais informações <a href="http://www.w3schools.com/tags/att_button_formaction.asp" target="_blanck"> aqui</a>.</td>
+        </tr>
+
+         <tr>
+            <td>newButton</td>
+            <td>Boolean</td>
+            <td>Define se a barra conterá o botão cancelar.</td>
+          </tr>
+
+          <tr>
+            <td>disabledNewButton</td>
+            <td>Boolean</td>
+            <td>Informa se o cancelButton está desativado ou não.</td>
+          </tr>
+
+          <tr>
+            <td>urlNew</td>
+            <td>String/url</td>
+            <td>Url para o atributo href do botão cancelar.</td>
+          </tr>
+
+          <tr>
+            <td>dataBindNew</td>
+            <td>String</td>
+            <td>Atributo que referencia o bind knockoutjs para o newButton. Mais informações <a href="http://www.w3schools.com/tags/att_button_formaction.asp" target="_blanck"> aqui</a>.</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <h2 id="modal-group-button-footer-doc">Modal Group Button</h2>
+    <p>Fornece um conjunto de botões padrão para os footers dos modais.</p>
+
+    <div class="bs-example" >
+      <div class="row">
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-default" name="btnSucess" id="idBtnSucess">
+              <span class="glyphicon glyphicon-ok mv-color-green"></span>
+            <span>OK</span> 
+            </button>
+            
+            <button type="button" class="btn btn-default" data-dismiss="modal" name="btnCancel" id="idBtnCancel">
+            <span class="glyphicon glyphicon-ban-circle mv-color-green"></span>
+            <span>Cancelar</span> 
+          </button>
+        </div>
+      </div>
+    </div>
+  {% highlight html %}
+  <div class="col-xs-4">
+  <div th:replace="fragments/layout-bar :: modal-group-button-footer(
+                                                                      nameSucess='btnSucess', 
+                                                                      idSucess='idBtnSucess', 
+                                                                      sucessLabel=ok, 
+                                                                      nameCancel='btnCancel', 
+                                                                      idCancel='idBtnCancel', 
+                                                                      cancelLabel=cancel)">
+  </div>
+  </div>
+  {% endhighlight %}
+
+  <h2>Atributos / Opções</h2>
+  <p>Atributos com <b>*</b> são obrigatórios.</p>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <colgroup>
+        <col class="col-xs-1">
+        <col class="col-xs-1">
+        <col class="col-xs-7">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Atributo</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td>nameSucess</td>
+          <td>String</td>
+          <td>Name do elemento HTML.</td>
+        </tr>
+
+        <tr>
+          <td>idSucess</td>
+          <td>String</td>
+          <td>Id do sucessButton, o mesmo deve ser único.</td>
+        </tr>
+
+        <tr>
+          <td>sucessLabel</td>
+          <td>messages.properties</td>
+          <td>String que faz referência ao messages/internacionalização do módulo para o buttonSucess.</td>
+        </tr>
+
+        <tr>
+          <td>nameCancel</td>
+          <td>String</td>
+          <td>Name do elemento HTML.</td>
+        </tr>
+
+        <tr>
+          <td>idCancel</td>
+          <td>String</td>
+          <td>Id do cancelButton, o mesmo deve ser único.</td>
+        </tr>
+
+        <tr>
+          <td>cancelLabel</td>
+          <td>messages.properties</td>
+          <td>String que faz referência ao messages/internacionalização do módulo para o cancelButton.</td>
+        </tr>
+
+        <tr>
+          <td>addClass</td>
+          <td>String</td>
+          <td>String que será adicionada ao class do container dos buttons.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <h2 id="paginationBar-doc">Pagination</h2>
+    <p>//TODO</p>
+
+    <div class="bs-example" >
+    <div class="row">
+      //TODO
+    </div>
+    </div>
+  {% highlight html %}
+  <div class="col-xs-4">
+  //TODO
+  </div>
+  {% endhighlight %}
+
+  <h2>Atributos / Opções</h2>
+  <p>Atributos com <b>*</b> são obrigatórios.</p>
+  //TODO
+</section>
+
+<section class="bs-docs-section">
+  <h1 id="message" class="page-header">Message</h1>
+  //Tópico
+  <h2 id="alerts-doc">Alerts</h2>
+    <p>//TODO</p>
+
+    <div class="bs-example" >
+    <div class="row">
+      //TODO
+    </div>
+    </div>
+  {% highlight html %}
+  <div class="col-xs-4">
+  //TODO
+  </div>
+  {% endhighlight %}
+
+  <h2>Atributos / Opções</h2>
+  <p>Atributos com <b>*</b> são obrigatórios.</p>
+  //TODO
+
+  <h2 id="confirmation-doc">Delete Confirmatio</h2>
+    <p>//TODO</p>
+
+    <div class="bs-example" >
+    <div class="row">
+      //TODO
+    </div>
+    </div>
+  {% highlight html %}
+  <div class="col-xs-4">
+  //TODO
+  </div>
+  {% endhighlight %}
+
+  <h2>Atributos / Opções</h2>
+  <p>Atributos com <b>*</b> são obrigatórios.</p>
+  //TODO
 </section>
