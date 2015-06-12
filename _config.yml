@@ -5,7 +5,7 @@ version: 1.0.0
 # url of the download button
 downloadUrl: https://github.com/alexandrearaujo/modulo/
 
-highlighter: rouge 
+#highlighter: rouge 
 #for github pages
 
 # list of additional links on the right of the top menu
