@@ -78,21 +78,19 @@
 	        </a>
 		</div>
 	</div>
-       
 	
 	<!-- Modal-Group-Button-Footer -->
-	<div class="modal-footer" th:fragment="modal-group-button-footer">
-	    <button type="submit" th:name="#{name}" class="btn btn-success">
-	    	<span class="glyphicon glyphicon-ok"></span>
-	   	<span th:text="OK"></span> 
+	<div class="modal-footer" th:classappend="${addClass}" th:fragment="modal-group-button-footer">
+	    <button type="submit" th:name="${nameSucess}" th:id="${idSucess}" class="btn btn-default">
+	    	<span class="glyphicon glyphicon-ok mv-color-green"></span>
+	   	<span th:text="#{${sucessLabel}}"></span> 
 	    </button>
 	    
-	    <button type="button" class="btn btn-danger" data-dismiss="modal">
-	 		<span class="glyphicon glyphicon-ban-circle"></span>
-	 		<span th:text="#{cancelar}"></span> 
+	    <button type="button" class="btn btn-default" data-dismiss="modal" th:name="${nameCancel}" th:id="${idCancel}">
+	 		<span class="glyphicon glyphicon-ban-circle mv-color-green"></span>
+	 		<span th:text="#{${cancelLabel}}"></span> 
 	 	</button>
 	</div>
-
 
 	<!-- PaginationBar -->
 	<div class="paginationbar" th:fragment="paginationbar">
