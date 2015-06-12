@@ -8,23 +8,23 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.mv.modulo.exception.GenericException;
 import br.com.mv.modulo.repository.GenericCrudRepository;
 
-public abstract class GenericCrudBusiness<T> {
+public abstract class GenericCrudBusiness<T, D extends GenericCrudRepository<T>> {
 	
-	private final GenericCrudRepository<T> genericCrudRepository;
+	protected final D repository;
 
 	@Autowired
-	public GenericCrudBusiness(GenericCrudRepository<T> genericCrudRepository) {
-		this.genericCrudRepository = genericCrudRepository;
+	public GenericCrudBusiness(D repository) {
+		this.repository = repository;
 	}
 	
 	@Transactional
 	public void delete(Long id) {
-		genericCrudRepository.delete(id);
+		repository.delete(id);
 	}
 	
 	@Transactional
 	public void save(T t) throws GenericException {
-		genericCrudRepository.save(t);
+		repository.save(t);
  	}
 	
 	public abstract Page<T> listModel(T t, Pageable pageable);
