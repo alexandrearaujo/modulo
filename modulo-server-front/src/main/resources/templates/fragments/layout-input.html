@@ -106,7 +106,7 @@
 				   data:parametros="${keys}"
 				   data:possuiParametros="${keys != null ? true:false}"
 				   data:funcaoNome="${fncName}" 
-				   data:bind="${dataBind}" />
+				   data:bind="${dataBindHidden}" />
 				   
 				    
 			<input th:unless="${fieldHidden}" th:required="${required}" th:name="${nameHidden}" th:hidden="true" class="input-autocomplete"
@@ -119,7 +119,7 @@
 				   data:parametros="${keys}"
 				   data:possuiParametros="${keys != null ? true:false}"
 				   data:funcaoNome="${fncName}" 
-				   data:bind="${dataBind}" />
+				   data:bind="${dataBindHidden}" />
 		 	
 			<input th:if="${field}" th:id="${idCampo}" type="text" th:name="${nameField} == null ? ${idCampo} : ${nameField}" 
 				   th:value="${field}" th:disabled="${disabled}" th:onblur="${onblur}" class="form-control typeahead input-autocomplete"
