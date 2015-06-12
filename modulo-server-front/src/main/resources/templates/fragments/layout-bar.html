@@ -6,53 +6,91 @@
 <meta charset="UTF-8"/>
 <body>
 	<!-- Search Group Buttons -->
-	<div class="row top-buffer" th:fragment="search-group-button">
+	<div class="row top-buffer" th:fragment="search-group-button" >
 		<button type="submit" id="btnPesquisar" class="btn btn-default"
-			data:original-title="#{pesquisar}" data:toggle="tooltip">
+			data:original-title="#{pesquisar}" 
+			data:toggle="tooltip" 
+			data:bind="${dataBindSearch}">
+			
 			<i class="fa fa-search mv-color-green"></i>
+			
 		</button>
 		
-		<button class="btn btn-default" type="reset" id="btnLimpar" th:if="${btnClear}">
+		<button class="btn btn-default" type="reset" id="btnLimpar"
+			th:if="${btnClear}" 
+			data:bind="${dataBindClear}">
+			
            	<i class="fa fa-eraser mv-color-green"></i>
-           </button>
+         </button>
 	</div>
 						
 	
 	<!-- CRUD default bar -->
 	<div th:fragment="default-crud-bar" th:class="${relativeBar != null and relativeBar ? 'row well crud-bar-relative' : 'row well crud-bar'}">
 		<div class="col-md-*">
-			<button th:disabled="${disabledSave}" class="btn btn-default" type="submit" id="btnSalvar" name="btnSalvar" th:formaction="@{__${acaoForm}__}" th:if="${save}" data:placement="top" data:original-title="#{salvar}" data:toggle="tooltip">
-	         	<i class="fa fa-save mv-color-green"></i>
+			<button class="btn btn-default" type="submit" id="btnSalvar" name="btnSalvar" 
+				th:if="${saveButton}" 
+				th:formaction="@{__${saveActionForm}__}" 
+				th:disabled="${disabledSaveButton}" 
+				data:placement="top" 
+				data:original-title="#{salvar}" 
+				data:toggle="tooltip"
+				data:bind="${dataBindSave}">
+				
+	         		<i class="fa fa-save mv-color-green"></i>
+	         		
 	         </button>
-	      	
-	        <a type="button" class="btn btn-default" th:href="@{__${urlClear}__}" th:if="${reset}" data:placement="top" data:original-title="#{limpar}" data:toggle="tooltip">
-	        	<i class="fa fa-eraser mv-color-green"></i>
-	         </a>
+	         
+	         <button class="btn btn-default" type="reset" id="btnLimpar"
+	         	th:if="${clearButton}"
+	         	th:disabled="${disabledClearButton}"
+				data:placement="top" 
+				data:original-title="#{limpar}" 
+				data:toggle="tooltip"
+				data:bind="${dataBindClear}">
+				
+	           		<i class="fa fa-eraser mv-color-green"></i>
+	         </button>
 	        
-	      	<a type="button" class="btn btn-default" th:href="@{__${urlReturn}__}" th:if="${cancel}" data:placement="top" data:original-title="#{voltar}" data:toggle="tooltip">
-	            <i class="fa fa-reply mv-color-green"></i>
+	      	<a type="button" class="btn btn-default" 
+	      		th:if="${cancelButton}"
+	      		th:disabled="${disabledCanceButton}"
+		      	th:href="@{__${urlCancel}__}" 
+		      	data:placement="top" 
+		      	data:original-title="#{voltar}" 
+		      	data:toggle="tooltip"
+		      	data:bind="${dataBindCancel}">
+		      	
+	            	<i class="fa fa-reply mv-color-green"></i>
 	        </a>
 	        
-	        <a th:disabled="${disabledNewButton}" class="btn btn-default" th:href="@{__${urlNew}__}" th:if="${newButton}" data:placement="top" data:original-title="#{novo}" data:toggle="tooltip">
-	            <i class="fa fa-file mv-color-green"></i>
+	        <a  class="btn btn-default" 
+	         	th:if="${newButton}"
+	         	th:disabled="${disabledNewButton}"
+		        th:href="@{__${urlNew}__}"  
+		        data:placement="top" 
+		        data:original-title="#{novo}" 
+		        data:toggle="tooltip"
+		        data:bind="${dataBindNew}">
+	            
+	            	<i class="fa fa-file mv-color-green"></i>
+	            	
 	        </a>
 		</div>
 	</div>
-       
 	
 	<!-- Modal-Group-Button-Footer -->
-	<div class="modal-footer" th:fragment="modal-group-button-footer">
-	    <button type="submit" th:name="#{name}" class="btn btn-success">
-	    	<span class="glyphicon glyphicon-ok"></span>
-	   	<span th:text="OK"></span> 
+	<div class="modal-footer" th:classappend="${addClass}" th:fragment="modal-group-button-footer">
+	    <button type="submit" th:name="${nameSucess}" th:id="${idSucess}" class="btn btn-default">
+	    	<span class="glyphicon glyphicon-ok mv-color-green"></span>
+	   	<span th:text="#{${sucessLabel}}"></span> 
 	    </button>
 	    
-	    <button type="button" class="btn btn-danger" data-dismiss="modal">
-	 		<span class="glyphicon glyphicon-ban-circle"></span>
-	 		<span th:text="#{cancelar}"></span> 
+	    <button type="button" class="btn btn-default" data-dismiss="modal" th:name="${nameCancel}" th:id="${idCancel}">
+	 		<span class="glyphicon glyphicon-ban-circle mv-color-green"></span>
+	 		<span th:text="#{${cancelLabel}}"></span> 
 	 	</button>
 	</div>
-
 
 	<!-- PaginationBar -->
 	<div class="paginationbar" th:fragment="paginationbar">
