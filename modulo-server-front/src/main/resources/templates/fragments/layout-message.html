@@ -62,12 +62,12 @@
        
 	<th:block th:fragment="confirmation">
 		<span data:original-title="${tooltip} != null ? #{${tooltip}} : ''" data:toggle="tooltip">
-			<a class="btn btn-default confirmation-callback" type="button" th:id="${idField}"
+			<a class="btn btn-default confirmation-callback" type="button" 
+				th:id="${idField}"
 				data-btn-ok-icon="glyphicon glyphicon-share-alt"
 				data-btn-ok-class="btn-success"
 				data-btn-cancel-icon="glyphicon glyphicon-ban-circle"
 				data-btn-cancel-class="btn-danger"
-				data:id="${idEntity}"
 				data:title="#{${title}}"
 				data:btn-ok-label="#{labelOk}"
 				data:btn-cancel-label="#{labelCancel}"
@@ -75,13 +75,10 @@
 				data:singleton="${singleton}"
 				data:popout="${popout}"
 				data:method="${method}"
-				data:idToExclude="${idToExclude}"
-				data:defaultFunction="${defaultFunction}"
-				data:ajaxFunctio="${ajaxFunction}"
+				data:ajax="${ajax}"
 				data:msgSave="#{ctrl.message.success.save}"
-				data:idButtonSearch="${idButtonSearch}"
+				data:id="${idToExclude}"
 				data:funcao="${funcao}"
-				th:onclick="${onclick}"
 				th:disabled="${disabled}">
 		
 				<th:block th:switch="${type}">

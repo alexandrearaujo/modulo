@@ -40,7 +40,7 @@ jQuery(document).ajaxComplete( function(){
 });
 
 jQuery(document).ready(function(){
-	setBtnConfirmation();
+	initBtnConfirmation();
 	initTimeField();
 	initDateField();
 	initDateFieldPeriodo();
