@@ -26,11 +26,6 @@ header:
   color2: "#104E70"
   trianglify: true
 
-# google analytics
-analytics:
-  account:
-  domain:
-
 # github buttons
 githubButton:
   user: alexandrearaujo
@@ -38,7 +33,16 @@ githubButton:
 
 exclude: ['README.md', 'LICENSE', 'bower.json', 'Gemfile.lock', 'Gemfile']
 
+markdown: redcarpet
+#redcarpet:
+#  extensions: fenced_code_blocks
+
+#markdown: kramdown
+#kramdown:
+#  input: GFM
+
 gems:
+  - redcarpet
   - jemoji
   - jekyll-redirect-from
   - jekyll-sitemap
