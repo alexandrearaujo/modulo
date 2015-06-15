@@ -1925,32 +1925,128 @@ description: Documentação dos componentes reutilizáveis construídos com base
 
   }
   {% endhighlight %}
-<p>E no jquery basta usar como no exemplo abaixo.</p>
-{% highlight javaScript %}
-  $.get( url, params )
-    .fail(
-      function(response) {
-        $.alertSuccess($.getGenericMessage(response));
-      }
-    ); 
+  <p>E no jquery basta usar como no exemplo abaixo.</p>
+  {% highlight javaScript %}
+    $.get( url, params )
+      .fail(
+        function(response) {
+          $.alertSuccess($.getGenericMessage(response));
+        }
+      ); 
   {% endhighlight %}
-
+  </br>
    
-  <h2 id="confirmation-doc">Delete Confirmatio</h2>
-    <p>//TODO</p>
+  <h2 id="confirmation-doc">Delete Confirmation</h2>
+    <p>Fornece um componente de interface completo para deleção de objetos. Ideal para linhas em tabelas.</p>
+    <p>O componente foi criado usando a lib: <a href="http://mistic100.github.io/Bootstrap-Confirmation/" target="_blank">Bootstrap Confirmation</a>.
 
     <div class="bs-example" >
     <div class="row">
-      //TODO
+      <span data-original-title="Excluir" data-toggle="tooltip" style="margin-left:30%;">
+        <a class="btn btn-default confirmation-callback" type="button" data-btn-ok-icon="glyphicon glyphicon-share-alt" data-btn-ok-class="btn-success" data-btn-cancel-icon="glyphicon glyphicon-ban-circle" data-btn-cancel-class="btn-danger" id="btnExclusao34" data-id="34" data-title="Confirma a exclusão do registro?" data-btn-ok-label="Sim" data-btn-cancel-label="Não" data-placement="left" data-singleton="true" data-popout="true" data-method="/" data-defaultfunction="true" data-msgsave="Operação realizada com sucesso." data-original-title="" title="">
+            <p><i class="fa fa-trash mv-color-green"></i></p>
+        </a>
+      </span>
     </div>
     </div>
   {% highlight html %}
-  <div class="col-xs-4">
-  //TODO
-  </div>
+
+  <th:block th:replace="fragments/layout-message :: confirmation(
+                                                                  idToExclude=${objeto.id}, 
+                                                                  idField=${'btnExclusao' + objeto.id},
+                                                                  title=confirmExclusion, 
+                                                                  tooltip=excluir,
+                                                                  singleton=true, 
+                                                                  funcao=true, 
+                                                                  placement=left, 
+                                                                  popout=true, 
+                                                                  method='/dispensacao/tipoFrequencia/delete')"/>
+
   {% endhighlight %}
 
   <h2>Atributos / Opções</h2>
   <p>Atributos com <b>*</b> são obrigatórios.</p>
-  //TODO
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <colgroup>
+        <col class="col-xs-1">
+        <col class="col-xs-1">
+        <col class="col-xs-7">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Atributo</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>idField</td>
+          <td>String</td>
+          <td>Id do button, o mesmo deve ser único.</td>
+        </tr>
+
+        <tr>
+          <td>disabled</td>
+          <td>Boolean</td>
+          <td>Informa se o elemento está desativado ou não.</td>
+        </tr>
+    
+        <tr>
+          <td>idToExclude</td>
+          <td>String</td>
+          <td>Id do objeto que será deletado.</td>
+        </tr>
+    
+        <tr>
+          <td>title</td>
+          <td>String</td>
+          <td>String do titulo do popup que faz referência ao messages/internacionalização do módulo..</td>
+        </tr>
+    
+        <tr>
+          <td>tooltip</td>
+          <td>String</td>
+          <td>String do tooltip do button que faz referência ao messages/internacionalização do módulo..</td>
+        </tr>
+
+        <tr>
+          <td>popout</td>
+          <td>Boolean</td>
+          <td>Define se ao clicar em qualquer lugar na página irá fechar os popup's.</td>
+        </tr>
+
+        <tr>
+          <td>placement</td>
+          <td>String</td>
+          <td>Direção que o popup será exibido, pode variar em: left, top, bottom e right.</td>
+        </tr>
+          
+        <tr>
+          <td>singleton</td>
+          <td>Boolean</td>
+          <td>Define se só será exibido um popup por vez na página.</td>
+        </tr>
+    
+        <tr>
+          <td>funcao</td>
+          <td>String</td>
+          <td>Função que será chamada após as requisição ajax ser executadas.</td>
+        </tr>
+        
+        <tr>
+          <td>ajax</td>
+          <td>Boolean</td>
+          <td>Informa se a forma de envio dos dados é por AJAX ou submit tradicional.</td>
+        </tr>
+    
+        <tr>
+          <td>method</td>
+          <td>String</td>
+          <td>Recurso que o componente irá requisitar no servidor, composto por:'/context/controller/action' , EX: '/modulo/tipoFrequencia/delete'.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
