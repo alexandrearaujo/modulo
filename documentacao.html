@@ -1730,22 +1730,145 @@ description: Documentação dos componentes reutilizáveis construídos com base
 
 
   <h2 id="paginationBar-doc">Pagination</h2>
-    <p>//TODO</p>
-
+    <p>Fornece um componente para realizar a paginação de grids, esse elemento pode realizar o envio por ajax ou submit.</p>
+    <p>Segue os atributos enviados ao servidor.</p>
+    <ul>
+      <li>
+        <code>page</code> - Informa a página que será listada na tabela;
+      </li>
+      <li>
+        <code>size</code> - Quantidade de elemento do page ou seja quantos elementos vão ser exibidos na tabela;
+      </li>
+      <li>
+        <code>idToRender</code> - Id do template do thymeleaf que será renderizado pelo servidor;
+      </li>
+    </ul>
     <div class="bs-example" >
     <div class="row">
-      //TODO
-    </div>
+        <div class="paginationbar">
+          <nav class="text-center" data-totalpages="2" data-size="7" data-idtorender="results" data-method="/modulo/tipoFrequencia/listPaginated" data-ajax="true">
+          
+            <ul class="pagination">
+              <li class="disabled">
+                <span>
+                  <i class="glyphicon glyphicon-backward mv-color-blue"></i>
+                </span>
+                
+              </li>
+
+              <li class="disabled">
+                <span>
+                  <i class="glyphicon glyphicon glyphicon-play inverted-icon mv-color-blue"></i>
+                </span>
+                
+              </li>
+
+              <li class="active" data-activenumber="1">
+                <a href="javascript:void(0);">
+                    <span>1</span>
+                </a>
+                
+              </li>
+
+              <li data-activenumber="2">
+                
+                <a href="#" data-number="2">
+                  <span>2</span>
+                </a>
+              </li>
+
+              <li>
+                
+                <a href="#" title="Próxima página">
+                 <i class="glyphicon glyphicon glyphicon-play mv-color-blue"></i>
+                </a>
+              </li>
+
+              <li>
+                
+                <a href="#" title="Última página" data-number="false">
+                  <i class="glyphicon glyphicon glyphicon-forward mv-color-blue"></i>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
     </div>
   {% highlight html %}
   <div class="col-xs-4">
-  //TODO
+    <div th:replace="fragments/layout-bar :: paginationbar(
+                                                            method='/modulo/tipoFrequencia/listPaginated', 
+                                                            idToRender='results')">
+    </div>
   </div>
+  {% endhighlight %}
+
+  <p>Segue um exemplo de como responder o componente de paginação do lado do servidor.</p>
+  {% highlight java %}
+    @RequestMapping(value="/listPaginated", method = RequestMethod.GET)
+    public String findTipoFrequenciaPaginated(@ModelAttribute TipoFrequencia tipoFrequencia, 
+                          @RequestParam(value = "page", defaultValue = "") Integer page,
+                          @RequestParam(value = "size", defaultValue = "") Integer size, 
+                          @RequestParam(value = "idToRender", defaultValue = "") String idToRender,
+                          Model model,
+                          HttpServletRequest request) {
+      Pageable pageable = new PageRequest(page, size, Sort.DEFAULT_DIRECTION, "descricaoFrequencia");
+      this.page = tipoFrequenciaBusiness.listTipoFrequencia(tipoFrequencia, pageable);
+      model.addAttribute("page", this.page);
+      model.addAttribute("tipoFrequencia", tipoFrequencia);
+      if(isAjax(request))
+        return "tipoFrequencia/tipoFrequenciaList :: #" + idToRender;
+      else
+        return "tipoFrequencia/tipoFrequenciaList";
+    }
+
+    private boolean isAjax(HttpServletRequest request){
+      String header = request.getHeader("x-requested-with");
+      if(header != null && header.equals("XMLHttpRequest"))
+        return true;
+      else
+        return false;
+    }
   {% endhighlight %}
 
   <h2>Atributos / Opções</h2>
   <p>Atributos com <b>*</b> são obrigatórios.</p>
-  //TODO
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <colgroup>
+      <col class="col-xs-1">
+      <col class="col-xs-1">
+      <col class="col-xs-7">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Atributo</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>idToRender</td>
+          <td>String</td>
+          <td>Id do elemento que vai receber o HTML de resposta do servidor. Esse id tb deve ser o mesmo do template do thymeleaf do lado do servidor.</td>
+        </tr>
+
+        <tr>
+          <td>method</td>
+          <td>String</td>
+          <td>Recurso que o componente irá requisitar no servidor, composto por:'/context/controller/action' , EX: '/modulo/tipoFrequencia/listPaginated'.</td>
+        </tr>
+
+        <tr>
+          <td>ajax</td>
+          <td>Boolean</td>
+          <td>Informa se a paginação irá realizar o envio dos dados por AJAX ou submit tradicional. O padrão é por AJAX.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
 <section class="bs-docs-section">
