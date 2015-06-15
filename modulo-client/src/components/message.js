@@ -43,41 +43,47 @@ function setBtnConfirmation(){
 }
 
 (function($) {
+	$.getGenericMessage(responseData){
+		return $.parseJSON(responseData.responseText).messageType;
+	}
 	
-    $.fn.message = function(message, type){
-    	$.message(message, type, this.prop("id"));
-    }
-    
-    $.messageError = function(jqXHR, modal) {
-    	var response = $.parseJSON(jqXHR.responseText);
-    	$.message(response.ex, response.messageType, modal);
+    $.alertSuccess = function(msg) {
+    	$.notify({
+			message: msg
+		},{
+			delay: 4000,
+			type: 'success',
+			z_index:9999
+		});
     };
     
-    $.message = function(message, type, modal) {
-    	$.growl({
-    		message: message,
-    		url: document.URL
-    	},{
-    		element: modal == null ? document.body : "#" + modal,
-    		delay: 4000,
-    		type: type
-    	});
+    $.alertInfo = function(msg) {
+    	$.notify({
+			message: msg
+		},{
+			delay: 4000,
+			type: 'info',
+			z_index:9999
+		});
     };
     
-    $.alertSuccess = function(message, modal) {
-    	$.message(message, 'success', modal);
+    $.alertError = function(msg) {
+    	$.notify({
+			message: msg
+		},{
+			delay: 4000,
+			type: 'danger',
+			z_index:9999
+		});
     };
     
-    $.alertInfo = function(message, modal) {
-    	$.message(message, 'info', modal);
+    $.alertWarning = function(msg) {
+    	$.notify({
+			message: msg
+		},{
+			delay: 4000,
+			type: 'warning',
+			z_index:9999
+		});
     };
-    
-    $.alertError = function(message, modal) {
-    	$.message(message, 'danger', modal);
-    };
-    
-    $.alertWarning = function(message, modal) {
-    	$.message(message, 'warning', modal);
-    };
-    
 }(jQuery));
