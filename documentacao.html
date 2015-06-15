@@ -1873,25 +1873,69 @@ description: Documentação dos componentes reutilizáveis construídos com base
 
 <section class="bs-docs-section">
   <h1 id="message" class="page-header">Message</h1>
-  //Tópico
+  Fornece mensagens de alerta e confirmação de ações.
+
   <h2 id="alerts-doc">Alerts</h2>
-    <p>//TODO</p>
+    <p>Proporciona serviço alerta aos usuários.</p>
+    <p>O componente foi criado usando a lib: <a href="http://bootstrap-notify.remabledesigns.com/" target="_blank">Notify</a>.
 
     <div class="bs-example" >
     <div class="row">
-      //TODO
+      <img src="{{site.github.url}}/assets/images/alertSucess.png" />
     </div>
     </div>
   {% highlight html %}
-  <div class="col-xs-4">
-  //TODO
+  <div th:replace="fragments/layout-message :: alerts(success='Registro salvo com sucesso.')">
   </div>
   {% endhighlight %}
 
-  <h2>Atributos / Opções</h2>
-  <p>Atributos com <b>*</b> são obrigatórios.</p>
-  //TODO
+  <p>
+    Os alerts são usados como padrão no decorator que é herdado de todas as telas do tipo manter.
+    Para usar basta informar o message no controller como no exemplo a seguir.
+  </p>
+  <p>O EnumTipoMensagem possui as messagens padrões de uma tela do tipo manter.</p>
 
+  {% highlight java %}
+  class MyController {
+    private final GenericMessages genericMessages;
+
+    public String myMethod(){
+      //Determina uma menssagem de sucesso.
+      model.addAttribute(EnumTipoMensagem.SUCESSO.getDescricao(), genericMessages.getMessage("messages.properties"));
+    }
+  }
+  {% endhighlight %}
+
+  <p>O Alert também pode ser usado diretamente do javaScript. Veja o exemplo a seguir.</p>
+  {% highlight javaScript %}
+    $.alertSuccess('msg de sucesso');
+  $.alertInfo('msg de informação');
+  $.alertError('msg de erro');
+  $.alertWarning('msg de perigo');
+  {% endhighlight %}
+
+ <p>Também é possível usar combinado com requisições ajax. </p>
+ <p>Do lado do servidor basta lançar um GenericException. Veja o exemplo: </p>
+ {% highlight java %}
+  class MyController {
+
+    public String myMethod() throws GenericException{
+       throw new GenericException("Este medicamento item já foi adicionado.", EnumTipoMensagem.ERRO);
+    }
+
+  }
+  {% endhighlight %}
+<p>E no jquery basta usar como no exemplo abaixo.</p>
+{% highlight javaScript %}
+  $.get( url, params )
+    .fail(
+      function(response) {
+        $.alertSuccess($.getGenericMessage(response));
+      }
+    ); 
+  {% endhighlight %}
+
+   
   <h2 id="confirmation-doc">Delete Confirmatio</h2>
     <p>//TODO</p>
 
