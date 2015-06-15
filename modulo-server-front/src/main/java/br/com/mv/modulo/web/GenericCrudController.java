@@ -14,7 +14,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,36 +23,39 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.mv.geral.model.User;
 import br.com.mv.modulo.business.GenericCrudBusiness;
 import br.com.mv.modulo.exception.GenericMessages;
 import br.com.mv.modulo.model.type.EnumTipoMensagem;
+import br.com.mv.modulo.repository.GenericCrudRepository;
 
 public abstract class GenericCrudController<T> {
 	protected Page<T> page;
 	protected final GenericMessages genericMessages;
-	private final GenericCrudBusiness<T> genericCrudBusiness;
+	
+	private final GenericCrudBusiness<T, GenericCrudRepository<T>> genericCrudBusiness;
+	
 	private final int DEFAULT_INITIAL_PAGINATION_PAGE = 0;
 	private final int DEFAULT_PAGINATION_SIZE = 7;
 	private Type type = Arrays.stream(((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()).findFirst().get();
 	private Class<?> clazz = (Class<?>) type;
 	
 	@Autowired
-	public GenericCrudController(GenericMessages genericMessages, GenericCrudBusiness<T> genericCrudBusiness) {
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public GenericCrudController(GenericMessages genericMessages, GenericCrudBusiness genericCrudBusiness) {
 		this.genericMessages = genericMessages;
 		this.genericCrudBusiness = genericCrudBusiness;
 	}
 	
 	@RequestMapping(value={"/", "/list"}, method = RequestMethod.GET)
-	public String tolist(@AuthenticationPrincipal User usuario, Model model) {
-		instantiateModel(model, usuario, true);
+	public String tolist(Model model) {
+		instantiateModel(model, true);
 		page = null;
 		model.addAttribute("page", page);
 		return getListPageName();
 	}
 	
 	@RequestMapping(value="/list", method = RequestMethod.POST)
-	public String findModel(@ModelAttribute T t, Model model, @AuthenticationPrincipal User usuario) {
+	public String findModel(@ModelAttribute T t, Model model) {
 		listModel(t, DEFAULT_INITIAL_PAGINATION_PAGE, DEFAULT_PAGINATION_SIZE, model);
 		return getListPageName();
 	}
@@ -89,8 +91,8 @@ public abstract class GenericCrudController<T> {
 	}
 	
 	@RequestMapping(value="/new", method = RequestMethod.GET)
-	public String toNewForm(@AuthenticationPrincipal User usuario, Model model) {
-		instantiateModel(model, usuario, false);
+	public String toNewForm(Model model) {
+		instantiateModel(model, false);
 		return getFormPageName();
 	}
 	
@@ -107,7 +109,7 @@ public abstract class GenericCrudController<T> {
 	}
 	
 	@RequestMapping(value="/edit", method = RequestMethod.GET)
-	public String toEditForm(@RequestParam(value = "id", required = true) T t, Model model, @AuthenticationPrincipal User usuario) {
+	public String toEditForm(@RequestParam(value = "id", required = true) T t, Model model) {
 		model.addAttribute(getModelName(), t);
 		return getFormPageName();
 	}
@@ -144,15 +146,15 @@ public abstract class GenericCrudController<T> {
 	}
 	
 	@RequestMapping(value={"/returnToList"}, method = RequestMethod.GET)
-	public String returnToListAndFindAll(@AuthenticationPrincipal User usuario, Model model) {
+	public String returnToListAndFindAll(Model model) {
 		this.page = genericCrudBusiness.listModel(createNewObject(), getPageable(DEFAULT_INITIAL_PAGINATION_PAGE, DEFAULT_PAGINATION_SIZE));
 		
-		instantiateModel(model, usuario, true);
+		instantiateModel(model, true);
 		model.addAttribute("page", this.page);
 		return getListPageName();
 	}
 	
-	protected void instantiateModel(Model model, @AuthenticationPrincipal User usuario, boolean isList) {
+	protected void instantiateModel(Model model, boolean isList) {
 		model.addAttribute(getModelName(), createNewObject());
 	}
 	
