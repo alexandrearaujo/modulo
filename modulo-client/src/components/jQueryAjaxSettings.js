@@ -8,7 +8,11 @@ function ajaxSetup(){
 			var token = $("meta[name='_csrf']").attr("content");
 			var header = $("meta[name='_csrf_header']").attr("content");
 			xhr.setRequestHeader(header, token);
-	 	}
+	 	},
+	 	headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
 	});
 	
 	/*
@@ -36,7 +40,7 @@ jQuery(document).ajaxComplete( function(){
 });
 
 jQuery(document).ready(function(){
-	setBtnConfirmation();
+	initBtnConfirmation();
 	initTimeField();
 	initDateField();
 	initDateFieldPeriodo();
