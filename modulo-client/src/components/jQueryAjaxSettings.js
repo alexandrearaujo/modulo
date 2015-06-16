@@ -28,7 +28,7 @@ function ajaxSetup(){
 }
 
 jQuery(document).ajaxComplete( function(){
-	setBtnConfirmation();
+	initBtnConfirmation();
 	$('[data-toggle="tooltip"]').tooltip();
 	$("td[rel='tooltip']").tooltip({
 	    'placement': 'top',
