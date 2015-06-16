@@ -3,7 +3,7 @@ var required;
 
 function AutoComplete(){}
 
-AutoComplete.prototype.autocomplete = function(vurl,target,fncName,possuiParametros){
+AutoComplete.prototype.autocomplete = function(vurl,target,fncName,hasParameters){
 	 var idHidden = target['idHidden'];
 	 AutoComplete.prototype.bloodHound = new Bloodhound({
 		datumTokenizer: function(d) {
@@ -19,13 +19,13 @@ AutoComplete.prototype.autocomplete = function(vurl,target,fncName,possuiParamet
             	idHidden = target['idHidden'];
             	onSelected = target['onSelected'];
             	required = target['required'];
-            	url = possuiParametros ? url.replace('%QUERY',query+"&") : url.replace('%QUERY',query); 
+            	url = hasParameters ? url.replace('%QUERY',query+"&") : url.replace('%QUERY',query); 
             	
-                if(possuiParametros){
-                var parametros = url.indexOf('&');
-                var param = url.substr(parametros+1);
+                if(hasParameters){
+                var parameters = url.indexOf('&');
+                var param = url.substr(parameters+1);
                 var arr = param.split(",");
-                url = url.substr(0,parametros);
+                url = url.substr(0,parameters);
                
                 for(var i in arr){
                         url += '&';
@@ -49,7 +49,7 @@ AutoComplete.prototype.autocomplete = function(vurl,target,fncName,possuiParamet
 	promise
 	.fail(function() { console.log('err!'); });
 
-	$('#'+target['objeto']).blur(function(){
+	$('#'+target['object']).blur(function(){
 		if(this.value == ''){
 			$('#'+idHidden).val('');
 			if($(this).required()){
@@ -58,13 +58,13 @@ AutoComplete.prototype.autocomplete = function(vurl,target,fncName,possuiParamet
 		}
 	});
 	
-	$('#'+target['objeto']).typeahead(
+	$('#'+target['object']).typeahead(
 			{
 				minLength: 3,
 				highlight: true,
 			},
 			{ 
-				name: target['lista'],
+				name: target['list'],
 				source: AutoComplete.prototype.bloodHound.ttAdapter()
 			}
 	)
@@ -103,22 +103,22 @@ function initAutoComplete(){
 			
 			var targetArray = [];	 
 			var url = jQueryTarget.attr('data-url');
-			var parametros = jQueryTarget.attr('data-parametros');
-			var possuiParametros = jQueryTarget.attr('data-possuiParametros');
+			var parameters = jQueryTarget.attr('data-parameters');
+			var hasParameters = false;
 		
-			if(parametros != null || parametros !== undefined) {
-			   	url = url.concat(parametros);
-			 	possuiParametros = true; 
+			if(parameters != null || parameters !== undefined) {
+			   	url = url.concat(parameters);
+			 	hasParameters = true; 
 			}
 			
-			targetArray['objeto']     =   jQueryTarget.attr('data-objeto');
-			targetArray['lista']      =   jQueryTarget.attr('data-lista');
+			targetArray['object']     =   jQueryTarget.attr('data-object');
+			targetArray['list']      =   jQueryTarget.attr('data-list');
 			targetArray['onSelected'] =   jQueryTarget.attr('data-onSelected');
 			targetArray['idHidden']   =   jQueryTarget.attr('data-idHidden');
-			var possuiParametros =   parametros!=null; 
-			var funcaoNome       =   jQueryTarget.attr('data-funcaoNome');
+			var hasParameters =   parameters!=null; 
+			var fncName       =   jQueryTarget.attr('data-fncName');
 			
-			AutoComplete.prototype.autocomplete(url,targetArray,funcaoNome,possuiParametros);
+			AutoComplete.prototype.autocomplete(url,targetArray,fncName,hasParameters);
 		}
 	});
 }

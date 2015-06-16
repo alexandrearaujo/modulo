@@ -98,12 +98,12 @@
 	<!-- Autocomplete -->
 	<div class="form-group" th:fragment="autocomplete">
 		<div>
-			<label th:if="${idCampo}" class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField} == null ? ${idCampo} : ${nameField}"
-			       th:id="__${idCampo}__+Label">
+			<label th:if="${idField}" class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField} == null ? ${idField} : ${nameField}"
+			       th:id="__${idField}__+Label">
 				<span th:text="#{${label}}"></span>
 			</label>
 			
-			<label th:unless="${idCampo}" class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField} == null ? ${idCampo} : ${nameField}">
+			<label th:unless="${idField}" class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField} == null ? ${idField} : ${nameField}">
 				<span th:text="#{${label}}"></span>
 			</label>
 		</div>
@@ -111,39 +111,39 @@
 		<div class="form-group">
 		
 		<input  th:if="${field}" 
-				th:id="${idCampo}" 
+				th:id="${idField}" 
 				type="text" 
-				th:name="${nameField} == null ? ${idCampo} : ${nameField}" 
+				th:name="${nameField} == null ? ${idField} : ${nameField}" 
 				th:value="${field}" 
 				th:disabled="${disabled}" 
 				th:onblur="${onblur}" 
 				class="form-control typeahead input-autocomplete"
-				data:objeto="${idCampo}"
-				data:lista="${lista}"
+				data:object="${idField}"
+				data:list="${list}"
 				data:onSelected="${onSelected}"
 				data:idHidden="${idHidden}"
-				data:url="${endpoint}"
-				data:parametros="${keys}"
-				data:possuiParametros="${keys != null ? true:false}"
-				data:funcaoNome="${fncName}" 
-				data:bind="${dataBind}" />
+				data:url="${url}"
+				data:parameters="${parameters}"
+				data:fncName="${fncName}" 
+				data:bind="${dataBind}" 
+				th:maxlength="${maxLength}" />
 				   
 		<input  th:unless="${field}" 
-				th:id="${idCampo}" 
+				th:id="${idField}" 
 				type="text" 
-				th:name="${idCampo}" 
+				th:name="${idField}" 
 				class="form-control typeahead input-autocomplete"
 				th:onblur="${onblur}" 
 				th:disabled="${disabled}"
-				data:objeto="${idCampo}"
-				data:lista="${lista}"
+				data:object="${idField}"
+				data:list="${list}"
 				data:onSelected="${onSelected}"
 				data:idHidden="${idHidden}"
-				data:url="${endpoint}"
-				data:parametros="${keys}"
-				data:possuiParametros="${keys != null ? true:false}"
-				data:funcaoNome="${fncName}" 
-				data:bind="${dataBind}" />
+				data:url="${url}"
+				data:parameters="${parameters}"
+				data:fncName="${fncName}" 
+				data:bind="${dataBind}" 
+				th:maxlength="${maxLength}" />
 				
 		<input  th:if="${fieldHidden}" 
 				th:required="${required}" 
@@ -154,14 +154,13 @@
 				th:id="${idHidden}" 
 				data:bv-notempty="${required}"
 				data:bv-excluded="${required != null and required == true} ? false : null"
-				data:objeto="${idCampo}"
-				data:lista="${lista}"
+				data:object="${idField}"
+				data:list="${list}"
 				data:onSelected="${onSelected}"
 				data:idHidden="${idHidden}"
-				data:url="${endpoint}"
-				data:parametros="${keys}"
-				data:possuiParametros="${keys != null ? true:false}"
-				data:funcaoNome="${fncName}" 
+				data:url="${url}"
+				data:parameters="${parameters}"
+				data:fncName="${fncName}" 
 				data:bind="${dataBindHidden}" />
 			   
 			    
@@ -173,14 +172,13 @@
 				th:id="${idHidden}" 
 				data:bv-notempty="${required}" 
 				data:bv-excluded="${required != null and required == true} ? false : null"
-				data:objeto="${idCampo}"
-				data:lista="${lista}"
+				data:object="${idField}"
+				data:list="${list}"
 				data:onSelected="${onSelected}"
 				data:idHidden="${idHidden}"
-				data:url="${endpoint}"
-				data:parametros="${keys}"
-				data:possuiParametros="${keys != null ? true:false}"
-				data:funcaoNome="${fncName}" 
+				data:url="${url}"
+				data:parameters="${parameters}"
+				data:fncName="${fncName}" 
 				data:bind="${dataBindHidden}" />
 		</div>
 	</div>
