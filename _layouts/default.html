@@ -160,6 +160,8 @@
   <script src="{{site.github.url}}/assets/js/lib/locales/bootstrap-datepicker.pt-BR.min.js"></script>
   <script src="{{site.github.url}}/assets/js/lib/bootstrap-timepicker.min.js"></script>
   <script src="{{site.github.url}}/assets/js/lib/bootstrap-confirmation.min.js"></script>
+  <script src="{{site.github.url}}/assets/js/lib/typeahead.bundle.min.js"></script>
+  
 
   <script src="{{site.github.url}}/assets/js/lib/bootstrapValidator.min.js"></script>
   <script src="{{site.github.url}}/assets/js/lib/language/pt_BR.js"></script>
@@ -167,9 +169,11 @@
   <script src="{{site.github.url}}/assets/js/components/input.js"></script>
   <script src="{{site.github.url}}/assets/js/components/temporal.js"></script>
   <script src="{{site.github.url}}/assets/js/components/message.js"></script>
+  <script src="{{site.github.url}}/assets/js/components/autocomplete.js"></script>
 
   <script type="text/javascript">
     jQuery(document).ready(function(){
+       initAutoComplete();
        initBtnConfirmation();
        fncUppercase();
        numbersOnly();

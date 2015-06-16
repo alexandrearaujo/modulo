@@ -958,22 +958,180 @@ description: Documentação dos componentes reutilizáveis construídos com base
 </div>
 
 <h2 id="autocomplete-doc">Autocomplete</h2>
-  <p>//TODO</p>
+  <p>Fornece um autocomplete baseado em dois elementos inputs, um que mostra as descrições e outro hidden que armazena o identificador.</p>
+
+  <p>O componente foi criado usando a lib: <a href="https://twitter.github.io/typeahead.js/" target="_blank">Typeahead.js</a>, na versão: 0.10.5;
 
   <div class="bs-example" >
     <div class="row">
-      //TODO
+      <div class="col-xs-4">
+        <div class="form-group">
+          <div>
+            <label class="control-label required" for="idChrListTipoFrequencia" id="idChrListTipoFrequenciaLabel">
+              <span>Tipo Frequência</span>
+            </label>
+          </div>
+        
+          <div class="form-group">
+            <input type="text" class="form-control typeahead input-autocomplete" id="idChrListTipoFrequencia" name="idChrListTipoFrequencia" data-objeto="idChrListTipoFrequencia" data-lista="listTipoFrequencia" data-onselected="datum.id" data-idhidden="idTipoFrequenciaHidden" data-url="{{site.github.url}}/assets/data/tipoFrequencia.json" data-possuiparametros="false" data-funcaonome="selectedTipoFrequencia">
+            <input class="input-autocomplete" required="required" name="id" hidden="hidden" id="idTipoFrequenciaHidden" data-bv-notempty="true" data-bv-excluded="false" data-objeto="idChrListTipoFrequencia" data-lista="listTipoFrequencia" data-onselected="datum.id" data-idhidden="idTipoFrequenciaHidden" data-url="{{site.github.url}}/assets/data/tipoFrequencia.json" data-possuiparametros="false" data-funcaonome="selectedTipoFrequencia" value="" data-bv-field="id">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 {% highlight html %}
 <div class="col-xs-4">
-//TODO
+  <div th:replace="fragments/layout-input :: autocomplete(
+                                                        label=descricao,
+                                                        list='listTipoFrequencia',  
+                                                        url='/module/controller/action?parametro=%QUERY',
+                                                        field=${tipoFrequencia.descricaoFrequencia},
+                                                        idField='idChrListTipoFrequencia',
+                                                        fieldHidden='${tipoFrequencia.id}',
+                                                        idHidden='idTipoFrequenciaHidden', 
+                                                        nameHidden='nameTipoFrequenciaHidden', 
+                                                        fncName='selectedTipoFrequencia',
+                                                        onSelected='datum.id',
+                                                        maxLength=250, 
+                                                        required=true)">
+  </div>
 </div>
+{% endhighlight %}
+
+<p>Javascript auxiliar para o componente:</p>
+{% highlight javascript %}
+var selectedTipoFrequencia = function(object) {
+  return {
+    value : object.descricaoFrequencia,
+    id : object.id,
+    "tipoFrequencia" : object
+  }
+}
 {% endhighlight %}
 
 <h2>Atributos / Opções</h2>
 <p>Atributos com <b>*</b> são obrigatórios.</p>
-//TODO
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+    <colgroup>
+      <col class="col-xs-1">
+      <col class="col-xs-1">
+      <col class="col-xs-7">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Atributo</th>
+        <th>Tipo</th>
+        <th>Descrição</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>label</td>
+        <td>messages.properties</td>
+        <td>String que faz referência ao messages/internacionalização do módulo.</td>
+      </tr>
+
+      <tr>
+        <td>field</td>
+        <td>th:field</td>
+        <td>Atributo do bean que faz a integração do Spring MVC ou seja o binding. O mesmo é opcional.</td>
+      </tr>
+
+      <tr>
+        <td>idField</td>
+        <td>String</td>
+        <td>Id do input, o mesmo deve ser único.</td>
+      </tr>
+
+      <tr>
+        <td>nameField</td>
+        <td>String</td>
+        <td>Name do elemento HTML.</td>
+      </tr>
+
+      <tr>
+        <td>nameHidden</td>
+        <td>String</td>
+        <td>Name do input Hidden.</td>
+      </tr>
+      
+      <tr>
+        <td>fieldHidden</td>
+        <td>th:field</td>
+        <td>Atributo do bean que faz a integração do Spring MVC ou seja o binding para input Hidden. O mesmo é opcional.</td>
+      </tr>
+      
+      <tr>
+        <td>idHidden</td>
+        <td>String</td>
+        <td>Id do input Hidden, o mesmo deve ser único.</td>
+      </tr>
+      
+      <tr>
+        <td>disabled</td>
+        <td>Boolean</td>
+        <td>Informa se o elemento está desativado ou não.</td>
+      </tr>
+
+      <tr>
+        <td>required</td>
+        <td>Boolean</td>
+        <td>Informa se o elemento é obrigatório ou não.</td>
+      </tr>
+      
+      <tr>
+        <td>list</td>
+        <td>String</td>
+        <td>Nome da lista dos objetos listas no autocomplete.</td>
+      </tr>
+
+      <tr>
+        <td>fncName</td>
+        <td>Function</td>
+        <td>Nome da funcação que será chamada para preencher os inputs com base em um json object. Veja um exemplo no quadro de js auxiliar abaixo do chamada do thymeleaf do autocomplete.</td>
+      </tr>
+
+       <tr>
+        <td>onSelected</td>
+        <td>String</td>
+        <td>Identificador que será usado para acessar o elemento que irá preencher o input hidden com base no json object. EX: datum.id irá acessar o jsonObject.id.</td>
+      </tr>
+      
+      <tr>
+        <td>url</td>
+        <td>String</td>
+        <td>Recurso que o componente irá requisitar no servidor, composto por:'/context/controller/action?meuParametro=%QUERY' , EX: '/modulo/tipoFrequencia/fillTipoFrequencia?descricao=%QUERY'.</td>
+      </tr>
+
+      <tr>
+        <td>parameters</td>
+        <td>String</td>
+        <td>Lista de parametros adicionais que vão ser enviados ao servidor. Os parametros devem ser passados seguindo o padrão de requisições <a href="http://www.w3schools.com/tags/ref_httpmethods.asp" target="_blank">GET</a>.</td>
+      </tr>
+    
+      <tr>
+        <td>maxLength</td>
+        <td>Numérico</td>
+        <td>Especifica quantidade máxima de caracteres do input.<a href="http://www.w3schools.com/tags/att_input_maxlength.asp" target="_blank"> aqui</a>.</td>
+      </tr>
+
+      <tr>
+        <td>dataBind</td>
+        <td>String</td>
+        <td>Atributo que referencia o bind knockoutjs para o lemento. Mais informações <a href="http://knockoutjs.com/documentation/binding-syntax.html" target="_blanck"> aqui</a>. </td>
+      </tr>
+
+        <tr>
+        <td>dataBindHidden</td>
+        <td>String</td>
+        <td>Atributo que referencia o bind knockoutjs para o lemento Hidden do autocomplete. Mais informações <a href="http://knockoutjs.com/documentation/binding-syntax.html" target="_blanck"> aqui</a>. </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
 </section>
 
 <section class="bs-docs-section">
@@ -1873,7 +2031,9 @@ description: Documentação dos componentes reutilizáveis construídos com base
 
 <section class="bs-docs-section">
   <h1 id="message" class="page-header">Message</h1>
-  Fornece mensagens de alerta e confirmação de ações.
+  <blockquote>
+    Fornece mensagens de alerta e confirmação de ações.
+  </blockquote>
 
   <h2 id="alerts-doc">Alerts</h2>
     <p>Proporciona serviço alerta aos usuários.</p>
