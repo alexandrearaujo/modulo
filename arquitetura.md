@@ -21,7 +21,11 @@ E os módulos:
 
 ##Client
 
-Todas as tarefas são orquestradas pelo plugin do maven frontend-maven-plugin que realiza as seguintes tarefas:
+```
+Módulo onde fica toda manipulação do front-end, como JS, CSS, LESS, IMG e as bibliotecas externas.
+```
+
+Todas as tarefas são orquestradas pelo plugin do maven [frontend-maven-plugin](https://github.com/eirslett/frontend-maven-plugin) que realiza as seguintes tarefas:
 
   - install node and npm
     - Faz o download do node e npm para a pasta node.
@@ -31,17 +35,30 @@ Todas as tarefas são orquestradas pelo plugin do maven frontend-maven-plugin qu
     - Executa o install do bower, ou seja instala as dependências do arquivo *bower.json*, como descrito abaixo.
   - gulp less
     - Executa a tarefa optimize-and-copy-less do arquivo gulpfile.js.
-    - Pega todos os arquivos da pasta *src/less*, gera um sourceMap\* para cada arquivo, transpila para CSS\*\*, minifica e copia para a pasta */dist/css*.
+    - Pega todos os arquivos da pasta */src/less*, gera um sourceMap\* para cada arquivo, transpila para CSS\*\*, minifica e copia para a pasta */dist/css*.
   - gulp less components
     - Executa a tarefa optimize-and-copy-less-components do arquivo gulpfile.js.
-    - Pega todos os arquivos da pasta *src/less/components*, gera um sourceMap\* para cada arquivo, transpila para CSS\*\*, minifica, concatena todos os arquivos no arquivo **components.css** e copia para a pasta */dist/css*.
+    - Pega todos os arquivos da pasta */src/less/components*, gera um sourceMap\* para cada arquivo, transpila para CSS\*\*, minifica, concatena todos os arquivos no arquivo **components.css** e copia para a pasta */dist/css*.
   - gulp copy-assets
     - Executa a tarefa copy-assets do arquivo gulpfile.js.
-    - 
+    - Copia o arquivo */src/cache.manifest* para */dist/cache.manifest*.
   - gulp optimize-and-copy-css
-  - gulp copy-components
+    - Executa a tarefa optimize-and-copy-css do arquivo gulpfile.js.
+    - Pega todos os arquivos da pasta */src/css*, gera um sourceMap\* para cada arquivo, minifica e copia para a pasta */dist/css*.
+  - gulp optimize-and-copy-components-js
+    - Executa a tarefa optimize-and-copy-components-js do arquivo gulpfile.js.
+    - Pega todos os arquivos da pasta */src/components*, gera um sourceMap\* para cada arquivo, realiza o uglify(mifica), concatena todos os arquivos no arquivo **components.js** e copia para a pasta */dist/components*.
   - gulp copy-bower-libs
+    - Executa a tarefa optimize-and-copy-bower-libs do arquivo gulpfile.js.
+    - Através do plugin mainBowerFiles, é copiado somente os arquivos necessários de cada biblioteca importada pelo bower na pasta */src/lib*, esses arquivos são especificados no arquivo bower.json. Os arquivos são copiados para */dist/lib*.
   - gulp copy-images
+    - Executa a tarefa optimize-and-copy-images do arquivo gulpfile.js.
+    - Pega todos os arquivos da pasta */src/img*, minifica com o plugin pngcrush e copia para a pasta */dist/img*.
+
+  \* [sourceMap](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/?redirect_from_locale=pt): Arquivo gerado para facilitar a legibilidade de arquivos minificados, visto no modo developer dos browsers.
+
+  \*\* [Transpile](https://www.jetbrains.com/phpstorm/help/transpiling-sass-less-and-scss-to-css.html): Atualmente o LESS não é processado pelos Browser, para fazer isso, é necessário convertê-lo para CSS, isso é chamado de transpilação. 
+
 
 No final é gerado um jar com todo o conteúdo da pasta dist, um WebJar.
 
@@ -52,85 +69,214 @@ No final é gerado um jar com todo o conteúdo da pasta dist, um WebJar.
 ####Bower
 
   - Gerenciador de dependências para front-end, nele são instaladas as bibliotecas externas da aplicação:
-    - awesome-bootstrap-checkbox
-    - bootstrap
-    - bootstrap-confirmation2
-    - bootstrap-datepicker
-    - bootstrap-table
-    - bootstrap-timepicker
-    - bootstrapvalidator
-    - font-awesome
-    - jquery
-    - jQuery-Mask-Plugin
-    - knockout
-    - metisMenu
-    - remarkable-bootstrap-notify
-    - screenfull
-    - typeahead.js
+    - [awesome-bootstrap-checkbox](https://github.com/flatlogic/awesome-bootstrap-checkbox)
+    - [bootstrap](http://getbootstrap.com/)
+    - [bootstrap-confirmation2](http://mistic100.github.io/Bootstrap-Confirmation/)
+    - [bootstrap-datepicker](https://github.com/eternicode/bootstrap-datepicker)
+    - [bootstrap-table](https://github.com/wenzhixin/bootstrap-table)
+    - [bootstrap-timepicker](https://github.com/jdewit/bootstrap-timepicker)
+    - [bootstrapvalidator](https://github.com/nghuuphuoc/bootstrapvalidator)
+    - [font-awesome](http://fontawesome.io/)
+    - [jquery](https://jquery.com/)
+    - [jQuery-Mask-Plugin](http://igorescobar.github.io/jQuery-Mask-Plugin/)
+    - [knockout](http://knockoutjs.com/)
+    - [metisMenu](https://github.com/onokumus/metisMenu)
+    - [remarkable-bootstrap-notify](http://bootstrap-notify.remabledesigns.com/)
+    - [screenfull](http://sindresorhus.com/screenfull.js/)
+    - [typeahead.js](http://twitter.github.io/typeahead.js/)
 
 ####Gulp
 
 - Realiza tarefas de otimização dos arquivos de CSS, LESS, JS e IMG através dos módulos:
-  - gulp-changed
-  - gulp-concat
-  - gulp-imagemin
-  - gulp-less
-  - gulp-minify-css
-  - gulp-sourcemaps
-  - gulp-uglify
-  - imagemin-pngcrush
-  - main-bower-files
+  - [gulp-changed](https://www.npmjs.com/package/gulp-changed)
+  - [gulp-concat](https://www.npmjs.com/package/gulp-concat)
+  - [gulp-imagemin](https://www.npmjs.com/package/gulp-imagemin)
+  - [gulp-less](https://www.npmjs.com/package/gulp-less)
+  - [gulp-minify-css](https://www.npmjs.com/package/gulp-minify-css)
+  - [gulp-sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps)
+  - [gulp-uglify](https://www.npmjs.com/package/gulp-uglify)
+  - [imagemin-pngcrush](https://www.npmjs.com/package/imagemin-pngcrush)
+  - [main-bower-files](https://www.npmjs.com/package/main-bower-files)
 
 ####Less
+ LESS foi escolhido pela facilidade de uso, simplicidade de código, reuso e variáveis.
+
+ - [lesscss.org](http://lesscss.org/)
+ - [lesscss.loopinfinito](http://lesscss.loopinfinito.com.br/)
+ - [css-facil-flexivel-e-dinamico-com-less](http://blog.caelum.com.br/css-facil-flexivel-e-dinamico-com-less/)
+
 ####Knockout
+  O Knockout foi escolhido para melhorar o data bind e por sua compatibilidade com o framework Thymeleaf, o Knockout utiliza o pattern [MVVM](http://www.devmedia.com.br/entendendo-o-pattern-model-view-viewmodel-mvvm/18411) para o controle da View.
+
+  - [knockoutjs](http://knockoutjs.com/)
+  - [learn.knockoutjs](http://learn.knockoutjs.com/)
 
 ##Server Front
 
-####ExceptionController
-####ServletInitializer
-####LoginController
-####ModuloEmailSender
-####MaskFormat
+```
+Módulo onde fica as páginas da aplicação(View) e seus Controladores, arquivo de configuração da aplicação /src/main/resources/config/application.yml, arquivos de internacionalização /src/main/resources/messages/.
+```
 
+####ExceptionController
+  Controlador que captura todas as exceções do tipo Exception, GenericException e AuthorizationServiceException.
+
+  - handleException
+    - Captura as exceções do tipo Exception, printa na console a exceção e direciona para página *exception.html*. 
+  - handleBadRequest
+    - Captura as exceções do tipo GenericException, prepara e retorna um Json com o erro.
+  - handleAuthorizationServiceException
+    - Captura as exceções do tipo AuthorizationServiceException, seta o Status da requisição como UNAUTHORIZED e direciona para página *exception.html*
+
+####ServletInitializer
+  Configuração para preparação de pacotes war.
+####LoginController
+  Controlador do Login.
+####ModuloEmailSender
+  Classe de configuração de envio de email.
+####MaskFormat
+  Annotation para máscaras.
+####Layouts
+  - Fragments
+
+    - layout-bar.html
+
+      - Components de "barras" de botões search-group-button, default-crud-bar, modal-group-button-footer e paginationbar.
+
+    - layout-footer.html
+
+      - Layout do Footer.
+
+    - layout-input.html
+
+      - Componentes de "entrada de texto" text-field, text-number-field, number-field e autocomplete.
+
+    - layout-menu-top.html
+
+      - Layout do menu superior.
+
+    - layout-menu.html
+
+      - Layout do menu lateral com todos os menus da aplicação.
+
+    - layout-message.html
+
+      - Componentes de "mensagens" alerts e confirmation.
+
+    - layout-selectable.html
+
+      - Componentes de "seleção" select-field, checkbox-field e radio-field.
+
+    - layout-temporal.html
+
+      - Componentes "temporais" date-field, date-field-periodo e time-field.
+
+    - layout.html
+
+      - Onde fica todos os imports de CSS e JS da aplicação.
+
+  - decorator.html
+
+    Define o layout da aplicação, inserindo os menus superior e lateral, além do footer.
+
+  - index.html
+
+    Página inicial da aplicação.
+
+  - login.html
+
+    Página de login da aplicação.
+
+  - exception.html
+
+    Página de exceção.
+
+  - error.html
+
+    Página de erro, quando ocorre algum erro imprevisto do lado do cliente.
 
 ##Server Back
 
+```
+Módulo onde fica as configurações de Segurança, Exception e Mensagens, JsonSerializers, Cache.
+```
+
 ###br.com.mv.geral.controleacesso.authentication.util
+
 #####PasswordEncoderImpl
-###br.com.mv.modulo.business
-#####UserBusiness
-#####VersaoBusiness
+
+  - Define o algoritmo de criptografia da senha do usuário.
+
 ###br.com.mv.modulo.config
+
 #####CacheConfig
-#####DatabaseConfig
+
+  - Configuração de cache da aplicação.
+
 #####SecurityConfig
+
+  - Configuração de Segurança da aplicação.
+
 ###br.com.mv.modulo.exception
+
 #####GenericException
+
+  - Custom Exception para tratar Json.
+
 #####GenericMessages
+
+  - Mensagens Internacionalizadas:
+    - getSaveSuccess
+      - Retorna mensagem padrão para sucesso no salvar, chave *ctrl.message.success.save*.
+    - getDeleteSuccess
+      - Retorna mensagem padrão para sucesso no deletar, chave *ctrl.message.success.delete*.
+    - getNotFound
+      - Retorna mensagem padrão para não encontrado, chave *ctrl.message.error.notfound*.
+    - getMessage
+      - Recebe uma chave como parâmetro, retorna a mensagem internacionalizada.
+
 ###br.com.mv.modulo.model
+
 #####JSON
+
+  - Interface padrão para serialização da entidade em Json.
+
 ###br.com.mv.modulo.model.type
+
 #####EnumTipoMensagem
-#####TipoUsuario.java
-###br.com.mv.modulo.repository
-#####UserRepository
-#####VersaoRepository
+
+  - Enum que armazena o tipo de mensagem a ser mostrada na tela, de acordo com o tipo muda a cor da mensagem.
+  - INFO(azul), ERRO(vermelho), SUCESSO(verde), ATENCAO(amarelo).
+
 ###org.springframework.data.convert
-#####JsonBooleanDeserializer
-#####JsonDateDeserializer
-#####JsonDateSerializer
+
+  Serializadores e Deserializadores de Json.
+
+  - JsonBooleanDeserializer
+  - JsonDateDeserializer
+  - JsonDateSerializer
 
 
 ##Tests
- Esse módulo fornece todas as dependências necessárias para testar as aplicações:
+
+```
+Módulo fornece todas as dependências necessárias para testar as aplicações:
+```
 
   - spring-security-test
   - selenium-htmlunit-driver
   - spring-boot-starter-test
 
 ####TestsConfig
+
+  - Classe abstrata com configuração base para utilização de teste do Spring.
+
 ####WebDriverTestsConfig
+
+  - Classe abstrata com configuração base para utilização de teste com Spring e Webdriver.
+
 ####AbstractPage
+
+  - Classe padrão para criação de Page Objetcs, páginas para criação de testes de tela.
 
 
 #Classes Genéricas que facilitam a contrução de CRUDS:
