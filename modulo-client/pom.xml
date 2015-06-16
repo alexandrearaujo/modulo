@@ -90,7 +90,7 @@
 			        </execution>
 			        
 			        <execution>
-			            <id>gulp copy-components</id>
+			            <id>gulp optimize-and-copy-components-js</id>
 			            <goals>
 			                <goal>gulp</goal>
 			            </goals>
