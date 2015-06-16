@@ -2,6 +2,7 @@
 layout: default
 title: Instalação
 description: Instalação do ambiente de desenvolvimento. 
+order: 1
 ---
 
 1.Instalar o Java Development Kit 8:
