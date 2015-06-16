@@ -75,7 +75,7 @@ public abstract class GenericCrudController<T> {
 		}
 	}
 	
-	protected boolean isAjax(HttpServletRequest request){
+	protected boolean isAjax(HttpServletRequest request) {
 		String header = request.getHeader("x-requested-with");
 		if(header != null && header.equals("XMLHttpRequest")) {
 			return true;
@@ -100,7 +100,7 @@ public abstract class GenericCrudController<T> {
 	public String remove(@RequestParam(value = "id", required = true) Long id, RedirectAttributes redirectAttrs) {
 		try {
 			genericCrudBusiness.delete(id);
-			redirectAttrs.addFlashAttribute("success", genericMessages.getDeleteSuccess());
+			redirectAttrs.addFlashAttribute(EnumTipoMensagem.SUCESSO.getDescricao(), genericMessages.getDeleteSuccess());
 		} catch (IllegalArgumentException e) {
 			redirectAttrs.addFlashAttribute(EnumTipoMensagem.ERRO.getDescricao(), genericMessages.getNotFound());
 		}
@@ -131,7 +131,6 @@ public abstract class GenericCrudController<T> {
     		} catch (Exception e) {
         		redirectAttrs.addFlashAttribute(EnumTipoMensagem.ERRO.getDescricao(), e.getMessage());
         	}
-        	
         }
         
         return getReturnToListURL();
