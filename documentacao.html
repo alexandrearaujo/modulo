@@ -986,7 +986,7 @@ order: 3
   <div th:replace="fragments/layout-input :: autocomplete(
                                                         label=descricao,
                                                         list='listTipoFrequencia',  
-                                                        url='/module/controller/action?parametro=%QUERY',
+                                                        urlServer='/module/controller/action?parametro=%QUERY',
                                                         field=${tipoFrequencia.descricaoFrequencia},
                                                         idField='idChrListTipoFrequencia',
                                                         fieldHidden='${tipoFrequencia.id}',
@@ -1091,17 +1091,17 @@ var selectedTipoFrequencia = function(object) {
       <tr>
         <td>fncName</td>
         <td>Function</td>
-        <td>Nome da funcação que será chamada para preencher os inputs com base em um json object. Veja um exemplo no quadro de js auxiliar abaixo do chamada do thymeleaf do autocomplete.</td>
+        <td>Nome da função que será chamada para preencher os inputs com base em um json object. Veja um exemplo no quadro de js auxiliar abaixo do chamada do thymeleaf do autocomplete.</td>
       </tr>
 
        <tr>
         <td>onSelected</td>
         <td>String</td>
-        <td>Identificador que será usado para acessar o elemento que irá preencher o input hidden com base no json object. EX: datum.id irá acessar o jsonObject.id.</td>
+        <td>Identificador que será usado para acessar o elemento que irá preencher o input hidden com base no json object. EX: datum.id irá acessar o jsonObject.id. <p>Esse atributo também pode ser usado como o antigo filter.</p></td>
       </tr>
       
       <tr>
-        <td>url</td>
+        <td>urlServer</td>
         <td>String</td>
         <td>Recurso que o componente irá requisitar no servidor, composto por:'/context/controller/action?meuParametro=%QUERY' , EX: '/modulo/tipoFrequencia/fillTipoFrequencia?descricao=%QUERY'.</td>
       </tr>
