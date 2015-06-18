@@ -165,7 +165,7 @@ order: 3
         </tr>
 
         <tr>
-          <td>name</td>
+          <td>nameField</td>
           <td>String</td>
           <td>Name do elemento HTML.</td>
         </tr>
@@ -181,19 +181,6 @@ order: 3
           <td>Boolean</td>
           <td>Informa se o elemento é obrigatório ou não.</td>
         </tr>
-
-		    <tr>
-          <td>onchange</td>
-          <td>Função</td>
-          <td>Nome da funação que será invocada no evento onchange do input, caso os valores sejam modificados.</td>
-        </tr>
-
-        <tr>
-          <td>idcomponente</td>
-          <td>String</td>
-          <td>Id da label, o mesmo deve ser único.</td>
-        </tr>
-
 
         <tr>
           <td>autofocus</td>
@@ -306,7 +293,7 @@ order: 3
         </tr>
 
         <tr>
-          <td>name</td>
+          <td>nameField</td>
           <td>String</td>
           <td>Name do elemento HTML.</td>
         </tr>
@@ -409,12 +396,12 @@ order: 3
   <div th:replace="fragments/layout-temporal :: date-field-periodo(
                                                                     idField='dataInicio', 
                                                                     idFieldEndDate='dataFim', 
-                                                                    labelPeriodo=periodoDatas, 
+                                                                    label=periodoDatas, 
                                                                     field='${objeto.dataDeInicio}', 
                                                                     fieldEndDate='${objeto.dataFinal}', 
                                                                     idForm='formDateFieldPeriodo',
-                                                                    requiredPeriodo=true,
-                                                                    requiredPeriodoEndDate=true)">
+                                                                    required=true,
+                                                                    requiredEndDate=true)">
   </div>
 </div>
 {% endhighlight %}
@@ -480,13 +467,13 @@ order: 3
         </tr>
 
         <tr>
-          <td>requiredPeriodo</td>
+          <td>required</td>
           <td>Boolean</td> 
           <td>Informa se a primeira data do período é obrigatório ou não.</td>
         </tr>
         
         <tr>
-          <td>requiredPeriodoEndDate</td>
+          <td>requiredEndDate</td>
           <td>Boolean</td> 
           <td>Informa se a segunda data do período é obrigatório ou não.</td>
         </tr>
@@ -1274,18 +1261,6 @@ var selectedTipoFrequencia = function(object) {
           <td>valuePrompt</td>
           <td>String</td>
           <td>Value padrão que será usado no select. No caso é value do option padrão.</td>
-        </tr>
-
-        <tr>
-          <td>onchange</td>
-          <td>Função</td>
-          <td>Nome da funação que será invocada no evento onchange do input, caso os valores sejam modificados.</td>
-        </tr>
-
-        <tr>
-          <td>onblur</td>
-          <td>Função</td>
-          <td>Nome da funação que será invocada no evento onchange do input, caso os valores sejam modificados.</td>
         </tr>
 
         <tr>
