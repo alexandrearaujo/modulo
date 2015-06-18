@@ -69,7 +69,7 @@
 		<snapshotRepository>
 			<id>MVNexus</id>
 			<name>Internal Snapshots</name>
-			<url>http://echo.mvfor.local/nexus/content/repositories/snapshots/</url>
+			<url>http://echo.mvfor.local/nexus/content/repositories/new-projects-snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 </project>
