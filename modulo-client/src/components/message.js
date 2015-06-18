@@ -6,7 +6,7 @@ function initBtnConfirmation(){
 			var method = jQuerySelf.attr('data-method');
 			var ajaxFunction = new Boolean(jQuerySelf.attr('data-ajax'));
 			var msgSave = jQuerySelf.attr('data-msgSave');
-			var funcao = jQuerySelf.attr('data-funcao');
+			var funcao = jQuerySelf.attr('data-func');
 			
 			var idToExclude = jQuerySelf.attr('data-id');
 			var url = method + '?id='+idToExclude;
