@@ -114,7 +114,7 @@ order: 3
 <div class="col-sm-3 col-md-3 col-lg-2">
 	<div th:replace="fragments/layout-temporal :: time-field(
 								field='${objeto.atributo}',
-								idField=horario, 
+								idField*=horario, 
 								label=horario, 
 								minuteStep=1,
 								template=false)">
@@ -153,7 +153,7 @@ order: 3
         </tr>
 
         <tr>
-          <td>idField</td>
+          <td>idField*</td>
           <td>String</td>
           <td>Id do input, o mesmo deve ser único.</td>
         </tr>
@@ -165,7 +165,7 @@ order: 3
         </tr>
 
         <tr>
-          <td>nameField</td>
+          <td>nameField*</td>
           <td>String</td>
           <td>Name do elemento HTML.</td>
         </tr>
@@ -242,7 +242,7 @@ order: 3
 <div class="col-xs-4">
   <div th:replace="fragments/layout-temporal :: date-field(
                                                             field='${objeto.dataConsulta}', 
-                                                            idField='dataConsulta',
+                                                            idField*='dataConsulta',
                                                             label=dataConsulta, 
                                                             idIcon=iconeDateField, 
                                                             required=true">)">
@@ -281,7 +281,7 @@ order: 3
         </tr>
 
         <tr>
-          <td>idField</td>
+          <td>idField*</td>
           <td>String</td>
           <td>Id do input, o mesmo deve ser único.</td>
         </tr>
@@ -293,7 +293,7 @@ order: 3
         </tr>
 
         <tr>
-          <td>nameField</td>
+          <td>nameField*</td>
           <td>String</td>
           <td>Name do elemento HTML.</td>
         </tr>
@@ -394,8 +394,8 @@ order: 3
 {% highlight html %}
 <div class="col-xs-4">
   <div th:replace="fragments/layout-temporal :: date-field-periodo(
-                                                                    idField='dataInicio', 
-                                                                    idFieldEndDate='dataFim', 
+                                                                    idField*='dataInicio', 
+                                                                    idField*EndDate='dataFim', 
                                                                     label=periodoDatas, 
                                                                     field='${objeto.dataDeInicio}', 
                                                                     fieldEndDate='${objeto.dataFinal}', 
@@ -443,13 +443,13 @@ order: 3
         </tr>
 
         <tr>
-          <td>idField</td>
+          <td>idField*</td>
           <td>String</td>
           <td>Id do input da primeira data, o mesmo deve ser único.</td>
         </tr>
 
         <tr>
-          <td>idFieldEndDate</td>
+          <td>idField*EndDate</td>
           <td>String</td>
           <td>Id do input da segunda data, o mesmo deve ser único.</td>
         </tr>
@@ -579,7 +579,7 @@ order: 3
 {% highlight html %}
 <div class="col-xs-4">
   <div th:replace="fragments/layout-input :: text-field(
-                                                        idField=idText, 
+                                                        idField*=idText, 
                                                         label=labelText, 
                                                         maxLength=50,
                                                         field='${object.atribute}')">
@@ -617,7 +617,7 @@ order: 3
       </tr>
 
       <tr>
-        <td>idField</td>
+        <td>idField*</td>
         <td>String</td>
         <td>Id do input, o mesmo deve ser único.</td>
       </tr>
@@ -629,7 +629,7 @@ order: 3
       </tr>
 
       <tr>
-        <td>nameField</td>
+        <td>nameField*</td>
         <td>String</td>
         <td>Name do elemento HTML.</td>
       </tr>
@@ -716,7 +716,7 @@ order: 3
 {% highlight html %}
 <div class="col-xs-4">
   <div th:replace="fragments/layout-input :: text-number-field(
-                                                                idField=idNumerico, 
+                                                                idField*=idNumerico, 
                                                                 label=labelNumerico, 
                                                                 field='${object.atribute}',
                                                                 minValue=1, 
@@ -756,7 +756,7 @@ order: 3
       </tr>
 
       <tr>
-        <td>idField</td>
+        <td>idField*</td>
         <td>String</td>
         <td>Id do input, o mesmo deve ser único.</td>
       </tr>
@@ -768,7 +768,7 @@ order: 3
       </tr>
 
       <tr>
-        <td>nameField</td>
+        <td>nameField*</td>
         <td>String</td>
         <td>Name do elemento HTML.</td>
       </tr>
@@ -836,7 +836,7 @@ order: 3
 {% highlight html %}
 <div class="col-xs-4">
   <div th:replace="fragments/layout-input :: number-field(
-                                                          idField=idNumerico, 
+                                                          idField*=idNumerico, 
                                                           label=labelNumerico, 
                                                           field='${object.atribute}',
                                                           minValue=1, 
@@ -876,7 +876,7 @@ order: 3
       </tr>
 
       <tr>
-        <td>idField</td>
+        <td>idField*</td>
         <td>String</td>
         <td>Id do input, o mesmo deve ser único.</td>
       </tr>
@@ -888,7 +888,7 @@ order: 3
       </tr>
 
       <tr>
-        <td>nameField</td>
+        <td>nameField*</td>
         <td>String</td>
         <td>Name do elemento HTML.</td>
       </tr>
@@ -975,7 +975,7 @@ order: 3
                                                         list='listTipoFrequencia',  
                                                         urlServer='/module/controller/action?parametro=%QUERY',
                                                         field=${tipoFrequencia.descricaoFrequencia},
-                                                        idField='idChrListTipoFrequencia',
+                                                        idField*='idChrListTipoFrequencia',
                                                         fieldHidden='${tipoFrequencia.id}',
                                                         idHidden='idTipoFrequenciaHidden', 
                                                         nameHidden='nameTipoFrequenciaHidden', 
@@ -1028,13 +1028,13 @@ var selectedTipoFrequencia = function(object) {
       </tr>
 
       <tr>
-        <td>idField</td>
+        <td>idField*</td>
         <td>String</td>
         <td>Id do input, o mesmo deve ser único.</td>
       </tr>
 
       <tr>
-        <td>nameField</td>
+        <td>nameField*</td>
         <td>String</td>
         <td>Name do elemento HTML.</td>
       </tr>
@@ -1210,7 +1210,7 @@ var selectedTipoFrequencia = function(object) {
         </tr>
 
         <tr>
-          <td>idField</td>
+          <td>idField*</td>
           <td>String</td>
           <td>Id do select, o mesmo deve ser único.</td>
         </tr>
@@ -1222,7 +1222,7 @@ var selectedTipoFrequencia = function(object) {
         </tr>
 
         <tr>
-          <td>nameField</td>
+          <td>nameField*</td>
           <td>String</td>
           <td>Name do elemento HTML.</td>
         </tr>
@@ -1306,7 +1306,7 @@ var selectedTipoFrequencia = function(object) {
         </label>
       </div>
       <div th:replace="fragments/layout-selectable :: checkbox-field(
-                                                                      idField=checkSim, 
+                                                                      idField*=checkSim, 
                                                                       label=geral.sim, 
                                                                       field='${object.atribute}',
                                                                       value='${object.atribute}')">
@@ -1338,7 +1338,7 @@ var selectedTipoFrequencia = function(object) {
         </tr>
 
         <tr>
-          <td>idField</td>
+          <td>idField*</td>
           <td>String</td>
           <td>Id do input, o mesmo deve ser único.</td>
         </tr>
@@ -1350,7 +1350,7 @@ var selectedTipoFrequencia = function(object) {
         </tr>
 
         <tr>
-          <td>nameField</td>
+          <td>nameField*</td>
           <td>String</td>
           <td>Name do elemento HTML.</td>
         </tr>
@@ -1439,14 +1439,14 @@ var selectedTipoFrequencia = function(object) {
         </div>
 
         <div th:replace="fragments/layout-selectable :: radio-field(
-                                                                    idField=rdoSimAtivo, 
+                                                                    idField*=rdoSimAtivo, 
                                                                     label=geral.sim, 
                                                                     field='${ativo}',
                                                                     value=true)">
         </div>
 
         <div th:replace="fragments/layout-selectable :: radio-field(
-                                                                    idField=rdoNaoAtivo, 
+                                                                    idField*=rdoNaoAtivo, 
                                                                     label=geral.sim, 
                                                                     field='${ativo}',
                                                                     value=false)">
@@ -1479,7 +1479,7 @@ var selectedTipoFrequencia = function(object) {
         </tr>
 
         <tr>
-          <td>idField</td>
+          <td>idField*</td>
           <td>String</td>
           <td>Id do input, o mesmo deve ser único.</td>
         </tr>
@@ -1491,7 +1491,7 @@ var selectedTipoFrequencia = function(object) {
         </tr>
 
         <tr>
-          <td>nameField</td>
+          <td>nameField*</td>
           <td>String</td>
           <td>Name do elemento HTML.</td>
         </tr>
@@ -2089,7 +2089,7 @@ var selectedTipoFrequencia = function(object) {
 
   <th:block th:replace="fragments/layout-message :: confirmation(
                                                                   idToExclude=${objeto.id}, 
-                                                                  idField=${'btnExclusao' + objeto.id},
+                                                                  idField*=${'btnExclusao' + objeto.id},
                                                                   title=confirmExclusion, 
                                                                   tooltip=excluir,
                                                                   singleton=true, 
@@ -2118,7 +2118,7 @@ var selectedTipoFrequencia = function(object) {
       </thead>
       <tbody>
         <tr>
-          <td>idField</td>
+          <td>idField*</td>
           <td>String</td>
           <td>Id do button, o mesmo deve ser único.</td>
         </tr>
