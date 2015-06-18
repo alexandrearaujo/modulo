@@ -8,25 +8,38 @@
 	<!-- Date-Field -->
 	<div class="date-field form-group" th:fragment="date-field">
 		<div th:unless="${labelPeriodo}">
-			<label th:if="${idField}" class="control-label" th:classappend="${required} ? 'required' : ''" for="${name}" th:id="__${idField}__+Label">
-				<span th:text="${label}?#{${label}}"></span>
-			</label>
-			
-			<label th:unless="${idField}" class="control-label" th:classappend="${required} ? 'required' : ''" for="${name}">
-				<span th:text="${label}?#{${label}}"></span>
+			<label class="control-label" th:classappend="${required} ? 'required' : ''" for="${nameField}" th:id="__${idField}__+Label">
+				<span th:text="#{${label}}"></span>
 			</label>
 		</div>
 		
 		<div class="input-group date ui-datepicker date-field">
-			<input th:if="${field}" type="text" class="form-control data-field-input" th:id="${idField}" th:field="__${field}__" th:disabled="${disabled}"
-			 	   th:autofocus="${autofocus}" data:bv-notempty="${requiredPeriodo}?${requiredPeriodo}:${required}" th:placeholder="${placeholder}"
-			 	   data:startDate="${startDate}" data:endDate="${endDate}" th:name="${idField}"
+			<input	th:if="${field}" 
+					type="text" 
+					class="form-control data-field-input" 
+					th:id="${idField}" 
+					th:field="__${field}__" 
+					th:disabled="${disabled}"
+					th:autofocus="${autofocus}" 
+					data:bv-notempty="${required}"
+					th:placeholder="${placeholder}"
+					data:startDate="${startDate}" 
+					data:endDate="${endDate}" 
+					th:name="${nameField}"
 					data:bind="${dataBind}" />
 			 	   
-			<input th:unless="${field}" type="text" class="form-control data-field-input" th:id="${idField}" th:disabled="${disabled}"
-			 	   th:autofocus="${autofocus}" data:bv-notempty="${requiredPeriodo}?${requiredPeriodo}:${required}" th:placeholder="${placeholder}"
-			 	    data:startDate="${startDate}" data:endDate="${endDate}" th:name="${idField}"
-			 	   data:bind="${dataBind}" />
+			<input	th:unless="${field}" 
+					type="text" 
+					class="form-control data-field-input" 
+					th:id="${idField}" 
+					th:disabled="${disabled}"
+					th:autofocus="${autofocus}" 
+					data:bv-notempty="${required}" 
+					th:placeholder="${placeholder}"
+					data:startDate="${startDate}" 
+					data:endDate="${endDate}" 
+					th:name="${idField}"
+					data:bind="${dataBind}" />
 			
 			<span th:id="${idIcon}" class="input-group-addon btn" th:disabled="${disabledIcon}">
 				<span class="glyphicon glyphicon-calendar"></span>
@@ -36,75 +49,105 @@
 
 <!-- Date-Field-Periodo -->
 	 <div class="date-field-periodo input-daterange form-group pull-left" th:fragment="date-field-periodo">
-	 	<label th:if="${idField}" class="input-group control-label" th:classappend="${requiredPeriodo} ? 'required' : ''" for="${name}" th:id="__${idField}__+Label">
-			<span th:text="#{${labelPeriodo}}"></span>
+	 	<label class="control-label" th:classappend="${required} ? 'required' : ''" for="${nameField}" th:id="__${idField}__+Label">
+			<span th:text="#{${label}}"></span>
 		</label>
-	
-		<label th:unless="${idField}" class="input-group control-label" th:classappend="${requiredPeriodo} ? 'required' : ''" for="${name}">
-			<span th:text="#{${labelPeriodo}}"></span>
-		</label>
-	   <div class="input-group date">
-	       <input th:if="${field}" class="input-small form-control" th:classappend="create-date-picker-start-date" type="text" th:id="${idField}" th:field="__${field}__"
-	       		  th:disabled="${disabledStartDate}" th:autofocus="${autofocus}" data:bv-notempty="${requiredPeriodo}?${requiredPeriodo}:${required}"
-	       		  th:placeholder="${placeholder}"
-	       		  data:startDate="${startDate}"
-	       		  data:endDate="${endDate}"
-	       		  data:idForm="${idForm}"
-	       		  data:requiredPeriodo="${requiredPeriodo}"
-	       		  data:bind="${dataBind}" />
-	       		  
-	       <input th:unless="${field}" class="input-small form-control" th:classappend="create-date-picker-start-date" type="text" th:id="${idField}"
-	       		  th:disabled="${disabledStartDate}" th:autofocus="${autofocus}" data:bv-notempty="${requiredPeriodo}?${requiredPeriodo}:${required}"
-	       		  th:placeholder="${placeholder}"
-	       		  data:startDate="${startDate}"
-	       		  data:endDate="${endDate}"
-	       		  data:idForm="${idForm}"
-	       		  data:requiredPeriodo="${requiredPeriodo}"
-	       		  data:bind="${dataBindStartDate}" />
 			
-			<div class="input-group-addon calendar btn startDate" data:target="${idField}"><span class="glyphicon glyphicon-calendar"></span></div>
+	   <div class="input-group date">
+	       <input	th:if="${field}" 
+	       			class="input-small form-control" 
+					th:classappend="create-date-picker-start-date" 
+					type="text" 
+					th:id="${idField}" 
+					th:field="__${field}__"
+					th:disabled="${disabledStartDate}" 
+					th:autofocus="${autofocus}" 
+					data:bv-notempty="${required}"
+					th:placeholder="${placeholder}"
+					data:startDate="${startDate}"
+					data:endDate="${endDate}"
+					data:idForm="${idForm}"
+					data:required="${required}"
+					data:bind="${dataBind}" />
+	       		  
+	       <input	th:unless="${field}" 
+					class="input-small form-control" 
+					th:classappend="create-date-picker-start-date" 
+					type="text" 
+					th:id="${idField}"
+					th:disabled="${disabledStartDate}" 
+					th:autofocus="${autofocus}" 
+					data:bv-notempty="${required}"
+					th:placeholder="${placeholder}"
+					data:startDate="${startDate}"
+					data:endDate="${endDate}"
+					data:idForm="${idForm}"
+					data:required="${required}"
+					data:bind="${dataBindStartDate}" />
+			
+			<div class="input-group-addon calendar btn startDate" data:target="${idField}">
+				<span class="glyphicon glyphicon-calendar"></span>
+			</div>
 	        <span  class="input-group-addon to">&nbsp; a &nbsp;</span>
 	       
-	       <input th:if="${field}" class="input-small form-control" th:classappend="create-date-picker-end-date" type="text" th:id="${idFieldEndDate}"
-	       		  th:field="__${fieldEndDate}__" th:disabled="${disabledEndDate}" th:autofocus="${autofocusEndDate}"
-	       		  data:bv-notempty="${requiredPeriodoEndDate}?${requiredPeriodoEndDate}:${requiredEndDate}" th:placeholder="${placeholderEndDate}" 
-	       		  data:startDate="${startDate}"
-	       		  data:endDate="${endDate}"
-	       		  data:idForm="${idForm}"
-	       		  data:requiredPeriodoEndDate="${requiredPeriodoEndDate}"
-	       		  data:bind="${dataBindEndDate}" />
+	       <input	th:if="${field}" 
+					class="input-small form-control" 
+					th:classappend="create-date-picker-end-date" 
+					type="text" 
+					th:id="${idFieldEndDate}"
+					th:field="__${fieldEndDate}__" 
+					th:disabled="${disabledEndDate}" 
+					th:autofocus="${autofocusEndDate}"
+					data:bv-notempty="${requiredEndDate}"
+					th:placeholder="${placeholderEndDate}" 
+					data:startDate="${startDate}"
+					data:endDate="${endDate}"
+					data:idForm="${idForm}"
+					data:requiredEndDate="${requiredEndDate}"
+					data:bind="${dataBindEndDate}" />
 	       
-	       <input th:unless="${field}" class="input-small form-control" th:classappend="create-date-picker-end-date" type="text" th:id="${idFieldEndDate}"
-	       		  th:disabled="${disabledEndDate}" th:autofocus="${autofocusEndDate}"
-	       		  data:bv-notempty="${requiredPeriodoEndDate}?${requiredPeriodoEndDate}:${requiredEndDate}" th:placeholder="${placeholderEndDate}" 
-	       		  data:startDate="${startDate}"
-	       		  data:endDate="${endDate}"
-	       		  data:idForm="#${idForm}"
-	       		  data:requiredPeriodoEndDate="${requiredPeriodoEndDate}"
-	       		  data:bind="${dataBindEndDate}" />
+	       <input	th:unless="${field}" 
+					class="input-small form-control" 
+					th:classappend="create-date-picker-end-date"
+					type="text" 
+					th:id="${idFieldEndDate}"
+					th:disabled="${disabledEndDate}" 
+					th:autofocus="${autofocusEndDate}"
+					data:bv-notempty="${requiredEndDate}" 
+					th:placeholder="${placeholderEndDate}" 
+					data:startDate="${startDate}"
+					data:endDate="${endDate}"
+					data:idForm="#${idForm}"
+					data:requiredEndDate="${requiredEndDate}"
+					data:bind="${dataBindEndDate}" />
 			
-			<div class="input-group-addon calendar btn endDate"  data:target="${idFieldEndDate}"><span class="glyphicon glyphicon-calendar"></span></div>
+			<div class="input-group-addon calendar btn endDate"  data:target="${idFieldEndDate}">
+				<span class="glyphicon glyphicon-calendar"></span>
+			</div>
 	   </div>
 	</div>
 	
 	<!-- Time-Field -->
 	<div class="form-group" th:fragment="time-field">
-		<div>
-			<label th:if="${idcomponente}" class="control-label" th:classappend="${required} ? 'required' : ''" for="${name}" th:id="__${idcomponente}__+Label">
-				<span th:text="#{${label}}"></span>
-			</label>
-			
-			<label th:unless="${idcomponente}" class="control-label" th:classappend="${required} ? 'required' : ''" for="${name}">
-				<span th:text="#{${label}}"></span>
-			</label>
-		</div>
+		<label class="control-label" th:classappend="${required} ? 'required' : ''" for="${nameField}" th:id="__${idField}__+Label">
+			<span th:text="#{${label}}"></span>
+		</label>
 		
 		<div class="bootstrap-timepicker">
-			<input type="text" class="form-control time-field" th:id="${idField}" th:field="__${field}__" th:disabled="${#bools.isTrue(__${disabled}__)}"
-				   data:minute-step="${minuteStep}" data:default-time="${defaultTime}"
-				   th:autofocus="${autofocus}" data:template="${template}" data:bv-notempty="${required}" th:placeholder="${placeholder}" th:onchange="${onchange}"
-				    data:field="__${dataField}__"
-				    data:bind="${dataBind}" />
+			<input	type="text" 
+					class="form-control time-field" 
+					th:id="${idField}" 
+					th:field="__${field}__" 
+					th:name="${nameField}"
+					th:disabled="${#bools.isTrue(__${disabled}__)}"
+					data:minute-step="${minuteStep}" 
+					data:default-time="${defaultTime}"
+					th:autofocus="${autofocus}" 
+					data:template="${template}" 
+					data:bv-notempty="${required}" 
+					th:placeholder="${placeholder}" 
+					data:field="__${dataField}__"
+					data:bind="${dataBind}" />
 				   
 		    <input type="hidden" class="form-control" th:id="previous-value-+${idField}" th:field="__${field}__" th:disabled="disabled"/>
 		</div>

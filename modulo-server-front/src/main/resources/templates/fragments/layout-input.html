@@ -7,106 +7,127 @@
 <body>
 	<!-- Text-Field -->
 	<div class="form-group" th:fragment="text-field">
-		<div>
-			<label th:if="${idField}" class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField}" th:id="__${idField}__+Label">
-				<span th:text="#{${label}}"></span>
-			</label>
-			
-			<label th:unless="${idField}" class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField}">
-				<span th:text="#{${label}}"></span>
-			</label>
-		</div>
-		
-		<div>
-			<input th:unless="${field}" type="text" class="form-control" th:id="${idField}" th:maxlength="${maxLength}"
-				   data:bv-notempty="${required}" th:autofocus="${autofocus}" th:placeholder="${placeholder}"
-				   th:disabled="${disabled}" th:onblur="${onblur}" th:name="${nameField}" th:readonly="${readonly}"
-				   th:pattern="${pattern}" th:autocomplete="${autocomplete} != 'on' ? 'off' : ${autocomplete}" 
-				   data:bind="${dataBind}" /> 
-				   
-			<input th:unless="${numRows != null or field == null}" type="text" class="form-control" th:id="${idField}"
-			 	   th:field="__${field}__" th:autofocus="${autofocus}" th:readonly="${readonly}"
-				   th:maxlength="${maxLength}" th:classappend="${classCss}" data:bv-notempty="${required}"
-				   th:placeholder="${placeholder}" th:disabled="${disabled}" th:onblur="${onblur}"
-				   th:pattern="${pattern}" th:autocomplete="${autocomplete} != 'on' ? 'off' : ${autocomplete}"
-				   data:bind="${dataBind}" /> 
-				   
-			<textarea th:if="${numRows}" class="form-control" th:id="${idField}" th:field="__${field}__"
-			          th:maxlength="${maxLength}" th:rows="${numRows}"
-					  th:classappend="${classCss}" th:readonly="${readonly}" th:autofocus="${autofocus}"
-					  data:bv-notempty="${required}" th:placeholder="${placeholder}"
-					  th:pattern="${pattern}" th:disabled="${disabled}"
-					  data:bind="${dataBind}"></textarea>
-		</div>
+		<label class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField}" th:id="__${idField}__+Label">
+			<span th:text="#{${label}}"></span>
+		</label>
+	
+		<input  th:unless="${field}" 
+				type="text" 
+				class="form-control" 
+				th:id="${idField}" 
+				th:maxlength="${maxLength}"
+				data:bv-notempty="${required}"
+				th:autofocus="${autofocus}" 
+				th:placeholder="${placeholder}"
+				th:disabled="${disabled}" 
+				th:onblur="${onblur}" 
+				th:name="${nameField}" 
+				th:readonly="${readonly}"
+				th:pattern="${pattern}" 
+				th:autocomplete="${autocomplete} != 'on' ? 'off' : ${autocomplete}" 
+				data:bind="${dataBind}" /> 
+			   
+		<input	th:unless="${numRows != null or field == null}" 
+				type="text" 
+				class="form-control" 
+				th:id="${idField}"
+				th:field="__${field}__" 
+				th:autofocus="${autofocus}" 
+				th:readonly="${readonly}"
+				th:maxlength="${maxLength}" 
+				th:classappend="${classCss}" 
+				data:bv-notempty="${required}"
+				th:placeholder="${placeholder}" 
+				th:disabled="${disabled}" 
+				th:onblur="${onblur}"
+				th:pattern="${pattern}" 
+				th:autocomplete="${autocomplete} != 'on' ? 'off' : ${autocomplete}"
+				data:bind="${dataBind}" /> 
+			   
+		<textarea	th:if="${numRows}" 
+					class="form-control" 
+					th:id="${idField}" 
+					th:field="__${field}__"
+					th:maxlength="${maxLength}" 
+					th:rows="${numRows}"
+					th:classappend="${classCss}"
+					th:readonly="${readonly}" 
+					th:autofocus="${autofocus}"
+					data:bv-notempty="${required}"
+					th:placeholder="${placeholder}"
+					th:pattern="${pattern}" 
+					th:disabled="${disabled}"
+					data:bind="${dataBind}"></textarea>
 	</div>
 		
 		
 	<!-- Text-number-field -->
 	<div class="form-group" th:fragment="text-number-field">
-		<div>
-			<label th:if="${idField}" class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField}" th:id="__${idField}__+Label">
-				<span th:text="#{${label}}"></span>
-			</label>
-			
-			<label th:unless="${idField}" class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField}">
-				<span th:text="#{${label}}"></span>
-			</label>
-		</div>
+		<label class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField}" th:id="__${idField}__+Label">
+			<span th:text="#{${label}}"></span>
+		</label>
 		
-		<div>
-			<input th:unless="${field}" type="text" class="form-control numbersOnly" th:id="${idField}"
-				   data:bv-notempty="${required}" th:autofocus="${autofocus}" th:placeholder="${placeholder}"
-				   th:disabled="${disabled}" th:onblur="${onblur}" th:maxlength="${maxLength}" th:name="${nameField}"
-				   th:pattern="${pattern}" th:autocomplete="${autocomplete} != 'on' ? 'off' : ${autocomplete}"
-				   data:bind="${dataBind}" th:readonly="${readonly}" /> 
-				   
-			<input th:if="${field}" type="text" class="form-control numbersOnly" th:id="${idField}"
-			       th:field="__${field}__" th:maxlength="${maxLength}" th:disabled="${disabled}" th:onblur="${onblur}"
-				   data:bv-notempty="${required}" th:autofocus="${autofocus}" th:placeholder="${placeholder}"
-				   th:pattern="${pattern}" th:autocomplete="${autocomplete} != 'on' ? 'off' : ${autocomplete}"
-				   data-fv-notempty-message="The gender is required" th:readonly="${readonly}"
-				   data:bind="${dataBind}" /> 
-		</div>
+		<input	th:unless="${field}" 
+				type="text"
+				class="form-control numbersOnly" 
+				th:id="${idField}"
+				data:bv-notempty="${required}" 
+				th:autofocus="${autofocus}" 
+				th:placeholder="${placeholder}"
+				th:disabled="${disabled}" 
+				th:maxlength="${maxLength}" 
+				th:name="${nameField}"
+				th:pattern="${pattern}" 
+				th:autocomplete="${autocomplete} != 'on' ? 'off' : ${autocomplete}"
+				data:bind="${dataBind}" 
+				th:readonly="${readonly}" /> 
+			   
+		<input	th:if="${field}" 
+				type="text" 
+				class="form-control numbersOnly" 
+				th:id="${idField}"
+				th:field="__${field}__" 
+				th:maxlength="${maxLength}" 
+				th:disabled="${disabled}" 
+				data:bv-notempty="${required}" 
+				th:autofocus="${autofocus}" 
+				th:placeholder="${placeholder}"
+				th:pattern="${pattern}" 
+				th:autocomplete="${autocomplete} != 'on' ? 'off' : ${autocomplete}"
+				data-fv-notempty-message="The gender is required" 
+				th:readonly="${readonly}"
+				data:bind="${dataBind}" /> 
 	</div>
 		
 		
 	<!-- Number-Field -->
 	<div class="form-group number-field" th:fragment="number-field">
-		<div>
-			<label th:if="${idField}" class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField}" th:id="__${idField}__+Label">
-				<span th:text="#{${label}}"></span>
-			</label>
-			
-			<label th:unless="${idField}" class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField}">
-				<span th:text="#{${label}}"></span>
-			</label>
-		</div>
+		<label class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField}" th:id="__${idField}__+Label">
+			<span th:text="#{${label}}"></span>
+		</label>
 		
-		<div>
-			<input type="number" class="form-control" th:id="${idField}" th:field="__${field}__"
-				   th:maxlength="${maxLength}" th:min="${minValue}" th:max="${maxValue}"
-				   th:autofocus="${autofocus}" data:bv-notempty="${required}" th:placeholder="${placeholder}"
-				   th:disabled="${#bools.isTrue(__${disabled}__)}"
-				   th:onblur="${onblur}" 
-				   data:onchange="${onchange}" 
-				   data:previousValue="__${field}__"  
-				   data:bind="${dataBind}"/>
-		</div>
+		<input	type="number" 
+				class="form-control" 
+				th:id="${idField}"
+				th:field="__${field}__"
+				th:maxlength="${maxLength}" 
+				th:min="${minValue}" 
+				th:max="${maxValue}"
+				th:autofocus="${autofocus}"
+				data:bv-notempty="${required}" 
+				th:placeholder="${placeholder}"
+				th:disabled="${#bools.isTrue(__${disabled}__)}"
+				data:previousValue="__${field}__"  
+				data:bind="${dataBind}"/>
 	</div>
 
 
 	<!-- Autocomplete -->
 	<div class="form-group" th:fragment="autocomplete">
-		<div>
-			<label th:if="${idField}" class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField} == null ? ${idField} : ${nameField}"
-			       th:id="__${idField}__+Label">
-				<span th:text="#{${label}}"></span>
-			</label>
-			
-			<label th:unless="${idField}" class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField} == null ? ${idField} : ${nameField}">
-				<span th:text="#{${label}}"></span>
-			</label>
-		</div>
+		<label class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField}" th:id="__${idField}__+Label">
+			<span th:text="#{${label}}"></span>
+		</label>
+
 	
 		<div class="form-group">
 			 <input th:if="${fieldHidden}" 

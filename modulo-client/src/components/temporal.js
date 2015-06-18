@@ -107,8 +107,8 @@ function initDateFieldPeriodo(){
 			var isEndDateDisabled = jQueryEndDate.is(':disabled');
 			var nameStartDate = jQueryStartDate.attr('name');
 			var nameEndDate = jQueryEndDate.attr('name');
-			var isRequiredStartDate = new Boolean(jQueryStartDate.attr('data-requiredPeriodo'));
-			var isRequiredEndDate = new Boolean(jQueryEndDate.attr('data-requiredPeriodoEndDate'));
+			var isRequiredStartDate = new Boolean(jQueryStartDate.attr('data-required'));
+			var isRequiredEndDate = new Boolean(jQueryEndDate.attr('data-requiredEndDate'));
 			
 			jQueryBtnAddonCalendarStartDate.attr("disabled", isStartDateDisabled);
 			jQueryBtnAddonCalendarEndDate.attr("disabled", isEndDateDisabled);
