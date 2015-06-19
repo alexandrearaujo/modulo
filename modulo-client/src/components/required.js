@@ -9,21 +9,21 @@
     		return label.hasClass('required');
     	}
     	
-    	this.each(function(index, element){
+    	this.each(function(index, element) {
     		var label = $('#'+ this.id + "Label");
     		var $element = $(element);
     		var $form = $(element.form);
     		
-    		if(isRequired && !label.hasClass('required')){
+    		if(isRequired && !label.hasClass('required')) {
     			label.addClass('required');
-    		}else if(!isRequired){
+    		} else if(!isRequired) {
     			label.removeClass('required');
     		}
     		
-    		if($element.hasClass('typeahead')){
+    		if($element.hasClass('typeahead')) {
     			var $hidden = $element.parent().prev();
     			$form.bootstrapValidator('enableFieldValidators', $hidden.prop('name'), isRequired);
-    		}else{
+    		} else {
     			$form.bootstrapValidator('enableFieldValidators', element.name, isRequired);
     		}
     	});

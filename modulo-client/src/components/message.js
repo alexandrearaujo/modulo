@@ -1,32 +1,30 @@
 
-function initBtnConfirmation(){
+function initBtnConfirmation() {
 	$('.confirmation-callback').confirmation({
 		onConfirm: function() { 
 			var jQuerySelf= jQuery(this);
 			var method = jQuerySelf.attr('data-method');
 			var ajaxFunction = new Boolean(jQuerySelf.attr('data-ajax'));
 			var msgSave = jQuerySelf.attr('data-msgSave');
-			var funcao = jQuerySelf.attr('data-func');
-			
+			var completeFunction = jQuerySelf.attr('data-function');
 			var idToExclude = jQuerySelf.attr('data-id');
 			var url = method + '?id='+idToExclude;
 			
 			if (ajaxFunction == false) {
-				window.location=url; 
+				window.location = url; 
 			} else if (ajaxFunction == true) {
-				$.ajax({
+				$.get({
 					url: url,
-					async: false,
-					success: function(result) {
-						$.alertSuccess(msgSave);
+					async: false
+				}).done(function() {
+					$.alertSuccess(msgSave);
+				}).always(function() {
+					if (completeFunction != null) {
+						var renamedCompleteFunction = new Function(completeFunction.replace('()', '('+idToExclude+')'));
+						renamedCompleteFunction.call();
 					}
 				});
 			}
-			if (funcao != null) {
-				var f = new Function(funcao.replace('()', '('+idToExclude+')'));
-				f.call();
-			}
-				
 		}
 	});
 }

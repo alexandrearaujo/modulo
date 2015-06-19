@@ -7,11 +7,9 @@
 <body>
 	<!-- Date-Field -->
 	<div class="date-field form-group" th:fragment="date-field">
-		<div th:unless="${labelPeriodo}">
-			<label class="control-label" th:classappend="${required} ? 'required' : ''" for="${nameField}" th:id="__${idField}__+Label">
-				<span th:text="#{${label}}"></span>
-			</label>
-		</div>
+		<label class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField}" th:id="__${idField}__+Label">
+			<span th:text="#{${label}}"></span>
+		</label>
 		
 		<div class="input-group date ui-datepicker date-field">
 			<input	th:if="${field}" 
@@ -49,7 +47,7 @@
 
 <!-- Date-Field-Periodo -->
 	 <div class="date-field-periodo input-daterange form-group pull-left" th:fragment="date-field-periodo">
-	 	<label class="control-label" th:classappend="${required} ? 'required' : ''" for="${nameField}" th:id="__${idField}__+Label">
+		<label th:unless="${#strings.isEmpty(${label})}" class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField}" th:id="__${idField}__+Label">
 			<span th:text="#{${label}}"></span>
 		</label>
 			
@@ -85,10 +83,11 @@
 					data:required="${required}"
 					data:bind="${dataBindStartDate}" />
 			
-			<div class="input-group-addon calendar btn startDate" data:target="${idField}">
+		   <div class="input-group-addon calendar btn startDate" data:target="${idField}">
 				<span class="glyphicon glyphicon-calendar"></span>
-			</div>
-	        <span  class="input-group-addon to">&nbsp; a &nbsp;</span>
+		   </div>
+		   
+	       <span  class="input-group-addon to">&nbsp; a &nbsp;</span>
 	       
 	       <input	th:if="${field}" 
 					class="input-small form-control" 
@@ -129,7 +128,7 @@
 	
 	<!-- Time-Field -->
 	<div class="form-group" th:fragment="time-field">
-		<label class="control-label" th:classappend="${required} ? 'required' : ''" for="${nameField}" th:id="__${idField}__+Label">
+		<label class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField}" th:id="__${idField}__+Label">
 			<span th:text="#{${label}}"></span>
 		</label>
 		
@@ -146,7 +145,6 @@
 					data:template="${template}" 
 					data:bv-notempty="${required}" 
 					th:placeholder="${placeholder}" 
-					data:field="__${dataField}__"
 					data:bind="${dataBind}" />
 				   
 		    <input type="hidden" class="form-control" th:id="previous-value-+${idField}" th:field="__${field}__" th:disabled="disabled"/>

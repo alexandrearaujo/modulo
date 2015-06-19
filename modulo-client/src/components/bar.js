@@ -1,7 +1,7 @@
 /**
  * PaginationBar
  */
-function initPaginationBar(){
+function initPaginationBar() {
 	$('body').on( "click", ".pagination a", function() {
 		var page;
 		var jQueryPaginationContainer = $(this).parents('.paginationbar nav');
@@ -31,10 +31,10 @@ function initPaginationBar(){
 		}
 		var url = method + '?page='+page+'&size='+size+'&idToRender='+idToRender;
 		
-		if(isAjax)
+		if(isAjax) {
 			$('#' + idToRender).load(url);
-		else
+		} else {
 			window.location.href = window.location.origin+url;
-		
+		}
 	});
 }

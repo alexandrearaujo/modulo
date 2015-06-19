@@ -3,15 +3,15 @@
  */
 function initNumberField(){
 	var targets = $('.number-field input');
-	jQuery.each(targets, function(i, target){ 
-		if( target !== undefined){
+	jQuery.each(targets, function(i, target) { 
+		if(target !== undefined) {
 			var jQueryTarget = $(target);
-			$(jQueryTarget).on('change', function(){
+			$(jQueryTarget).on('change', function() {
 				var jQuerySelf = $(this)
 				var currentValue = jQuerySelf.val();
 				var functionName = jQuerySelf.attr('data-onchange');
 				
-		  	    if( jQuerySelf.val() !=  jQuerySelf.attr('data-previousValue')){
+		  	    if(jQuerySelf.val() !=  jQuerySelf.attr('data-previousValue')) {
 		  	    	var f = new Function(functionName);
 					f.call();
 					jQuerySelf.attr('data-previousValue', jQuerySelf.val());
@@ -22,28 +22,28 @@ function initNumberField(){
 	});
 }
 
-function fncUppercase(){
-	$("input").keyup(function(e){
+function fncUppercase() {
+	$("input").keyup(function(e) {
 		var textUpperCase = $(this).val().toUpperCase();
-		if(window.getSelection().toString() == $(this).val()){
+		if(window.getSelection().toString() == $(this).val()) {
 			$(this).val(textUpperCase);
 			$(this).select();
-		}else{
+		} else {
 			$(this).val(textUpperCase);
 		}
 	});
-	$("textarea").keyup(function(e){
+	$("textarea").keyup(function(e) {
 		var textUpperCase = $(this).val().toUpperCase();
-		if(window.getSelection().toString() == $(this).val()){
+		if(window.getSelection().toString() == $(this).val()) {
 			$(this).val(textUpperCase);
 			$(this).select();
-		}else{
+		} else {
 			$(this).val(textUpperCase);
 		}
 	});
 }
 
-function numbersOnly(){
+function numbersOnly() {
 	jQuery('.numbersOnly').keyup(function () { 
 	    this.value = this.value.replace(/[^0-9\.]/g,'');
 	});
