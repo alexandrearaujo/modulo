@@ -425,7 +425,7 @@ order: 3
       <tbody>
 
         <tr>
-          <td>labelPeriodo</td>
+          <td>label</td>
           <td>messages.properties</td>
           <td>String que faz referência ao messages/internacionalização do módulo.</td>
         </tr>
@@ -500,12 +500,6 @@ order: 3
           <td>endDate</td>
           <td>String</td>
           <td>Data final do calendário.</td>
-        </tr>
-
-         <tr>
-          <td>disabledStartDate</td>
-          <td>Boolean</td>
-          <td>Informa se a primeira data está ativa ou não.</td>
         </tr>
 
         <tr>
@@ -675,6 +669,12 @@ order: 3
         <td>Integer</td>
         <td>Caso esse atributo seja declara o input será substituido por uma textarea onde a quantidade de linhas 
         será definida pelo numRows.</td>
+      </tr>
+
+      <tr>
+        <td>addClass</td>
+        <td>String</td>
+        <td>String que será adicionada ao class do container do input.</td>
       </tr>
 
       <tr>
@@ -1722,7 +1722,7 @@ var selectedTipoFrequencia = function(object) {
         </tr>
 
         <tr>
-          <td>disabledCanceButton</td>
+          <td>disabledCancelButton</td>
           <td>Boolean</td>
           <td>Informa se o cancelButton está desativado ou não.</td>
         </tr>
@@ -1740,13 +1740,13 @@ var selectedTipoFrequencia = function(object) {
         </tr>
 
          <tr>
-            <td>newButton</td>
+            <td>cancelButton</td>
             <td>Boolean</td>
             <td>Define se a barra conterá o botão cancelar.</td>
           </tr>
 
           <tr>
-            <td>disabledNewButton</td>
+            <td>disabledCancelButton</td>
             <td>Boolean</td>
             <td>Informa se o cancelButton está desativado ou não.</td>
           </tr>
@@ -2093,7 +2093,7 @@ var selectedTipoFrequencia = function(object) {
                                                                   title=confirmExclusion, 
                                                                   tooltip=excluir,
                                                                   singleton=true, 
-                                                                  func=true, 
+                                                                  function=true, 
                                                                   placement=left, 
                                                                   popout=true, 
                                                                   method='/dispensacao/tipoFrequencia/delete')"/>
@@ -2166,7 +2166,7 @@ var selectedTipoFrequencia = function(object) {
         </tr>
     
         <tr>
-          <td>func</td>
+          <td>function</td>
           <td>String</td>
           <td>Função que será chamada após as requisição ajax ser executadas.</td>
         </tr>
