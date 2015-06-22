@@ -7,36 +7,42 @@
 <body>
 	<!-- Select-Field -->
 	<div class="form-group" th:classappend="${addClass}" th:fragment="select-field">
-			<label class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField}" th:id="__${idField}__+Label">
-				<span th:text="#{${label}}"></span>
-			</label>
-			
-			<select	th:if="${field}" 
-					th:name="${nameField}" 
-					th:field="__${field}__" 
-					class="form-control select-field" 
-					th:title="${title}"
-				    th:disabled="${disabled}" 
-				    data:bv-notempty="${required}" 
-				    th:autofocus="${autofocus}" 
-				    th:placeholder="${placeholder}" 
-				    th:id="${idField}"
-				    data:bind="${dataBind}">
-				    
-				   <option th:if="${prompt}" th:text="${textPrompt}" th:value="${valuePrompt}" />
-				   <option th:if="${list}" th:each="i : ${list}" th:text="${i.__${text}__}" th:value="${i.__${value}__}"/>
-				   <option th:if="${listEnum}" th:each="i : ${listEnum}" th:text="#{${i}}" th:value="${i}"/>
-			</select>
-			
-			<select th:unless="${field}" th:name="${nameField}" class="form-control select-field" th:title="${title}"
-				    th:disabled="${disabled}" data:bv-notempty="${required}" th:autofocus="${autofocus}" 
-				    th:onblur="${onblur}" th:onchange="${onchange}" th:placeholder="${placeholder}" th:id="${idField}"
-				    data:bind="${dataBind}">
-				   <option th:if="${prompt}" th:text="${textPrompt}" th:value="${valuePrompt}" />
-				   <option th:if="${list}" th:each="i : ${list}" th:text="${i.__${text}__}" th:value="${i.__${value}__}"/>
-				   <option th:if="${listEnum}" th:each="i : ${listEnum}" th:text="#{${i}}" th:value="${i}"/>
-			</select>
-			
+		<label class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField}" th:id="__${idField}__+Label">
+			<span th:text="#{${label}}"></span>
+		</label>
+		
+		<select	th:if="${field}" 
+				th:name="${nameField}" 
+				th:field="__${field}__" 
+				class="form-control select-field" 
+				th:title="${title}"
+			    th:disabled="${disabled}" 
+			    data:bv-notempty="${required}" 
+			    th:autofocus="${autofocus}" 
+			    th:placeholder="${placeholder}" 
+			    th:id="${idField}"
+			    data:bind="${dataBind}">
+			    
+			   <option th:if="${prompt}" th:text="${textPrompt}" th:value="${valuePrompt}" />
+			   <option th:if="${list}" th:each="i : ${list}" th:text="${i.__${text}__}" th:value="${i.__${value}__}"/>
+			   <option th:if="${listEnum}" th:each="i : ${listEnum}" th:text="#{${i}}" th:value="${i}"/>
+		</select>
+		
+		<select th:unless="${field}"
+		        th:name="${nameField}"
+		        class="form-control select-field"
+		        th:title="${title}"
+			    th:disabled="${disabled}"
+			    data:bv-notempty="${required}"
+			    th:autofocus="${autofocus}" 
+			    th:placeholder="${placeholder}"
+			    th:id="${idField}"
+			    data:bind="${dataBind}">
+			    
+			   <option th:if="${prompt}" th:text="${textPrompt}" th:value="${valuePrompt}" />
+			   <option th:if="${list}" th:each="i : ${list}" th:text="${i.__${text}__}" th:value="${i.__${value}__}"/>
+			   <option th:if="${listEnum}" th:each="i : ${listEnum}" th:text="#{${i}}" th:value="${i}"/>
+		</select>
 	</div>
 	
 	
@@ -73,6 +79,5 @@
 			<span th:text="${label} != null ?  #{${label}}:#{geral.sim}"></span>
 		</label>
 	</div>
-
 </body>
 </html>

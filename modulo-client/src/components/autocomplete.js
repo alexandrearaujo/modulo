@@ -3,7 +3,7 @@ var required;
 
 function AutoComplete(){}
 
-AutoComplete.prototype.autocomplete = function(vurl,target,fncName,hasParameters){
+AutoComplete.prototype.autocomplete = function(vurl, target, fncName, hasParameters){
 	 var idHidden = target['idHidden'];
 	 AutoComplete.prototype.bloodHound = new Bloodhound({
 		datumTokenizer: function(d) {
@@ -11,9 +11,7 @@ AutoComplete.prototype.autocomplete = function(vurl,target,fncName,hasParameters
 		},
 		queryTokenizer: Bloodhound.tokenizers.whitespace,
 		limit: 100,
-
 		remote: {
-			
 			url: vurl,
             replace: function (url, query) {
             	idHidden = target['idHidden'];
@@ -21,52 +19,50 @@ AutoComplete.prototype.autocomplete = function(vurl,target,fncName,hasParameters
             	required = target['required'];
             	url = hasParameters ? url.replace('%QUERY',query+"&") : url.replace('%QUERY',query); 
             	
-                if(hasParameters){
-                var parameters = url.indexOf('&');
-                var param = url.substr(parameters+1);
-                var arr = param.split(",");
-                url = url.substr(0,parameters);
+                if(hasParameters) {
+	                var parameters = url.indexOf('&');
+	                var param = url.substr(parameters+1);
+	                var arr = param.split(",");
+	                url = url.substr(0,parameters);
                
-                for(var i in arr){
-                        url += '&';
-                        var v = arr[i].split("=");
-                        url += v[0]+"=";
-                        url +=eval(v[1]);
-                    }
+		            for(var i in arr) {
+		                url += '&';
+		                var v = arr[i].split("=");
+		                url += v[0]+"=";
+		                url +=eval(v[1]);
+		            }
                 }
+                
                 return url;
             },
-            
-          filter: function ( response ) {
-        	  return $.map(response, window[fncName]);
-        	  }
-
-			}		
+            filter: function ( response ) {
+        	    return $.map(response, window[fncName]);
+            }
+		}		
 	});
 	
 	var promise = AutoComplete.prototype.bloodHound.initialize();
 
-	promise
-	.fail(function() { console.log('err!'); });
+	promise.fail(function() { console.log('err!'); });
 
 	$('#'+target['object']).blur(function(){
-		if(this.value == ''){
+		if(this.value == '') {
 			$('#'+idHidden).val('');
-			if($(this).required()){
+			if($(this).required()) {
 				$(this.form).bootstrapValidator('revalidateField', $('#'+idHidden).prop('name'));
 			}
 		}
 	});
 	
 	$('#'+target['object']).typeahead(
-			{
-				minLength: 3,
-				highlight: true,
-			},
-			{ 
-				name: target['list'],
-				source: AutoComplete.prototype.bloodHound.ttAdapter()
-			}
+		{
+			minLength: 3,
+			highlight: true,
+		},
+		{ 
+			name: target['list'],
+			source: AutoComplete.prototype.bloodHound.ttAdapter()
+		}
 	)
 	.on('typeahead:opened', onOpened2)
 	.on('typeahead:autocompleted', onAutocompleted2)
@@ -91,14 +87,10 @@ function setarValor(campo,valor){
 	$("#"+campo).typeahead('val', valor);
 }
 
-function log(valor){
-	console.log(valor);
-}
-
 function initAutoComplete(){
 	var arrayInputs = $('.typeahead.input-autocomplete');
-	jQuery.each(arrayInputs, function(i, input){ 
-		if( input !== undefined){
+	jQuery.each(arrayInputs, function(i, input) { 
+		if(input !== undefined) {
 			var jQueryTarget = $(input);
 			
 			var targetArray = [];	 
@@ -112,13 +104,13 @@ function initAutoComplete(){
 			}
 			
 			targetArray['object']     =   jQueryTarget.attr('data-object');
-			targetArray['list']      =   jQueryTarget.attr('data-list');
+			targetArray['list']       =   jQueryTarget.attr('data-list');
 			targetArray['onSelected'] =   jQueryTarget.attr('data-onSelected');
 			targetArray['idHidden']   =   jQueryTarget.attr('data-idHidden');
-			var hasParameters =   parameters!=null; 
+			var hasParameters =   parameters != null; 
 			var fncName       =   jQueryTarget.attr('data-fncName');
 			
-			AutoComplete.prototype.autocomplete(url,targetArray,fncName,hasParameters);
+			AutoComplete.prototype.autocomplete(url, targetArray, fncName, hasParameters);
 		}
 	});
 }

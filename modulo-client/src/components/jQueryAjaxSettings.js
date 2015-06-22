@@ -1,8 +1,4 @@
 function ajaxSetup(){	
-
-	/*
-	 * Dispencacao
-	 */
 	$.ajaxSetup({
 		beforeSend: function( xhr ) {
 			var token = $("meta[name='_csrf']").attr("content");
@@ -14,17 +10,6 @@ function ajaxSetup(){
             'Content-Type': 'application/json'
         }
 	});
-	
-	/*
-	 * Estratificacao
-	 */
-	/* Default request without spring security
-	$.ajaxSetup({
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-         }
-    });*/
 }
 
 jQuery(document).ajaxComplete( function(){
@@ -33,7 +18,7 @@ jQuery(document).ajaxComplete( function(){
 	$("td[rel='tooltip']").tooltip({
 	    'placement': 'top',
 	    'container':'body'
-	  });
+	});
 	formatMask();
 	fncUppercase();
 	numbersOnly();
@@ -56,5 +41,5 @@ jQuery(document).ready(function(){
 	$("td[rel='tooltip']").tooltip({
 	    'placement': 'top',
 	    'container':'body'
-	  });
+	});
 });
