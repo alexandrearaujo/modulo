@@ -48,12 +48,23 @@
 	
 	<!-- Checkbox-Field -->
 	<div class="checkbox" th:classappend="${addClass}" th:fragment="checkbox-field">
-		<input  type="checkbox" 
+		<input  th:if="${field}"
+				type="checkbox" 
 				th:id="${idField}"
 				th:name="${nameField}"
 				th:disabled="${disabled}"
 				th:field="__${field}__" 
 				th:value="__${value}__" 
+				th:autofocus="${autofocus}"
+				data:bv-notempty="${required}"
+				data:bind="${dataBind}"/> 
+				
+		<input  th:unless="${field}"
+				type="checkbox" 
+				th:id="${idField}"
+				th:name="${nameField}"
+				th:disabled="${disabled}"
+				th:value="${value}" 
 				th:autofocus="${autofocus}"
 				data:bv-notempty="${required}"
 				data:bind="${dataBind}"/> 
@@ -65,12 +76,23 @@
 	
 	<!-- Radio-Field -->
 	<div class="radio radio-inline" th:classappend="${addClass}" th:fragment="radio-field">
-		<input  type="radio" 
+		<input  th:if="${field}"
+				type="radio" 
 				th:id="${idField}"
 				th:name="${nameField}"
 				th:disabled="${disabled}" 
 				th:field="__${field}__"
 				th:value="__${value}__" 
+				th:autofocus="${autofocus}"
+				data:bv-notempty="${required}" 
+				data:bind="${dataBind}" /> 
+				
+		<input  th:unless="${field}"
+				type="radio" 
+				th:id="${idField}"
+				th:name="${nameField}"
+				th:disabled="${disabled}"
+				th:value="${value}" 
 				th:autofocus="${autofocus}"
 				data:bv-notempty="${required}" 
 				data:bind="${dataBind}" /> 
