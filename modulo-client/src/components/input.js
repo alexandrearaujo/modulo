@@ -7,7 +7,7 @@ function initNumberField(){
 		if(target !== undefined) {
 			var jQueryTarget = $(target);
 			$(jQueryTarget).on('change', function() {
-				var jQuerySelf = $(this)
+				var jQuerySelf = $(this);
 				var currentValue = jQuerySelf.val();
 				var functionName = jQuerySelf.attr('data-onchange');
 				

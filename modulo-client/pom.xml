@@ -122,6 +122,16 @@
 					        <arguments>optimize-and-copy-images</arguments>
 					    </configuration>
 			        </execution>
+			        
+			        <execution>
+			            <id>gulp jshint</id>
+			            <goals>
+			                <goal>gulp</goal>
+			            </goals>
+						<configuration>
+					        <arguments>jshint</arguments>
+					    </configuration>
+			        </execution>
 				</executions>
 			</plugin>
 

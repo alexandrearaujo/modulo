@@ -9,7 +9,7 @@
 	<packaging>pom</packaging>
 
 	<name>Modulo</name>
-	<description>Aplicação de teste da nova arquitetura</description>
+	<description>Novo Framework da MV Fortaleza</description>
 
 	<parent>
 		<groupId>io.spring.platform</groupId>
