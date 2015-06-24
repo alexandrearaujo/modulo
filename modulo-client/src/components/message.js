@@ -31,7 +31,7 @@ function initBtnConfirmation() {
 
 (function($) {
 	$.getGenericMessage = function(responseData) {
-		return $.parseJSON(responseData.responseText).messageType;
+		return $.parseJSON(responseData.responseText).ex;
 	}
 	
     $.alertSuccess = function(msg) {
