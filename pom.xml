@@ -11,6 +11,12 @@
 	<name>Modulo</name>
 	<description>Novo Framework da MV Fortaleza</description>
 
+	<scm>
+		<connection>scm:git:https://github.com/alexandrearaujo/modulo.git</connection>
+		<developerConnection>scm:git:https://github.com/alexandrearaujo/modulo.git</developerConnection>
+		<url>https://github.com/alexandrearaujo/modulo</url>
+	</scm>
+
 	<parent>
 		<groupId>io.spring.platform</groupId>
 		<artifactId>platform-bom</artifactId>

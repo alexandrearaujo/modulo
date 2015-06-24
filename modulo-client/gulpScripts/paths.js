@@ -1,6 +1,6 @@
 module.exports = {
     src: {
-        assets: './src/cache.manifest',
+        assets: './src/assets/cache.manifest',
         bowerLibs: './src/lib/',
         components: './src/components/**',
         css: {
@@ -13,9 +13,9 @@ module.exports = {
     },
     dest: {
         root: './dist/',
-        components: this.root + 'components',
-        css: this.root + 'css',
-        images: this.root + 'img',
-        lib: this.root + 'lib'
+        components: './dist/components',
+        css: './dist/css',
+        images: './dist/img',
+        lib: './dist/lib'
     }
 };
