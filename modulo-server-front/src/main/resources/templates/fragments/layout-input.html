@@ -11,23 +11,7 @@
 			<span th:text="#{${label}}"></span>
 		</label>
 	
-		<input  th:unless="${field}" 
-				type="text" 
-				class="form-control" 
-				th:id="${idField}" 
-				th:maxlength="${maxLength}"
-				data:bv-notempty="${required}"
-				th:required="${required}"
-				th:autofocus="${autofocus}" 
-				th:placeholder="${placeholder}"
-				th:disabled="${disabled}" 
-				th:name="${nameField}" 
-				th:readonly="${readonly}"
-				th:pattern="${pattern}" 
-				th:autocomplete="${autocomplete} != 'on' ? 'off' : ${autocomplete}" 
-				data:bind="${dataBind}" /> 
-			   
-		<input	th:unless="${numRows != null or field == null}" 
+		<input	th:if="${field != null and numRows == null}"
 				type="text" 
 				class="form-control" 
 				th:id="${idField}"
@@ -43,8 +27,24 @@
 				th:pattern="${pattern}" 
 				th:autocomplete="${autocomplete} != 'on' ? 'off' : ${autocomplete}"
 				data:bind="${dataBind}" /> 
+				
+		<input  th:if="${field == null and numRows == null}"
+				type="text" 
+				class="form-control" 
+				th:id="${idField}" 
+				th:maxlength="${maxLength}"
+				data:bv-notempty="${required}"
+				th:required="${required}"
+				th:autofocus="${autofocus}" 
+				th:placeholder="${placeholder}"
+				th:disabled="${disabled}" 
+				th:name="${nameField}" 
+				th:readonly="${readonly}"
+				th:pattern="${pattern}" 
+				th:autocomplete="${autocomplete} != 'on' ? 'off' : ${autocomplete}" 
+				data:bind="${dataBind}" /> 
 			   
-		<textarea	th:if="${numRows}" 
+		<textarea	th:if="${numRows != null and field != null}" 
 					class="form-control" 
 					th:id="${idField}" 
 					th:field="__${field}__"
@@ -60,7 +60,7 @@
 					th:disabled="${disabled}"
 					data:bind="${dataBind}"></textarea>
 					
-		<textarea	th:unless="${field}"  
+		<textarea	th:if="${numRows != null and field == null}"  
 					class="form-control" 
 					th:id="${idField}" 
 					th:maxlength="${maxLength}" 
