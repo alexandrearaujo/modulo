@@ -89,6 +89,7 @@
 	            	<basedir>${basedir}</basedir>
 	                <tag>v${project.version}</tag>
 	                <pushChanges>true</pushChanges>
+	                <message>Tag da versão ${project.version}</message>
 	            </configuration>
 	        </plugin>
 	    </plugins>
