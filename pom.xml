@@ -36,6 +36,7 @@
 		<java.version>1.8</java.version>
 		<tomcat.version>LATEST</tomcat.version>
 		<spring-security.version>LATEST</spring-security.version>
+		<project.scm.id>my-scm-server</project.scm.id>
 	</properties>
 	
 	<profiles>
@@ -87,7 +88,7 @@
 	            <configuration>
 	            	<basedir>${basedir}</basedir>
 	                <tag>v${project.version}</tag>
-	                <pushChanges>false</pushChanges>
+	                <pushChanges>true</pushChanges>
 	            </configuration>
 	        </plugin>
 	    </plugins>
