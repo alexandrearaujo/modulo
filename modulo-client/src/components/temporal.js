@@ -7,7 +7,6 @@ function initTimeField(){
 	jQuery.each(targets, function(i, target) { 
 		if(target !== undefined){ 
 			var jQueryTarget = $(target);
-			var attrOnchangeValue;
 			var idTarget = '#previous-value-' + jQueryTarget.attr('id');
 			
 			jQueryTarget.timepicker({
@@ -17,7 +16,6 @@ function initTimeField(){
 									});
 			
 			if(jQueryTarget.attr('onchange') !== undefined) {
-				attrOnchangeValue = jQueryTarget.attr('onchange');
 				jQueryTarget.off("onchange");
 				jQueryTarget.removeAttr("onchange");
 				
@@ -56,11 +54,11 @@ function initDateField(){
 								     language:"pt-BR"
 								 };
 			
-			if(startDate != null) {
+			if(startDate !== null) {
 				confDatePicker.startDate = startDate;
 			}
 				
-			if(endDate != null) {
+			if(endDate !== null) {
 				confDatePicker.endDate = endDate;
 			}
 			
@@ -107,15 +105,17 @@ function initDateFieldPeriodo() {
 			var isEndDateDisabled = jQueryEndDate.is(':disabled');
 			var nameStartDate = jQueryStartDate.attr('name');
 			var nameEndDate = jQueryEndDate.attr('name');
-			var isRequiredStartDate = new Boolean(jQueryStartDate.attr('data-required'));
-			var isRequiredEndDate = new Boolean(jQueryEndDate.attr('data-requiredEndDate'));
+			var isRequiredStartDate = Boolean(jQueryStartDate.attr('data-required'));
+			var isRequiredEndDate = Boolean(jQueryEndDate.attr('data-requiredEndDate'));
+			var valueStartDate = null;
+			var valueEndDate = null;
 			
 			jQueryBtnAddonCalendarStartDate.attr("disabled", isStartDateDisabled);
 			jQueryBtnAddonCalendarEndDate.attr("disabled", isEndDateDisabled);
 			
-			if(!isStartDateDisabled || isStartDateDisabled == undefined) {
-				var valueStartDate = jQueryStartDate.attr('data-startDate');
-				var valueEndDate = jQueryStartDate.attr('data-endDate');
+			if(!isStartDateDisabled || isStartDateDisabled === undefined) {
+				valueStartDate = jQueryStartDate.attr('data-startDate');
+				valueEndDate = jQueryStartDate.attr('data-endDate');
 				
 				jQueryStartDate.datepicker({
 				 todayHighlight: true,
@@ -129,7 +129,7 @@ function initDateFieldPeriodo() {
 			   
 				jQueryStartDate.mask('99/99/9999');
 			    
-			    if(isRequiredStartDate && nameStartDate != null && nameStartDate != "") {
+			    if(isRequiredStartDate && nameStartDate !== null && nameStartDate !== "") {
 			    	jQueryStartDate.change(function (){
 				    	$(this.form).bootstrapValidator('revalidateField', nameStartDate);
 				    });
@@ -149,14 +149,14 @@ function initDateFieldPeriodo() {
 							jQueryStartDate.datepicker('hide');
 							jQueryEndDate.datepicker("setStartDate",e.date);
 							jQueryEndDate.datepicker("setDate");
-							if(isRequiredStartDate && nameStartDate != null && nameStartDate != ""){
+							if(isRequiredStartDate && nameStartDate !== null && nameStartDate !== ""){
 								jQueryFormTarget.bootstrapValidator('revalidateField', nameStartDate);
 								jQueryFormTarget.bootstrapValidator('revalidateField', nameEndDate);
 							}
 						});
 			}
 			
-			if(!isEndDateDisabled || isEndDateDisabled == undefined) {
+			if(!isEndDateDisabled || isEndDateDisabled === undefined) {
 				jQueryEndDate.datepicker({
 				 todayHighlight: true,
 			     autoclose: true,
@@ -173,7 +173,7 @@ function initDateFieldPeriodo() {
 					$(selectorCalendar).datepicker('show');
 				});
 			    
-			    if(isRequiredEndDate && nameEndDate != null && nameEndDate != "") {
+			    if(isRequiredEndDate && nameEndDate !== null && nameEndDate !== "") {
 			    	jQueryEndDate.change(function (){
 				    	$(this.form).bootstrapValidator('revalidateField', nameEndDate);
 				    });
@@ -186,11 +186,11 @@ function initDateFieldPeriodo() {
 				}).on('changeDate',
 						function(e) {
 							jQueryEndDate.datepicker('hide');
-							if(isRequiredEndDate && nameEndDate != null && nameEndDate != ""){
+							if(isRequiredEndDate && nameEndDate !== null && nameEndDate !== ""){
 								jQueryFormTarget.bootstrapValidator('revalidateField', nameEndDate);
 							}
 						});
 			}
 		}
 	});
-};
+}

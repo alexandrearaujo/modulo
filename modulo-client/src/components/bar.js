@@ -10,15 +10,15 @@ function initPaginationBar() {
 		var size = jQueryPaginationContainer.attr('data-size');
 		var idToRender = jQueryPaginationContainer.attr('data-idToRender');
 		var method = jQueryPaginationContainer.attr('data-method');
-		var activeNumber = new Number(jQueryPaginationContainer.find('.active').attr('data-activeNumber'));
+		var activeNumber = Number(jQueryPaginationContainer.find('.active').attr('data-activeNumber'));
 		var jQuerySelf = $(this);
 		var number = Number(jQuerySelf.attr('data-number'));
 		
-		if (jQuerySelf != null && jQuerySelf.children().hasClass('glyphicon-forward')) {
+		if (jQuerySelf !== null && jQuerySelf.children().hasClass('glyphicon-forward')) {
 			page = totalPages - 1;
-		} else if (jQuerySelf != null && jQuerySelf.children().hasClass('glyphicon-play inverted-icon')) {
+		} else if (jQuerySelf !== null && jQuerySelf.children().hasClass('glyphicon-play inverted-icon')) {
 			page = activeNumber - 2;
-		} else if (jQuerySelf != null && jQuerySelf.children().hasClass('glyphicon-play')) {
+		} else if (jQuerySelf !== null && jQuerySelf.children().hasClass('glyphicon-play')) {
 			page = activeNumber;
 		} else {
 			if (number > 0) {

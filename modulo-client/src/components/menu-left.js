@@ -25,11 +25,11 @@ function checkForChanges() {
 }
 
 function activeOptionMenu() {
-	var controller = window.location.pathname.split('/')[2]
-	var actionLi = $("li[data-controller='"+controller+"']")
+	var controller = window.location.pathname.split('/')[2];
+	var actionLi = $("li[data-controller='"+controller+"']");
 	var groupActionUL = actionLi.parent();
 	var menuOption = groupActionUL.parent();
-	if(controller != "") {
+	if(controller !== "") {
 		groupActionUL.addClass('in');
 		groupActionUL.attr('aria-expanded',true);
 		menuOption.addClass('active');

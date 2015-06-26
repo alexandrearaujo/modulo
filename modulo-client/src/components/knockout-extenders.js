@@ -5,9 +5,9 @@ ko.bindingHandlers.stopBinding = {
 };
  
 function formattedNumericComputed(field, precision) {
-	var defaultPrecision = 1, 
-		precision = precision || defaultPrecision,
-     	result = ko.pureComputed({
+	var defaultPrecision = 1;
+	precision = precision() || defaultPrecision;
+    var	result = ko.pureComputed({
 	    	 read: function () {
 	    		 if(field()){
 	    			 return Number(field()).toLocaleString('pt-BR', { minimumFractionDigits: precision, maximumFractionDigits: precision });

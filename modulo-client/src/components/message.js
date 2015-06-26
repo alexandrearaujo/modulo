@@ -4,15 +4,15 @@ function initBtnConfirmation() {
 		onConfirm: function() { 
 			var jQuerySelf= jQuery(this);
 			var method = jQuerySelf.attr('data-method');
-			var ajaxFunction = new Boolean(jQuerySelf.attr('data-ajax'));
+			var ajaxFunction = Boolean(jQuerySelf.attr('data-ajax'));
 			var msgSave = jQuerySelf.attr('data-msgSave');
 			var completeFunction = jQuerySelf.attr('data-function');
 			var idToExclude = jQuerySelf.attr('data-id');
 			var url = method + '?id='+idToExclude;
 			
-			if (ajaxFunction == false) {
+			if (ajaxFunction === false) {
 				window.location = url; 
-			} else if (ajaxFunction == true) {
+			} else if (ajaxFunction === true) {
 				$.get({
 					url: url,
 					async: false
@@ -32,7 +32,7 @@ function initBtnConfirmation() {
 (function($) {
 	$.getGenericMessage = function(responseData) {
 		return $.parseJSON(responseData.responseText).ex;
-	}
+	};
 	
     $.alertSuccess = function(msg) {
     	$.notify({

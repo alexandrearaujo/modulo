@@ -2,9 +2,10 @@
  * Begin - TODO Remover essas funcionalidades pois o bootstrapTable já faz isso de forma nativa.
  */
 $.fn.selectedItem = function() {
+	var elementValue = null;
 	if(this.is('table') && this.hasClass('selectable')) {
 		var tr = this.find('.selected');
-		var elementValue = this.find('.rowValue');
+		elementValue = this.find('.rowValue');
 		
 		if(elementValue) {
 			return elementValue;
@@ -12,7 +13,7 @@ $.fn.selectedItem = function() {
 			
 		return tr;
 	} else if(this.is('tr') && this.closest('table').hasClass('selectable')) {
-		var elementValue = this.find('.rowValue');
+		elementValue = this.find('.rowValue');
 		
 		if(elementValue && elementValue.is('input')){
 			return elementValue.val();
@@ -20,7 +21,7 @@ $.fn.selectedItem = function() {
 		
 		return elementValue;
 	}
-}
+};
 
 $(function() {
 	$(document).on('click', 'table > tbody > tr',function() {
@@ -32,7 +33,7 @@ $(function() {
 				$tr.trigger('mv-table:selected-row');
 			}
 		}
-	})
+	});
 });
 /*
  * End - TODO Remover essas funcionalidades pois o bootstrapTable já faz isso de forma nativa.

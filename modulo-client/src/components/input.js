@@ -8,7 +8,6 @@ function initNumberField(){
 			var jQueryTarget = $(target);
 			$(jQueryTarget).on('change', function() {
 				var jQuerySelf = $(this);
-				var currentValue = jQuerySelf.val();
 				var functionName = jQuerySelf.attr('data-onchange');
 				
 		  	    if(jQuerySelf.val() !=  jQuerySelf.attr('data-previousValue')) {

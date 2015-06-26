@@ -46,7 +46,7 @@ AutoComplete.prototype.autocomplete = function(vurl, target, fncName, hasParamet
 	promise.fail(function() { console.log('err!'); });
 
 	$('#'+target['object']).blur(function(){
-		if(this.value == '') {
+		if(this.value === '') {
 			$('#'+idHidden).val('');
 			if($(this).required()) {
 				$(this.form).bootstrapValidator('revalidateField', $('#'+idHidden).prop('name'));
@@ -73,7 +73,7 @@ AutoComplete.prototype.autocomplete = function(vurl, target, fncName, hasParamet
 			$(this.form).bootstrapValidator('revalidateField', $('#'+idHidden).prop('name'));
 		}	
 	});
-} 
+}; 
 
 function onOpened2($e) {}
 
@@ -107,8 +107,8 @@ function initAutoComplete(){
 			targetArray['list']       =   jQueryTarget.attr('data-list');
 			targetArray['onSelected'] =   jQueryTarget.attr('data-onSelected');
 			targetArray['idHidden']   =   jQueryTarget.attr('data-idHidden');
-			var hasParameters =   parameters != null; 
-			var fncName       =   jQueryTarget.attr('data-fncName');
+			hasParameters =   parameters != null; 
+			var fncName   =   jQueryTarget.attr('data-fncName');
 			
 			AutoComplete.prototype.autocomplete(url, targetArray, fncName, hasParameters);
 		}

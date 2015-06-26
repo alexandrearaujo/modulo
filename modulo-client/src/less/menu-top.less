@@ -2,6 +2,51 @@
 @import "utils/mixins.less";
 
 @desktop: ~"screen and (max-width: 940px)";
+@desktop-768: ~"(min-width : 768px)";
+
+.navbar {
+	.width-height(auto, 36px);
+	min-height: 40px;
+	background-repeat: repeat-x;
+	margin-bottom: 0px;
+	
+	.topnav {
+		margin: 2px 0;
+		text-align: right;
+	}	
+	
+	.logo-bar {
+		width: 125px;
+		height: 27px;
+		float: left;
+		padding-right: 3px;
+		padding-top: 2px;
+		padding-left: 2px;
+	}
+} 
+
+.navbar-brand{
+	.width-height(auto, 36px);
+	min-height: 40px;
+	background: none;
+	padding: 0;
+	margin-bottom: 0px;
+}
+
+.navbar-default {
+	.box-shadow(none, none, none, none);
+}
+
+.navbar-title {
+	vertical-align: middle;
+	.width-height(100%, 36px);
+}
+
+@media @desktop-768 {
+	.navbar .topnav {
+		float: right
+	}
+}
 
 .menu-top-text-style( @font-size ){
 	color:@black !important;
