@@ -86,7 +86,8 @@
 	            <version>1.9.4</version>
 	            <configuration>
 	            	<basedir>${basedir}</basedir>
-	                <tag>v.${project.version}</tag>
+	                <tag>v${project.version}</tag>
+	                <pushChanges>false</pushChanges>
 	            </configuration>
 	        </plugin>
 	    </plugins>
