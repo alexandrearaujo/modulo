@@ -87,7 +87,7 @@
 	        </plugin>
 	        <plugin>
 	            <artifactId>maven-scm-plugin</artifactId>
-	            <version>LATEST</version>
+	            <version>1.9.4</version>
 	            <configuration>
 	                <tag>v.${project.version}</tag>
 	            </configuration>
