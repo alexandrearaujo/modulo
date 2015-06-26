@@ -29,7 +29,6 @@ jQuery(document).ready(function(){
 	initTimeField();
 	initDateField();
 	initDateFieldPeriodo();
-	initPaginationBar();
 	initNumberField();
 	fncBlurCombo();
 	fixCheckboxWithThymeleaf();
