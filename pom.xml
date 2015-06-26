@@ -12,9 +12,9 @@
 	<description>Novo Framework da MV Fortaleza</description>
 
 	<scm>
-		<connection>scm:git:https://github.com/alexandrearaujo/modulo.git</connection>
-		<developerConnection>scm:git:https://github.com/alexandrearaujo/modulo.git</developerConnection>
-		<url>https://github.com/alexandrearaujo/modulo</url>
+		<connection>scm:git:http://Quebec.MVFOR.local/framework-html5/modulo.git</connection>
+		<developerConnection>scm:git:http://Quebec.MVFOR.local/framework-html5/modulo.git</developerConnection>
+		<url>http://quebec.mvfor.local/framework-html5/modulo</url>
 	</scm>
 
 	<parent>
@@ -78,4 +78,20 @@
 			<url>http://echo.mvfor.local/nexus/content/repositories/new-projects-snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
+	
+	<build>
+		<plugins>
+	        <plugin>
+	            <groupId>org.codehaus.mojo</groupId>
+	            <artifactId>versions-maven-plugin</artifactId>
+	        </plugin>
+	        <plugin>
+	            <artifactId>maven-scm-plugin</artifactId>
+	            <version>LATEST</version>
+	            <configuration>
+	                <tag>v.${project.version}</tag>
+	            </configuration>
+	        </plugin>
+	    </plugins>
+	</build>
 </project>
