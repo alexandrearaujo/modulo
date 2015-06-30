@@ -27,10 +27,10 @@ O nosso fluxo de trabalho foi baseado no [github-flow](https://guides.github.com
   7. Após aprovado, as alterações são incorporadas na branch master (merge), é construído um novo artefato pelo servidor de integração contínua e depois gerada uma tag com a nova versão no servidor de git.
 
 
-  ```A branch master está sempre "deployable", ou seja, pronta para ser posta em produção.```
+```A branch master está sempre "deployable", ou seja, pronta para ser posta em produção.```
 
-  Referências: 
+Referências: 
 
-    [github-flow](http://scottchacon.com/2011/08/31/github-flow.html)
+  - [github-flow](http://scottchacon.com/2011/08/31/github-flow.html)
 
-  O versionamento da aplicação segue o padrão [semantic version](http://semver.org/).
+O versionamento da aplicação segue o padrão [semantic version](http://semver.org/).
