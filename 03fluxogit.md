@@ -31,6 +31,6 @@ O nosso fluxo de trabalho foi baseado no [github-flow](https://guides.github.com
 
   Referências: 
 
-    - [github-flow](http://scottchacon.com/2011/08/31/github-flow.html)
+    [github-flow](http://scottchacon.com/2011/08/31/github-flow.html)
 
   O versionamento da aplicação segue o padrão [semantic version](http://semver.org/).
