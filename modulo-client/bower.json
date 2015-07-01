@@ -2,6 +2,7 @@
 	"name": "modulo",
 	"description": "bower components for modulo UI.",
     "version": "1.0.0",
+    "private": true,
     "dependencies": {
     "awesome-bootstrap-checkbox": "latest",
     "bootstrap": "latest",
