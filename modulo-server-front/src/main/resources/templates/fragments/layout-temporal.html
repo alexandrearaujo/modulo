@@ -47,7 +47,7 @@
 
 <!-- Date-Field-Periodo -->
 	 <div class="date-field-periodo input-daterange form-group pull-left" th:fragment="date-field-periodo">
-		<label th:unless="${#strings.isEmpty(${label})}" class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField}" th:id="__${idField}__+Label">
+		<label th:unless="${label == null or #strings.isEmpty(label)}" class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField}" th:id="__${idField}__+Label">
 			<span th:text="#{${label}}"></span>
 		</label>
 			
