@@ -46,3 +46,7 @@ gems:
   - jemoji
   - jekyll-redirect-from
   - jekyll-sitemap
+
+#For deploy on Jekyll
+#github:
+#  url: "."
