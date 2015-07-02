@@ -36,7 +36,7 @@
 		<java.version>1.8</java.version>
 		<tomcat.version>LATEST</tomcat.version>
 		<spring-security.version>LATEST</spring-security.version>
-		<project.scm.id>my-scm-server</project.scm.id>
+		<spring.version>LATEST</spring.version>
 	</properties>
 	
 	<profiles>
