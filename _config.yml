@@ -48,5 +48,5 @@ gems:
   - jekyll-sitemap
 
 #For deploy on Jekyll
-#github:
-#  url: "."
+github:
+  url: "."
