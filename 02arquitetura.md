@@ -2,7 +2,7 @@
 layout: default
 title: Arquitetura
 description: Documentação da arquitetura do novo framework.
-order: 2
+order: 02
 ---
 
 ![Diagrama](assets/images/component800.png)
