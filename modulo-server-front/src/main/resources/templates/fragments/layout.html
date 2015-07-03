@@ -40,6 +40,10 @@
 		<!-- Bootstrap-table -->
 		<link rel="stylesheet" type="text/css" media="all" th:href="@{/lib/bootstrap-table/dist/bootstrap-table.min.css}"/>
 		
+		<!-- Bootstrap-Modal- -->
+		<link rel="stylesheet" type="text/css" media="all" th:href="@{/lib/bootstrap-modal/css/bootstrap-modal.css}"/> 
+		<link rel="stylesheet" type="text/css" media="all" th:href="@{/lib/bootstrap-modal/css/bootstrap-modal-bs3patch.css}"/>
+		
 		<!-- Menu Style -->
 		<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/menu.css}"/>
 
@@ -54,7 +58,7 @@
 		<link th:if="${session.externalRequest}" rel="stylesheet" type="text/css" media="all" th:href="@{/css/mvpep.css}"/> 	    
 		
 		<!-- Jquery core Javascript -->
-		<script type="text/javascript" th:src="@{/lib/jquery/dist/jquery.min.js}"></script>
+		<script type="text/javascript" charset="UTF-8" th:src="@{/lib/jquery/dist/jquery.min.js}"></script>
 	</head>
 
 	<body>
@@ -89,17 +93,21 @@
 			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js}"></script>
 			
 		    <!-- Jquery mask -->
-		    <script type="text/javascript" th:src="@{/lib/jQuery-Mask-Plugin/dist/jquery.mask.min.js}"></script>
+		    <script type="text/javascript" charset="UTF-8" th:src="@{/lib/jQuery-Mask-Plugin/dist/jquery.mask.min.js}"></script>
 			
 			<!-- Confirmation -->
-			<script type="text/javascript" th:src="@{/lib/bootstrap-confirmation2/bootstrap-confirmation.min.js}"></script>			
+			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/bootstrap-confirmation2/bootstrap-confirmation.min.js}"></script>			
 			
 			<!-- bootstrap-table -->
-			<script th:src="@{/lib/bootstrap-table/dist/bootstrap-table.min.js}"></script>
-			<script th:src="@{/lib/bootstrap-table/dist/locale/bootstrap-table-pt-BR.min.js}"></script>
+			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/bootstrap-table/dist/bootstrap-table.min.js}"></script>
+			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/bootstrap-table/dist/locale/bootstrap-table-pt-BR.min.js}"></script>
+			
+			<!-- Bootstrap-Modal- -->
+			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/bootstrap-modal/js/bootstrap-modal.js}"></script>
+			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/bootstrap-modal/js/bootstrap-modalmanager.js}"></script>
 			
 			 <!-- Modulo Components -->
-			<script th:src="@{/components/components.js}"></script>
+			<script type="text/javascript" charset="UTF-8" th:src="@{/components/components.js}"></script>
 		</th:block>
 	</body>
 </html>
