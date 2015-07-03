@@ -1,4 +1,4 @@
-function fncPopulaComboWithJquery(vUrl, $combo) {
+function fncPopulaCombo(vUrl, $combo) {
 	$.post(vUrl, function(data) {
 		$combo.find('option').remove().end();
 		$combo.append($("<option></option>").attr("value", null).text(""));
