@@ -1,13 +1,12 @@
-function fncPopulaCombo(vUrl, vElemento) {
-	var vIdentificador = vElemento + 'Id';
+function fncPopulaComboWithJquery(vUrl, $combo) {
 	$.post(vUrl, function(data) {
-		$(vElemento).find('option').remove().end();
-		$(vElemento).append($("<option></option>").attr("value", null).text(""));
+		$combo.find('option').remove().end();
+		$combo.append($("<option></option>").attr("value", null).text(""));
 		$.each(data, function(key, value) {
-			if($(vIdentificador).val() == key) {
-				$(vElemento).append($("<option selected></option>").attr("value", key).text(value));
+			if($combo.val() == key) {
+				$combo.append($("<option selected></option>").attr("value", key).text(value));
 			} else {
-				$(vElemento).append($("<option></option>").attr("value", key).text(value));
+				$combo.append($("<option></option>").attr("value", key).text(value));
 			}
 		});	
 	});	
