@@ -5,7 +5,7 @@ import java.util.Arrays;
 import javax.annotation.Nonnull;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.authentication.dao.ReflectionSaltSource;
@@ -25,13 +25,14 @@ import br.com.mv.modulo.business.UserBusiness;
 
 @EnableWebSecurity
 @Configuration
+@EnableConfigurationProperties(ModuloProperties.class)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
-    UserBusiness userBusiness;
+    private UserBusiness userBusiness;
 	
-	@Value("${externalServersWhiteListedAllowFrames:'http://localhost:9090/mvpep/'}")
-	private String[] externalServersWhiteListedAllowFrames;
+	@Autowired
+	private ModuloProperties moduloProperties;
 	
 //	@Override
 //    public void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -103,6 +104,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
          	 .accessDeniedPage("/access")
          	 .and()
 		 .headers()
-		 	 .addHeaderWriter(new XFrameOptionsHeaderWriter(new WhiteListedAllowFromStrategy(Arrays.asList(externalServersWhiteListedAllowFrames))));
+		 	 .addHeaderWriter(new XFrameOptionsHeaderWriter(new WhiteListedAllowFromStrategy(Arrays.asList(moduloProperties.getExternalServersWhiteListedAllowFrames()))));
 	}
 }
