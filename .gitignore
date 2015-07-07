@@ -15,6 +15,7 @@ node
 # > the following should be created by `./gradlew eclipse`
 #.classpath
 #.project
+.factorypath
 # > ignore all eclipse settings by default
 .settings
 # > except the following, primarily for formatting purposes
