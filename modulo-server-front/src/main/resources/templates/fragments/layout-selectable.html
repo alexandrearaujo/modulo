@@ -7,9 +7,11 @@
 <body>
 	<!-- Select-Field -->
 	<div class="form-group" th:classappend="${addClass}" th:fragment="select-field">
-		<label class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField}" th:id="__${idField}__+Label">
-			<span th:text="#{${label}}"></span>
-		</label>
+		<div th:if="${label}">
+			<label class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField}" th:id="__${idField}__+Label">
+				<span th:text="#{${label}}"></span>
+			</label>
+		</div>
 		
 		<select	th:if="${field}" 
 				th:name="${nameField}" 
