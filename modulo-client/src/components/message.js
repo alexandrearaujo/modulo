@@ -13,10 +13,7 @@ function initBtnConfirmation() {
 			if (ajaxFunction === false) {
 				window.location = url; 
 			} else if (ajaxFunction === true) {
-				$.get({
-					url: url,
-					async: false
-				}).done(function() {
+				$.get(url).done(function() {
 					$.alertSuccess(msgSave);
 				}).always(function() {
 					if (completeFunction != null) {
