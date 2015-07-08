@@ -18,6 +18,10 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<httpclient.version>LATEST</httpclient.version>
+		<sonar.sources>.</sonar.sources>
+		<sonar.tests>.</sonar.tests>
+		<sonar.test.inclusions>**/*Test*/**</sonar.test.inclusions>
+		<sonar.exclusions>**/*Test*/**</sonar.exclusions>
 	</properties>
 
 	<dependencies>
