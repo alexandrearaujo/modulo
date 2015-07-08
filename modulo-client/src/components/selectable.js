@@ -1,4 +1,4 @@
-function fncPopulaCombo(vUrl, $combo) {
+function fncPopulaCombo(vUrl, $combo) { 
 	$.post(vUrl, function(data) {
 		$combo.find('option').remove().end();
 		$combo.append($("<option></option>").attr("value", null).text(""));
@@ -8,6 +8,17 @@ function fncPopulaCombo(vUrl, $combo) {
 			} else {
 				$combo.append($("<option></option>").attr("value", key).text(value));
 			}
+		});	
+	});	
+}
+
+function fncPopulaComboWithClosure(vUrl, $combo, closure) {
+	$.get(vUrl, function(data) {
+		$combo.find('option').remove().end();
+		$combo.append($("<option></option>").attr("value", null).text(""));
+		$.each(data, function(key, value) {
+			var closureFunction = new Function(nameFunction);
+			closure($combo, index, object);
 		});	
 	});	
 }
