@@ -43,10 +43,11 @@ function initDateField(){
 	jQuery.each(targets, function(i, target){ 
 		if(target !== undefined) {
 			var jQueryTarget = $(target);
-			/* TODO remover [0] procurar outra forma de pegar o elemento...*/
 			var jQueryInputDateField = jQuery(jQueryTarget.find('.data-field-input')[0]);
 			var startDate = jQueryInputDateField.attr('data-startdate');
 			var endDate = jQueryInputDateField.attr('data-endDate');
+			var	isRequired = jQueryInputDateField.attr('data-bv-notempty');
+
 			var confDatePicker = {
 									 todayHighlight: true,
 								     autoclose: true,
@@ -66,10 +67,13 @@ function initDateField(){
 			
 			jQueryInputDateField.mask('99/99/9999');
 			
-			jQueryInputDateField.change(function () {
-				var targetName = jQueryInputDateField.attr('name');
-		    	$(this.form).bootstrapValidator('revalidateField', targetName);
-		    });
+			
+			if(isRequired == "true") {
+				jQueryInputDateField.change(function () {
+					var targetName = jQueryInputDateField.attr('name');
+			    	$(this.form).bootstrapValidator('revalidateField', targetName);
+			    });
+		    }
 		}
 	});
 }
@@ -105,8 +109,8 @@ function initDateFieldPeriodo() {
 			var isEndDateDisabled = jQueryEndDate.is(':disabled');
 			var nameStartDate = jQueryStartDate.attr('name');
 			var nameEndDate = jQueryEndDate.attr('name');
-			var isRequiredStartDate = Boolean(jQueryStartDate.attr('data-required'));
-			var isRequiredEndDate = Boolean(jQueryEndDate.attr('data-requiredEndDate'));
+			var isRequiredStartDate = jQueryStartDate.attr('data-required');
+			var isRequiredEndDate = jQueryEndDate.attr('data-requiredEndDate');
 			var valueStartDate = null;
 			var valueEndDate = null;
 			
@@ -129,7 +133,7 @@ function initDateFieldPeriodo() {
 			   
 				jQueryStartDate.mask('99/99/9999');
 			    
-			    if(isRequiredStartDate && nameStartDate !== null && nameStartDate !== "") {
+			    if(isRequiredStartDate == "true" && nameStartDate !== null && nameStartDate !== "") {
 			    	jQueryStartDate.change(function (){
 				    	$(this.form).bootstrapValidator('revalidateField', nameStartDate);
 				    });
@@ -149,7 +153,7 @@ function initDateFieldPeriodo() {
 							jQueryStartDate.datepicker('hide');
 							jQueryEndDate.datepicker("setStartDate",e.date);
 							jQueryEndDate.datepicker("setDate");
-							if(isRequiredStartDate && nameStartDate !== null && nameStartDate !== ""){
+							if(isRequiredStartDate == "true" && nameStartDate !== null && nameStartDate !== ""){
 								jQueryFormTarget.bootstrapValidator('revalidateField', nameStartDate);
 								jQueryFormTarget.bootstrapValidator('revalidateField', nameEndDate);
 							}
@@ -173,7 +177,7 @@ function initDateFieldPeriodo() {
 					$(selectorCalendar).datepicker('show');
 				});
 			    
-			    if(isRequiredEndDate && nameEndDate !== null && nameEndDate !== "") {
+			    if(isRequiredEndDate == "true" && nameEndDate !== null && nameEndDate !== "") {
 			    	jQueryEndDate.change(function (){
 				    	$(this.form).bootstrapValidator('revalidateField', nameEndDate);
 				    });
@@ -186,7 +190,7 @@ function initDateFieldPeriodo() {
 				}).on('changeDate',
 						function(e) {
 							jQueryEndDate.datepicker('hide');
-							if(isRequiredEndDate && nameEndDate !== null && nameEndDate !== ""){
+							if(isRequiredEndDate == "true" && nameEndDate !== null && nameEndDate !== ""){
 								jQueryFormTarget.bootstrapValidator('revalidateField', nameEndDate);
 							}
 						});
