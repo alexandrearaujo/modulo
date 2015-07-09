@@ -11,6 +11,10 @@
 		<version>1.0.0-SNAPSHOT</version>
 		<relativePath>../</relativePath>
 	</parent>
+	
+	<properties>
+		<sonar.sources>src/components,src/css,src/less</sonar.sources>
+	</properties>
 
 	<build>
 		<plugins>
