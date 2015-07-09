@@ -57,7 +57,7 @@ AutoComplete.prototype.autocomplete = function(vurl, target, fncName, hasParamet
 	$('#'+target['object']).typeahead(
 		{
 			minLength: 3,
-			highlight: true,
+			highlight: true
 		},
 		{ 
 			name: target['list'],
