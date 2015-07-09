@@ -3,7 +3,6 @@ package org.springframework.data.convert;
 import java.io.IOException;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
@@ -14,7 +13,7 @@ public class JsonBooleanDeserializer extends JsonDeserializer<Boolean> {
 	protected static final String YES = "true";
 
 	@Override
-	public Boolean deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+	public Boolean deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException {
 		JsonToken currentToken = jp.getCurrentToken();
 
 		if (currentToken.equals(JsonToken.VALUE_STRING)) {

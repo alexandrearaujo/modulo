@@ -15,7 +15,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.header.writers.frameoptions.WhiteListedAllowFromStrategy;
 import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -34,40 +33,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private ModuloProperties moduloProperties;
 	
-//	@Override
-//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth
-//            .inMemoryAuthentication()
-//                .withUser("USER").password("USER").roles("USER");
-//    }
 	
 	@Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(buildDaoAuthenticationProvider());
     }
 	
-//	@Override
-//	protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-//		auth.jdbcAuthentication().dataSource(dataSource)
-//				.passwordEncoder(new PasswordEncoderImpl())
-//				.usersByUsernameQuery("sql...")
-//				.authoritiesByUsernameQuery("sql...");
-//	}
-	
-//	@Override
-//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry
-//            .addResourceHandler("/resources/**")
-//            .addResourceLocations("/resources/")
-//            .setCachePeriod(31556926);
-//    }
-	
 	@Nonnull
     private DaoAuthenticationProvider buildDaoAuthenticationProvider() {
         final DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setUserDetailsService(new UserDetailsService() {
             @Override
-            public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
+            public UserDetails loadUserByUsername(final String username) {
                 return userBusiness.findByLogin(username);
             }
         });

@@ -9,10 +9,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableCaching
 public class CacheConfig {
-	
+
 	@Bean
-    public CacheManager cacheManager() {
-        return new ConcurrentMapCacheManager("versao");
-    }
+	public CacheManager cacheManager() {
+		return new ConcurrentMapCacheManager("versao");
+	}
 
 }

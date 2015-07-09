@@ -4,15 +4,13 @@ public enum UserRoles {
 
 	USER("USER"), ADMIN("ADMIN"), MEDICO("MEDICO");
 	
+	private String value;
+	
 	UserRoles(String value) {
 		this.value = value;
 	}
 
-	private String value;
-
 	public String getValue() {
 		return value;
 	}
-	
-	
 }
