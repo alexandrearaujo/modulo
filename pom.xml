@@ -155,9 +155,10 @@
 								<goal>install-node-and-npm</goal>
 							</goals>
 							<configuration>
-								<nodeVersion>v0.12.4</nodeVersion>
-								<npmVersion>2.11.1</npmVersion>
+								<nodeVersion>v0.12.7</nodeVersion>
+								<npmVersion>2.13.0</npmVersion>
 							</configuration>
+							<phase>initialize</phase>
 						</execution>
 						
 						<execution>
@@ -165,6 +166,7 @@
 							<goals>
 								<goal>npm</goal>
 							</goals>
+							<phase>initialize</phase>
 						</execution>
 					</executions>
 				</plugin>

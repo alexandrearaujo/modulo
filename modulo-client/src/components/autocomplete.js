@@ -3,6 +3,34 @@ var required;
 
 function AutoComplete(){}
 
+function initAutoComplete() {
+	var arrayInputs = $('.typeahead.input-autocomplete');
+	jQuery.each(arrayInputs, function(i, input) { 
+		if(input !== undefined) {
+			var jQueryTarget = $(input);
+			
+			var targetArray = [];	 
+			var url = jQueryTarget.attr('data-url');
+			var parameters = jQueryTarget.attr('data-parameters');
+			var hasParameters = false;
+		
+			if(parameters != null || parameters !== undefined) {
+			   	url = url.concat(parameters);
+			 	hasParameters = true; 
+			}
+			
+			targetArray['object']     =   jQueryTarget.attr('data-object');
+			targetArray['list']       =   jQueryTarget.attr('data-list');
+			targetArray['onSelected'] =   jQueryTarget.attr('data-onSelected');
+			targetArray['idHidden']   =   jQueryTarget.attr('data-idHidden');
+			hasParameters =   parameters != null; 
+			var fncName   =   jQueryTarget.attr('data-fncName');
+			
+			AutoComplete.prototype.autocomplete(url, targetArray, fncName, hasParameters);
+		}
+	});
+}
+
 AutoComplete.prototype.autocomplete = function(vurl, target, fncName, hasParameters){
 	 var idHidden = target['idHidden'];
 	 AutoComplete.prototype.bloodHound = new Bloodhound({
@@ -85,32 +113,4 @@ function limparCampo(campo){
 
 function setarValor(campo,valor){
 	$("#"+campo).typeahead('val', valor);
-}
-
-function initAutoComplete(){
-	var arrayInputs = $('.typeahead.input-autocomplete');
-	jQuery.each(arrayInputs, function(i, input) { 
-		if(input !== undefined) {
-			var jQueryTarget = $(input);
-			
-			var targetArray = [];	 
-			var url = jQueryTarget.attr('data-url');
-			var parameters = jQueryTarget.attr('data-parameters');
-			var hasParameters = false;
-		
-			if(parameters != null || parameters !== undefined) {
-			   	url = url.concat(parameters);
-			 	hasParameters = true; 
-			}
-			
-			targetArray['object']     =   jQueryTarget.attr('data-object');
-			targetArray['list']       =   jQueryTarget.attr('data-list');
-			targetArray['onSelected'] =   jQueryTarget.attr('data-onSelected');
-			targetArray['idHidden']   =   jQueryTarget.attr('data-idHidden');
-			hasParameters =   parameters != null; 
-			var fncName   =   jQueryTarget.attr('data-fncName');
-			
-			AutoComplete.prototype.autocomplete(url, targetArray, fncName, hasParameters);
-		}
-	});
 }
