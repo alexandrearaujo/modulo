@@ -1,5 +1,7 @@
 package br.com.mv.modulo.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
@@ -11,28 +13,12 @@ public class ModuloEmailSender {
 	
 	private final MailSender mailSender;
 	
+	private static final Logger LOGGER = LoggerFactory.getLogger(ModuloEmailSender.class);
+	
 	@Autowired
 	public ModuloEmailSender(MailSender mailSender) {
 		this.mailSender = mailSender;
 	}
-	
-//	  @Value("${mail.protocol}")
-//    private String protocol;
-//    @Value("${mail.host}")
-//    private String host;
-//    @Value("${mail.port}")
-//    private int port;
-//    @Value("${mail.smtp.auth}")
-//    private boolean auth;
-//    @Value("${mail.smtp.starttls.enable}")
-//    private boolean starttls;
-//    @Value("${mail.from}")
-//    private String from;
-//    @Value("${mail.username}")
-//    private String username;
-//    @Value("${mail.password}")
-//    private String password;
-	
 	
 	public void sendEmail(String content) {
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
@@ -44,7 +30,7 @@ public class ModuloEmailSender {
         try {
         	mailSender.send(mailMessage);
         } catch (MailException ex) {
-        	System.err.println(ex.getMessage());
+        	LOGGER.error("Erro ao enviar email:", ex);
         }
 	}
 	

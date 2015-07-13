@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -34,8 +36,10 @@ public abstract class GenericCrudController<T> {
 	
 	private final GenericCrudBusiness<T, GenericCrudRepository<T>> genericCrudBusiness;
 	
-	private final int DEFAULT_INITIAL_PAGINATION_PAGE = 0;
-	private final int DEFAULT_PAGINATION_SIZE = 7;
+	private static final Logger LOGGER = LoggerFactory.getLogger(GenericCrudController.class);
+	
+	private static final int DEFAULT_INITIAL_PAGINATION_PAGE = 0;
+	private static final int DEFAULT_PAGINATION_SIZE = 7;
 	private Type type = Arrays.stream(((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()).findFirst().get();
 	private Class<?> clazz = (Class<?>) type;
 	
@@ -48,7 +52,7 @@ public abstract class GenericCrudController<T> {
 	
 	@RequestMapping(value={"/", "/list"}, method = RequestMethod.GET)
 	public String tolist(Model model) {
-		instantiateModel(model, true);
+		instantiateModel(model);
 		page = null;
 		model.addAttribute("page", page);
 		return getListPageName();
@@ -77,11 +81,7 @@ public abstract class GenericCrudController<T> {
 	
 	protected boolean isAjax(HttpServletRequest request) {
 		String header = request.getHeader("x-requested-with");
-		if(header != null && header.equals("XMLHttpRequest")) {
-			return true;
-		} else {
-			return false;
-		}
+		return header != null && "XMLHttpRequest".equals(header);
 	}
 	
 	private void listModel(T t, Integer page, Integer size, Model model) {
@@ -92,7 +92,7 @@ public abstract class GenericCrudController<T> {
 	
 	@RequestMapping(value="/new", method = RequestMethod.GET)
 	public String toNewForm(Model model) {
-		instantiateModel(model, false);
+		instantiateModel(model);
 		return getFormPageName();
 	}
 	
@@ -103,6 +103,7 @@ public abstract class GenericCrudController<T> {
 			redirectAttrs.addFlashAttribute(EnumTipoMensagem.SUCESSO.getDescricao(), genericMessages.getDeleteSuccess());
 		} catch (IllegalArgumentException e) {
 			redirectAttrs.addFlashAttribute(EnumTipoMensagem.ERRO.getDescricao(), genericMessages.getNotFound());
+			LOGGER.trace("Não foi encontrado:", e);
 		}
 		
 		return getReturnToListURL();
@@ -128,8 +129,10 @@ public abstract class GenericCrudController<T> {
         		redirectAttrs.addFlashAttribute(EnumTipoMensagem.SUCESSO.getDescricao(), genericMessages.getSaveSuccess());
         	} catch (DataIntegrityViolationException e) {
         		redirectAttrs.addFlashAttribute(EnumTipoMensagem.ERRO.getDescricao(), e.getMessage());
+        		LOGGER.trace("Erro de integridade:", e);
     		} catch (Exception e) {
         		redirectAttrs.addFlashAttribute(EnumTipoMensagem.ERRO.getDescricao(), e.getMessage());
+        		LOGGER.error("Erro ao salvar:", e);
         	}
         }
         
@@ -148,12 +151,12 @@ public abstract class GenericCrudController<T> {
 	public String returnToListAndFindAll(Model model) {
 		this.page = genericCrudBusiness.listModel(createNewObject(), getPageable(DEFAULT_INITIAL_PAGINATION_PAGE, DEFAULT_PAGINATION_SIZE));
 		
-		instantiateModel(model, true);
+		instantiateModel(model);
 		model.addAttribute("page", this.page);
 		return getListPageName();
 	}
 	
-	protected void instantiateModel(Model model, boolean isList) {
+	protected void instantiateModel(Model model) {
 		model.addAttribute(getModelName(), createNewObject());
 	}
 	
@@ -163,7 +166,7 @@ public abstract class GenericCrudController<T> {
 		try {
 			t = (T) clazz.newInstance();
 		} catch (InstantiationException | IllegalAccessException e) {
-			e.printStackTrace();
+			LOGGER.error("Erro ao instanciar um objeto:", e);
 		}
 		return t;
 	}

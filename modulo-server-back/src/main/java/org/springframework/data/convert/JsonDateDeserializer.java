@@ -39,8 +39,6 @@ public class JsonDateDeserializer extends JsonDeserializer<LocalDate> {
         
         Instant instant = dateToConvert.toInstant();
         LocalDateTime dateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
-        LocalDate date = LocalDate.of(dateTime.getYear(), dateTime.getMonth(), dateTime.getDayOfMonth());
-        
-        return date;
+        return LocalDate.of(dateTime.getYear(), dateTime.getMonth(), dateTime.getDayOfMonth());
     }
 }

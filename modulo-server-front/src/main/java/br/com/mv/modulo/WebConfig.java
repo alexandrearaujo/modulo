@@ -25,6 +25,7 @@ import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
 public class WebConfig extends WebMvcAutoConfigurationAdapter {
 	
 	@Bean
+	@Override
 	public LocaleResolver localeResolver() {
 		SessionLocaleResolver slr = new SessionLocaleResolver();
 		slr.setDefaultLocale(new Locale("pt-BR"));

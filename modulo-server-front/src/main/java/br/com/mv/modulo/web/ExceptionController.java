@@ -4,8 +4,8 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
-import lombok.RequiredArgsConstructor;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.http.HttpStatus;
@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import br.com.mv.modulo.exception.ExceptionInfo;
 import br.com.mv.modulo.exception.GenericException;
 import br.com.mv.modulo.utils.ModuloEmailSender;
+import lombok.RequiredArgsConstructor;
 
 @Controller
 @ControllerAdvice
@@ -31,11 +32,13 @@ public class ExceptionController {
 	private Exception exception;
 	
 	private final ModuloEmailSender moduloMailSender;
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(ExceptionController.class);
 
 	
 	@ExceptionHandler(Exception.class)
     public ModelAndView handleException(HttpServletRequest req, Exception e) throws Exception {
-		e.printStackTrace();
+		LOGGER.trace("Exceção capturada:", e);
 		
 		if (AnnotationUtils.findAnnotation(e.getClass(), ResponseStatus.class) != null) {
 			throw e;
