@@ -1,3 +1,9 @@
+cas:
+  app-service-home: http://localhost:8080/modulo
+  app-service-security: http://localhost:8080/modulo/j_spring_cas_security_check
+  server-url-prefix: http://192.168.254.137:8180/mvautenticador-cas
+  server-url-login: http://192.168.254.137:8180/mvautenticador-cas/login/
+  url-logout: http://192.168.254.137:8180/mvautenticador-cas/logout/
 liquibase:
     enabled: false
     change-log: classpath:/db/changelog/db.changelog-master.xml
@@ -52,8 +58,8 @@ spring:
         basename: messages/messages
         encoding: UTF-8
         cache-seconds: -1
-#    profiles:
-#        active: default
+    profiles:
+        active: default
     resources:
         cache-period: 31556926
 #        cache-period: 1

@@ -7,6 +7,7 @@ import javax.annotation.Nonnull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.authentication.dao.ReflectionSaltSource;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -25,6 +26,7 @@ import br.com.mv.modulo.business.UserBusiness;
 @EnableWebSecurity
 @Configuration
 @EnableConfigurationProperties(ModuloProperties.class)
+@Profile(ModuloProfiles.DEFAULT)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired

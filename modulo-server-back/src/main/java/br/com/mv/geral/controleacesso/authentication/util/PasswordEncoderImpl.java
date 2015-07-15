@@ -3,13 +3,12 @@ package br.com.mv.geral.controleacesso.authentication.util;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.encoding.BaseDigestPasswordEncoder;
 
-public class PasswordEncoderImpl extends BaseDigestPasswordEncoder {
+import lombok.extern.slf4j.Slf4j;
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(PasswordEncoderImpl.class);
+@Slf4j
+public class PasswordEncoderImpl extends BaseDigestPasswordEncoder {
 
 	@Override
 	public boolean isPasswordValid(String encryptedPassword, String rawPassword, Object salt) {
@@ -23,7 +22,7 @@ public class PasswordEncoderImpl extends BaseDigestPasswordEncoder {
 		try {
 			md5 = MessageDigest.getInstance("MD5");
 		} catch (NoSuchAlgorithmException e) {
-			LOGGER.error("Não foi possível criar uma instância de MD5", e);
+			log.error("Não foi possível criar uma instância de MD5", e);
 		}
 
 		md5.reset();
