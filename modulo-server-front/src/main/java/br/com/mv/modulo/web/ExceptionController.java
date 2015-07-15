@@ -39,6 +39,7 @@ public class ExceptionController {
 	@ExceptionHandler(Exception.class)
     public ModelAndView handleException(HttpServletRequest req, Exception e) throws Exception {
 		LOGGER.trace("Exceção capturada:", e);
+		e.printStackTrace();
 		
 		if (AnnotationUtils.findAnnotation(e.getClass(), ResponseStatus.class) != null) {
 			throw e;
