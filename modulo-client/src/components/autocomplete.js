@@ -8,7 +8,7 @@ function initAutoComplete() {
 	jQuery.each(arrayInputs, function(i, input) { 
 		if(input !== undefined) {
 			var jQueryTarget = $(input);
-			if(isTypeaheadActive(jQueryTarget)){
+			if(!isTypeaheadActive(jQueryTarget)){
 				var targetArray = [];	 
 				var url = jQueryTarget.attr('data-url');
 				var parameters = jQueryTarget.attr('data-parameters');
