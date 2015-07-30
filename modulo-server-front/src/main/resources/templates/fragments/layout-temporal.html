@@ -39,7 +39,7 @@
 					th:name="${idField}"
 					data:bind="${dataBind}" />
 			
-			<span th:id="${idIcon}" class="input-group-addon btn" th:disabled="${disabledIcon}">
+			<span th:id="${idIcon}" class="input-group-addon btn" th:disabled="${disabled}">
 				<span class="glyphicon glyphicon-calendar"></span>
 			</span>
 		</div>
@@ -85,7 +85,7 @@
 					data:required="${required}"
 					data:bind="${dataBindStartDate}" />
 			
-		   <div class="input-group-addon calendar btn startDate" data:target="${idField}">
+		   <div class="input-group-addon calendar btn startDate" th:disabled="${disabledStartDate}" data:target="${idField}">
 				<span class="glyphicon glyphicon-calendar"></span>
 		   </div>
 		   
@@ -124,7 +124,7 @@
 					data:requiredEndDate="${requiredEndDate}"
 					data:bind="${dataBindEndDate}" />
 			
-			<div class="input-group-addon calendar btn endDate"  data:target="${idFieldEndDate}">
+			<div class="input-group-addon calendar btn endDate" th:disabled="${disabledEndDate}" data:target="${idFieldEndDate}">
 				<span class="glyphicon glyphicon-calendar"></span>
 			</div>
 	   </div>
