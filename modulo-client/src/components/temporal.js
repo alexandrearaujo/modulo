@@ -74,6 +74,11 @@ function initDateField(){
 			    	$(this.form).bootstrapValidator('revalidateField', targetName);
 			    });
 		    }
+			
+			jQueryTarget.datepicker().on('show', function(e){
+		    	if(!(jQueryTarget.find('.input-group-addon').attr('disabled') == undefined))
+		    		jQueryTarget.datepicker('hide');
+		    });
 		}
 	});
 }
@@ -158,6 +163,11 @@ function initDateFieldPeriodo() {
 								jQueryFormTarget.bootstrapValidator('revalidateField', nameEndDate);
 							}
 						});
+			    
+			    jQueryStartDate.datepicker().on('show', function(e){
+			    	if(!(jQueryStartDate.find('.input-group-addon').attr('disabled') == undefined))
+			    		jQueryStartDate.datepicker('hide');
+			    });
 			}
 			
 			if(!isEndDateDisabled || isEndDateDisabled === undefined) {
@@ -194,6 +204,11 @@ function initDateFieldPeriodo() {
 								jQueryFormTarget.bootstrapValidator('revalidateField', nameEndDate);
 							}
 						});
+			    
+			    jQueryEndDate.datepicker().on('show', function(e){
+			    	if(!(jQueryEndDate.find('.input-group-addon').attr('disabled') == undefined))
+			    		jQueryEndDate.datepicker('hide');
+			    });
 			}
 		}
 	});

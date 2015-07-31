@@ -8,25 +8,26 @@ function initAutoComplete() {
 	jQuery.each(arrayInputs, function(i, input) { 
 		if(input !== undefined) {
 			var jQueryTarget = $(input);
+			if(!isTypeaheadActive(jQueryTarget)){
+				var targetArray = [];	 
+				var url = jQueryTarget.attr('data-url');
+				var parameters = jQueryTarget.attr('data-parameters');
+				var hasParameters = false;
 			
-			var targetArray = [];	 
-			var url = jQueryTarget.attr('data-url');
-			var parameters = jQueryTarget.attr('data-parameters');
-			var hasParameters = false;
-		
-			if(parameters != null || parameters !== undefined) {
-			   	url = url.concat(parameters);
-			 	hasParameters = true; 
+				if(parameters != null || parameters !== undefined) {
+				   	url = url.concat(parameters);
+				 	hasParameters = true; 
+				}
+				
+				targetArray['object']     =   jQueryTarget.attr('data-object');
+				targetArray['list']       =   jQueryTarget.attr('data-list');
+				targetArray['onSelected'] =   jQueryTarget.attr('data-onSelected');
+				targetArray['idHidden']   =   jQueryTarget.attr('data-idHidden');
+				hasParameters =   parameters != null; 
+				var fncName   =   jQueryTarget.attr('data-fncName');
+				
+				AutoComplete.prototype.autocomplete(url, targetArray, fncName, hasParameters);
 			}
-			
-			targetArray['object']     =   jQueryTarget.attr('data-object');
-			targetArray['list']       =   jQueryTarget.attr('data-list');
-			targetArray['onSelected'] =   jQueryTarget.attr('data-onSelected');
-			targetArray['idHidden']   =   jQueryTarget.attr('data-idHidden');
-			hasParameters =   parameters != null; 
-			var fncName   =   jQueryTarget.attr('data-fncName');
-			
-			AutoComplete.prototype.autocomplete(url, targetArray, fncName, hasParameters);
 		}
 	});
 }
@@ -113,4 +114,8 @@ function limparCampo(campo){
 
 function setarValor(campo,valor){
 	$("#"+campo).typeahead('val', valor);
+}
+
+function isTypeaheadActive($element){
+	return $element.data('ttTypeahead') ? true:false;
 }
