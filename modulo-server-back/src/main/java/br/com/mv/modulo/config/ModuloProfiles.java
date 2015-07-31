@@ -7,6 +7,8 @@ public final class ModuloProfiles {
 	public static final String HML = "hml";
 	public static final String PRODUCTION = "production";
 	public static final String TESTE = "teste";
-	public static final String CAS = "cas";
 
+	private ModuloProfiles() {
+		super();
+	}
 }

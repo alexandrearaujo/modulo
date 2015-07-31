@@ -1,15 +1,6 @@
-cas:
-  app-service-home: http://localhost:8080/modulo
-  app-service-security: http://localhost:8080/modulo/j_spring_cas_security_check
-  server-url-prefix: http://192.168.254.137:8180/mvautenticador-cas
-  server-url-login: http://192.168.254.137:8180/mvautenticador-cas/login/
-  url-logout: http://192.168.254.137:8180/mvautenticador-cas/logout/
 liquibase:
     enabled: false
     change-log: classpath:/db/changelog/db.changelog-master.xml
-security:
-    basic:
-        enabled: false
 server:
     context-path: /modulo
     #port: 8443
@@ -58,17 +49,8 @@ spring:
         basename: messages/messages
         encoding: UTF-8
         cache-seconds: -1
-    profiles:
-        active: default
     resources:
         cache-period: 31556926
 #        cache-period: 1
     thymeleaf:
         cache: false
-#MV Report Print Server URL
-#reportPrintServerURI: http://192.168.254.85:8082/relatorios/
-
-#URL de sistemas que precisam carregar a aplicação embarcada(Ex: PEP)
-external-servers-white-listed-allow-frames: http://192.168.254.132:9090/mvpep/, http://localhost:9090/mvpep/
-
-#logging.level.org.springframework.security: DEBUG

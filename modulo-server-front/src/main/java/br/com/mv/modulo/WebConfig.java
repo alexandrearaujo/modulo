@@ -52,6 +52,7 @@ public class WebConfig extends WebMvcAutoConfigurationAdapter {
 		srbms.setBasenames("classpath:org/springframework/security/messages",
 						   "classpath:org/hibernate/validator/ValidationMessages",
 						   "classpath:/messagesApp/messages",
+						   "classpath:/messagesSecurity/messages",
 						   "classpath:/messages/messages");
 		return srbms;
 	}

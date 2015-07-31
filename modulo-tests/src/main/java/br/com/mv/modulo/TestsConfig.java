@@ -1,7 +1,5 @@
 package br.com.mv.modulo;
 
-import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
-
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -38,7 +36,7 @@ public abstract class TestsConfig {
         
         mockMvc = MockMvcBuilders
 	              .webAppContextSetup(webContext)
-	              .apply(springSecurity())
+//	              .apply(springSecurity())
 	              .build();
 		
 		template = new TestRestTemplate();
