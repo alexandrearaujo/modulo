@@ -19,11 +19,12 @@
 	    
 			<a class="navbar-brand" th:href="@{/}">
 			  <img th:src="@{/img/login/logo_soul.png}" alt="" class="logo-bar"/>
-			  <img th:src="@{/img/divider.png}" alt=""/>
+			  
 			</a>
 	    </div>
 	    
 		<div class="collapse navbar-collapse grouped-menu" >
+			<span class="divider-vertical hidden-xs pull-left"></span>
 			<p class="navbar-text navbar-left app-title" th:text="#{appTitle}"></p>
 			
 			<ul class="nav navbar-nav navbar-right">
@@ -68,7 +69,7 @@
 		     <div class="nav navbar-nav topnav app-system-info">
 		    	<p class="navbar-text text-nowrap hidden-xs">
 		    		<span th:text="'| ' + #{systemVersion}"></span> <span th:text="${version}"></span> <span th:text="'| ' + #{databaseVersion}"></span> <span th:text="${session.versaoBanco}"></span>
-		    		<br/> <span th:text="${#dates.format(#dates.createToday(), 'dd/MM/YYYY')}"></span> <span th:text="${#dates.format(#dates.createNow(), 'hh:mm:ss')}"> </span> <span id="relogio"></span> 
+		    		<br/> <span th:text="${#dates.format(#dates.createToday(), 'dd/MM/YYYY')}+' | '"></span> <span id="relogio"></span> 
 		    	</p>
 		    </div>
 		</div>
