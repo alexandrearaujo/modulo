@@ -96,7 +96,7 @@
 	</div>
 
 	<!-- PaginationBar -->
-	<div class="paginationbar" th:fragment="paginationbar">
+	<div class="paginationbar col-md-*" th:fragment="paginationbar">
 		<nav class="text-center" th:if="${page != null and page.totalPages > 0}" 
 			 data:totalPages="${page?.totalPages}"
 			 data:size="${page?.size}"
@@ -122,18 +122,14 @@
 						<i class="glyphicon glyphicon glyphicon-play inverted-icon mv-color-blue"></i>
 					</a>
 				</li>
-
-				<li th:if="${page != null and page.totalPages != 0}"
-					th:each="pageNo : ${#numbers.sequence(0, (page != null ? (page.totalPages - 1) : 1))}"
-					th:class="${page?.number eq pageNo} ? 'active' : ''" data:activeNumber="${pageNo + 1}">
-					<a th:if="${page?.number eq pageNo}" href="javascript:void(0);">
-					   	<span th:text="${pageNo + 1}"></span>
-					</a>
-					<a th:unless="${(page != null ? (page.number eq pageNo) : true)}" href="#" data:number="${pageNo + 1}">
-						<span th:text="${pageNo + 1}"></span>
-					</a>
+				
+				<li class="input-page pull-left">
+					<input type="number" class="form-control form-group-sm" id="idActualPage" maxlength="4" name="actualPage" th:value="${page?.number + 1}"></input>
 				</li>
-
+				
+				<li disabled="disalbed">
+					<span class="totalPages" th:text="' de ' + ${page?.totalPages}"></span>
+				</li>
 				<li th:class="${page?.hasNext()}? '' : 'disabled'">
 					<span th:unless="${page?.hasNext()}">
 						<i class="glyphicon glyphicon glyphicon-play mv-color-blue"></i>
