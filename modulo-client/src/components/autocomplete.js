@@ -105,9 +105,10 @@ function validateAutocompleteField(element, idHiddenField){
 	var jQueryTarget = $(element);
 	var jQueryForm = $(element.form);
 	var jQueryHiddenField = $('#'+idHiddenField);
+	var isjQueryTargetRequired = Boolean(jQueryTarget.attr('data-bv-notempty'));
 	if(jQueryTarget.required() && jQueryTarget.attr('data-bv-notempty') == undefined) {
 		jQueryForm.bootstrapValidator('revalidateField', jQueryHiddenField.prop('name'));
-	}else{
+	}else if(isjQueryTargetRequired){
 		jQueryForm.bootstrapValidator('revalidateField', jQueryTarget.prop('name'));
 	}
 }
