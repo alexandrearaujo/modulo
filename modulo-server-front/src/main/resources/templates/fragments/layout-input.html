@@ -27,12 +27,30 @@
 				th:pattern="${pattern}" 
 				th:autocomplete="${autocomplete} != 'on' ? 'off' : ${autocomplete}"
 				data:bind="${dataBind}"/>
+		
+		<input	th:if="${field == null and numRows == null and (email == null or !email)}"
+				type="text" 
+				class="form-control" 
+				th:id="${idField}"
+				th:name="${nameField}"
+				th:autofocus="${autofocus}" 
+				th:readonly="${readonly}"
+				th:maxlength="${maxLength}" 
+				th:classappend="${addCss}" 
+				data:bv-notempty="${required}"
+				th:required="${required}"
+				th:placeholder="${placeholder}" 
+				th:disabled="${disabled}" 
+				th:pattern="${pattern}" 
+				th:autocomplete="${autocomplete} != 'on' ? 'off' : ${autocomplete}"
+				data:bind="${dataBind}"/>
 				
 	    <input  th:if="${(email != null and email) and field != null}"
 	    		type="email"
 	    		class="form-control" 
 	    		th:id="${idField}" 
 	    		th:field="__${field}__" 
+	    		th:name="${nameField}"
 	    		th:maxlength="${maxLength}" 
 	    		th:classappend="${addCss}"
 			    data:bv-notempty="${required}" 
@@ -43,7 +61,24 @@
 			    th:autocomplete="${autocomplete} != 'on' ? 'off' : ${autocomplete}" 
 			    th:readonly="${readonly}" 
 			    data:fv-emailaddress-message="#{validEmail}"
-			    data:bind="${dataBind}"/> 
+			    data:bind="${dataBind}"/>
+			    
+		<input  th:if="${(email != null and email) and field == null}"
+	    		type="email"
+	    		class="form-control" 
+	    		th:id="${idField}" 
+	    		th:name="${nameField}"
+	    		th:maxlength="${maxLength}" 
+	    		th:classappend="${addCss}"
+			    data:bv-notempty="${required}" 
+			    th:autofocus="${autofocus}" 
+			    th:placeholder="${placeholder}" 
+			    th:disabled="${disabled}" 
+			    th:pattern="${pattern}" 
+			    th:autocomplete="${autocomplete} != 'on' ? 'off' : ${autocomplete}" 
+			    th:readonly="${readonly}" 
+			    data:fv-emailaddress-message="#{validEmail}"
+			    data:bind="${dataBind}"/>
 				
 		<input  th:if="${field == null and numRows == null}"
 				type="text" 
