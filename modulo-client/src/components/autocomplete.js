@@ -101,7 +101,6 @@ AutoComplete.prototype.autocomplete = function(vurl, target, fncName, hasParamet
 }; 
 
 function validateAutocompleteField(element, idHiddenField){
-	debugger;
 	var jQueryTarget = $(element);
 	var jQueryForm = $(element.form);
 	var jQueryHiddenField = $('#'+idHiddenField);
