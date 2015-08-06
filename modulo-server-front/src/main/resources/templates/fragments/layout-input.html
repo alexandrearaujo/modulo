@@ -175,7 +175,7 @@
 
 	<!-- Autocomplete -->
 	<div class="form-group" th:fragment="autocomplete">
-		<label class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField}" th:id="__${idField}__+Label">
+		<label class="control-label" th:classappend="${required} or ${requiredField} ? 'required' : ''" th:for="${nameField}" th:id="__${idField}__+Label">
 			<span th:text="#{${label}}"></span>
 		</label>
 
@@ -223,6 +223,9 @@
 					th:name="${nameField} == null ? ${idField} : ${nameField}" 
 					class="form-control typeahead input-autocomplete"
 					th:field="__${field}__"  
+					
+					data:bv-notempty="${requiredField}"
+					
 					th:disabled="${disabled}" 
 					data:object="${idField}"
 					data:list="${list}"
@@ -238,6 +241,9 @@
 					th:id="${idField}" 
 					type="text" 
 					th:name="${nameField} == null ? ${idField} : ${nameField}" 
+					
+					data:bv-notempty="${requiredField}"
+					
 					class="form-control typeahead input-autocomplete"
 					th:value="${field}"
 					th:disabled="${disabled}"
