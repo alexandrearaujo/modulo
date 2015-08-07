@@ -18,7 +18,7 @@ public abstract class WebDriverTestsConfig extends TestsConfig {
 		webDriver = MockMvcHtmlUnitDriverBuilder
 			    .mockMvcSetup(mockMvc)
 			    .contextPath(contextPath)
-			    .createDriver();
+			    .build();
 		
 		LoginPage loginPage = new LoginPage(webDriver, contextPath, port);
 		loginPage.login(ADMIN_USER_NAME, ADMIN_PASSWORD);
