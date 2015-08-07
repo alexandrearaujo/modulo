@@ -18,8 +18,10 @@ spring:
         #jndi-name: java:jboss/datasources/bootdemo
         driver-class-name: oracle.jdbc.OracleDriver
         url: jdbc:oracle:thin:@192.168.254.17:1521:dev4
-        username: dbamvfor
-        password: dbamvfor
+        #username: dbamvfor
+        #password: dbamvfor
+        username: acessodisp
+        password: a123
         initialize: false
         initial-size: 1
         max-active: 3

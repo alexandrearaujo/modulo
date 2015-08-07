@@ -77,9 +77,7 @@ AutoComplete.prototype.autocomplete = function(vurl, target, fncName, hasParamet
 	$('#'+target['object']).blur(function(){
 		if(this.value === '') {
 			$('#'+idHidden).val('');
-			if($(this).required()) {
-				$(this.form).bootstrapValidator('revalidateField', $('#'+idHidden).prop('name'));
-			}
+			validateAutocompleteField(this, idHidden);
 		}
 	});
 	
@@ -98,11 +96,21 @@ AutoComplete.prototype.autocomplete = function(vurl, target, fncName, hasParamet
 	.on('typeahead:selected', function ($e, datum){
 		$('#'+idHidden).data(datum);
 		$('#'+idHidden).val(eval(onSelected));
-	 	if($(this).required()){
-			$(this.form).bootstrapValidator('revalidateField', $('#'+idHidden).prop('name'));
-		}	
+		validateAutocompleteField(this, idHidden);
 	});
 }; 
+
+function validateAutocompleteField(element, idHiddenField){
+	var jQueryTarget = $(element);
+	var jQueryForm = $(element.form);
+	var jQueryHiddenField = $('#'+idHiddenField);
+	var isjQueryTargetRequired = Boolean(jQueryTarget.attr('data-bv-notempty'));
+	if(jQueryTarget.required() && jQueryTarget.attr('data-bv-notempty') == undefined) {
+		jQueryForm.bootstrapValidator('revalidateField', jQueryHiddenField.prop('name'));
+	}else if(isjQueryTargetRequired){
+		jQueryForm.bootstrapValidator('revalidateField', jQueryTarget.prop('name'));
+	}
+}
 
 function onOpened2($e) {}
 
