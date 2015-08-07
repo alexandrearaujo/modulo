@@ -44,8 +44,8 @@
 			       </li>
 		        -->
 		        
-		       <li class="divider-vertical hidden-xs"></li>
-		       <li class="btn-menu-top" data-placement="bottom" data:original-title="#{expandMenuLateral}" data-toggle="tooltip">
+		       <li th:unless="${singleMenu}" class="divider-vertical hidden-xs"></li>
+		       <li th:unless="${singleMenu}" class="btn-menu-top" data-placement="bottom" data:original-title="#{expandMenuLateral}" data-toggle="tooltip">
 		       		<a class="navbar-brand" href="javascript:void(0);" data-placement="bottom" id="menu-toggle">
 		       			<i class="glyphicon glyphicon-cog menu-top-icons mv-color-blue"></i>
 		       		</a>
