@@ -11,7 +11,7 @@
 				<button type="button" class="btn btn-default btn-xs pull-left logged-user-icon" disabled="disabled">
 			  		<i class="glyphicon glyphicon glyphicon-user mv-color-green"></i>
 			  	</button>
-			  	<span class="logged-user-name pull-left" th:text="${#authentication?.name}"></span>
+			  	<span class="logged-user-name pull-left" th:text="${session.usuario} != null ? (${session.usuario.login} +' - '+ ${session.usuario?.authority?.descricao}) : ''"></span>
 			</div>
 		</div>
 	  </div>

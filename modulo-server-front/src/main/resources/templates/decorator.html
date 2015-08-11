@@ -6,9 +6,9 @@
 	  class="no-js">
 	<head th:replace="fragments/layout :: htmlhead" />
 	
-	<body role="document" th:class="${#authentication != null and #authentication.principal != null ? (#authentication.principal.hasRole('MEDICO') or #authentication.principal.hasRole('USER') ? 'sidebar-left-hidden' : '') : ''}">
+	<body role="document" th:class="${session.usuario.hasSigleRoleWithUri() ? 'sidebar-left-hidden' : ''}">
 		<th:block th:unless="${session.externalRequest}">
-			<div th:replace="fragments/layout-menu-top :: menu-top"></div>
+			<div th:replace="fragments/layout-menu-top :: menu-top(singleMenu=${session.usuario.hasSigleRoleWithUri()})"></div>
 		</th:block>
 		
 		<div class="container-fluid main">

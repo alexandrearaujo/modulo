@@ -9,8 +9,6 @@ import lombok.Setter;
 @Getter @Setter
 public class ModuloProperties {
 
-	private String[] externalServersWhiteListedAllowFrames = {"http://localhost:9090/mvpep/"};
-	
 	private String reportPrintServerURI;
 
 }

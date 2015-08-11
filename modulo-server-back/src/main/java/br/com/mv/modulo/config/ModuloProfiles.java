@@ -8,4 +8,7 @@ public final class ModuloProfiles {
 	public static final String PRODUCTION = "production";
 	public static final String TESTE = "teste";
 
+	private ModuloProfiles() {
+		super();
+	}
 }
