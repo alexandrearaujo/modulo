@@ -213,3 +213,11 @@ function initDateFieldPeriodo() {
 		}
 	});
 }
+
+function datepickerChangeDate($element, val){
+	if(!($element instanceof jQuery)){
+		$element = $($element)
+	}
+	var datepicker = $element.parent('.date.date-field').data('datepicker');
+	datepicker.setDate(val);
+}
