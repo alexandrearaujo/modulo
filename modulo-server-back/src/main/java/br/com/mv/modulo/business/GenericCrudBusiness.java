@@ -18,7 +18,7 @@ public abstract class GenericCrudBusiness<T, D extends GenericCrudRepository<T>>
 	}
 	
 	@Transactional
-	public void delete(Long id) {
+	public void delete(Long id) throws GenericException {
 		repository.delete(id);
 	}
 	

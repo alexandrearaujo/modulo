@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -29,14 +27,14 @@ import br.com.mv.modulo.business.GenericCrudBusiness;
 import br.com.mv.modulo.exception.GenericMessages;
 import br.com.mv.modulo.model.type.EnumTipoMensagem;
 import br.com.mv.modulo.repository.GenericCrudRepository;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public abstract class GenericCrudController<T> {
 	protected Page<T> page;
 	protected final GenericMessages genericMessages;
 	
-	private final GenericCrudBusiness<T, GenericCrudRepository<T>> genericCrudBusiness;
-	
-	private static final Logger LOGGER = LoggerFactory.getLogger(GenericCrudController.class);
+	protected final GenericCrudBusiness<T, GenericCrudRepository<T>> genericCrudBusiness;
 	
 	private static final int DEFAULT_INITIAL_PAGINATION_PAGE = 0;
 	private static final int DEFAULT_PAGINATION_SIZE = 7;
@@ -103,8 +101,11 @@ public abstract class GenericCrudController<T> {
 			redirectAttrs.addFlashAttribute(EnumTipoMensagem.SUCESSO.getDescricao(), genericMessages.getDeleteSuccess());
 		} catch (IllegalArgumentException e) {
 			redirectAttrs.addFlashAttribute(EnumTipoMensagem.ERRO.getDescricao(), genericMessages.getNotFound());
-			LOGGER.trace("Não foi encontrado:", e);
-		}
+			log.trace("Não foi encontrado:", e);
+		} catch (Exception e) {
+    		redirectAttrs.addFlashAttribute(EnumTipoMensagem.ERRO.getDescricao(), e.getMessage());
+    		log.error("Erro ao salvar:", e);
+    	}
 		
 		return getReturnToListURL();
 	}
@@ -129,17 +130,17 @@ public abstract class GenericCrudController<T> {
         		redirectAttrs.addFlashAttribute(EnumTipoMensagem.SUCESSO.getDescricao(), genericMessages.getSaveSuccess());
         	} catch (DataIntegrityViolationException e) {
         		redirectAttrs.addFlashAttribute(EnumTipoMensagem.ERRO.getDescricao(), e.getMessage());
-        		LOGGER.trace("Erro de integridade:", e);
+        		log.trace("Erro de integridade:", e);
     		} catch (Exception e) {
         		redirectAttrs.addFlashAttribute(EnumTipoMensagem.ERRO.getDescricao(), e.getMessage());
-        		LOGGER.error("Erro ao salvar:", e);
+        		log.error("Erro ao salvar:", e);
         	}
         }
         
         return getReturnToListURL();
 	}
 	
-	private String getReturnToListURL() {
+	protected String getReturnToListURL() {
 		return "redirect:/" + getModelName() + "/returnToList";
 	}
 	
@@ -166,7 +167,7 @@ public abstract class GenericCrudController<T> {
 		try {
 			t = (T) clazz.newInstance();
 		} catch (InstantiationException | IllegalAccessException e) {
-			LOGGER.error("Erro ao instanciar um objeto:", e);
+			log.error("Erro ao instanciar um objeto:", e);
 		}
 		return t;
 	}
