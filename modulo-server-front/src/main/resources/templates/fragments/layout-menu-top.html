@@ -59,8 +59,8 @@
 		       </li>
 		       
 		       <li class="divider-vertical hidden-xs"></li>
-		       <li class="btn-menu-top" data-placement="bottom" data:original-title="#{exit}" data-toggle="tooltip">
-					<a class="navbar-brand" th:href="@{/logout}">
+		       <li class="btn-menu-top logout" data-placement="bottom" data:original-title="#{exit}" data-toggle="tooltip">
+					<a class="navbar-brand" data-toggle="modal" href="#confirmationLogout">
 		       			<i class="fa fa-power-off menu-top-icons mv-color-blue"></i>
 		       		</a>
 		       </li>
@@ -74,6 +74,16 @@
 		    </div>
 		</div>
 	  </div>
+	  
+	  <div id="confirmationLogout" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false" style="display: none;">
+		  <div class="modal-body">
+		    <p>Deseja realmente desconectar o usuário logado atualmente ?</p>
+		  </div>
+		  <div class="modal-footer">
+		    <button type="button" data-dismiss="modal" class="btn btn-default">Não</button>
+		    <a role="button" class="btn btn-default" data-toggle="modal" th:href="@{/logout}">Sim</a>
+		  </div>
+	</div>
 </nav>
 
 
