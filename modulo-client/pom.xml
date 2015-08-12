@@ -27,6 +27,10 @@
 					    <goals>
 					        <goal>bower</goal>
 					    </goals>
+					    <configuration>
+					    	<arguments>install</arguments>
+					    	<arguments>update</arguments>
+					    </configuration>
 					</execution>   
 					
 					<execution>
