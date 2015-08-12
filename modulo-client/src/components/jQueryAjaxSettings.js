@@ -12,7 +12,18 @@ function ajaxSetup(){
 	});
 }
 
-jQuery(document).ajaxComplete( function(){
+jQuery(document).ajaxStart(function(){
+	var isAutocomplete = isTypeaheadActive($(arguments[0].currentTarget.activeElement));
+	if(!isAutocomplete){
+		$('#progressModal').modal('show');
+	}
+});
+
+jQuery(document).ajaxStop(function(){
+	$('#progressModal').modal('hide');
+});
+
+jQuery(document).ajaxComplete(function(){
 	initBtnConfirmation();
 	$('[data-toggle="tooltip"]').tooltip();
 	$("td[rel='tooltip']").tooltip({
