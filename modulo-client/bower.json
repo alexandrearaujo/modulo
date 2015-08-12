@@ -10,7 +10,7 @@
     "bootstrap-datepicker": "latest",
     "bootstrap-modal": "latest",
     "bootstrap-table": "latest",
-    "bootstrap-timepicker": "latest",
+    "bootstrap-timepicker": "0.3.0",
     "bootstrapvalidator": "latest",
     "font-awesome": "latest",
     "jquery": "latest",
