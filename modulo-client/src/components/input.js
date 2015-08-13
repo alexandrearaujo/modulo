@@ -10,7 +10,7 @@ function initNumberField(){
 				var jQuerySelf = $(this);
 				var functionName = jQuerySelf.attr('data-onchange');
 				
-		  	    if(jQuerySelf.val() !=  jQuerySelf.attr('data-previousValue')) {
+		  	    if(jQuerySelf.val() !==  jQuerySelf.attr('data-previousValue')) {
 		  	    	var f = new Function(functionName);
 					f.call();
 					jQuerySelf.attr('data-previousValue', jQuerySelf.val());
@@ -24,7 +24,7 @@ function initNumberField(){
 function fncUppercase() {
 	$("input").keyup(function(e) {
 		var textUpperCase = $(this).val().toUpperCase();
-		if(window.getSelection().toString() == $(this).val()) {
+		if(window.getSelection().toString() === $(this).val()) {
 			$(this).val(textUpperCase);
 			$(this).select();
 		} else {
@@ -33,7 +33,7 @@ function fncUppercase() {
 	});
 	$("textarea").keyup(function(e) {
 		var textUpperCase = $(this).val().toUpperCase();
-		if(window.getSelection().toString() == $(this).val()) {
+		if(window.getSelection().toString() === $(this).val()) {
 			$(this).val(textUpperCase);
 			$(this).select();
 		} else {
