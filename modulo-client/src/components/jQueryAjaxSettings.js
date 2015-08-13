@@ -15,7 +15,10 @@ function ajaxSetup(){
 jQuery(document).ajaxStart(function(){
 	var isAutocomplete = isTypeaheadActive($(arguments[0].currentTarget.activeElement));
 	if(!isAutocomplete){
-		$('#progressModal').modal('show');
+		setInterval(function(){
+			$('#progressModal').modal('show');	
+		}, 1000)
+		
 	}
 });
 
