@@ -96,7 +96,7 @@ AutoComplete.prototype.autocomplete = function(vurl, target, fncName, hasParamet
 	.on('typeahead:autocompleted', onAutocompleted2)
 	.on('typeahead:selected', function ($e, datum){
 		$('#'+idHidden).data(datum);
-		$('#'+idHidden).val(eval(onSelected));
+		$('#'+idHidden).val(onSelected);
 		validateAutocompleteField(this, idHidden);
 	});
 }; 
