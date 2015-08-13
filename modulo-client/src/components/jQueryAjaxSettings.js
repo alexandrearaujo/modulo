@@ -23,6 +23,14 @@ jQuery(document).ajaxStop(function(){
 	$('#progressModal').modal('hide');
 });
 
+jQuery(document).ajaxError(function(){
+	$('#progressModal').modal('hide');
+});
+
+jQuery(document).ajaxSuccess(function(){
+	$('#progressModal').modal('hide');
+});
+
 jQuery(document).ajaxComplete(function(){
 	initBtnConfirmation();
 	$('[data-toggle="tooltip"]').tooltip();
@@ -36,6 +44,7 @@ jQuery(document).ajaxComplete(function(){
 });
 
 jQuery(document).ready(function(){
+	ajaxSetup();
 	initBtnConfirmation();
 	initTimeField();
 	initDateField();
