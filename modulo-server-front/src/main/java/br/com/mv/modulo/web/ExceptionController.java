@@ -21,6 +21,7 @@ import br.com.mv.modulo.exception.GenericException;
 import br.com.mv.modulo.utils.ModuloEmailSender;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.log4j.Logger;
 
 @Controller
 @ControllerAdvice
@@ -31,13 +32,14 @@ public class ExceptionController {
 	private Exception exception;
 	
 	private final ModuloEmailSender moduloMailSender;
-	
+	private static Logger logger = Logger.getLogger(ExceptionController.class);
 	
 	@ExceptionHandler(Exception.class)
 	@RequestMapping("/exception")
     public ModelAndView handleException(HttpServletRequest req, Exception e) throws Exception {
 		log.trace("Exceção capturada:", e);
 		e.printStackTrace();
+		logger.log(null, "Exceção capturada:", e);
 		if (AnnotationUtils.findAnnotation(e.getClass(), ResponseStatus.class) != null) {
 			throw e;
 		}
