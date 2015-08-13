@@ -59,7 +59,7 @@ AutoComplete.prototype.autocomplete = function(vurl, target, fncName, hasParamet
 		                url += '&';
 		                var v = arr[i].split("=");
 		                url += v[0]+"=";
-		                url +=eval(v[1]);
+		                url += v[1];
 		            }
                 }
                 
