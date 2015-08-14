@@ -32,7 +32,6 @@ public class ExceptionController {
 	
 	private final ModuloEmailSender moduloMailSender;
 	
-	
 	@ExceptionHandler(Exception.class)
 	@RequestMapping("/exception")
     public ModelAndView handleException(HttpServletRequest req, Exception e) throws Exception {

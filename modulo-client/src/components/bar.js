@@ -56,14 +56,14 @@
 			});
 			
 			$(document).on('keyup keypress', 'form .pagination > .input-page > input', function(e) {
-			  if(e.which == 13) {
+			  if(e.which === 13) {
 			    e.preventDefault();
 			    return false;
 			  }
 			});
 			
 			$(this).on( "keyup", ".pagination > .input-page > input", function(event) {
-				if ( event.which == 13 ) {
+				if ( event.which === 13 ) {
 				    changePage($(this));
 				}	
 			});

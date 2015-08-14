@@ -8,7 +8,7 @@ function initAutoComplete() {
 	jQuery.each(arrayInputs, function(i, input) { 
 		if(input !== undefined) {
 			var jQueryTarget = $(input);
-			var isInputHidden = !(jQueryTarget.attr('hidden') == undefined)
+			var isInputHidden = !(jQueryTarget.attr('hidden') === undefined)
 			if(!isTypeaheadActive(jQueryTarget) && !isInputHidden && !jQueryTarget.hasClass('tt-hint')){
 				var targetArray = [];	 
 				var url = jQueryTarget.attr('data-url');
@@ -52,14 +52,14 @@ AutoComplete.prototype.autocomplete = function(vurl, target, fncName, hasParamet
                 if(hasParameters) {
 	                var parameters = url.indexOf('&');
 	                var param = url.substr(parameters+1);
-	                var arr = param.split(",");
+	                var listParameters = param.split(",");
 	                url = url.substr(0,parameters);
                
-		            for(var i in arr) {
+		            for(parameter in listParameters) {
 		                url += '&';
-		                var v = arr[i].split("=");
-		                url += v[0]+"=";
-		                url +=eval(v[1]);
+		                var nameAndValue = listParameters[parameter].split("=");
+		                url += nameAndValue[0]+"=";
+		                url += nameAndValue[1];
 		            }
                 }
                 
@@ -73,7 +73,9 @@ AutoComplete.prototype.autocomplete = function(vurl, target, fncName, hasParamet
 	
 	var promise = AutoComplete.prototype.bloodHound.initialize();
 
-	promise.fail(function() { console.log('err!'); });
+	promise.fail(function() { 
+		throw new Error('Error on promise fail!');
+	});
 
 	$('#'+target['object']).blur(function(){
 		if(this.value === '') {
@@ -96,7 +98,7 @@ AutoComplete.prototype.autocomplete = function(vurl, target, fncName, hasParamet
 	.on('typeahead:autocompleted', onAutocompleted2)
 	.on('typeahead:selected', function ($e, datum){
 		$('#'+idHidden).data(datum);
-		$('#'+idHidden).val(eval(onSelected));
+		$('#'+idHidden).val(onSelected);
 		validateAutocompleteField(this, idHidden);
 	});
 }; 
@@ -106,7 +108,7 @@ function validateAutocompleteField(element, idHiddenField){
 	var jQueryForm = $(element.form);
 	var jQueryHiddenField = $('#'+idHiddenField);
 	var isjQueryTargetRequired = Boolean(jQueryTarget.attr('data-bv-notempty'));
-	if(jQueryTarget.required() && jQueryTarget.attr('data-bv-notempty') == undefined) {
+	if(jQueryTarget.required() && jQueryTarget.attr('data-bv-notempty') === undefined) {
 		jQueryForm.bootstrapValidator('revalidateField', jQueryHiddenField.prop('name'));
 	}else if(isjQueryTargetRequired){
 		jQueryForm.bootstrapValidator('revalidateField', jQueryTarget.prop('name'));

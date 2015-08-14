@@ -27,6 +27,7 @@ public abstract class TestsConfig {
 
 	protected RestTemplate template;
 	
+	//Remover sonar ta fixando como crítico.
 	protected final static String ADMIN_USER_NAME = "ADM";
 	protected final static String ADMIN_PASSWORD = "SPOAEN";
 
