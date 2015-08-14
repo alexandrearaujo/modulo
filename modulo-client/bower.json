@@ -19,6 +19,7 @@
     "metisMenu": "latest",
     "remarkable-bootstrap-notify": "latest",
     "screenfull": "latest",
+    "pace": "1.0.2",
     "typeahead.js": "0.10.5"
   },
   "overrides": {
@@ -120,13 +121,20 @@
         "dist/screenfull.js"
       ]
     },
+    "pace": {
+      "main": [
+        "pace.min.js",
+        "themes/blue/pace-theme-loading-bar.css"
+      ]
+    },
     "typeahead.js": {
       "main": [
         "dist/typeahead.bundle.min.js"
       ]
     }
   },
-  "devDependencies": {},
+   "devDependencies": {
+  },
   "resolutions": {
 	"jquery": "2.1.4",
     "bootstrap": "3.3.5"

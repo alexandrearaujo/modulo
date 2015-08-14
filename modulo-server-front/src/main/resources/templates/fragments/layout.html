@@ -59,6 +59,10 @@
 	    <!-- MV Theme Pep -->
 		<link th:if="${session.externalRequest}" rel="stylesheet" type="text/css" media="all" th:href="@{/css/mvpep.css}"/> 	    
 		
+		<!-- Pace -->
+  		<link th:href="@{/lib/pace/themes/blue/pace-theme-mac-osx.css}" rel="stylesheet" />
+  		<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/progress.css}"/>
+		
 		<!-- Jquery core Javascript -->
 		<script type="text/javascript" charset="UTF-8" th:src="@{/lib/jquery/dist/jquery.min.js}"></script>
 	</head>
@@ -108,11 +112,11 @@
 			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/bootstrap-modal/js/bootstrap-modal.js}"></script>
 			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/bootstrap-modal/js/bootstrap-modalmanager.js}"></script>
 			
+			<!-- Pace -->
+			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/pace/pace.js}"></script>
+			
 			 <!-- Modulo Components -->
 			<script type="text/javascript" charset="UTF-8" th:src="@{/components/components.js}"></script>
-			
-			<div th:include="fragments/layout-progress :: progress-modal"></div>
-			
 		</th:block>
 	</body>
 </html>

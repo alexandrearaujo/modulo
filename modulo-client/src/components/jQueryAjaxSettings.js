@@ -15,20 +15,14 @@ function ajaxSetup(){
 jQuery(document).ajaxStart(function(){
 	var isAutocomplete = isTypeaheadActive($(arguments[0].currentTarget.activeElement));
 	if(!isAutocomplete){
-		$('#progressModal').modal('show');
+		Pace.start();
 	}
 });
 
 jQuery(document).ajaxStop(function(){
-	$('#progressModal').modal('hide');
-});
-
-jQuery(document).ajaxError(function(){
-	$('#progressModal').modal('hide');
-});
-
-jQuery(document).ajaxSuccess(function(){
-	$('#progressModal').modal('hide');
+	if(Pace.running){
+		Pace.stop();
+	}
 });
 
 jQuery(document).ajaxComplete(function(){
