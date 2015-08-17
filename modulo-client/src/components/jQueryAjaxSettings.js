@@ -12,19 +12,6 @@ function ajaxSetup(){
 	});
 }
 
-jQuery(document).ajaxStart(function(){
-	var isAutocomplete = isTypeaheadActive($(arguments[0].currentTarget.activeElement));
-	if(!isAutocomplete){
-		Pace.start();
-	}
-});
-
-jQuery(document).ajaxStop(function(){
-	if(Pace.running){
-		Pace.stop();
-	}
-});
-
 jQuery(document).ajaxComplete(function(){
 	initBtnConfirmation();
 	$('[data-toggle="tooltip"]').tooltip();
