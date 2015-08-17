@@ -55,11 +55,11 @@ AutoComplete.prototype.autocomplete = function(vurl, target, fncName, hasParamet
 	                var listParameters = param.split(",");
 	                url = url.substr(0,parameters);
                
-		            for(parameter in listParameters) {
+		            for(var parameter in listParameters) {
 		                url += '&';
 		                var nameAndValue = listParameters[parameter].split("=");
 		                url += nameAndValue[0]+"=";
-		                url += nameAndValue[1];
+		                url += eval(nameAndValue[1]);
 		            }
                 }
                 
@@ -98,7 +98,7 @@ AutoComplete.prototype.autocomplete = function(vurl, target, fncName, hasParamet
 	.on('typeahead:autocompleted', onAutocompleted2)
 	.on('typeahead:selected', function ($e, datum){
 		$('#'+idHidden).data(datum);
-		$('#'+idHidden).val(onSelected);
+		$('#'+idHidden).val(eval(onSelected));
 		validateAutocompleteField(this, idHidden);
 	});
 }; 
