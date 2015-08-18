@@ -84,14 +84,14 @@
 	
 	<!-- Modal-Group-Button-Footer -->
 	<div class="modal-footer" th:classappend="${addClass}" th:fragment="modal-group-button-footer">
-	    <button type="submit" th:name="${nameSucess}" th:id="${idSucess}" class="btn btn-default">
+	    <button type="submit" th:name="${nameSucess}" th:id="${idSucess}" class="btn btn-default" data:bind="${dataBindSucess}">
 	    	<span class="glyphicon glyphicon-ok mv-color-green"></span>
-	   		<span th:text="#{${sucessLabel}}"></span> 
+	   		<span th:if="${sucessLabel}" th:text="#{${sucessLabel}}"></span> 
 	    </button>
 	    
-	    <button type="button" class="btn btn-default" data-dismiss="modal" th:name="${nameCancel}" th:id="${idCancel}">
+	    <button type="button" class="btn btn-default" data-dismiss="modal" th:name="${nameCancel}" th:id="${idCancel}"  data:bind="${dataBindCancel}">
 	 		<span class="glyphicon glyphicon-ban-circle mv-color-green"></span>
-	 		<span th:text="#{${cancelLabel}}"></span> 
+	 		<span th:if="${cancelLabel}" th:text="#{${cancelLabel}}"></span> 
 	 	</button>
 	</div>
 
