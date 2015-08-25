@@ -124,7 +124,7 @@
     "pace": {
       "main": [
         "pace.min.js",
-        "themes/blue/pace-theme-loading-bar.css"
+        "themes/blue/pace-theme-mac-osx.css"
       ]
     },
     "typeahead.js": {
