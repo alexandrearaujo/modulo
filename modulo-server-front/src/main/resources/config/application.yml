@@ -56,3 +56,6 @@ spring:
 #        cache-period: 1
     thymeleaf:
         cache: false
+
+banner:
+    location: classpath:/config/banner/banner.txt
