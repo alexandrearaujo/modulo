@@ -84,7 +84,7 @@
 	
 	<!-- Modal-Group-Button-Footer -->
 	<div class="modal-footer" th:classappend="${addClass}" th:fragment="modal-group-button-footer">
-	    <button type="submit" th:name="${nameSucess}" th:id="${idSucess}" class="btn btn-default" data:bind="${dataBindSucess}">
+	    <button th:type="${typeSucess != null ? typeSucess:'submit'}" th:name="${nameSucess}" th:id="${idSucess}" class="btn btn-default" data:bind="${dataBindSucess}">
 	    	<span class="glyphicon glyphicon-ok mv-color-green"></span>
 	   		<span th:if="${sucessLabel}" th:text="#{${sucessLabel}}"></span> 
 	    </button>
