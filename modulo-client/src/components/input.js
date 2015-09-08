@@ -22,7 +22,7 @@ function initNumberField(){
 }
 
 function fncUppercase() {
-	$("input").keyup(function(e) {
+	$("input").keyup(function() {
 		var textUpperCase = $(this).val().toUpperCase();
 		if(window.getSelection().toString() === $(this).val()) {
 			$(this).val(textUpperCase);
@@ -31,7 +31,7 @@ function fncUppercase() {
 			$(this).val(textUpperCase);
 		}
 	});
-	$("textarea").keyup(function(e) {
+	$("textarea").keyup(function() {
 		var textUpperCase = $(this).val().toUpperCase();
 		if(window.getSelection().toString() === $(this).val()) {
 			$(this).val(textUpperCase);

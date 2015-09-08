@@ -27,11 +27,9 @@ $(function() {
 	$(document).on('click', 'table > tbody > tr',function() {
 		var $tr = $(this);
 		var table = $tr.closest('table');
-		if(table.hasClass('selectable')) {
-			if(!$tr.hasClass("selected")) {
-				$tr.addClass("selected").siblings().removeClass("selected");
-				$tr.trigger('mv-table:selected-row');
-			}
+		if(table.hasClass('selectable') && !$tr.hasClass("selected")) {
+			$tr.addClass("selected").siblings().removeClass("selected");
+			$tr.trigger('mv-table:selected-row');
 		}
 	});
 });
