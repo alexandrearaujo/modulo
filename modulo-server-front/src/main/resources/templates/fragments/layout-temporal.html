@@ -135,9 +135,9 @@
 		<label th:if="${label}" class="control-label" th:classappend="${required} ? 'required' : ''" th:for="${nameField}" th:id="__${idField}__+Label">
 			<span th:text="#{${label}}"></span>
 		</label>
-		
 		<div class="bootstrap-timepicker">
-			<input	type="text" 
+			<input	th:if="${field}"
+					type="text" 
 					class="form-control time-field" 
 					th:id="${idField}" 
 					th:field="__${field}__" 
@@ -151,7 +151,23 @@
 					th:placeholder="${placeholder}" 
 					data:bind="${dataBind}" />
 				   
-		    <input type="hidden" class="form-control" th:id="previous-value-+${idField}" th:field="__${field}__" th:disabled="disabled"/>
+		    <input th:if="${field}" type="hidden" class="form-control" th:id="previous-value-+${idField}" th:field="__${field}__" th:disabled="disabled"/>
+		    
+		    <input	th:unless="${field}" 
+					type="text" 
+					class="form-control time-field" 
+					th:id="${idField}" 
+					th:name="${nameField}"
+					th:disabled="${#bools.isTrue(__${disabled}__)}"
+					data:minute-step="${minuteStep}" 
+					data:default-time="${defaultTime}"
+					th:autofocus="${autofocus}" 
+					data:template="${template}" 
+					data:bv-notempty="${required}" 
+					th:placeholder="${placeholder}" 
+					data:bind="${dataBind}" />
+				   
+		    <input th:unless="${field}" type="hidden" class="form-control" th:id="previous-value-+${idField}" th:disabled="disabled"/>
 		</div>
 	</div>
 	
