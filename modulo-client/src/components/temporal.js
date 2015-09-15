@@ -76,8 +76,9 @@ function initDateField(){
 		    }
 			
 			jQueryTarget.datepicker().on('show', function(e){
-		    	if(!(jQueryTarget.find('.input-group-addon').attr('disabled') == undefined))
+		    	if(!(jQueryTarget.find('.input-group-addon').attr('disabled') == undefined)){
 		    		jQueryTarget.datepicker('hide');
+		    	}
 		    });
 		}
 	});
