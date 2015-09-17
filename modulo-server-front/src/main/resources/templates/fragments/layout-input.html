@@ -134,9 +134,9 @@
 				th:pattern="${pattern}" 
 				th:autocomplete="${autocomplete} != 'on' ? 'off' : ${autocomplete}"
 				data:bind="${dataBind}" 
-				th:readonly="${readonly}" /> 
+				th:readonly="${readonly}" />
 			   
-		<input	th:if="${field}" 
+		<input	th:if="${field != null}" 
 				type="text" 
 				class="form-control numbersOnly" 
 				th:id="${idField}"
