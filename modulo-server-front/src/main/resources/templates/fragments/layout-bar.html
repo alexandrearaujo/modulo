@@ -89,7 +89,12 @@
 	   		<span th:if="${sucessLabel}" th:text="#{${sucessLabel}}"></span> 
 	    </button>
 	    
-	    <button type="button" class="btn btn-default" data-dismiss="modal" th:name="${nameCancel}" th:id="${idCancel}"  data:bind="${dataBindCancel}">
+	    <button th:unless="${noCloseAction}" type="button" class="btn btn-default" data-dismiss="modal" th:name="${nameCancel}" th:id="${idCancel}"  data:bind="${dataBindCancel}">
+	 		<span class="glyphicon glyphicon-ban-circle mv-color-green"></span>
+	 		<span th:if="${cancelLabel}" th:text="#{${cancelLabel}}"></span> 
+	 	</button>
+	 	
+	    <button  th:if="${noCloseAction}" type="button" class="btn btn-default" th:name="${nameCancel}" th:id="${idCancel}"  data:bind="${dataBindCancel}">
 	 		<span class="glyphicon glyphicon-ban-circle mv-color-green"></span>
 	 		<span th:if="${cancelLabel}" th:text="#{${cancelLabel}}"></span> 
 	 	</button>
