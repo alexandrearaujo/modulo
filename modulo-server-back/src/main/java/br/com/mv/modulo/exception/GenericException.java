@@ -1,11 +1,11 @@
 package br.com.mv.modulo.exception;
 
+import br.com.mv.modulo.model.type.EnumTipoMensagem;
 import lombok.Getter;
 import lombok.Setter;
-import br.com.mv.modulo.model.type.EnumTipoMensagem;
 
 @SuppressWarnings("serial")
-public class GenericException extends Exception {
+public class GenericException extends RuntimeException {
 
 	@Getter
 	@Setter
@@ -13,6 +13,10 @@ public class GenericException extends Exception {
 	
 	public GenericException() {
 		super();
+	}
+	
+	public GenericException(Throwable cause) {
+		super(cause);
 	}
 
 	public GenericException(String resourceKey) {
