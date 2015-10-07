@@ -65,6 +65,11 @@ AutoComplete.prototype.autocomplete = function(vurl, target, fncName, hasParamet
                 
                 return url;
             },
+            ajax: {
+            	error: function(jqXHR, textStatus, errorThrown) {
+	            	$.alertError('Erro ao realizar pesquisa');
+	            }
+            },
             filter: function ( response ) {
         	    return $.map(response, window[fncName]);
             }
@@ -76,7 +81,7 @@ AutoComplete.prototype.autocomplete = function(vurl, target, fncName, hasParamet
 	promise.fail(function() { 
 		throw new Error('Error on promise fail!');
 	});
-
+	
 	$('#'+target['object']).blur(function(){
 		if(this.value === '') {
 			$('#'+idHidden).val('');
