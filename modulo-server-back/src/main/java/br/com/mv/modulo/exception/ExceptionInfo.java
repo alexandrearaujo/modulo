@@ -8,7 +8,7 @@ public class ExceptionInfo {
 	
 	public ExceptionInfo(StringBuffer url, GenericException ex) {
 		this.url = url.toString();
-		this.ex = ex.getLocalizedMessage();	
+		this.ex = ex.getCause().getLocalizedMessage();	
 
 		if (ex.getMessageType() != null) {
 			this.messageType = ex.getMessageType().getDescricao();
