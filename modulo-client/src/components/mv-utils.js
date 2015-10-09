@@ -2,6 +2,7 @@ function getAppContext() {
 	return "/" + window.location.pathname.split('/')[1];
 }
 
+/* -- TODO descomentar após a apresentação do dia 13/10
 window.onerror = function (message, filename, linenumber) {
 	if (linenumber === undefined) {
 		return;
@@ -23,3 +24,5 @@ window.onerror = function (message, filename, linenumber) {
 	
 	return false;
 }
+
+*/
