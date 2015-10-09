@@ -8,6 +8,7 @@
     "bootstrap": "latest",
     "bootstrap-confirmation2": "latest",
     "bootstrap-datepicker": "latest",
+    "bootstrap-fileinput": "latest",
     "bootstrap-modal": "latest",
     "bootstrap-table": "latest",
     "bootstrap-timepicker": "0.3.0",
@@ -52,6 +53,14 @@
         "dist/css/bootstrap-datepicker3.min.css",
         "dist/js/bootstrap-datepicker.min.js",
         "dist/locales/bootstrap-datepicker.pt-BR.min.js"
+      ]
+    },
+    "bootstrap-fileinput": {
+      "main": [
+        "css/fileinput.min.css",
+        "img/loading-sm.gif",
+        "js/fileinput.min.js",
+        "js/fileinput_locale_pt-BR.js"
       ]
     },
     "bootstrap-modal": {

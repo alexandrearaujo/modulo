@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.mv.modulo.exception.ExceptionInfo;
 import br.com.mv.modulo.exception.GenericException;
+import br.com.mv.modulo.utils.AjaxUtils;
 import br.com.mv.modulo.utils.ModuloEmailSender;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,17 +33,23 @@ public class ExceptionController {
 	
 	private final ModuloEmailSender moduloMailSender;
 	
+	private static final String EXCEPTION = "exception";
+	
+	
 	@ExceptionHandler(Exception.class)
 	@RequestMapping("/exception")
-    public ModelAndView handleException(HttpServletRequest req, Exception e) throws Exception {
+    public ModelAndView handleException(HttpServletRequest req, Exception e) throws GenericException {
 		log.trace("Exceção capturada:", e);
 		e.printStackTrace();
-		if (AnnotationUtils.findAnnotation(e.getClass(), ResponseStatus.class) != null) {
-			throw e;
+		
+		req.setAttribute("javax.servlet.error.status_code",	HttpStatus.INTERNAL_SERVER_ERROR.value());
+		
+		if (AnnotationUtils.findAnnotation(e.getClass(), ResponseStatus.class) != null || AjaxUtils.isAjaxRequest(req)) {
+			throw new GenericException(e);
 		}
 		
-        ModelAndView mav = new ModelAndView("exception");
-        mav.addObject("exception", e);
+        ModelAndView mav = new ModelAndView(EXCEPTION);
+        mav.addObject(EXCEPTION, e);
         exception = e;
         
         mav.addObject("timestamp", new Date());
@@ -51,38 +58,19 @@ public class ExceptionController {
         return mav;
     }
 	
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(GenericException.class)
-	@ResponseBody ExceptionInfo handleBadRequest(HttpServletRequest req, GenericException ex) {
-	    return new ExceptionInfo(req.getRequestURL(), ex);
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	@ResponseBody ExceptionInfo handleBadRequest(HttpServletRequest req, Exception ex) {
+	    return new ExceptionInfo(req.getRequestURL(), new GenericException(ex));
 	} 
 	
 	@RequestMapping(value = "/sendException")
 	public String sendException(Model model) {
-        
 		moduloMailSender.sendException(exception);
-		
-		model.addAttribute("exception", exception);
+		model.addAttribute(EXCEPTION, exception);
 		model.addAttribute("timestamp", new Date());
 		model.addAttribute("status", 500);
 		model.addAttribute("success", "Enviado com sucesso");
-		return "exception";
+		return EXCEPTION;
 	}
-	
-//	@ExceptionHandler(AuthorizationServiceException.class)
-//    public ModelAndView handleAuthorizationServiceException(HttpServletRequest req, Exception e) throws Exception {
-//		if (AnnotationUtils.findAnnotation(e.getClass(), ResponseStatus.class) != null) {
-//			throw e;
-//		}
-//		
-//        ModelAndView mav = new ModelAndView("index");
-//        mav.addObject("exception", e);
-//        exception = e;
-//        
-//        mav.addObject("timestamp", new Date());
-//        mav.addObject("url", req.getRequestURL());
-//        mav.addObject("status", HttpStatus.UNAUTHORIZED);
-//        return mav;
-//    }
-	
 }

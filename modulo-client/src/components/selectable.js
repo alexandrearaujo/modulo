@@ -9,7 +9,12 @@ function fncPopulaCombo(vUrl, $combo) {
 				$combo.append($("<option></option>").attr("value", key).text(value));
 			}
 		});	
-	});	
+	})
+	.fail(
+			function(error) {
+				$.alertError($.getGenericMessage(error));
+			}
+	);	
 }
 
 function fncPopulaComboWithClosure(vUrl, $combo, closure) {
@@ -20,7 +25,12 @@ function fncPopulaComboWithClosure(vUrl, $combo, closure) {
 			var closureFunction = new Function(nameFunction);
 			closure($combo, index, object);
 		});	
-	});	
+	})
+	.fail(
+			function(error) {
+				$.alertError($.getGenericMessage(error));
+			}
+	);
 }
 
 function fncBlurCombo() {
