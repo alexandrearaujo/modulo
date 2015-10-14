@@ -17,6 +17,9 @@ public class GenericException extends RuntimeException {
 	
 	public GenericException(Throwable cause) {
 		super(cause);
+		if(cause instanceof GenericException){
+			this.messageType = ((GenericException)cause).getMessageType();
+		}
 	}
 
 	public GenericException(String resourceKey) {
