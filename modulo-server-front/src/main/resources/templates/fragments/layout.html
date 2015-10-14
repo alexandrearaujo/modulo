@@ -21,110 +21,110 @@
 		<link rel="shortcut icon" th:href="@{/img/favicon.ico}" type="image/x-icon" />
 		
 		<!-- Bootstrap -->
-		<link rel="stylesheet" type="text/css" media="all" th:href="@{/lib/bootstrap/dist/css/bootstrap.min.css}"/> 
-		<link rel="stylesheet" type="text/css" media="all" th:href="@{/lib/bootstrap/dist/css/bootstrap-theme.min.css}"/>
+		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap/dist/css/bootstrap.min.css')}__}"/> 
+		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap/dist/css/bootstrap-theme.min.css')}__}"/>
 		
 		<!-- Font Awesome -->
-		<link rel="stylesheet" type="text/css" media="all" th:href="@{/lib/font-awesome/css/font-awesome.min.css}"/>
+		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/font-awesome/css/font-awesome.min.css')}__}"/>
 		
 		<!-- Bootstrap Validator -->
-		<link rel="stylesheet" type="text/css" media="all" th:href="@{/lib/bootstrapvalidator/dist/css/bootstrapValidator.min.css}"/>
+		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrapvalidator/dist/css/bootstrapValidator.min.css')}__}"/>
 			
 		<!-- Bootstrap DatePicker -->
-		<link rel="stylesheet" type="text/css" media="all" th:href="@{/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css}"/>
+		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css')}__}"/>
 			
 		<!-- Bootstrap FileInput -->
-		<link rel="stylesheet" type="text/css" media="all" th:href="@{/lib/bootstrap-fileinput/css/fileinput.min.css}"/>
+		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-fileinput/css/fileinput.min.css')}__}"/>
 		
 		<!-- Bootstrap TimePicker -->
-		<link rel="stylesheet" type="text/css" media="all" th:href="@{/lib/bootstrap-timepicker/css/bootstrap-timepicker.min.css}"/>
+		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-timepicker/css/bootstrap-timepicker.min.css')}__}"/>
 
 		<!-- Awesome Bootstrap Checkbox -->
-	    <link rel="stylesheet" type="text/css" media="all" th:href="@{/lib/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css}"/>
+	    <link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css')}__}"/>
 		
 		<!-- Bootstrap-table -->
-		<link rel="stylesheet" type="text/css" media="all" th:href="@{/lib/bootstrap-table/dist/bootstrap-table.min.css}"/>
+		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-table/dist/bootstrap-table.min.css')}__}"/>
 		
 		<!-- Bootstrap-Modal- -->
-		<link rel="stylesheet" type="text/css" media="all" th:href="@{/lib/bootstrap-modal/css/bootstrap-modal.css}"/> 
-		<link rel="stylesheet" type="text/css" media="all" th:href="@{/lib/bootstrap-modal/css/bootstrap-modal-bs3patch.css}"/>
+		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-modal/css/bootstrap-modal.css')}__}"/> 
+		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-modal/css/bootstrap-modal-bs3patch.css')}__}"/>
 		
 		<!-- Menu Style -->
-		<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/menu.css}"/>
+		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/css/menu.css')}__}"/>
 
 		<!-- MV Theme -->
-		<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/menu-left.css}"/>
-		<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/menu-top.css}"/>
-		<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/components.css}"/>
-	    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/application.css}"/>	
-	    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/footer.css}"/>	
+		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/css/menu-left.css')}__}" />
+		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/css/menu-top.css')}__}"/>
+		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/css/components.css')}__}"/>
+	    <link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/css/application.css')}__}"/>	
+	    <link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/css/footer.css')}__}"/>	
 	    
 	    <!-- MV Theme Pep -->
-		<link th:if="${session.externalRequest}" rel="stylesheet" type="text/css" media="all" th:href="@{/css/mvpep.css}"/> 	    
+		<link th:if="${session.externalRequest}" rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/css/mvpep.css')}__}"/> 	    
 		
 		<!-- Pace -->
-  		<link th:href="@{/lib/pace/themes/blue/pace-theme-mac-osx.css}" rel="stylesheet" />
-  		<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/progress.css}"/>
+  		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/pace/themes/blue/pace-theme-mac-osx.css')}__}"/>
+  		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/css/progress.css')}__}"/>
 		
 		<!-- Jquery core Javascript -->
-		<script type="text/javascript" charset="UTF-8" th:src="@{/lib/jquery/dist/jquery.min.js}"></script>
+		<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/jquery/dist/jquery.min.js')}__}"></script>
 	</head>
 
 	<body>
       	<th:block th:fragment="scripts">
 	        <!-- Bootstrap core JavaScript-->
-			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/bootstrap/dist/js/bootstrap.min.js}"></script>
+			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap/dist/js/bootstrap.min.js')}__}"></script>
 			
 			<!-- Knockout JS -->
-			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/knockout/dist/knockout.js}"></script>
+			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/knockout/dist/knockout.js')}__}"></script>
 			
 			<!-- Bootstrap validator with brazilian locale JavaScript -->
-			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/bootstrapvalidator/dist/js/bootstrapValidator.min.js}"></script>
-			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/bootstrapvalidator/dist/js/language/pt_BR.js}"></script>
+			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrapvalidator/dist/js/bootstrapValidator.min.js')}__}"></script>
+			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrapvalidator/dist/js/language/pt_BR.js')}__}"></script>
 			
 			<!-- Bootstrap Datepicker with brazilian locale -->
-			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js}"></script>
-			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js}"></script>
+			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}__}"></script>
+			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js')}__}"></script>
 			
 			<!-- Bootstrap FileInput with brazilian locale -->
-			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/bootstrap-fileinput/js/fileinput.min.js}"></script>
-			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/bootstrap-fileinput/js/fileinput_locale_pt-BR.js}"></script>
+			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-fileinput/js/fileinput.min.js')}__}"></script>
+			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-fileinput/js/fileinput_locale_pt-BR.js')}__}"></script>
 			
 			<!-- Bootstrap Timepicker -->
-			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/bootstrap-timepicker/js/bootstrap-timepicker.min.js}"></script>
+			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-timepicker/js/bootstrap-timepicker.min.js')}__}"></script>
 			
 			<!-- Twitter Typeahead -->
-	        <script type="text/javascript" charset="UTF-8" th:src="@{/lib/typeahead.js/dist/typeahead.bundle.min.js}"></script>
+	        <script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/typeahead.js/dist/typeahead.bundle.min.js')}__}"></script>
 	        
 	        <!-- Metis Menu Plugin JavaScript -->
-		    <script type="text/javascript" charset="UTF-8" th:src="@{/lib/metisMenu/dist/metisMenu.min.js}"></script>
+		    <script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/metisMenu/dist/metisMenu.min.js')}__}"></script>
 		    
 		    <!-- Screenfull -->
-		    <script type="text/javascript" charset="UTF-8" th:src="@{/lib/screenfull/dist/screenfull.js}"></script>
+		    <script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/screenfull/dist/screenfull.js')}__}"></script>
 		    
 			<!-- Bootstrap growl -->
-			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js}"></script>
+			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js')}__}"></script>
 			
 		    <!-- Jquery mask -->
-		    <script type="text/javascript" charset="UTF-8" th:src="@{/lib/jQuery-Mask-Plugin/dist/jquery.mask.min.js}"></script>
+		    <script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/jQuery-Mask-Plugin/dist/jquery.mask.min.js')}__}"></script>
 			
 			<!-- Confirmation -->
-			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/bootstrap-confirmation2/bootstrap-confirmation.min.js}"></script>			
+			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-confirmation2/bootstrap-confirmation.min.js')}__}"></script>			
 			
 			<!-- bootstrap-table -->
-			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/bootstrap-table/dist/bootstrap-table.min.js}"></script>
-			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/bootstrap-table/dist/locale/bootstrap-table-pt-BR.min.js}"></script>
+			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-table/dist/bootstrap-table.min.js')}__}"></script>
+			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-table/dist/locale/bootstrap-table-pt-BR.min.js')}__}"></script>
 			
 			<!-- Bootstrap-Modal- -->
-			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/bootstrap-modal/js/bootstrap-modal.js}"></script>
-			<script type="text/javascript" charset="UTF-8" th:src="@{/lib/bootstrap-modal/js/bootstrap-modalmanager.js}"></script>
+			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-modal/js/bootstrap-modal.js')}__}"></script>
+			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-modal/js/bootstrap-modalmanager.js')}__}"></script>
 
 			<!-- Pace: Configurações para a barra de progresso.-->
 			<script>window.paceOptions = { ajax: { trackMethods : ['GET', 'POST']}, startOnPageLoad:false};</script>
-			<script type="text/javascript" charset='UTF-8' th:src='@{/lib/pace/pace.min.js}'></script>
+			<script type="text/javascript" charset='UTF-8' th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/pace/pace.min.js')}__}"></script>
 			
 			 <!-- Modulo Components -->
-			<script type="text/javascript" charset="UTF-8" th:src="@{/components/components.js}"></script>
+			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/components/components.js')}__}"></script>
 		</th:block>
 	</body>
 </html>
