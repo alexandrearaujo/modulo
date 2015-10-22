@@ -1,3 +1,4 @@
+console.log('vai da ');
 $(window).on('resize', function () {
   if (window.innerWidth > 768) {
 	$('.grouped-menu').removeClass('in');
@@ -91,7 +92,7 @@ $('body').on('click', '#acaoPausarSenhaMvPainel', function () {
 $('body').on('click', '#acaoVoltarSenhaMvPainel', function () {
 	atualizarSenhaMvPainel($('#senhaMvPainelMenuTop').attr('data-senha'), 'REINICIO');
 });
-/*
+
 function atualizarSenhaMvPainel(senha, tipoOperacao){
 	console.log('op: '+tipoOperacao);
 	$.ajax(
@@ -101,17 +102,21 @@ function atualizarSenhaMvPainel(senha, tipoOperacao){
 				async : false,
 				contentType : "application/json",
 				success : function(result) {
+					
+					/*
+					 * $('#senhaMvPainelMenuTop').text('Atendendo Senha: '+senha);
 					console.log('if');
-						if(tipoOperacao === 'FINALIZADO'){
-							$('#senhaMvPainelMenuTop').text('');
-						}else if(tipoOperacao === 'PAUSA'){
-							$('#senhaMvPainelMenuTop').text('Atendendo Senha - Pausa: '+senha);
-						}else{
-							$('#senhaMvPainelMenuTop').text('Atendendo Senha: '+senha);
-						}
-						$('#senhaMvPainelMenuTop').attr('data-senha',senha);
+					if(tipoOperacao === 'FINALIZADO'){
+						$('#senhaMvPainelMenuTop').text('');
 					}
-				},
+					if(tipoOperacao === 'PAUSA'){
+						$('#senhaMvPainelMenuTop').text('Atendendo Senha - Pausa: '+senha);
+					}else{
+						$('#senhaMvPainelMenuTop').text('Atendendo Senha: '+senha);
+					}
+					$('#senhaMvPainelMenuTop').attr('data-senha',senha);
+					*/
+				}
 			}).fail(function(response) {
 				$.alertError($.getGenericMessage(response));
 			});
@@ -120,4 +125,3 @@ function atualizarSenhaMvPainel(senha, tipoOperacao){
 var viewModelSenhaMvPainelModal = new ViewModelSenhaMvPainelModal();
 
 ko.applyBindings(viewModelSenhaMvPainelModal, document.getElementById("bodySenhaMVPainel"));
-*/
