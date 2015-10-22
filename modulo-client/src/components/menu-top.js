@@ -1,4 +1,3 @@
-console.log('vai da ');
 $(window).on('resize', function () {
   if (window.innerWidth > 768) {
 	$('.grouped-menu').removeClass('in');
@@ -10,7 +9,7 @@ $(document).ready(function() {
 	var isSolicitacaoMedicamento = window.location.pathname.indexOf('solicitacaoMedicamento') == -1 ? false:true;
 	var isAtendimentoMedicamento = window.location.pathname.indexOf('atendimentoMedicamento') == -1 ? false:true;
 	
-	if( (isAtendimentoMedicamento || isSolicitacaoMedicamento) && ($('#senhaMvPainelMenuTop').attr('data-senha') == undefined || $('#senhaMvPainelMenuTop').attr('data-senha') == "")){
+	if( viewModelSenhaMvPainelModal.isObrigaSenhaTotem() && (isAtendimentoMedicamento || isSolicitacaoMedicamento) && ($('#senhaMvPainelMenuTop').attr('data-senha') == undefined || $('#senhaMvPainelMenuTop').attr('data-senha') == "")){
 		$('#senhaMVPainelModal').modal('toggle');
 	}
 });
@@ -36,7 +35,6 @@ var EnumTipoOperacao = {
 }
 
 ViewModelSenhaMvPainelModal.prototype.isObrigaSenhaTotem = function() {
-	console.log('isObrigaSenhaTotem');
 	var isObrigatorio = false;
 	$.ajax(
 			{
@@ -44,7 +42,7 @@ ViewModelSenhaMvPainelModal.prototype.isObrigaSenhaTotem = function() {
 				type : "GET",
 				async : false,
 				success : function(result) {
-					isObrigatorio = true;
+					isObrigatorio = result;
 				},
 			}).fail(function(response) {
 				$.alertError($.getGenericMessage(response));
@@ -78,7 +76,8 @@ ViewModelSenhaMvPainelModal.prototype.iniciarAtendimentoGuiche = function() {
 }
 
 $('body').on('click', '#acaoIniciarSenhaMvPainel', function () {
-	$('#senhaMVPainelModal').modal('toggle');
+	if( viewModelSenhaMvPainelModal.isObrigaSenhaTotem())
+		$('#senhaMVPainelModal').modal('toggle');
 });
 
 $('body').on('click', '#acaoFinalizarSenhaMvPainel', function () {
@@ -93,33 +92,40 @@ $('body').on('click', '#acaoVoltarSenhaMvPainel', function () {
 	atualizarSenhaMvPainel($('#senhaMvPainelMenuTop').attr('data-senha'), 'REINICIO');
 });
 
+$('body').on('show.bs.modal', '#senhaMVPainelModal', function () {
+	viewModelSenhaMvPainelModal.senha('');
+	$('#bodySenhaMVPainel > form').data('bootstrapValidator').resetForm();
+	
+});
+
 function atualizarSenhaMvPainel(senha, tipoOperacao){
-	console.log('op: '+tipoOperacao);
-	$.ajax(
-			{
-				url : '/dispensacao/senhaMvPainel/registroAtividade/'+senha+'/'+tipoOperacao,
-				type : "POST",
-				async : false,
-				contentType : "application/json",
-				success : function(result) {
-					
-					/*
-					 * $('#senhaMvPainelMenuTop').text('Atendendo Senha: '+senha);
-					console.log('if');
-					if(tipoOperacao === 'FINALIZADO'){
-						$('#senhaMvPainelMenuTop').text('');
-					}
-					if(tipoOperacao === 'PAUSA'){
-						$('#senhaMvPainelMenuTop').text('Atendendo Senha - Pausa: '+senha);
-					}else{
-						$('#senhaMvPainelMenuTop').text('Atendendo Senha: '+senha);
-					}
-					$('#senhaMvPainelMenuTop').attr('data-senha',senha);
-					*/
-				}
-			}).fail(function(response) {
-				$.alertError($.getGenericMessage(response));
-			});
+	var senhaSelecionada = senha;
+	if( viewModelSenhaMvPainelModal.isObrigaSenhaTotem()){
+		$.ajax(
+				{
+					url : '/dispensacao/senhaMvPainel/registroAtividade/'+senha+'/'+tipoOperacao,
+					type : "POST",
+					async : false,
+					contentType : "application/json",
+					success : function() {
+						var $textoSenhaPainel = $('#senhaMvPainelMenuTop');
+						if(tipoOperacao === 'PAUSA'){
+							$textoSenhaPainel.text('Atendendo Senha - Pausa: '+senhaSelecionada);
+						}
+						if(!(tipoOperacao === 'FINALIZADO') && !(tipoOperacao === 'PAUSA')){
+							$textoSenhaPainel.text('Atendendo Senha: '+senhaSelecionada);
+						}
+						$('#senhaMvPainelMenuTop').attr('data-senha',senhaSelecionada);
+						if(tipoOperacao === 'FINALIZADO'){
+							$textoSenhaPainel.text('');
+							$textoSenhaPainel.attr('data-senha','');
+							window.location.href = '/dispensacao';
+						}
+	        }
+	      }).fail(function(response) {
+					$.alertError($.getGenericMessage(response));
+				});
+	}
 }
 
 var viewModelSenhaMvPainelModal = new ViewModelSenhaMvPainelModal();

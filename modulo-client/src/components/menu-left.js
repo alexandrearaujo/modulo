@@ -26,6 +26,9 @@ function checkForChanges() {
 
 function activeOptionMenu() {
 	var controller = window.location.pathname.split('/')[2];
+	if( window.location.search.indexOf('transcricao') != -1 ){
+		controller += '/'+window.location.pathname.split('/')[3]
+	}	
 	var actionLi = $("li[data-controller='"+controller+"']");
 	var groupActionUL = actionLi.parent();
 	var menuOption = groupActionUL.parent();
