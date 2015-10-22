@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.mv.modulo.exception.ExceptionInfo;
 import br.com.mv.modulo.exception.GenericException;
+import br.com.mv.modulo.model.type.EnumTipoMensagem;
 import br.com.mv.modulo.utils.AjaxUtils;
 import br.com.mv.modulo.utils.ModuloEmailSender;
 import lombok.RequiredArgsConstructor;

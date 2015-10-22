@@ -22,12 +22,26 @@
 			  
 			</a>
 	    </div>
-	    
+		    
 		<div class="collapse navbar-collapse grouped-menu" >
 			<span class="divider-vertical hidden-xs pull-left"></span>
 			<p class="navbar-text navbar-left app-title" th:text="#{appTitle}"></p>
 			
 			<ul class="nav navbar-nav navbar-right">
+				<li class="divider-vertical hidden-xs"></li>
+		       <li role="" class="dropdown">
+			        <a id="drop6" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="height: 38px; padding: 9px;">
+			          <i class="fa fa-plus-square mv-color-blue"></i>
+			          <span class="caret mv-color-blue"></span>
+			        </a>
+			        <ul id="acoesSenhaMvPainel" class="dropdown-menu" aria-labelledby="drop6">
+			          <li><a href="javascript:void(0);" id="acaoIniciarSenhaMvPainel">Iniciar</a></li>
+			          <li><a href="javascript:void(0);" id="acaoFinalizarSenhaMvPainel">Finalizar</a></li>
+			          <li><a href="javascript:void(0);" id="acaoPausarSenhaMvPainel">Pausar</a></li>
+			          <li><a href="javascript:void(0);" id="acaoVoltarSenhaMvPainel">Voltar</a></li>
+			        </ul>
+			      </li>
+			      
 			   <li class="divider-vertical hidden-xs"></li>
 		       <li class="btn-menu-top" data-placement="bottom" data:original-title="#{fullScreen}" data-toggle="tooltip">
 		       		<a class="navbar-brand" href="javascript:void(0);" data-placement="bottom" id="toggleFullScreen">
@@ -67,6 +81,12 @@
 		     </ul>
 		     
 		     <div class="nav navbar-nav topnav app-system-info">
+		    	<p class="navbar-text text-nowrap hidden-xs" style="font-size: 17px;" id="senhaMvPainelMenuTop" data:senha="${session?.usuario?.senhaMvPainelEmAtendimento}">
+		    		<span th:if="${session?.usuario?.senhaMvPainelEmAtendimento}" th:text="'Atendendo Senha: ' + ${session?.usuario?.senhaMvPainelEmAtendimento}"></span>
+		    	</p>
+		    </div>
+		    
+		     <div class="nav navbar-nav topnav app-system-info">
 		    	<p class="navbar-text text-nowrap hidden-xs">
 		    		<span th:text="'| ' + #{systemVersion}"></span> <span th:text="${version}"></span> <span th:text="'| ' + #{databaseVersion}"></span> <span th:text="${session.versaoBanco}"></span>
 		    		<br/> <span th:text="${#dates.format(#dates.createToday(), 'dd/MM/YYYY')}+' | '"></span> <span id="relogio"></span> 
@@ -84,6 +104,8 @@
 		    <a role="button" class="btn btn-default" data-toggle="modal" th:href="@{/logout}">Sim</a>
 		  </div>
 	</div>
+	
+	<div th:include="modal/senhaMvPainelModal :: senha-mv-painel-modal"></div>
 </nav>
 
 

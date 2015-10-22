@@ -28,7 +28,14 @@ function initBtnConfirmation() {
 
 (function($) {
 	$.getGenericMessage = function(responseData) {
-		return $.parseJSON(responseData.responseText).ex;
+		var erroMessage = $.parseJSON(responseData.responseText).ex;
+		
+		if(erroMessage == undefined){
+			console.log(responseData.responseJSON);
+			erroMessage = "Erro interno - Contate o administrador.";
+		}
+
+		return erroMessage;
 	};
 	
     $.alertSuccess = function(msg) {
