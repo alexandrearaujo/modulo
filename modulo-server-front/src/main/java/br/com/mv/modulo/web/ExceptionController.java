@@ -40,7 +40,7 @@ public class ExceptionController {
 	@ExceptionHandler(Exception.class)
 	@RequestMapping("/exception")
     public ModelAndView handleException(HttpServletRequest req, Exception e) throws GenericException {
-		log.trace("Exceção capturada:", e);
+		log.error("Exceção capturada:", e);
 		e.printStackTrace();
 		
 		req.setAttribute("javax.servlet.error.status_code",	HttpStatus.INTERNAL_SERVER_ERROR.value());
