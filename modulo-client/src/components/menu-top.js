@@ -94,13 +94,11 @@ $('body').on('click', '#acaoVoltarSenhaMvPainel', function () {
 
 $('body').on('show.bs.modal', '#senhaMVPainelModal', function () {
 	viewModelSenhaMvPainelModal.senha('');
-	$('#bodySenhaMVPainel > form').data('bootstrapValidator').resetForm();
-	
 });
 
 function atualizarSenhaMvPainel(senha, tipoOperacao){
 	var senhaSelecionada = senha;
-	if( viewModelSenhaMvPainelModal.isObrigaSenhaTotem()){
+	if( viewModelSenhaMvPainelModal.senha() != '' && viewModelSenhaMvPainelModal.isObrigaSenhaTotem()){
 		$.ajax(
 				{
 					url : '/dispensacao/senhaMvPainel/registroAtividade/'+senha+'/'+tipoOperacao,
