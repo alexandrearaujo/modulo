@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" output="target/classes/static" path="dist">
+	<classpathentry kind="src" path="dist">
 		<attributes>
 			<attribute name="ignore_optional_problems" value="true"/>
 		</attributes>
@@ -16,5 +16,5 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="output" path="target/classes"/>
+	<classpathentry kind="output" path="target/classes/static"/>
 </classpath>
