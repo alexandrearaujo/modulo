@@ -123,7 +123,9 @@
 			<script>window.paceOptions = { ajax: { trackMethods : ['GET', 'POST']}};</script>
 			<script type="text/javascript" charset='UTF-8' th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/pace/pace.min.js')}__}"></script>
 			
-			 <!-- Modulo Components -->
+			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/moment/moment.js')}__}"></script>
+			
+			<!-- Modulo Components -->
 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/components/components.js')}__}"></script>
 		</th:block>
 	</body>

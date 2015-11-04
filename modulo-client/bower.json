@@ -21,8 +21,17 @@
     "remarkable-bootstrap-notify": "latest",
     "screenfull": "latest",
     "pace": "1.0.2",
-    "typeahead.js": "0.10.5"
+    "typeahead.js": "0.10.5",
+    "typeahead.js": "0.10.5",
+    "moment" : "latest"
   },
+  
+  "moment": {
+      "main": [
+        "moment.min.js"
+      ]
+    },
+    
   "overrides": {
   	"awesome-bootstrap-checkbox": {
       "main": [
