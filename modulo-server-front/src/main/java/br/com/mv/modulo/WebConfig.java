@@ -7,6 +7,7 @@ import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,33 +26,24 @@ import org.springframework.web.servlet.resource.VersionResourceResolver;
 
 import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
 
+import br.com.mv.modulo.utils.WebProperties;
 import lombok.extern.slf4j.Slf4j;
 
 @EnableSpringDataWebSupport
 @Configuration
 @Slf4j
+@EnableConfigurationProperties(WebProperties.class)
 public class WebConfig extends WebMvcAutoConfigurationAdapter {
 	
 	private static final String[] SERVLET_RESOURCE_LOCATIONS = { "/" };
-
-	private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
-			"classpath:/META-INF/resources/", "classpath:/resources/",
-			"classpath:/static/", "classpath:/public/" };
-
-	private static final String[] RESOURCE_LOCATIONS;
-	static {
-		RESOURCE_LOCATIONS = new String[CLASSPATH_RESOURCE_LOCATIONS.length
-				+ SERVLET_RESOURCE_LOCATIONS.length];
-		System.arraycopy(SERVLET_RESOURCE_LOCATIONS, 0, RESOURCE_LOCATIONS, 0,
-				SERVLET_RESOURCE_LOCATIONS.length);
-		System.arraycopy(CLASSPATH_RESOURCE_LOCATIONS, 0, RESOURCE_LOCATIONS,
-				SERVLET_RESOURCE_LOCATIONS.length, CLASSPATH_RESOURCE_LOCATIONS.length);
-	}
-
+	
 	@Autowired
-	private ResourceProperties resourceProperties = new ResourceProperties();
+	private WebProperties webProperties;
 	
-	
+	@Autowired
+	private ResourceProperties resourceProperties;
+
+
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		VersionResourceResolver versionResourceResolver = new VersionResourceResolver()
@@ -72,7 +64,7 @@ public class WebConfig extends WebMvcAutoConfigurationAdapter {
 		}
 		if (!registry.hasMappingForPattern("/**")) {
 			registry.addResourceHandler("/**")
-					.addResourceLocations(RESOURCE_LOCATIONS)
+					.addResourceLocations(getResourceLocations())
 					.setCachePeriod(cachePeriod)
 					.resourceChain(true)
 					.addResolver(versionResourceResolver);
@@ -131,4 +123,19 @@ public class WebConfig extends WebMvcAutoConfigurationAdapter {
         builder.indentOutput(true).dateFormat(new SimpleDateFormat("dd/MM/yyyy"));
         return builder;
     }
+	
+	private String[] getResourceLocations() {
+		final String[] resourceLocations;
+		
+		resourceLocations = new String[webProperties.getClasspathResourceLocations().length
+		                				+ SERVLET_RESOURCE_LOCATIONS.length];
+		
+		System.arraycopy(SERVLET_RESOURCE_LOCATIONS, 0, resourceLocations, 0,
+				SERVLET_RESOURCE_LOCATIONS.length);
+		
+		System.arraycopy(webProperties.getClasspathResourceLocations(), 0, resourceLocations,
+				SERVLET_RESOURCE_LOCATIONS.length, webProperties.getClasspathResourceLocations().length);
+		
+		return resourceLocations;
+	}
 }
