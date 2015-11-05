@@ -25,13 +25,6 @@
     "typeahead.js": "0.10.5",
     "moment" : "latest"
   },
-  
-  "moment": {
-      "main": [
-        "moment.min.js"
-      ]
-    },
-    
   "overrides": {
   	"awesome-bootstrap-checkbox": {
       "main": [
@@ -127,6 +120,11 @@
       "main": [
         "dist/metisMenu.min.css",
         "dist/metisMenu.min.js"
+      ]
+    },
+    "moment": {
+      "main": [
+        "min/moment-with-locales.min.js"
       ]
     },
     "remarkable-bootstrap-notify": {
