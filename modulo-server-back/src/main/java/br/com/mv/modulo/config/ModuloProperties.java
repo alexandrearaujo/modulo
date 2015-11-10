@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import lombok.Getter;
 import lombok.Setter;
 
-@ConfigurationProperties
+@ConfigurationProperties(prefix = "application")
 @Getter @Setter
 public class ModuloProperties {
 

@@ -84,7 +84,7 @@
 			            </goals>
 						<configuration>
 							<srcdir>${basedir}\src\components</srcdir>
-							<outputdir>${basedir}\dist</outputdir>
+							<outputdir>${basedir}\dist\static</outputdir>
 					        <arguments>optimize-and-copy-components-js</arguments>
 					    </configuration>
 			        </execution>
@@ -134,10 +134,10 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.build.directory}\classes\static</outputDirectory>
+							<outputDirectory>${project.build.directory}\classes</outputDirectory>
 							<resources>
 								<resource>
-									<directory>${basedir}/dist</directory>
+									<directory>${basedir}\dist</directory>
 								</resource>
 							</resources>
 						</configuration>

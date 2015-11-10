@@ -12,10 +12,10 @@ module.exports = {
         lessComponents: './src/less/components/*.less'
     },
     dest: {
-        root: './dist/',
-        components: './dist/components',
-        css: './dist/css',
-        images: './dist/img',
-        lib: './dist/lib'
+        root: './dist/static/',
+        components: './dist/static/components',
+        css: './dist/static/css',
+        images: './dist/static/img',
+        lib: './dist/static/lib'
     }
 };

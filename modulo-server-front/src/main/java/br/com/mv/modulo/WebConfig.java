@@ -32,12 +32,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class WebConfig extends WebMvcAutoConfigurationAdapter {
 	
-	private static final String[] SERVLET_RESOURCE_LOCATIONS = { "/" };
-
+	protected static final String[] SERVLET_RESOURCE_LOCATIONS = { "/" };
+	
 	private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
-			"classpath:/static/" };
-
+			"classpath:/META-INF/resources/", "classpath:/resources/",
+			"classpath:/static/", "classpath:/public/" };
+	
 	private static final String[] RESOURCE_LOCATIONS;
+
 	static {
 		RESOURCE_LOCATIONS = new String[CLASSPATH_RESOURCE_LOCATIONS.length
 				+ SERVLET_RESOURCE_LOCATIONS.length];
@@ -46,11 +48,12 @@ public class WebConfig extends WebMvcAutoConfigurationAdapter {
 		System.arraycopy(CLASSPATH_RESOURCE_LOCATIONS, 0, RESOURCE_LOCATIONS,
 				SERVLET_RESOURCE_LOCATIONS.length, CLASSPATH_RESOURCE_LOCATIONS.length);
 	}
-
+	
+	
 	@Autowired
-	private ResourceProperties resourceProperties = new ResourceProperties();
-	
-	
+	private ResourceProperties resourceProperties;
+
+
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		VersionResourceResolver versionResourceResolver = new VersionResourceResolver()
@@ -69,6 +72,7 @@ public class WebConfig extends WebMvcAutoConfigurationAdapter {
 					.resourceChain(true)
 					.addResolver(versionResourceResolver);
 		}
+		
 		if (!registry.hasMappingForPattern("/**")) {
 			registry.addResourceHandler("/**")
 					.addResourceLocations(RESOURCE_LOCATIONS)
