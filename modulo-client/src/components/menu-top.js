@@ -1,3 +1,5 @@
+var pepRequest = $('#pepRequest').length > 0 && $('#pepRequest').val() === 'true' ? true:false;
+
 $(window).on('resize', function () {
   if (window.innerWidth > 768) {
 	$('.grouped-menu').removeClass('in');
@@ -9,9 +11,10 @@ $(document).ready(function() {
 	var isSolicitacaoMedicamento = window.location.pathname.indexOf('solicitacaoMedicamento') == -1 ? false:true;
 	var isAtendimentoMedicamento = window.location.pathname.indexOf('atendimentoMedicamento') == -1 ? false:true;
 	
-	if( viewModelSenhaMvPainelModal.isObrigaSenhaTotem() && (isAtendimentoMedicamento || isSolicitacaoMedicamento) && ($('#senhaMvPainelMenuTop').attr('data-senha') == undefined || $('#senhaMvPainelMenuTop').attr('data-senha') == "")){
+	if(pepRequest == false && (viewModelSenhaMvPainelModal.isObrigaSenhaTotem() && (isAtendimentoMedicamento || isSolicitacaoMedicamento) && ($('#senhaMvPainelMenuTop').attr('data-senha') == undefined || $('#senhaMvPainelMenuTop').attr('data-senha') == ""))){
 		$('#senhaMVPainelModal').modal('toggle');
 	}
+	
 });
 
 ko.bindingHandlers.enterkey = {
@@ -141,6 +144,7 @@ function atualizarSenhaMvPainel(senha, tipoOperacao){
 	}
 }
 
-var viewModelSenhaMvPainelModal = new ViewModelSenhaMvPainelModal();
-
-ko.applyBindings(viewModelSenhaMvPainelModal, document.getElementById("bodySenhaMVPainel"));
+if(pepRequest == false){
+	var viewModelSenhaMvPainelModal = new ViewModelSenhaMvPainelModal();
+	ko.applyBindings(viewModelSenhaMvPainelModal, document.getElementById("bodySenhaMVPainel"));
+}
