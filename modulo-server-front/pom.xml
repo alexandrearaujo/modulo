@@ -132,14 +132,8 @@
 							<artifactId>modulo-server-back</artifactId>
 						</include>
 					</includes>
+					<excludeGroupIds>br.com.mv</excludeGroupIds>
 		        </configuration>
-				<dependencies>
-			        <dependency>
-			            <groupId>org.springframework</groupId>
-			            <artifactId>springloaded</artifactId>
-			            <version>LATEST</version>
-			        </dependency>
-			    </dependencies>
 			</plugin>
 			
 			<plugin>

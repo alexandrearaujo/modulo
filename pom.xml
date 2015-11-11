@@ -91,31 +91,6 @@
 	
 	<profiles>
 		<profile>
-			<id>env-mv-dev</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			
-			<repositories>
-				<repository>
-					<id>MVNexus</id>
-					<name>MV Nexus Repository</name>
-					<url>http://echo.mvfor.local/nexus/content/groups/public</url>
-					<layout>default</layout>
-				</repository>
-			</repositories>
-			
-			<pluginRepositories>
-				<pluginRepository>
-					<id>MVNexus</id>
-					<name>MV Nexus Repository</name>
-					<url>http://echo.mvfor.local/nexus/content/groups/public</url>
-					<layout>default</layout>
-				</pluginRepository>
-			</pluginRepositories>
-		</profile>
-		
-		<profile>
 			<id>sonar</id>
 			<properties>
 				<sonar.jdbc.url>jdbc:postgresql://192.168.254.137/sonarqube</sonar.jdbc.url>
