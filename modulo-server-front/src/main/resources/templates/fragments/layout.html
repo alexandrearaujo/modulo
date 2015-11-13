@@ -7,7 +7,7 @@
 	<!-- Head -->
 	<head th:fragment="htmlhead">
 		<meta charset="UTF-8"></meta> <!--Default Charset-->
-		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11"/> 
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1" /> <!--Mobile first-->
 		<meta name="description" th:content="${descriptionPage}"/>
 		<meta name="author" th:content="${author}"/>
@@ -130,12 +130,14 @@
 			<!-- Pace: Configurações para a barra de progresso. -->
 			<script>window.paceOptions = { ajax: { trackMethods : ['GET', 'POST']}};</script>
 			<script type="text/javascript" charset='UTF-8' th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/pace/pace.min.js')}__}"></script>
-			<script>if(getInternetExplorerVersion() != -1){
-				Pace.stop();
-				$('body').removeClass('modal-open');
-				$('body').removeClass('content-loading');
-				$('body').removeClass('pace-running');
-			} </script>
+			<script>
+				if(getInternetExplorerVersion() != -1){
+					Pace.stop();
+					$('body').removeClass('modal-open');
+					$('body').removeClass('content-loading');
+					$('body').removeClass('pace-running');
+				}
+			</script>
 		</th:block>
 	</body>
 </html>
