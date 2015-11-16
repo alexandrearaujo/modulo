@@ -15,7 +15,11 @@ function initBtnConfirmation() {
 			} else if (ajaxFunction === true) {
 				$.get(url).done(function() {
 					$.alertSuccess(msgSave);
-				}).always(function() {
+				})
+				.fail(function(response) {
+					$.alertError($.getGenericMessage(response));
+				 })
+				 .always(function() {
 					if (completeFunction != null) {
 						var renamedCompleteFunction = new Function(completeFunction.replace('()', '('+idToExclude+')'));
 						renamedCompleteFunction.call();
