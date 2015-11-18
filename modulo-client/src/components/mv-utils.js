@@ -24,7 +24,6 @@ window.onerror = function (message, filename, linenumber) {
 	
 	return false;
 }
-
 */
 
 function getInternetExplorerVersion()
