@@ -39,7 +39,7 @@
 			                <goal>gulp</goal>
 			            </goals>
 						<configuration>
-							<srcdir>${basedir}\src\less</srcdir>
+							<srcdir>${basedir}${file.separator}src${file.separator}less</srcdir>
 					        <arguments>optimize-and-copy-less</arguments>
 					    </configuration>
 			        </execution>
@@ -50,7 +50,7 @@
 			                <goal>gulp</goal>
 			            </goals>
 						<configuration>
-							<srcdir>${basedir}\src\less\components</srcdir>
+							<srcdir>${basedir}${file.separator}src${file.separator}less${file.separator}components</srcdir>
 					        <arguments>optimize-and-copy-less-components</arguments>
 					    </configuration>
 			        </execution>
@@ -61,7 +61,7 @@
 			                <goal>gulp</goal>
 			            </goals>
 						<configuration>
-							<srcdir>${basedir}\src\assets</srcdir>
+							<srcdir>${basedir}${file.separator}src${file.separator}assets</srcdir>
 					        <arguments>copy-assets</arguments>
 					    </configuration>
 			        </execution>
@@ -72,7 +72,7 @@
 			                <goal>gulp</goal>
 			            </goals>
 						<configuration>
-							<srcdir>${basedir}\src\css</srcdir>
+							<srcdir>${basedir}${file.separator}src${file.separator}css</srcdir>
 					        <arguments>optimize-and-copy-css</arguments>
 					    </configuration>
 			        </execution>
@@ -83,8 +83,8 @@
 			                <goal>gulp</goal>
 			            </goals>
 						<configuration>
-							<srcdir>${basedir}\src\components</srcdir>
-							<outputdir>${basedir}\dist\static</outputdir>
+							<srcdir>${basedir}${file.separator}src${file.separator}components</srcdir>
+							<outputdir>${basedir}${file.separator}dist${file.separator}static</outputdir>
 					        <arguments>optimize-and-copy-components-js</arguments>
 					    </configuration>
 			        </execution>
@@ -95,7 +95,7 @@
 			                <goal>gulp</goal>
 			            </goals>
 						<configuration>
-							<srcdir>${basedir}\src\lib</srcdir>
+							<srcdir>${basedir}${file.separator}src${file.separator}lib</srcdir>
 					        <arguments>optimize-and-copy-bower-libs</arguments>
 					    </configuration>
 			        </execution>
@@ -106,7 +106,7 @@
 			                <goal>gulp</goal>
 			            </goals>
 						<configuration>
-							<srcdir>${basedir}\src\img</srcdir>
+							<srcdir>${basedir}${file.separator}src${file.separator}img</srcdir>
 					        <arguments>optimize-and-copy-images</arguments>
 					    </configuration>
 			        </execution>
@@ -117,7 +117,7 @@
 			                <goal>gulp</goal>
 			            </goals>
 						<configuration>
-							<srcdir>${basedir}\src\components</srcdir>
+							<srcdir>${basedir}${file.separator}src${file.separator}components</srcdir>
 					        <arguments>jshint</arguments>
 					    </configuration>
 			        </execution>
@@ -134,7 +134,7 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.build.directory}\classes</outputDirectory>
+							<outputDirectory>${project.build.directory}${file.separator}classes</outputDirectory>
 							<resources>
 								<resource>
 									<directory>${basedir}${file.separator}dist</directory>
