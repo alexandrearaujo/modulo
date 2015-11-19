@@ -4,7 +4,7 @@ function initBtnConfirmation() {
 		onConfirm: function() { 
 			var jQuerySelf= jQuery(this);
 			var method = jQuerySelf.attr('data-method');
-			var ajaxFunction = Boolean(jQuerySelf.attr('data-ajax'));
+			var ajaxFunction = (jQuerySelf.attr('data-ajax') == 'true' ? true:false);
 			var msgSave = jQuerySelf.attr('data-msgSave');
 			var completeFunction = jQuerySelf.attr('data-function');
 			var idToExclude = jQuerySelf.attr('data-id');
@@ -46,7 +46,7 @@ function initBtnConfirmation() {
     	$.notify({
 			message: msg
 		},{
-			delay: 4000,
+			delay: 8000,
 			type: 'success',
 			z_index:9999
 		});
@@ -56,7 +56,7 @@ function initBtnConfirmation() {
     	$.notify({
 			message: msg
 		},{
-			delay: 4000,
+			delay: 8000,
 			type: 'info',
 			z_index:9999
 		});
@@ -66,7 +66,7 @@ function initBtnConfirmation() {
     	$.notify({
 			message: msg
 		},{
-			delay: 4000,
+			delay: 8000,
 			type: 'danger',
 			z_index:9999
 		});
@@ -76,7 +76,7 @@ function initBtnConfirmation() {
     	$.notify({
 			message: msg
 		},{
-			delay: 4000,
+			delay: 8000,
 			type: 'warning',
 			z_index:9999
 		});
