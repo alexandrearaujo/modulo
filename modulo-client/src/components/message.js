@@ -36,7 +36,9 @@ function initBtnConfirmation() {
 		
 		if(erroMessage == undefined){
 			console.log(responseData.responseJSON);
-			erroMessage = "Erro interno - Contate o administrador.";
+			responseData.erroMessage = "Erro interno - Contate o administrador.";
+			
+			erroMessage = responseData;
 		}
 
 		return erroMessage;
@@ -63,13 +65,23 @@ function initBtnConfirmation() {
     };
     
     $.alertError = function(msg) {
-    	$.notify({
-			message: msg
-		},{
-			delay: 8000,
-			type: 'danger',
-			z_index:9999
-		});
+    	if((typeof msg) == "object"){
+    		$('#errorDialogTitle').text('');
+        	$('#errorDialogMessage').html('');
+    		var erroMsg = msg.responseJSON.path+" </br> "+msg.responseJSON.error +" </br> "+msg.responseJSON.exception+" </br> "+msg.responseJSON.message;
+        	$('#errorDialogTitle').text(msg.erroMessage);
+        	$('#errorDialogMessage').html(erroMsg);
+        	$("#modalErrorDialog").modal();
+    	}else{
+    		$.notify({
+    			message: msg
+    		},{
+    			delay: 600000,
+    			type: 'danger',
+    			z_index:9999
+    		});
+    	}
+    	
     };
     
     $.alertWarning = function(msg) {

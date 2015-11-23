@@ -23,7 +23,8 @@
     "pace": "1.0.2",
     "typeahead.js": "0.10.5",
     "typeahead.js": "0.10.5",
-    "moment" : "latest"
+    "moment" : "latest",
+    "bootstrap3-dialog": "latest"
   },
   "overrides": {
   	"awesome-bootstrap-checkbox": {
@@ -149,6 +150,13 @@
       ]
     }
   },
+  "bootstrap3-dialog": {
+      "main": [
+        "dist/bootstrap-dialog.min.css",
+        "dist/bootstrap-dialog.min.js"
+      ]
+    },
+    
    "devDependencies": {
   },
   "resolutions": {
