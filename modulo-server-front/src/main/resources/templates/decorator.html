@@ -38,6 +38,7 @@
 		</th:block>
 		
 		<div th:replace="fragments/layout-menu :: modal-help"></div>
+		<div th:replace="fragments/layout-message :: modal-error-dialog"></div>
 		
 		<th:block layout:fragment="scripts">
 			<th:block th:replace="fragments/layout :: scripts" th:unless="${defaultValidator}"></th:block>

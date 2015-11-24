@@ -4,7 +4,7 @@ function initBtnConfirmation() {
 		onConfirm: function() { 
 			var jQuerySelf= jQuery(this);
 			var method = jQuerySelf.attr('data-method');
-			var ajaxFunction = Boolean(jQuerySelf.attr('data-ajax'));
+			var ajaxFunction = (jQuerySelf.attr('data-ajax') == 'true' ? true:false);
 			var msgSave = jQuerySelf.attr('data-msgSave');
 			var completeFunction = jQuerySelf.attr('data-function');
 			var idToExclude = jQuerySelf.attr('data-id');
@@ -36,7 +36,9 @@ function initBtnConfirmation() {
 		
 		if(erroMessage == undefined){
 			console.log(responseData.responseJSON);
-			erroMessage = "Erro interno - Contate o administrador.";
+			responseData.erroMessage = "Erro interno - Contate o administrador.";
+			
+			erroMessage = responseData;
 		}
 
 		return erroMessage;
@@ -46,7 +48,7 @@ function initBtnConfirmation() {
     	$.notify({
 			message: msg
 		},{
-			delay: 4000,
+			delay: 8000,
 			type: 'success',
 			z_index:9999
 		});
@@ -56,27 +58,37 @@ function initBtnConfirmation() {
     	$.notify({
 			message: msg
 		},{
-			delay: 4000,
+			delay: 8000,
 			type: 'info',
 			z_index:9999
 		});
     };
     
     $.alertError = function(msg) {
-    	$.notify({
-			message: msg
-		},{
-			delay: 4000,
-			type: 'danger',
-			z_index:9999
-		});
+    	if((typeof msg) == "object"){
+    		$('#errorDialogTitle').text('');
+        	$('#errorDialogMessage').html('');
+    		var erroMsg = msg.responseJSON.path+" </br> "+msg.responseJSON.error +" </br> "+msg.responseJSON.exception+" </br> "+msg.responseJSON.message;
+        	$('#errorDialogTitle').text(msg.erroMessage);
+        	$('#errorDialogMessage').html(erroMsg);
+        	$("#modalErrorDialog").modal();
+    	}else{
+    		$.notify({
+    			message: msg
+    		},{
+    			delay: 600000,
+    			type: 'danger',
+    			z_index:9999
+    		});
+    	}
+    	
     };
     
     $.alertWarning = function(msg) {
     	$.notify({
 			message: msg
 		},{
-			delay: 4000,
+			delay: 8000,
 			type: 'warning',
 			z_index:9999
 		});
