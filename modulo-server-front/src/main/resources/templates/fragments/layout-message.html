@@ -5,6 +5,22 @@
  class="no-js">
 <meta charset="UTF-8"/>
 <body>
+
+	<div id="page-wrapper" th:fragment="modal-error-dialog">
+		<div id="modalErrorDialog" class="modal" style="top: 40%;" tabindex="-1" data-width="400" data-backdrop="static" data-keyboard="false">
+			<div class="modal-header bootstrap-dialog-danger-title">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<div class="modal-title" id="errorDialogTitle">Message type: type-danger</div>
+				
+			</div>
+			<div id="errorDialogMessage" class="modal-body">
+				<div class="row" id="error-dialog-message">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!-- Alerts -->
 	<th:block th:fragment="alerts">
 		<th:block th:if="${info != null}">
