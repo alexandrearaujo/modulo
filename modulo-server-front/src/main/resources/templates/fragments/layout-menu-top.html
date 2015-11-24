@@ -88,7 +88,10 @@
 		    
 		     <div class="nav navbar-nav topnav app-system-info">
 		    	<p class="navbar-text text-nowrap hidden-xs">
-		    		<span th:text="'| ' + #{systemVersion}"></span> <span th:text="${version}"></span> <span th:text="'| ' + #{databaseVersion}"></span> <span th:text="${session.versaoBanco}"></span>
+		    		<span th:text="'| ' + #{systemVersion}"></span> 
+		    		<span th:text="#{applicationVersion}"></span> 
+		    		<span th:text="'| ' + #{databaseVersion}"></span> 
+		    		<span th:text="${session.versaoBanco}"></span>
 		    		<br/> <span th:text="${#dates.format(#dates.createToday(), 'dd/MM/YYYY')}+' | '"></span> <span id="relogio"></span> 
 		    	</p>
 		    </div>
