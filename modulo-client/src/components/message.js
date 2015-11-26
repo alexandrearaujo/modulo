@@ -14,12 +14,13 @@ function initBtnConfirmation() {
 				window.location = url; 
 			} else if (ajaxFunction === true) {
 				$.get(url).done(function() {
-					$.alertSuccess(msgSave);
+					if(method)
+						$.alertSuccess(msgSave);
 				})
 				.fail(function(response) {
 					$.alertError($.getGenericMessage(response));
-				 })
-				 .always(function() {
+				})
+				.always(function() {
 					if (completeFunction != null) {
 						var renamedCompleteFunction = new Function(completeFunction.replace('()', '('+idToExclude+')'));
 						renamedCompleteFunction.call();
