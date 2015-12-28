@@ -148,16 +148,16 @@
       "main": [
         "dist/typeahead.bundle.min.js"
       ]
-    }
-  },
-  "bootstrap3-dialog": {
+  	},
+  	"bootstrap3-dialog": {
       "main": [
         "dist/bootstrap-dialog.min.css",
         "dist/bootstrap-dialog.min.js"
       ]
-    },
-    
-   "devDependencies": {
+    }
+  },
+  "devDependencies": {
+  	
   },
   "resolutions": {
 	"jquery": "2.1.4",
