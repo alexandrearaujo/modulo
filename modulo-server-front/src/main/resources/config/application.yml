@@ -51,11 +51,5 @@ spring:
         basename: messages/messages
         encoding: UTF-8
         cache-seconds: -1
-    resources:
-        cache-period: 31556926
-#        cache-period: 1
-    thymeleaf:
-        cache: false
-
 banner:
     location: classpath:/config/banner/banner.txt

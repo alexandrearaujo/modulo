@@ -72,6 +72,12 @@
 		</dependency>
 		
 		<dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-devtools</artifactId>
+	        <optional>true</optional>
+	    </dependency>
+		
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
 		</dependency>
@@ -121,6 +127,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			    <configuration>
+			    	<excludeDevtools>true</excludeDevtools>
 					<includes>
 						<include>
 							<groupId>br.com.mv</groupId>
