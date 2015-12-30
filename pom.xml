@@ -85,7 +85,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-		<tomcat.version>LATEST</tomcat.version>
 		<spring.version>LATEST</spring.version>
 	</properties>
 	

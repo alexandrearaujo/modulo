@@ -3,6 +3,15 @@ liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.xml
 server:
     context-path: /modulo
+    compression:
+        enabled: true
+        mime-types:
+            - text/html
+            - text/xml
+            - text/plain
+            - text/css
+            - text/javascript
+            - application/javascript
     #port: 8443
     #ssl:
     #    key-store: keystore.jks
@@ -32,6 +41,9 @@ spring:
         jpa:
             repositories: 
                 enabled: true
+    jackson:
+        locale: pt-BR
+        time-zone: America/Brasilia
     jpa:
         database: oracle
         database-platform: org.hibernate.dialect.Oracle10gDialect
