@@ -132,7 +132,7 @@
 					<input type="number" class="form-control form-group-sm" id="idActualPage" maxlength="4" name="actualPage" th:value="${page?.number + 1}"></input>
 				</li>
 				
-				<li disabled="disalbed">
+				<li>
 					<span class="totalPages" th:text="' de ' + ${page?.totalPages}"></span>
 				</li>
 				<li th:class="${page?.hasNext()}? '' : 'disabled'">
