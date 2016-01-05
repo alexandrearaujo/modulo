@@ -42,8 +42,8 @@ spring:
             repositories: 
                 enabled: true
     jackson:
-        locale: pt-BR
-        time-zone: America/Brasilia
+        locale: pt_BR
+        time-zone: America/Sao_Paulo
     jpa:
         database: oracle
         database-platform: org.hibernate.dialect.Oracle10gDialect
