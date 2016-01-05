@@ -18,12 +18,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
-import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.fasterxml.jackson.module.afterburner.AfterburnerModule;
-import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 
 @EnableSpringDataWebSupport
 @Configuration
@@ -80,11 +75,7 @@ public class WebConfig extends WebMvcAutoConfigurationAdapter {
         	.indentOutput(true)
         	.dateFormat(new SimpleDateFormat("dd/MM/yyyy"))
         	.modulesToInstall(
-        			new Hibernate4Module().disable(Hibernate4Module.Feature.USE_TRANSIENT_ANNOTATION),
-        			new AfterburnerModule(),
-        			new JavaTimeModule(),
-        			new Jdk8Module(),
-        			new ParameterNamesModule(JsonCreator.Mode.PROPERTIES));
+        			new Hibernate4Module().disable(Hibernate4Module.Feature.USE_TRANSIENT_ANNOTATION));
         return builder;
     }
 }
