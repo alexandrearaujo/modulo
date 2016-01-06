@@ -104,7 +104,7 @@
 		<repository>
 			<id>MVNexus</id>
 			<name>Internal Releases</name>
-			<url>http://echo.mvfor.local/nexus/content/repositories/releases/</url>
+			<url>http://echo.mvfor.local/nexus/content/repositories/new-projects-releases/</url>
 		</repository>
 		
 		<snapshotRepository>
