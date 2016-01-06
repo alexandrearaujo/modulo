@@ -6,13 +6,13 @@
 	<parent>
 		<groupId>io.spring.platform</groupId>
 		<artifactId>platform-bom</artifactId>
-		<version>LATEST</version>
+		<version>2.0.1.RELEASE</version>
 		<relativePath/>
 	</parent>
 	
 	<groupId>br.com.mv</groupId>
 	<artifactId>modulo</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 
 	<name>Modulo</name>
@@ -85,7 +85,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-		<spring.version>LATEST</spring.version>
+		<spring.version>4.2.4.RELEASE</spring.version>
 	</properties>
 	
 	<profiles>
