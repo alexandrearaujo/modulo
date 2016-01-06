@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.mv.geral.model.Versao;
+import br.com.mv.modulo.model.Versao;
 import br.com.mv.modulo.repository.VersaoRepository;
 
 @Service
