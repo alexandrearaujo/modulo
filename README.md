@@ -2,4 +2,4 @@
 New architecture module modulo
 
 
-Versao 2.0.0
+Nova Versao 2.0.0
