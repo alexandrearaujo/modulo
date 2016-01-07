@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 var changed = require('gulp-changed');
-var cssMinify = require('gulp-minify-css');
+var cssMinify = require('gulp-cssnano');
 var sourcemaps = require('gulp-sourcemaps');
 var paths = require('./paths.js');
 
