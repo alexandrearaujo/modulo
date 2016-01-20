@@ -130,6 +130,7 @@
 							<configuration>
 								<nodeVersion>v4.2.4</nodeVersion>
 								<npmVersion>3.5.2</npmVersion>
+								<npmRegistryURL>http://echo.mvfor.local/nexus/content/repositories/npm/</npmRegistryURL>
 							</configuration>
 							<phase>initialize</phase>
 						</execution>

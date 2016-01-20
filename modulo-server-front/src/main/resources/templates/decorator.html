@@ -6,7 +6,7 @@
 	  class="no-js">
 	<head th:replace="fragments/layout :: htmlhead" />
 	
-	<body role="document" th:class="${session?.usuario?.hasSingleRoleWithUri() ? 'sidebar-left-hidden' : ''}">
+	<body role="document">
 		<th:block th:unless="${session.externalRequest}">
 			<div th:replace="fragments/layout-menu-top :: menu-top(singleMenu=${session?.usuario?.hasSingleRoleWithUri()})"></div>
 		</th:block>
