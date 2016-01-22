@@ -1,38 +1,73 @@
-/*
- * Begin - TODO Remover essas funcionalidades pois o bootstrapTable já faz isso de forma nativa.
- */
-$.fn.selectedItem = function() {
-	var elementValue = null;
-	if(this.is('table') && this.hasClass('selectable')) {
-		var tr = this.find('.selected');
-		elementValue = this.find('.rowValue');
-		
-		if(elementValue) {
-			return elementValue;
-		}
-			
-		return tr;
-	} else if(this.is('tr') && this.closest('table').hasClass('selectable')) {
-		elementValue = this.find('.rowValue');
-		
-		if(elementValue && elementValue.is('input')){
-			return elementValue.val();
-		}
-		
-		return elementValue;
-	}
-};
+jQuery.fn.bootstrapTable.defaults.pageSize = 10;
+jQuery.fn.bootstrapTable.defaults.classes = 'table table-bordered table-striped table-hover';
+jQuery.fn.bootstrapTable.defaults.showRefresh = true;
+jQuery.fn.bootstrapTable.defaults.showColumns = true;
+jQuery.fn.bootstrapTable.defaults.keyEvents = true;
+jQuery.fn.bootstrapTable.defaults.pagination=true;
+jQuery.fn.bootstrapTable.defaults.resizable=true;
+jQuery.fn.bootstrapTable.defaults.responseHandler='defaultResponseHandler';
+jQuery.fn.bootstrapTable.defaults.sidePagination='server';
+jQuery.fn.bootstrapTable.defaults.method='POST';
+jQuery.fn.bootstrapTable.defaults.icons.refresh = 'glyphicon-search icon-search';
+jQuery.fn.bootstrapTable.defaults.iconsPrefix= 'glyphicon mv-color-green';
+jQuery('<span id="visualLength"></span>').appendTo('form');
 
-$(function() {
-	$(document).on('click', 'table > tbody > tr',function() {
-		var $tr = $(this);
-		var table = $tr.closest('table');
-		if(table.hasClass('selectable') && !$tr.hasClass("selected")) {
-			$tr.addClass("selected").siblings().removeClass("selected");
-			$tr.trigger('mv-table:selected-row');
-		}
+function defaultResponseHandler(page){
+    return {
+        rows:  page.content,
+        total: page.totalElements
+    }
+}
+
+function Pagination(params, data){
+	return JSON.stringify({
+		currentPage :  (Number(params.offset) / params.limit),
+		totalPages : params.limit,
+		order : params.order,
+		sortColumn : params.sort,
+		search : params.search,
+		data : data
 	});
-});
-/*
- * End - TODO Remover essas funcionalidades pois o bootstrapTable já faz isso de forma nativa.
- */
+}
+
+String.prototype.visualLength = function()
+{
+    var ruler = document.getElementById('visualLength');
+    var length;
+    ruler.innerHTML = this;
+    length = ruler.offsetWidth;
+    ruler.innerHTML = '';
+    return length;
+}
+
+function initPopoverTableCell(){
+	$('.table').on({
+	    'mouseenter': function(e) {
+	        var $cell = $(e.currentTarget);
+	        var cellText = $cell.text();
+	        if (cellText.visualLength() > $cell.width()) {
+	            $cell.popover({
+                    container: 'body',
+                    html: true,
+                    trigger: 'manual',
+                    placement:'top',
+                    title :function(){
+                    	return "Mensagem";
+                    },
+                    content: function() {
+                        return e.currentTarget.textContent;
+                    },
+                    template:'<div class="popover my-custom-class" role="tooltip">'
+                        +'<div class="arrow"></div><h3 class="popover-title"></h3>'
+                        +'<div class="popover-content" style="max-width:350px; word-wrap: break-word"></div>'
+                        +'</div>'
+                });
+	        }
+	        
+	        $cell.popover('show');
+	    },
+	    'mouseleave': function(e) {
+	    	$(e.currentTarget).popover('hide');
+	    }
+	},'tbody > tr > td');	
+}
