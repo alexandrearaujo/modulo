@@ -12,18 +12,19 @@
     "bootstrap-modal": "latest",
     "bootstrap-table": "latest",
     "bootstrap-timepicker": "0.3.0",
+    "bootstrap3-dialog": "latest",
     "bootstrapvalidator": "latest",
+    "col-resizable": "latest",
     "font-awesome": "latest",
     "jquery": "latest",
     "jQuery-Mask-Plugin": "latest",
     "knockout": "latest",
     "metisMenu": "latest",
+    "moment" : "latest",
+    "pace": "1.0.2",
     "remarkable-bootstrap-notify": "latest",
     "screenfull": "latest",
-    "pace": "1.0.2",
-    "typeahead.js": "0.10.5",
-    "moment" : "latest",
-    "bootstrap3-dialog": "latest"
+    "typeahead.js": "0.10.5"
   },
   "overrides": {
   	"awesome-bootstrap-checkbox": {
@@ -86,11 +87,22 @@
         "js/bootstrap-timepicker.min.js"
       ]
     },
+    "bootstrap3-dialog": {
+      "main": [
+        "dist/bootstrap-dialog.min.css",
+        "dist/bootstrap-dialog.min.js"
+      ]
+    },
     "bootstrapvalidator": {
       "main": [
         "dist/css/bootstrapValidator.min.css",
         "dist/js/bootstrapValidator.min.js",
         "dist/js/language/pt_BR.js"
+      ]
+    },
+    "col-resizable": {
+      "main": [
+        "colResizable-1.5.min.js"
       ]
     },
     "font-awesome": {
@@ -127,6 +139,12 @@
         "min/moment-with-locales.min.js"
       ]
     },
+    "pace": {
+      "main": [
+        "pace.min.js",
+        "themes/blue/pace-theme-mac-osx.css"
+      ]
+    },
     "remarkable-bootstrap-notify": {
       "main": [
         "dist/bootstrap-notify.min.js"
@@ -137,23 +155,11 @@
         "dist/screenfull.js"
       ]
     },
-    "pace": {
-      "main": [
-        "pace.min.js",
-        "themes/blue/pace-theme-mac-osx.css"
-      ]
-    },
     "typeahead.js": {
       "main": [
         "dist/typeahead.bundle.min.js"
       ]
-  	},
-  	"bootstrap3-dialog": {
-      "main": [
-        "dist/bootstrap-dialog.min.css",
-        "dist/bootstrap-dialog.min.js"
-      ]
-    }
+  	}
   },
   "devDependencies": {
   	
