@@ -78,7 +78,9 @@
         "dist/bootstrap-table.min.css",
         "dist/bootstrap-table.min.js",
         "dist/locale/bootstrap-table-pt-BR.min.js",
-        "dist/extensions/toolbar/bootstrap-table-toolbar.min.js"
+        "dist/extensions/toolbar/bootstrap-table-toolbar.min.js",
+        "dist/extensions/key-events/bootstrap-table-key-events.min.js",
+        "dist/extensions/resizable/bootstrap-table-resizable.js"
       ]
     },
     "bootstrap-timepicker": {
