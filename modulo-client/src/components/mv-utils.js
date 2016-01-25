@@ -1,3 +1,17 @@
+
+
+String.prototype.visualLength = function()
+{
+    var ruler = document.getElementById('visualLength');
+    var length;
+    ruler.innerHTML = this;
+    length = ruler.offsetWidth;
+    ruler.innerHTML = '';
+    
+    return length;
+}
+
+
 function getAppContext() {
 	return "/" + window.location.pathname.split('/')[1];
 }

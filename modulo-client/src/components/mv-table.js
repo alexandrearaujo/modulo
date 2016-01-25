@@ -2,7 +2,7 @@ jQuery.fn.bootstrapTable.defaults.pageSize = 10;
 jQuery.fn.bootstrapTable.defaults.classes = 'table table-bordered table-striped table-hover';
 jQuery.fn.bootstrapTable.defaults.showRefresh = true;
 jQuery.fn.bootstrapTable.defaults.showColumns = true;
-jQuery.fn.bootstrapTable.defaults.keyEvents = true;
+//jQuery.fn.bootstrapTable.defaults.keyEvents = true;
 jQuery.fn.bootstrapTable.defaults.pagination=true;
 jQuery.fn.bootstrapTable.defaults.resizable=true;
 jQuery.fn.bootstrapTable.defaults.responseHandler='defaultResponseHandler';
@@ -10,7 +10,9 @@ jQuery.fn.bootstrapTable.defaults.sidePagination='server';
 jQuery.fn.bootstrapTable.defaults.method='POST';
 jQuery.fn.bootstrapTable.defaults.icons.refresh = 'glyphicon-search icon-search';
 jQuery.fn.bootstrapTable.defaults.iconsPrefix= 'glyphicon mv-color-green';
-jQuery('<span id="visualLength"></span>').appendTo('form');
+
+//Elemento adicionado ao html da pagina para que se possa obter o tamanho da string na tela.
+jQuery('<span id="visualLength"></span>').appendTo('form'); 
 
 function defaultResponseHandler(page){
     return {
@@ -30,21 +32,14 @@ function Pagination(params, data){
 	});
 }
 
-String.prototype.visualLength = function()
-{
-    var ruler = document.getElementById('visualLength');
-    var length;
-    ruler.innerHTML = this;
-    length = ruler.offsetWidth;
-    ruler.innerHTML = '';
-    return length;
-}
 
 function initPopoverTableCell(){
 	$('.table').on({
 	    'mouseenter': function(e) {
 	        var $cell = $(e.currentTarget);
 	        var cellText = $cell.text();
+	        console.log('visualLength: ' + cellText.visualLength());
+	        console.log('cellLength: ' + $cell.width());
 	        if (cellText.visualLength() > $cell.width()) {
 	            $cell.popover({
                     container: 'body',

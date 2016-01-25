@@ -51,9 +51,11 @@ public class Pagination<T> implements Serializable{
 	}
 	
 	public T getData(Class<T> clazz){
-		try {
-			return mapper.readValue(this.data, clazz);
-		} catch (IOException e) {
+		if(this.data != null){
+			try {
+				return mapper.readValue(this.data, clazz);
+			} catch (IOException e) {
+			}
 		}
 		return null;
 	}
