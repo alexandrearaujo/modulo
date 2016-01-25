@@ -57,7 +57,7 @@ function initPopoverTableCell(){
                     content: function() {
                         return e.currentTarget.textContent;
                     },
-                    template:'<div class="popover my-custom-class" role="tooltip">'
+                    template:'<div class="popover" role="popover">'
                         +'<div class="arrow"></div><h3 class="popover-title"></h3>'
                         +'<div class="popover-content" style="max-width:350px; word-wrap: break-word"></div>'
                         +'</div>'
