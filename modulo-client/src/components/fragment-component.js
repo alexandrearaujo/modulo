@@ -35,7 +35,7 @@ ko.components.register('label-field', {
 });
 
 ko.components.register('mv-autocomplete',{
-			viewModel : function(params, componentInfo) {
+			viewModel : function(params) {
 				this.label = params.label;
 				this.id = params.id;
 				this.idLabel = params.id + 'Label';
