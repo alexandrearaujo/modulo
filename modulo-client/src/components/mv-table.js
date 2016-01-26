@@ -38,8 +38,6 @@ function initPopoverTableCell(){
 	    'mouseenter': function(e) {
 	        var $cell = $(e.currentTarget);
 	        var cellText = $cell.text();
-	        console.log('visualLength: ' + cellText.visualLength());
-	        console.log('cellLength: ' + $cell.width());
 	        if (cellText.visualLength() > $cell.width()) {
 	            $cell.popover({
                     container: 'body',
