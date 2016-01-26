@@ -21,7 +21,7 @@
     "remarkable-bootstrap-notify": "latest",
     "screenfull": "latest",
     "pace": "1.0.2",
-    "typeahead.js": "0.10.5",
+    "typeahead.js": "0.11.1",
     "moment" : "latest",
     "bootstrap3-dialog": "latest"
   },
