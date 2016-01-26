@@ -1,137 +1,106 @@
-var onSelected;
-var required;
+ko.bindingHandlers.mvautocomplete = {
+	init : function(element, valueAccessor, bindingAccessor, viewModel) {
+		var suggestions = new Bloodhound({
+			datumTokenizer : function(datum) {
+				return Bloodhound.tokenizers.whitespace(datum.value);
+			},
+			queryTokenizer : Bloodhound.tokenizers.whitespace,
+			remote : {
+				url : valueAccessor().source,
+				replace : function(url, uriEncodedQuery) {
+					if(uriEncodedQuery.length >= 2)
+						return url + '=' + uriEncodedQuery.toUpperCase() + getParams(valueAccessor().params);
+					else
+						return null;
+				},
+				wildcard : '%QUERY',
+				filter : function(data) {
+					return $.map(data, function(item) {
+						var text = valueAccessor().optionsText;
+						var keys = getKeyParameter(valueAccessor().optionsText);
+						if (keys.length) {
+							for (var i = 0, n = keys.length; i < n; ++i) {
+								text = text.replace('{' + keys[i] + '}', findAttr(item, keys[i]));
+							}
+						} else {
+							text = findAttr(item, valueAccessor().optionsText);
+						}
+						
+						id = findAttr(item, valueAccessor().optionsValue);
 
-function AutoComplete(){}
-
-function initAutoComplete() {
-	var arrayInputs = $('.typeahead.input-autocomplete');
-	jQuery.each(arrayInputs, function(i, input) { 
-		if(input !== undefined) {
-			var jQueryTarget = $(input);
-			var isInputHidden = !(jQueryTarget.attr('hidden') === undefined)
-			if(!isTypeaheadActive(jQueryTarget) && !isInputHidden && !jQueryTarget.hasClass('tt-hint')){
-				var targetArray = [];	 
-				var url = jQueryTarget.attr('data-url');
-				var parameters = jQueryTarget.attr('data-parameters');
-				var hasParameters = false;
-			
-				if(parameters != null || parameters !== undefined) {
-				   	url = url.concat(parameters);
-				 	hasParameters = true; 
+						return {
+							text : text,
+							id : id,
+							object : item
+						};
+					});
 				}
-				
-				targetArray['object']     =   jQueryTarget.attr('data-object');
-				targetArray['list']       =   jQueryTarget.attr('data-list');
-				targetArray['onSelected'] =   jQueryTarget.attr('data-onSelected');
-				targetArray['idHidden']   =   jQueryTarget.attr('data-idHidden');
-				hasParameters =   parameters != null; 
-				var fncName   =   jQueryTarget.attr('data-fncName');
-				
-				AutoComplete.prototype.autocomplete(url, targetArray, fncName, hasParameters);
 			}
-		}
-	});
-}
+		});
 
-AutoComplete.prototype.autocomplete = function(vurl, target, fncName, hasParameters){
-	 var idHidden = target['idHidden'];
-	 AutoComplete.prototype.bloodHound = new Bloodhound({
-		datumTokenizer: function(d) {
-			return Bloodhound.tokenizers.whitespace(d.val);
-		},
-		queryTokenizer: Bloodhound.tokenizers.whitespace,
-		limit: 100,
-		remote: {
-			url: vurl,
-            replace: function (url, query) {
-            	idHidden = target['idHidden'];
-            	onSelected = target['onSelected'];
-            	required = target['required'];
-            	url = hasParameters ? url.replace('%QUERY',query+"&") : url.replace('%QUERY',query); 
-            	
-                if(hasParameters) {
-	                var parameters = url.indexOf('&');
-	                var param = url.substr(parameters+1);
-	                var listParameters = param.split(",");
-	                url = url.substr(0,parameters);
-               
-		            for(var parameter in listParameters) {
-		                url += '&';
-		                var nameAndValue = listParameters[parameter].split("=");
-		                url += nameAndValue[0]+"=";
-		                url += eval(nameAndValue[1]);
-		            }
-                }
-                
-                return url;
-            },
-            ajax: {
-            	error: function(jqXHR, textStatus, errorThrown) {
-	            	$.alertError('Erro ao realizar pesquisa');
-	            }
-            },
-            filter: function ( response ) {
-        	    return $.map(response, window[fncName]);
-            }
-		}		
-	});
-	
-	var promise = AutoComplete.prototype.bloodHound.initialize();
+		var $e = $(element);
 
-	promise.fail(function() { 
-		throw new Error('Error on promise fail!');
-	});
-	
-	$('#'+target['object']).blur(function(){
-		if(this.value === '') {
-			$('#'+idHidden).val('');
-			validateAutocompleteField(this, idHidden);
-		}
-	});
-	
-	$('#'+target['object']).typeahead(
-		{
-			minLength: 3,
-			highlight: true
-		},
-		{ 
-			name: target['list'],
-			source: AutoComplete.prototype.bloodHound.ttAdapter()
-		}
-	)
-	.on('typeahead:opened', onOpened2)
-	.on('typeahead:autocompleted', onAutocompleted2)
-	.on('typeahead:selected', function ($e, datum){
-		$('#'+idHidden).data(datum);
-		$('#'+idHidden).val(eval(onSelected));
-		validateAutocompleteField(this, idHidden);
-	});
-}; 
+		suggestions.initialize();
 
-function validateAutocompleteField(element, idHiddenField){
-	var jQueryTarget = $(element);
-	var jQueryForm = $(element.form);
-	var jQueryHiddenField = $('#'+idHiddenField);
-	var isjQueryTargetRequired = Boolean(jQueryTarget.attr('data-bv-notempty'));
-	if(jQueryTarget.required() && jQueryTarget.attr('data-bv-notempty') === undefined) {
-		jQueryForm.bootstrapValidator('revalidateField', jQueryHiddenField.prop('name'));
-	}else if(isjQueryTargetRequired){
-		jQueryForm.bootstrapValidator('revalidateField', jQueryTarget.prop('name'));
+		$e.typeahead(null, {
+			displayKey : 'text',
+			minLength : 2,
+			limit : 50,
+			source : suggestions.ttAdapter()
+		}).on('typeahead:selected', function(event, data) {
+			var attrValue = findAttr(viewModel, valueAccessor().value);
+			var attrText = findAttr(viewModel, valueAccessor().valueText);
+			var otherValues = valueAccessor().otherValues;
+
+			attrValue(data.id);
+			attrText(data.text);
+
+			if (otherValues) {
+				$.map(otherValues, function(a) {
+					for (k in a) {
+						var valueField = findAttr(data.object, k);
+						a[k](valueField);
+					}
+				});
+			}
+		});
 	}
+};
+
+function getKeyParameter(str) {
+	var results = [], re = /{([^}]+)}/g, text;
+
+	while (text = re.exec(str)) {
+		results.push(text[1]);
+	}
+	return results;
 }
 
-function onOpened2($e) {}
+function getParams(params) {
+	var strParams = '';
+	$.map(params, function(a) {
+		for (k in a) {
+			if (a[k])
+				strParams += '&' + k + '=' + a[k];
+			else
+				strParams += '&' + k + '=';
+		}
+	});
 
-function onAutocompleted2($e, datum) {}
-
-function limparCampo(campo){
-	$("#"+campo).typeahead('val', '');
+	return strParams;
 }
 
-function setarValor(campo,valor){
-	$("#"+campo).typeahead('val', valor);
-}
-
-function isTypeaheadActive($element){
-	return $element.data('ttTypeahead') ? true:false;
+function findAttr(o, s) {
+	s = s.replace(/\[(\w+)\]/g, '.$1');
+	s = s.replace(/^\./, '');
+	var a = s.split('.');
+	for (var i = 0, n = a.length; i < n; ++i) {
+		var k = a[i];
+		if (k in o) {
+			o = o[k];
+		} else {
+			return;
+		}
+	}
+	return o;
 }

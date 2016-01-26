@@ -33,7 +33,6 @@ jQuery(document).ready(function(){
 	initNumberField();
 	fncBlurCombo();
 	fixCheckboxWithThymeleaf();
-	initAutoComplete();
 	initPopoverTableCell();
 	formatMask();
 	fncUppercase();
