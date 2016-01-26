@@ -34,6 +34,7 @@ jQuery(document).ready(function(){
 	fncBlurCombo();
 	fixCheckboxWithThymeleaf();
 	initAutoComplete();
+	initPopoverTableCell();
 	formatMask();
 	fncUppercase();
 	numbersOnly();
