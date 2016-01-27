@@ -1,16 +1,3 @@
-jQuery.fn.bootstrapTable.defaults.pageSize = 10;
-jQuery.fn.bootstrapTable.defaults.classes = 'table table-bordered table-striped table-hover';
-jQuery.fn.bootstrapTable.defaults.showRefresh = true;
-jQuery.fn.bootstrapTable.defaults.showColumns = true;
-//jQuery.fn.bootstrapTable.defaults.keyEvents = true;
-jQuery.fn.bootstrapTable.defaults.pagination=true;
-jQuery.fn.bootstrapTable.defaults.resizable=true;
-jQuery.fn.bootstrapTable.defaults.responseHandler='defaultResponseHandler';
-jQuery.fn.bootstrapTable.defaults.sidePagination='server';
-jQuery.fn.bootstrapTable.defaults.method='POST';
-jQuery.fn.bootstrapTable.defaults.icons.refresh = 'glyphicon-search icon-search';
-jQuery.fn.bootstrapTable.defaults.iconsPrefix= 'glyphicon mv-color-green';
-
 //Elemento adicionado ao html da pagina para que se possa obter o tamanho da string na tela.
 jQuery('<span id="visualLength"></span>').appendTo('form'); 
 

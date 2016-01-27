@@ -1,5 +1,5 @@
 ko.bindingHandlers.mvautocomplete = {
-	init : function(element, valueAccessor, bindingAccessor, viewModel) {
+	init : function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
 		var suggestions = new Bloodhound({
 			datumTokenizer : function(datum) {
 				return Bloodhound.tokenizers.whitespace(datum.value);
@@ -8,7 +8,7 @@ ko.bindingHandlers.mvautocomplete = {
 			remote : {
 				url : valueAccessor().source,
 				replace : function(url, uriEncodedQuery) {
-					if(uriEncodedQuery.length >= 2)
+					if (uriEncodedQuery.length >= 2)
 						return url + '=' + uriEncodedQuery.toUpperCase() + getParams(valueAccessor().params);
 					else
 						return null;
@@ -16,8 +16,15 @@ ko.bindingHandlers.mvautocomplete = {
 				wildcard : '%QUERY',
 				filter : function(data) {
 					return $.map(data, function(item) {
-						var text = valueAccessor().optionsText;
-						var keys = getKeyParameter(valueAccessor().optionsText);
+						var text = '';
+						var keys = []
+						if (valueAccessor().optionsLabel) {
+							var text = valueAccessor().optionsLabel;
+							var keys = getKeyParameter(valueAccessor().optionsLabel);
+						} else {
+							var text = valueAccessor().optionsText;
+						}
+
 						if (keys.length) {
 							for (var i = 0, n = keys.length; i < n; ++i) {
 								text = text.replace('{' + keys[i] + '}', findAttr(item, keys[i]));
@@ -25,7 +32,7 @@ ko.bindingHandlers.mvautocomplete = {
 						} else {
 							text = findAttr(item, valueAccessor().optionsText);
 						}
-						
+
 						id = findAttr(item, valueAccessor().optionsValue);
 
 						return {
@@ -46,10 +53,11 @@ ko.bindingHandlers.mvautocomplete = {
 			displayKey : 'text',
 			minLength : 2,
 			limit : 50,
+			viewModel : viewModel,
 			source : suggestions.ttAdapter()
 		}).on('typeahead:selected', function(event, data) {
-			var attrValue = findAttr(viewModel, valueAccessor().value);
-			var attrText = findAttr(viewModel, valueAccessor().valueText);
+			var attrValue = findAttr(bindingContext.$parent, valueAccessor().value);
+			var attrText = findAttr(bindingContext.$parent, valueAccessor().valueText);
 			var otherValues = valueAccessor().otherValues;
 
 			attrValue(data.id);
