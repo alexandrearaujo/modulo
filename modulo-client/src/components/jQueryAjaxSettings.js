@@ -28,7 +28,6 @@ jQuery(document).ready(function(){
 	ajaxSetup();
 	initBtnConfirmation();
 	initTimeField();
-	initDateField();
 	initDateFieldPeriodo();
 	initNumberField();
 	fncBlurCombo();
