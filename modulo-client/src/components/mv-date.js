@@ -1,8 +1,3 @@
-$.fn.datepicker.defaults.todayHighlight = true;
-$.fn.datepicker.defaults.format = 'dd/mm/yyyy';
-$.fn.datepicker.defaults.autoclose = true;
-$.fn.datepicker.defaults.language = 'pt-BR';
-
 ko.bindingHandlers.mvdate = {
 	init: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
 
