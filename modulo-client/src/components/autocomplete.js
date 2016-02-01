@@ -9,7 +9,7 @@ ko.bindingHandlers.mvautocomplete = {
 				url : valueAccessor().source,
 				replace : function(url, uriEncodedQuery) {
 					if (uriEncodedQuery.length >= 2)
-						return url + '=' + uriEncodedQuery.toUpperCase() + getParams(valueAccessor().params);
+						return url + '=' + encodeURIComponent(uriEncodedQuery.toUpperCase()) + getParams(valueAccessor().params);
 					else
 						return null;
 				},
