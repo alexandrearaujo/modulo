@@ -1,3 +1,5 @@
+[![Dependency Status](https://gemnasium.com/0db53ebaf3c864005ee0428721722533.svg)](https://gemnasium.com/41e4f37c13ec5162446fae4a8d548cfc)
+
 # Modulo client module
 
 This module holds all web resources that make the client application of spring.io:
