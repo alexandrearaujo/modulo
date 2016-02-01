@@ -11,7 +11,17 @@ $.fn.bootstrapTable.defaults.sidePagination='server';
 $.fn.bootstrapTable.defaults.method='POST';
 $.fn.bootstrapTable.defaults.icons.refresh = 'glyphicon-search icon-search';
 $.fn.bootstrapTable.defaults.iconsPrefix= 'glyphicon mv-color-green';
-
+$.fn.bootstrapTable.defaults.ajaxOptions = {
+	beforeSend: function( xhr ) {
+		var token = $("meta[name='_csrf']").attr("content");
+		var header = $("meta[name='_csrf_header']").attr("content");
+		xhr.setRequestHeader(header, token);
+ 	},
+ 	headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    }
+};
 //Date-picker
 $.fn.datepicker.defaults.todayHighlight = true;
 $.fn.datepicker.defaults.format = 'dd/mm/yyyy';
