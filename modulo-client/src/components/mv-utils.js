@@ -1,7 +1,9 @@
 
+Date.prototype.format = function(format){
+	return this ? moment(this).format(format) : '';
+}
 
-String.prototype.visualLength = function()
-{
+String.prototype.visualLength = function(){
     var ruler = document.getElementById('visualLength');
     var length;
     ruler.innerHTML = this;
