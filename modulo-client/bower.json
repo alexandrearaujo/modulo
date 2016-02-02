@@ -24,8 +24,14 @@
     "pace": "1.0.2",
     "remarkable-bootstrap-notify": "latest",
     "screenfull": "latest",
+    "pace": "1.0.2",
+    "typeahead.js": "0.11.1",
     "swfobject": "latest",
-    "typeahead.js": "latest"
+    "moment" : "latest",
+    "bootstrap3-dialog": "latest",
+    "pagerjs" : "1.0.1",
+    "bootstrap-switch" : "3.3.2",
+    "bower-knockout-mapping" : "2.0"
   },
   "overrides": {
   	"awesome-bootstrap-checkbox": {
@@ -163,7 +169,23 @@
       "main": [
         "dist/typeahead.bundle.min.js"
       ]
-  	}
+  	},
+    "pagerjs": {
+      "main": [
+        "dist/pager.min.js"
+      ]
+    },
+    "bower-knockout-mapping": {
+      "main": [
+        "build/output/knockout.mapping-latest.js"
+      ]
+    },
+    "bootstrap-switch": {
+      "main": [
+        "dist/js/bootstrap-switch.min.js",
+        "dist/css/bootstrap3/bootstrap-switch.min.css"
+      ]
+    }
   },
   "devDependencies": {
   	
