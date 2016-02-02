@@ -1,48 +1,119 @@
-ko.bindingHandlers.mvdate = {
-	init: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+var MvDateComponent = function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext, params) {
 
-		var $element = $(element);
-		var $elementRender;
-		
-		if($element.is('input')){
-			$elementRender = $element;
-			$elementRender.mask('99/99/9999');
-		}else{
-			$elementRender = $element.find('.input-date-field')
-			$elementRender.find('input').mask('99/99/9999');
+	var _options = $.extend({}, $.fn.datepicker.defaults, valueAccessor());
+	var observable = params.value;
+	var $pickerRenderEl = $(element);
+
+	getDateFormat = function() {
+		return _options.format.toUpperCase();
+	}
+
+	$pickerRenderEl.is('input') ? $pickerRenderEl.mask('99/99/9999') : $pickerRenderEl.find('input').mask('99/99/9999');
+
+	var MvDate = {
+		getOptions : function() {
+			return _options;
+		},
+
+		setOptions : function(options) {
+			_options = $.extend({}, options, _options);
+		},
+
+		registerEvents : function() {
+
+			/**
+			 * Evento necessário para impedir a visualização do datepicker
+			 * quando o mesmo estiver desabilitado
+			 */
+			ko.utils.registerEventHandler(element, "show", function(e) {
+				if (params.disabled) {
+					$pickerRenderEl.datepicker('hide')
+				}
+			});
+
+			ko.utils.registerEventHandler(element, "clearDate", function() {
+				if (observable) {
+					observable(null);
+				}
+			});
+
+			ko.utils.registerEventHandler(element, "changeDate", function() {
+				if (observable) {
+					var date = $pickerRenderEl.datepicker("getDate");
+					var dateFormat = date ? date.format(getDateFormat()) : null;
+
+					observable(dateFormat);
+				}
+			});
+
+			ko.utils.domNodeDisposal.addDisposeCallback(element, function() {
+				$pickerRenderEl.datepicker("destroy");
+			});
+		},
+		init : function() {
+			$pickerRenderEl.datepicker(this.getOptions());
+		},
+		update : function() {
+			if (observable) {
+				var value = ko.utils.unwrapObservable(observable());
+				var date = value ? moment(value, getDateFormat()).toDate() : null;
+
+				$pickerRenderEl.datepicker("setDate", date);
+				$pickerRenderEl.val(value);
+			}
 		}
-		
-	    var options = jQuery.isEmptyObject(valueAccessor()) ? $.fn.datepicker.defaults : valueAccessor();
-	    
-	    $elementRender.datepicker(options);
-	    
-	    ko.utils.registerEventHandler(element, "clearDate", function () {
-	    	var observable = bindingContext.$component.params.value;
-	        observable(null);
-	    });
-	    
-	    ko.utils.registerEventHandler(element, "changeDate", function () {
-	        var observable = bindingContext.$component.params.value;
-	        var date = $elementRender.datepicker("getDate");
-	        var dateFormat = date ? date.format(options.format.toUpperCase()) : null;
-	        
-	        observable(dateFormat);
-	        console.log();
-	    });
-	
-	    ko.utils.domNodeDisposal.addDisposeCallback(element, function() {
-	    	$elementRender.datepicker("destroy");
-	    });
+	};
 
+	MvDate.prototype = {
+		constructor : MvDate,
+	}
+
+	return MvDate;
+};
+
+ko.bindingHandlers.startDate = {
+	init :   function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+		var args = Array.prototype.slice.call(arguments),
+			attributes = bindingContext.$component ? bindingContext.$component.startDate : valueAccessor(),
+			mvDate;
+		
+		args.push(attributes);
+		
+		mvDate = MvDateComponent.apply(this,args);
+		mvDate.setOptions({defaultDate: +7})
+		mvDate.init();
 	
+   },
+   update : function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+		var args = Array.prototype.slice.call(arguments),
+			attributes = bindingContext.$component ? bindingContext.$component.startDate : valueAccessor(),
+			mvDate;
+		
+		args.push(attributes);
+	
+		mvDate = new MvDateComponent(null, args);
+		mvDate.update();
+	}
+};
+
+ko.bindingHandlers.mvDate = {
+	init : function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+		var args = Array.prototype.slice.call(arguments);
+		var attributes = bindingContext.$component ? bindingContext.$component.params : valueAcessor();
+		var mvDate;
+
+		args.push(attributes);
+		mvDate = new MvDateComponent(null, args);
+		mvDate.init();
+
 	},
-	update: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
-		var $element = $(element);
-		var $elementRender = $element.is('input') ? $element : $element.find('.input-date-field');
-		var options = jQuery.isEmptyObject(valueAccessor()) ? $.fn.datepicker.defaults : valueAccessor();
-		var value = ko.utils.unwrapObservable(bindingContext.$component.params.value());
-		var date = value ? moment(value, options.format.toUpperCase()).toDate() : null;
-		$elementRender.datepicker("setDate", date);
-		$elementRender.val(value);
-    }
+	update : function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+		var args = Array.prototype.slice.call(arguments);
+		var attributes = bindingContext.$component ? bindingContext.$component.params : valueAcessor();
+		var mvDate;
+
+		args.push(attributes);
+		mvDate = new MvDateComponent(null, args);
+		mvDate.update();
+	}
 };
