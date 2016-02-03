@@ -24,19 +24,6 @@ ko.components.register('mv-date', {
     	</div>'
 });
 
-ko.components.register('label-field', {
-    viewModel: function(params) {
-        this.label = params.label;
-        this.id = params.idLabel;
-        this.idField = params.idField;
-        var cssClass = 'control-label';
-        cssClass = params.required ? cssClass + ' required' : cssClass;
-        this.cssClass = cssClass; 
-    },	
-    template:
-    	'<label data-bind="css: cssClass, id : idLabel, attr: { for : idField }, text: label"><span ></span></label>'	    
-});
-
 ko.components.register('mv-autocomplete',{
 	viewModel : function(params) {
 		this.label = params.label;
@@ -55,16 +42,29 @@ ko.components.register('mv-autocomplete',{
 		};
 		this.otherValues = params.otherValues;
 	},
-		template : '<div class="form-group">\
-						<label-field params = "idLabel : idLabel, label : params.label, idField : params.id, required : params.required "></label-field>\
-						<input class="typeahead" type="text"\
-											data-bind="mvautocomplete: { source: source,\
-											optionsValue: optionsValue, optionsText: optionsText, \
-											optionsLabel: optionsLabel , \
-											value: value, valueText: valueText, \
-									    	params: params(), \
-											otherValues: otherValues}" /> \
-					</div>'
+	template : '<div class="form-group">\
+		<label-field params = "idLabel : idLabel, label : label, idField : params.id, required : params.required "></label-field>\
+		<input class="typeahead" type="text"\
+		data-bind="mvautocomplete: { source: source,\
+		optionsValue: optionsValue, optionsText: optionsText, \
+		optionsLabel: optionsLabel , \
+		value: value, valueText: valueText, \
+		params: params(), \
+		otherValues: otherValues}" /> \
+		</div>'
+});
+
+ko.components.register('label-field', {
+    viewModel: function(params) {
+        this.label = params.label;
+        this.id = params.idLabel;
+        this.idField = params.idField;
+        var cssClass = 'control-label';
+        cssClass = params.required ? cssClass + ' required' : cssClass;
+        this.cssClass = cssClass; 
+    },	
+    template:
+    	'<label data-bind="css: cssClass, id : idLabel, attr: { for : idField }, text: label"><span ></span></label>'	    
 });
 
 ko.components.register('mv-period', {
@@ -95,3 +95,4 @@ ko.components.register('mv-period', {
 		    </div>\
 		</div>'
 });
+
