@@ -27,8 +27,8 @@ jQuery(document).ajaxComplete(function(){
 jQuery(document).ready(function(){
 	ajaxSetup();
 	initBtnConfirmation();
-	initTimeField();
-	initDateFieldPeriodo();
+//	initTimeField();
+//	initDateFieldPeriodo();
 	initNumberField();
 	fncBlurCombo();
 	fixCheckboxWithThymeleaf();

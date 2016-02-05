@@ -71,31 +71,6 @@ var MvDateComponent = function(element, valueAccessor, allBindingsAccessor, view
 	return MvDate;
 };
 
-ko.bindingHandlers.startDate = {
-	init :   function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
-		var args = Array.prototype.slice.call(arguments),
-			attributes = bindingContext.$component ? bindingContext.$component.startDate : valueAccessor(),
-			mvDate;
-		
-		args.push(attributes);
-		
-		mvDate = MvDateComponent.apply(this,args);
-		mvDate.setOptions({defaultDate: +7})
-		mvDate.init();
-	
-   },
-   update : function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
-		var args = Array.prototype.slice.call(arguments),
-			attributes = bindingContext.$component ? bindingContext.$component.startDate : valueAccessor(),
-			mvDate;
-		
-		args.push(attributes);
-	
-		mvDate = new MvDateComponent(null, args);
-		mvDate.update();
-	}
-};
-
 ko.bindingHandlers.mvDate = {
 	init : function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
 		var args = Array.prototype.slice.call(arguments);
@@ -103,7 +78,7 @@ ko.bindingHandlers.mvDate = {
 		var mvDate;
 
 		args.push(attributes);
-		mvDate = new MvDateComponent(null, args);
+		mvDate = MvDateComponent.apply(this,args);
 		mvDate.init();
 
 	},
@@ -113,7 +88,7 @@ ko.bindingHandlers.mvDate = {
 		var mvDate;
 
 		args.push(attributes);
-		mvDate = new MvDateComponent(null, args);
+		mvDate = MvDateComponent.apply(this,args);
 		mvDate.update();
 	}
 };
