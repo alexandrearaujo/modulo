@@ -10,5 +10,7 @@ import lombok.Setter;
 public class ModuloProperties {
 
 	private String reportPrintServerURI;
+	
+	private String cadastrosBasicosFlexAppURI;
 
 }

@@ -26,10 +26,12 @@ function checkForChanges() {
 
 function activeOptionMenu() {
 	var controller = window.location.pathname.split('/')[2];
-	if( window.location.search.indexOf('transcricao') != -1 ){
-		controller += '/'+window.location.pathname.split('/')[3]
-	}	
-	var actionLi = $("li[data-controller='"+controller+"']");
+	var menu = $("li[data-controller='" + controller + "']");
+	if (menu.length === 0) {
+		controller += '/' + window.location.pathname.split('/')[3];
+		menu = $("li[data-controller='" + controller + "']");
+	}
+	var actionLi = menu;
 	var groupActionUL = actionLi.parent();
 	var menuOption = groupActionUL.parent();
 	if(controller !== "") {
