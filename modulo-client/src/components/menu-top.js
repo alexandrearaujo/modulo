@@ -1,5 +1,3 @@
-var pepRequest = $('#pepRequest').length > 0 && $('#pepRequest').val() === 'true' ? true:false;
-
 $(window).on('resize', function () {
   if (window.innerWidth > 768) {
 	$('.grouped-menu').removeClass('in');
