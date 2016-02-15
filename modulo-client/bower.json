@@ -15,7 +15,7 @@
     "bootstrap-timepicker": "0.3.0",
     "bootstrap3-dialog": "latest",
     "bootstrapvalidator": "latest",
-    "bower-knockout-mapping" : "latest",
+    "bower-knockout-mapping" : "2.5.0",
     "col-resizable": "latest",
     "font-awesome": "latest",
     "jquery": "latest",
@@ -28,7 +28,8 @@
     "remarkable-bootstrap-notify": "latest",
     "screenfull": "latest",
     "swfobject": "latest",
-    "typeahead.js": "latest"
+    "typeahead.js": "latest",
+    "knockout-validation": "2.0.3"
   },
   "overrides": {
   	"awesome-bootstrap-checkbox": {
@@ -115,7 +116,7 @@
     },
     "bower-knockout-mapping": {
       "main": [
-        "build/output/knockout.mapping-latest.js"
+        "dist/knockout.mapping.min.js"
       ]
     },
     "col-resizable": {
@@ -181,6 +182,11 @@
     "typeahead.js": {
       "main": [
         "dist/typeahead.bundle.min.js"
+      ]
+  	},
+    "knockout-validation": {
+      "main": [
+        "dist/knockout.validation.min.js"
       ]
   	}
   },
