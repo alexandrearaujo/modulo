@@ -26,6 +26,7 @@ jQuery(document).ajaxComplete(function(){
 
 jQuery(document).ready(function(){
 	ajaxSetup();
+	initValidation();
 	initBtnConfirmation();
 //	initTimeField();
 //	initDateFieldPeriodo();
@@ -41,4 +42,8 @@ jQuery(document).ready(function(){
 	    'placement': 'top',
 	    'container':'body'
 	});
+});
+
+jQuery(document).load(function(){
+	console.log('validation init');
 });

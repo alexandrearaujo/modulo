@@ -71,3 +71,18 @@ function getInternetExplorerVersion()
   }
   return rv;
 }
+
+function isValid(viewModel) {
+	if(ko.validatedObservable(viewModel).isValid()){
+		return true;
+	}else{
+		var errors = ko.validation.group(viewModel);
+		errors.showAllMessages();
+		return false;
+	}
+}
+
+function clearValidation(viewModel) {
+	var errors = ko.validation.group(viewModel);
+	errors.showAllMessages(false);
+}

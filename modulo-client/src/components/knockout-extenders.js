@@ -33,3 +33,16 @@ ko.extenders.deferValidation = function (target, option) {
 	
 	return target;
 };
+
+function initValidation(){
+	ko.validation.init({
+		messagesOnModified: false,
+		insertMessages: false,
+		decorateInputElement: true,
+		grouping: {
+			deep: true,
+			live: true,
+			observable: true
+		}
+	}, true);
+}
