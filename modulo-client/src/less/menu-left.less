@@ -21,6 +21,10 @@
 	>li>a {
 		text-shadow: none !important;	
 	}
+	>li.active ul.in {
+		max-height: 350px;
+		overflow-y: auto !important;
+	}
 	>li ul a {
 		span, i {
 			.link-style( @mv-color-blue );
@@ -44,7 +48,6 @@
 	position: relative;
 	float: left;
 	left: auto;
-	overflow: hidden;
 }
 
 @media @desktop {
