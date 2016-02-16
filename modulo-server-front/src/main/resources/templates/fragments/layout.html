@@ -54,6 +54,7 @@
 		<!-- Menu Style -->
 		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/css/menu.css')}__}"/>
 
+  		
 		<!-- MV Theme -->
 		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/css/menu-left.css')}__}" />
 		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/css/menu-top.css')}__}"/>
@@ -65,9 +66,9 @@
 		<link th:if="${session.externalRequest}" rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/css/mvpep.css')}__}"/> 	    
 		
 		<!-- Pace -->
-  		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/pace/themes/blue/pace-theme-mac-osx.css')}__}"/>
-  		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/css/progress.css')}__}"/>
+  		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/pace/themes/green/pace-theme-minimal.css')}__}"/>
   		
+		<!-- Boorstrap Dialog -->
   		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap3-dialog/dist/css/bootstrap-dialog.min.css')}__}"/>
   		
 		<!-- Boorstrap Switch -->
@@ -90,8 +91,8 @@
 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrapvalidator/dist/js/language/pt_BR.js')}__}"></script>
 			
 			<!-- Bootstrap Datepicker with brazilian locale -->
-<!-- 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}__}"></script> -->
-<!-- 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js')}__}"></script> -->
+			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}__}"></script>
+			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js')}__}"></script>
 			
 			<!-- Bootstrap FileInput with brazilian locale -->
 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-fileinput/js/fileinput.min.js')}__}"></script>
@@ -128,8 +129,8 @@
 			<!-- Bootstrap-Modal- -->
 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-modal/js/bootstrap-modal.js')}__}"></script>
 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-modal/js/bootstrap-modalmanager.js')}__}"></script>
-
 			
+			<!-- Moment JS -->
 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/moment/min/moment-with-locales.min.js')}__}"></script>
 			
 			<!-- Modulo Components -->
@@ -154,8 +155,6 @@
 			<script type="text/javascript" charset='UTF-8' th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bower-knockout-mapping/build/output/knockout.mapping-latest.js')}__}"></script>
 			
 			<script type="text/javascript" charset='UTF-8' th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-switch/dist/js/bootstrap-switch.min.js')}__}"></script>
-			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js')}__}"></script>
-			
 		</th:block>
 	</body>
 </html>

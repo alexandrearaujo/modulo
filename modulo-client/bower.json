@@ -21,7 +21,6 @@
     "knockout": "latest",
     "metisMenu": "latest",
     "moment" : "latest",
-    "pace": "1.0.2",
     "remarkable-bootstrap-notify": "latest",
     "screenfull": "latest",
     "pace": "1.0.2",
@@ -152,7 +151,7 @@
     "pace": {
       "main": [
         "pace.min.js",
-        "themes/blue/pace-theme-mac-osx.css"
+        "themes/green/pace-theme-minimal.css"
       ]
     },
     "remarkable-bootstrap-notify": {
