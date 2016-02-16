@@ -10,10 +10,12 @@
     "bootstrap-datepicker": "latest",
     "bootstrap-fileinput": "latest",
     "bootstrap-modal": "latest",
+    "bootstrap-switch" : "latest",
     "bootstrap-table": "latest",
     "bootstrap-timepicker": "0.3.0",
     "bootstrap3-dialog": "latest",
     "bootstrapvalidator": "latest",
+    "bower-knockout-mapping" : "2.5.0",
     "col-resizable": "latest",
     "font-awesome": "latest",
     "jquery": "latest",
@@ -21,16 +23,13 @@
     "knockout": "latest",
     "metisMenu": "latest",
     "moment" : "latest",
+    "pace": "latest",
+    "pagerjs" : "latest",
     "remarkable-bootstrap-notify": "latest",
     "screenfull": "latest",
-    "pace": "1.0.2",
-    "typeahead.js": "0.11.1",
     "swfobject": "latest",
-    "moment" : "latest",
-    "bootstrap3-dialog": "latest",
-    "pagerjs" : "1.0.1",
-    "bootstrap-switch" : "3.3.2",
-    "bower-knockout-mapping" : "2.0"
+    "typeahead.js": "latest",
+    "knockout-validation": "2.0.3"
   },
   "overrides": {
   	"awesome-bootstrap-checkbox": {
@@ -80,6 +79,12 @@
         "js/bootstrap-modalmanager.js"
       ]
     },
+    "bootstrap-switch": {
+      "main": [
+        "dist/js/bootstrap-switch.min.js",
+        "dist/css/bootstrap3/bootstrap-switch.min.css"
+      ]
+    },
     "bootstrap-table": {
       "main": [
         "dist/bootstrap-table.min.css",
@@ -107,6 +112,11 @@
         "dist/css/bootstrapValidator.min.css",
         "dist/js/bootstrapValidator.min.js",
         "dist/js/language/pt_BR.js"
+      ]
+    },
+    "bower-knockout-mapping": {
+      "main": [
+        "dist/knockout.mapping.min.js"
       ]
     },
     "col-resizable": {
@@ -154,6 +164,11 @@
         "themes/green/pace-theme-minimal.css"
       ]
     },
+    "pagerjs": {
+      "main": [
+        "dist/pager.min.js"
+      ]
+    },
     "remarkable-bootstrap-notify": {
       "main": [
         "dist/bootstrap-notify.min.js"
@@ -169,22 +184,11 @@
         "dist/typeahead.bundle.min.js"
       ]
   	},
-    "pagerjs": {
+    "knockout-validation": {
       "main": [
-        "dist/pager.min.js"
+        "dist/knockout.validation.min.js"
       ]
-    },
-    "bower-knockout-mapping": {
-      "main": [
-        "build/output/knockout.mapping-latest.js"
-      ]
-    },
-    "bootstrap-switch": {
-      "main": [
-        "dist/js/bootstrap-switch.min.js",
-        "dist/css/bootstrap3/bootstrap-switch.min.css"
-      ]
-    }
+  	}
   },
   "devDependencies": {
   	

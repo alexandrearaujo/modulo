@@ -21,6 +21,10 @@
 	>li>a {
 		text-shadow: none !important;	
 	}
+	>li.active ul.in {
+		max-height: 350px;
+		overflow-y: auto !important;
+	}
 	>li ul a {
 		span, i {
 			.link-style( @mv-color-blue );
@@ -44,7 +48,6 @@
 	position: relative;
 	float: left;
 	left: auto;
-	overflow: hidden;
 }
 
 @media @desktop {
@@ -55,13 +58,13 @@
 
 .sidebar-left-hidden #left {
 	width: 0;
-	visibility: hidden
+	visibility: hidden;
 }
 
 .sidebar-left-mini #left {
-	width: 50px
+	width: 50px;
 }
 
 .sidebar-left-opened #left {
-	left: 0
+	left: 0;
 }

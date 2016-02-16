@@ -22,3 +22,27 @@ function formattedNumericComputed(field, precision) {
         
     return result;   
 }
+
+ko.extenders.deferValidation = function (target, option) {
+	if (option) {
+		target.subscribe(function(){
+			if(target.hasOwnProperty('isModified'))
+				target.isModified(false);
+		});
+	}
+	
+	return target;
+};
+
+function initValidation(){
+	ko.validation.init({
+		messagesOnModified: false,
+		insertMessages: false,
+		decorateInputElement: true,
+		grouping: {
+			deep: true,
+			live: true,
+			observable: true
+		}
+	}, true);
+}
