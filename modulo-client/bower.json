@@ -161,7 +161,7 @@
     "pace": {
       "main": [
         "pace.min.js",
-        "themes/blue/pace-theme-mac-osx.css"
+        "themes/green/pace-theme-minimal.css"
       ]
     },
     "pagerjs": {
