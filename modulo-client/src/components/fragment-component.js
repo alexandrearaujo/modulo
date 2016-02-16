@@ -59,12 +59,10 @@ ko.components.register('label-field', {
         this.label = params.label;
         this.id = params.idLabel;
         this.idField = params.idField;
-        var cssClass = 'control-label';
-        cssClass = params.required ? cssClass + ' required' : cssClass;
-        this.cssClass = cssClass; 
+        this.required = params.required;
     },	
     template:
-    	'<label data-bind="css: cssClass, id : idLabel, attr: { for : idField }, text: label"><span ></span></label>'	    
+    	'<label data-bind="css: {required: required, \'control-label\': true}, id : idLabel, attr: { for : idField }, text: label"><span ></span></label>'	    
 });
 
 ko.components.register('mv-period', {
@@ -109,7 +107,10 @@ ko.components.register('mv-text-field',{
 		params.value.extend({
 			deferValidation: true
 		});
-		if(params.required){
+		
+		if(typeof params.required == 'function'){
+			params.value.extend({ required: params.required });
+		}else if(params.required){
 			params.value.extend({ required: true });
 		}
 		
