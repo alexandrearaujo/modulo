@@ -90,9 +90,8 @@
 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrapvalidator/dist/js/bootstrapValidator.min.js')}__}"></script>
 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrapvalidator/dist/js/language/pt_BR.js')}__}"></script>
 			
-			<!-- Bootstrap Datepicker with brazilian locale -->
-			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}__}"></script>
-			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js')}__}"></script>
+			<!-- Bootstrap Datepicker with brazilian locale -- Comentado até as correções serem enviadas para github, enquanto isso usaremos o nosso próprio JS localizado na pasta components-->
+<!-- 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}__}"></script> -->
 			
 			<!-- Bootstrap FileInput with brazilian locale -->
 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-fileinput/js/fileinput.min.js')}__}"></script>
@@ -160,6 +159,8 @@
 			<script type="text/javascript" charset='UTF-8' th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bower-knockout-mapping/dist/knockout.mapping.min.js')}__}"></script>
 			
 			<script type="text/javascript" charset='UTF-8' th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-switch/dist/js/bootstrap-switch.min.js')}__}"></script>
+			
+			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js')}__}"></script>
 		</th:block>
 	</body>
 </html>

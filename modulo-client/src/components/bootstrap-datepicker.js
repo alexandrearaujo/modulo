@@ -1974,7 +1974,12 @@
 					p = parts[i].slice(0, m.length);
 				return m.toLowerCase() === p.toLowerCase();
 			}
-			if (parts.length === fparts.length){
+			
+			var partsAreEquals = !parts.some(function(element, index){
+				return element.length !== fparts[index].length && parts.length === fparts.length;
+			});
+			
+			if (partsAreEquals){
 				var cnt;
 				for (i=0, cnt = fparts.length; i < cnt; i++){
 					val = parseInt(parts[i], 10);
