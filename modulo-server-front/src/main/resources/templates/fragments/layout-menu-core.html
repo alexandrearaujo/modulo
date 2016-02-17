@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+ xmlns:th="http://www.thymeleaf.org"
+ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+ xmlns:data="https://github.com/mxab/thymeleaf-extras-data-attribute"
+ class="no-js">
+<meta charset="UTF-8"/>
+<body>
+    <ul th:id="${idMenu}" th:fragment="fragmento-menu">
+		<li th:attr="data-controller=${menu.uri}" th:each="menu : __${menus}__" th:unless="${#lists.isEmpty(menus)}">
+		  	<a href="javascript:;" th:unless="${#lists.isEmpty(menu.menus)}">
+		  		<i class="glyphicon glyphicon-plus"></i>
+				<span class="link-title" th:text="${menu.rotulo}"></span>
+				<span class="fa arrow"></span> 
+			</a>
+			
+			<th:block th:include="fragments/layout-menu-core :: fragmento-submenu(menus='${menu.menus}')"></th:block> 
+		</li>
+	</ul>
+	
+	<th:block th:fragment="fragmento-submenu">
+		<ul>
+			<li th:each="menuFilho : __${menus}__">
+				<a th:href="@{__${menuFilho.uri}__}" th:if="${#lists.isEmpty(menuFilho.menus)}">
+				  <i class="fa fa-desktop"></i>
+				  <span th:text="${menuFilho.rotulo}"></span>
+				</a> 
+			  
+			  	<th:block th:unless="${#lists.isEmpty(menuFilho.menus)}">
+					<a href="javascript:;"> 
+					  <i class="glyphicon glyphicon-plus"></i> 
+					  <span class="link-title" th:text="${menuFilho.rotulo}"></span> 
+					  <span class="fa arrow"></span>  
+					</a> 
+					 
+					<th:block th:include="fragments/layout-menu-core :: fragmento-submenu(menus='${menuFilho.menus}')"></th:block>
+			  	</th:block>
+			</li>
+		</ul>
+	</th:block>
+</body>
+</html>
