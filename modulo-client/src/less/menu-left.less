@@ -5,7 +5,7 @@
 
 .link-style( @color ){
 	color:@color;
-	font-size: 12px;
+	font-size: 10px;
 }
 .ul-active-style( @color ){
 	background-color: @color;
@@ -15,26 +15,89 @@
 }
 
 #menu {
-	ul{
+	font-size: 12px;
+	padding: 0;
+	list-style: none;
+	
+	.active>a>.fa.arrow:before {
+	    content: "\f107";
+	}
+	.affix {
+	    position: fixed;
+	    width: 220px;
+	    overflow-x: hidden;
+	    overflow-y: hidden;
+	    -webkit-overflow-scrolling: touch;
+	}
+	.affix:hover {
+	    overflow-y: scroll;
+	}
+	.fa.arrow {
+		:before {
+		    content: "\f104";
+		}
+	    float: right;
+	    padding-top: 3px;
+	    margin-right: 15px
+	}
+	ul, li, a {
+	    padding: 0;
+	}
+	li, a {
+	    position: relative;
+	    display: block;
+	}
+	a, a:hover, a:focus, a:active {
+		text-decoration: none;
+	}
+	ul {
 		background-color: rgba(255, 255, 255, 0.3);
+		list-style: none;
 	}
-	>li>a {
-		text-shadow: none !important;	
-	}
-	>li.active ul.in {
-		max-height: 350px;
-		overflow-y: auto !important;
-	}
-	>li ul a {
-		span, i {
-			.link-style( @mv-color-blue );
+	>li {
+		:hover>a {
+			background-color: #FFF;
+		    outline: 0;
+		    box-shadow: none;
 		}
-		&:hover span, &:hover i{
-			.link-style( @black );	
+		.active ul.in {
+			max-height: 300px;
+			overflow-y: auto !important;
+		}
+		ul {
+			a:hover {
+			    background-color: rgba(0, 0, 0, 0.1);
+			}
+		}
+		>a {
+	    	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+			border-top: 1px solid rgba(0, 0, 0, 0.1);
+	    	padding: 10px 0 10px 15px;
+			text-shadow: none !important;	
+		}
+		>ul {
+		    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+		    border-left-width: 0;
+		    a {
+				padding: 11px 0 11px 30px;
+				span, i {
+					.link-style( @mv-color-blue );
+				}
+				&:hover span, &:hover i{
+					.link-style( @black );	
+				}
+			}
+			>li {
+			    border-bottom: 1px solid #e7e7e7;
+			}
+//			>li:hover {
+//			    background-color: #b0cfe9;
+//			    outline: 0;
+//			    box-shadow: none;
+//			}
 		}
 	}
-	>li.active>a, 
-	>li>ul>li.active>a {
+	>li.active>a, >li>ul>li.active>a {
 		.ul-active-style( @mv-menu-left-active-blue );
 		&:hover {
 			.ul-active-style( @mv-menu-left-active-blue-hover );
