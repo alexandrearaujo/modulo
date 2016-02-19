@@ -26,10 +26,10 @@ function checkForChanges() {
 
 function activeOptionMenu() {
 	var controller = window.location.pathname.split('/')[2];
-	var menu = $("li[data-controller='" + controller + "']");
+	var menu = $("li[data-controller='/" + controller + "']");
 	if (menu.length === 0) {
 		controller += '/' + window.location.pathname.split('/')[3];
-		menu = $("li[data-controller='" + controller + "']");
+		menu = $("li[data-controller='/" + controller + "']");
 	}
 	var actionLi = menu;
 	var groupActionUL = actionLi.parent();
