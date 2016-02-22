@@ -7,7 +7,7 @@
 [![NPM Status](https://www.versioneye.com/user/projects/55aed5e83865620018000024/badge.svg?style=flat&label=NPM)]
 (https://www.versioneye.com/user/projects/55aed5e83865620018000024?child=summary#dialog_dependency_badge)
 
-[![BOWER Status](https://www.versioneye.com/user/projects/55aed7fd386562001700005a/badge.svg?style=flat&label=BOWER)]
+![bower logo](http://bower.io/img/bower-logo.png) [![BOWER Status](https://www.versioneye.com/user/projects/55aed7fd386562001700005a/badge.svg?style=flat&label=BOWER)]
 (https://www.versioneye.com/user/projects/55aed7fd386562001700005a?child=summary#dialog_dependency_badge)
 
 
