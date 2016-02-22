@@ -1,7 +1,8 @@
 [![Dependency Status](https://gemnasium.com/0db53ebaf3c864005ee0428721722533.svg)](https://gemnasium.com/41e4f37c13ec5162446fae4a8d548cfc)
 
 
-[https://www.versioneye.com/user/projects/55aed6fb386562001800004d/badge.svg?style=flat](https://www.versioneye.com/user/projects/55aed6fb386562001800004d?child=summary#dialog_dependency_badge)
+[![POM Status](https://www.versioneye.com/user/projects/55aed6fb386562001800004d/badge.svg?style=flat)]
+(https://www.versioneye.com/user/projects/55aed6fb386562001800004d?child=summary#dialog_dependency_badge)
 
 
 # Modulo client module
