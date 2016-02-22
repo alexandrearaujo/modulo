@@ -1,9 +1,6 @@
 [![Dependency Status](https://gemnasium.com/0db53ebaf3c864005ee0428721722533.svg)](https://gemnasium.com/41e4f37c13ec5162446fae4a8d548cfc)
 
-
-https://david-dm.org/twbs/bootstrap#info=devDependencies
-
-[![devDependency Status](https://david-dm.org/alexandrearaujo/modulo.svg)](https://david-dm.org/alexandrearaujo/modulo)
+[![Dependency Status](https://david-dm.org/alexandrearaujo/modulo.svg)](https://david-dm.org/alexandrearaujo/modulo)
 
 
 # Modulo client module
