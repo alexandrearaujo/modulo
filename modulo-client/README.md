@@ -1,8 +1,14 @@
 [![Dependency Status](https://gemnasium.com/0db53ebaf3c864005ee0428721722533.svg)](https://gemnasium.com/41e4f37c13ec5162446fae4a8d548cfc)
 
 
-[![POM Status](https://www.versioneye.com/user/projects/55aed6fb386562001800004d/badge.svg?style=flat)]
+[![POM Status](https://www.versioneye.com/user/projects/55aed6fb386562001800004d/badge.svg?style=flat&label=POM)]
 (https://www.versioneye.com/user/projects/55aed6fb386562001800004d?child=summary#dialog_dependency_badge)
+
+[![NPM Status](https://www.versioneye.com/user/projects/55aed5e83865620018000024/badge.svg?style=flat&label=NPM)]
+(https://www.versioneye.com/user/projects/55aed5e83865620018000024?child=summary#dialog_dependency_badge)
+
+[![BOWER Status](https://www.versioneye.com/user/projects/55aed7fd386562001700005a/badge.svg?style=flat&label=BOWER)]
+(https://www.versioneye.com/user/projects/55aed7fd386562001700005a?child=summary#dialog_dependency_badge)
 
 
 # Modulo client module
