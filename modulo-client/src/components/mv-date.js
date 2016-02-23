@@ -1,3 +1,8 @@
+$.fn.datepicker.defaults.todayHighlight = true;
+$.fn.datepicker.defaults.format = 'dd/mm/yyyy';
+$.fn.datepicker.defaults.autoclose = true;
+$.fn.datepicker.defaults.language = 'pt-BR';
+
 ko.bindingHandlers.mvDate = {
 	init : function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
 		var params = bindingContext.$component ? bindingContext.$component.params : valueAcessor(),
@@ -36,8 +41,7 @@ ko.bindingHandlers.mvDate = {
 			$pickerRenderEl.datepicker("destroy");
 		});
 		
-		
-		$pickerRenderEl.is('input') ? $pickerRenderEl.mask('99/99/9999') : $pickerRenderEl.find('input').mask('99/99/9999');
+		$pickerRenderEl.is('input') ? $pickerRenderEl.mask('99/99/9999') : $('#' + $pickerRenderEl.find('input').attr('id')).mask('99/99/9999');
 		$pickerRenderEl.datepicker(options);
 	},
 	update : function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
