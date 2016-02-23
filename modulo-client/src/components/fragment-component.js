@@ -1,14 +1,30 @@
 function ViewModelGenericComponent(params){
 	this.params = params;
 	this.params.id = params.id || getHashId();
-	this.idLabel = this.params.id + 'Label'; 
+	this.idLabel = this.params.id + 'Label';
+	this.label = params.label;
+	
+	this.required = params.required;
+	this.disabled = params.disabled;
+	
+	this.value = params.value;
 }
 
+function ViewModelValidation(params){
+	
+	params.value.extend({ deferValidation: true	});
+	if(typeof params.required == 'function'){
+		params.value.extend({ required: params.required });
+	}else if(params.required){
+		params.value.extend({ required: true });
+	}
+}
 
 ko.components.register('mv-date', {
     viewModel: function(params) {
     	//Herança
     	ViewModelGenericComponent.call(this, params);
+    	ViewModelValidation.call(this, params);
     	
         this.options = params.options || {};
     },
@@ -26,16 +42,16 @@ ko.components.register('mv-date', {
 
 ko.components.register('mv-autocomplete',{
 	viewModel : function(params) {
-		this.label = params.label;
-		this.id = params.id;
-		this.idLabel = params.id + 'Label';
-		this.required = params.required;
+		
+		//Herança
+    	ViewModelGenericComponent.call(this, params);
+    	ViewModelValidation.call(this, params);
+    	
 		this.value = params.value;
 		this.valueText = params.valueText;
 		this.optionsValue = params.optionsValue || {};
 		this.optionsText = params.optionsText || {};
 		this.optionsLabel = params.optionsLabel || {};
-		this.disabled = params.disabled;
 		this.source = params.source;
 		this.params = params.params || function() {
 			return []
@@ -56,10 +72,10 @@ ko.components.register('mv-autocomplete',{
 
 ko.components.register('label-field', {
     viewModel: function(params) {
-        this.label = params.label;
-        this.id = params.idLabel;
+    	//Herança
+    	ViewModelGenericComponent.call(this, params);
+    	
         this.idField = params.idField;
-        this.required = params.required;
     },	
     template:
     	'<label data-bind="css: {required: required, \'control-label\': true}, id : idLabel, attr: { for : idField }, text: label"><span ></span></label>'	    
@@ -67,6 +83,7 @@ ko.components.register('label-field', {
 
 ko.components.register('mv-period', {
 	viewModel: function(params) {
+		//Herança
     	ViewModelGenericComponent.call(this, params);
     	
 		this.startDate = params.startDate || {options: {}, value:{}, required:{}};
@@ -95,24 +112,13 @@ ko.components.register('mv-period', {
 
 ko.components.register('mv-text-field',{
 	viewModel : function(params) {
-		this.label = params.label;
-		this.id = params.id;
-		this.idLabel = params.id + 'Label';
-		this.required = params.required;
-		this.disabled = params.disabled;
+		//Herança
+    	ViewModelGenericComponent.call(this, params);
+    	ViewModelValidation.call(this, params);
+    	
 		this.valueUpdate = params.valueUpdate;
 		this.value = params.mask ? {} : params.value;
-//		this.inputmask = params.mask ? {mask : params.mask, value: params.value} : {};
-		
-		params.value.extend({
-			deferValidation: true
-		});
-		
-		if(typeof params.required == 'function'){
-			params.value.extend({ required: params.required });
-		}else if(params.required){
-			params.value.extend({ required: true });
-		}
+		this.inputMask = params.mask ? {mask : params.mask, value: params.value} : {};
 		
 		if(params.min){
 			params.value.extend({ min: params.min });
@@ -123,31 +129,22 @@ ko.components.register('mv-text-field',{
 		}
 	},
 	template : '<div class="form-group" data-bind="css: { \'has-error\' : required && value.isModified() && !value.isValid() }">\
-		<label-field params = "idLabel : idLabel, label : label, idField : id, required : required "></label-field>\
+		<label-field params = "idLabel : idLabel, label : label, idField : params.id, required : required "></label-field>\
 		<input class="form-control" type="text"\
-			data-bind="value: value, disable: disabled, valueUpdate: valueUpdate" /> \
+			data-bind="value: value, disable: disabled, valueUpdate: valueUpdate, inputMask: inputMask" /> \
 		</div>'
 });
 
 ko.components.register('mv-select-field',{
 	viewModel : function(params) {
-		this.label = params.label;
-		this.id = params.id;
-		this.idLabel = params.id + 'Label';
-		this.required = params.required;
-		this.value = params.value;
-		this.disabled = params.disabled;
+		//Herança
+    	ViewModelGenericComponent.call(this, params);
+    	ViewModelValidation.call(this, params);
+		
 		this.options = params.options;
 		this.optionsText = params.optionsText;
 		this.optionsValue = params.optionsValue;
 		this.optionsCaption = params.optionsCaption || ' ';
-		
-		if(this.required){
-			params.value.extend({
-		        required: true,
-		        deferValidation: true
-		    });
-		}
 	},
 	template : '<div class="form-group" data-bind="css: { \'has-error\' : value.isModified() && !value.isValid() }">\
 		<label-field params = "idLabel : idLabel, label : label, idField : id, required : required "></label-field>\

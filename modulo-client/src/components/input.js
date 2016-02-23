@@ -1,41 +1,41 @@
-ko.bindingHandlers.inputmask = {
+ko.bindingHandlers.inputMask = {
 	init : function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 		var inputMask = valueAccessor()
-		     
-		if(inputMask){
+		if (inputMask) {
+			var observable = inputMask.value;
+			
+			ko.utils.registerEventHandler(element, "change", function(e) {
+				if (ko.isObservable(observable)) {
+					observable($element.cleanVal());
+				}
+			});
+			
 			$element = $(element);
 			$element.val(inputMask.value());
 			$element.mask(inputMask.mask);
 		}
-		
 	},
 	update : function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 		var inputMask = valueAccessor();
 
-		if(inputMask){
+		if (inputMask) {
 			var observable = inputMask.value;
 			$element = $(element);
-			
+
 			var options = {
 				onComplete : function(mask) {
 					if (ko.isObservable(observable)) {
 						observable($element.cleanVal());
 					}
-				},
-				onChange : function(mask) {
-					if (ko.isObservable(observable)) {
-						observable($element.cleanVal());
-					}
-			}
+				}
 			};
-			
+
 			$element.val(inputMask.value());
 			$element.unmask();
 			$element.mask(inputMask.mask, options);
 		}
 	}
 };
-
 
 /**
  * Number-Field
