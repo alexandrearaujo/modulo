@@ -10,7 +10,7 @@ function ViewModelGenericComponent(params){
 	this.value = params.value;
 }
 
-function ViewModelValidation(params){
+function ViewModelValidationRequired(params){
 	
 	params.value.extend({ deferValidation: true	});
 	if(typeof params.required == 'function'){
@@ -24,7 +24,7 @@ ko.components.register('mv-date', {
     viewModel: function(params) {
     	//Herança
     	ViewModelGenericComponent.call(this, params);
-    	ViewModelValidation.call(this, params);
+    	ViewModelValidationRequired.call(this, params);
     	
         this.options = params.options || {};
     },
@@ -45,7 +45,7 @@ ko.components.register('mv-autocomplete',{
 		
 		//Herança
     	ViewModelGenericComponent.call(this, params);
-    	ViewModelValidation.call(this, params);
+    	ViewModelValidationRequired.call(this, params);
     	
 		this.value = params.value;
 		this.valueText = params.valueText;
@@ -114,7 +114,7 @@ ko.components.register('mv-text-field',{
 	viewModel : function(params) {
 		//Herança
     	ViewModelGenericComponent.call(this, params);
-    	ViewModelValidation.call(this, params);
+    	ViewModelValidationRequired.call(this, params);
     	
 		this.valueUpdate = params.valueUpdate;
 		this.value = params.mask ? {} : params.value;
@@ -125,7 +125,7 @@ ko.components.register('mv-text-field',{
 		}
 		
 		if(params.max){
-			params.value.extend({ min: params.max });
+			params.value.extend({ max: params.max });
 		}
 	},
 	template : '<div class="form-group" data-bind="css: { \'has-error\' : required && value.isModified() && !value.isValid() }">\
@@ -139,7 +139,7 @@ ko.components.register('mv-select-field',{
 	viewModel : function(params) {
 		//Herança
     	ViewModelGenericComponent.call(this, params);
-    	ViewModelValidation.call(this, params);
+    	ViewModelValidationRequired.call(this, params);
 		
 		this.options = params.options;
 		this.optionsText = params.optionsText;
