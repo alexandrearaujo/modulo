@@ -51,6 +51,7 @@
 			            </goals>
 						<configuration>
 							<srcdir>${basedir}${file.separator}src${file.separator}less${file.separator}components</srcdir>
+							<outputdir>${basedir}${file.separator}dist${file.separator}static</outputdir>
 					        <arguments>optimize-and-copy-less-components</arguments>
 					    </configuration>
 			        </execution>

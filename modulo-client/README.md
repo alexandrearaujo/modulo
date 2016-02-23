@@ -1,5 +1,16 @@
 [![Dependency Status](https://gemnasium.com/0db53ebaf3c864005ee0428721722533.svg)](https://gemnasium.com/41e4f37c13ec5162446fae4a8d548cfc)
 
+
+<img height="28" width="42" src="https://maven.apache.org/images/maven-logo-black-on-white.png"> [![POM Status](https://www.versioneye.com/user/projects/55aed6fb386562001800004d/badge.svg?style=flat&label=POM)]
+(https://www.versioneye.com/user/projects/55aed6fb386562001800004d?child=summary#dialog_dependency_badge)
+
+<img height="28" width="28" src="https://www.npmjs.com/static/images/touch-icons/favicon-32x32.png"> [![NPM Status](https://www.versioneye.com/user/projects/55aed5e83865620018000024/badge.svg?style=flat&label=NPM)]
+(https://www.versioneye.com/user/projects/55aed5e83865620018000024?child=summary#dialog_dependency_badge)
+
+<img height="28" width="28" src="http://bower.io/img/bower-logo.png"> [![BOWER Status](https://www.versioneye.com/user/projects/55aed7fd386562001700005a/badge.svg?style=flat&label=BOWER)]
+(https://www.versioneye.com/user/projects/55aed7fd386562001700005a?child=summary#dialog_dependency_badge)
+
+
 # Modulo client module
 
 This module holds all web resources that make the client application of spring.io:
