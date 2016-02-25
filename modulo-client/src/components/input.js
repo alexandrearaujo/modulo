@@ -1,6 +1,7 @@
+
 ko.bindingHandlers.inputMask = {
 	init : function(element, valueAccessor, allBindings, viewModel, bindingContext) {
-		var inputMask = valueAccessor()
+		var inputMask = valueAccessor(), $element = $(element);
 		if (inputMask) {
 			var observable = inputMask.value;
 			
@@ -10,7 +11,6 @@ ko.bindingHandlers.inputMask = {
 				}
 			});
 			
-			$element = $(element);
 			$element.val(inputMask.value());
 			$element.mask(inputMask.mask);
 		}
@@ -20,7 +20,7 @@ ko.bindingHandlers.inputMask = {
 
 		if (inputMask) {
 			var observable = inputMask.value;
-			$element = $(element);
+			var $element = $(element);
 
 			var options = {
 				onComplete : function(mask) {
