@@ -11,12 +11,13 @@ function ViewModelGenericComponent(params){
 }
 
 function ViewModelValidationRequired(params){
-	
-	params.value.extend({ deferValidation: true	});
-	if(typeof params.required == 'function'){
-		params.value.extend({ required: params.required });
-	}else if(params.required){
-		params.value.extend({ required: true });
+	if(params.value){
+		params.value.extend({ deferValidation: true	});
+		if(typeof params.required == 'function'){
+			params.value.extend({ required: params.required });
+		}else if(params.required){
+			params.value.extend({ required: true });
+		}
 	}
 }
 
