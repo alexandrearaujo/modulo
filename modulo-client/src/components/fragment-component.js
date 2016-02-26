@@ -156,3 +156,44 @@ ko.components.register('mv-select-field',{
 				   value: value" />\
 		</div>'
 });
+
+ko.components.register('mv-select-field-popover',{
+	viewModel : function(params) {
+		this.label = params.label;
+		this.id = params.id;
+		this.idLabel = params.id + 'Label';
+		this.required = params.required;
+		this.value = params.value;
+		this.disabled = params.disabled;
+		this.options = params.options;
+		this.optionsText = params.optionsText;
+		this.optionsValue = params.optionsValue;
+		this.optionsCaption = params.optionsCaption || ' ';
+		this.url = params.url;
+		this.source = params.source;
+		this.maxlength = params.maxlength;
+		this.labelPopover = params.labelPopover;
+		
+		if(this.required){
+			params.value.extend({
+		        required: true,
+		        deferValidation: true
+		    });
+		}
+	},
+	template : '<div class="form-group" data-bind="css: { \'has-error\' : value.isModified() && !value.isValid() }">\
+		<label-field params = "idLabel : idLabel, label : label, idField : id, required : required "></label-field>\
+		<select class="form-control"\
+		data-bind="mvselectpopover: {value: value, url: url, source: source, options: options, maxlength: maxlength, labelPopover: labelPopover}">\
+			<option value=""></option>\
+			<optgroup label="Ações">\
+				<option value="novo">\
+					NOVO\
+				</option>\
+			</optgroup>\
+			<optgroup label="Grupo agendamento" data-bind="foreach: options">\
+				<option data-bind="text: findAttr($data, $parent.optionsText), value: findAttr($data, $parent.optionsValue)"></option>\
+			</optgroup>\
+		</select>\
+		</div>'
+});
