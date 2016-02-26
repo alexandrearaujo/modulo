@@ -86,7 +86,7 @@ ko.components.register('mv-period', {
 		//Herança
     	ViewModelGenericComponent.call(this, params);
     	this.options = params.options || {};
-		this.startDate = params.startDate || {options: {}, value:{}, required:{}};
+		this.startDate = params.startDate || {value:{}, required:{}};
 		this.endDate = params.endDate || {};
 	},
 	template:
