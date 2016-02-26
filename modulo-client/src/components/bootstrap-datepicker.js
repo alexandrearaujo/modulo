@@ -1975,8 +1975,8 @@
 				return m.toLowerCase() === p.toLowerCase();
 			}
 			
-			var partsAreEquals = !parts.some(function(element, index){
-				return element.length !== fparts[index].length && parts.length === fparts.length;
+			var partsAreEquals = parts.every(function(element, index){
+				return element.length === fparts[index].length && parts.length === fparts.length;
 			});
 			
 			if (partsAreEquals){

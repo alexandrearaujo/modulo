@@ -85,23 +85,23 @@ ko.components.register('mv-period', {
 	viewModel: function(params) {
 		//Herança
     	ViewModelGenericComponent.call(this, params);
-    	
+    	this.options = params.options || {};
 		this.startDate = params.startDate || {options: {}, value:{}, required:{}};
 		this.endDate = params.endDate || {};
 	},
 	template:
 		'<div class="date-field-periodo form-group ">\
 			<label-field params = "idLabel : idLabel, label : params.label, idField : startDate.id, required : startDate.required "></label-field>\
-			<div class="input-group input-daterange" data-bind="mvPeriod: startDate.options, value: startDate.value">\
+			<div class="input-group input-daterange" data-bind="mvPeriod: options">\
 				<div class="input-group date start" >\
-		    		<input type="text" class="input-sm form-control start" name="start" />\
+		    		<input type="text" class="input-sm form-control start" name="start" data-bind="attr : {disabled : startDate.disabled}, value : startDate.value"/>\
 					<span class="calendar add-on input-group-addon btn" data-bind="attr : { disabled : startDate.disabled }">\
 						<span class="glyphicon glyphicon-calendar"></span>\
 					</span>\
 		        </div>\
 				<span class="input-group-addon to">a</span>\
 				<div class="input-group date end">\
-		        	<input type="text" class="input-sm form-control end" name="end" data-bind="attr : { disabled : endDate.disabled }" />\
+		        	<input type="text" class="input-sm form-control end" name="end" data-bind="attr : { disabled : endDate.disabled }, value: endDate.value" />\
 					<span class="calendar add-on input-group-addon btn" data-bind="attr : { disabled : endDate.disabled }">\
 						<span class="glyphicon glyphicon-calendar"></span>\
 					</span>\
