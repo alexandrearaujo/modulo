@@ -48,7 +48,6 @@ ko.components.register('mv-autocomplete',{
     	ViewModelGenericComponent.call(this, params);
     	ViewModelValidationRequired.call(this, params);
     	
-		this.value = params.value;
 		this.valueText = params.valueText;
 		this.optionsValue = params.optionsValue || {};
 		this.optionsText = params.optionsText || {};
@@ -160,12 +159,9 @@ ko.components.register('mv-select-field',{
 
 ko.components.register('mv-select-field-popover',{
 	viewModel : function(params) {
-		this.label = params.label;
-		this.id = params.id;
-		this.idLabel = params.id + 'Label';
-		this.required = params.required;
-		this.value = params.value;
-		this.disabled = params.disabled;
+		ViewModelGenericComponent.call(this, params);
+		ViewModelValidationRequired.call(this, params);
+		
 		this.options = params.options;
 		this.optionsText = params.optionsText;
 		this.optionsValue = params.optionsValue;
@@ -174,16 +170,9 @@ ko.components.register('mv-select-field-popover',{
 		this.source = params.source;
 		this.maxlength = params.maxlength;
 		this.labelPopover = params.labelPopover;
-		
-		if(this.required){
-			params.value.extend({
-		        required: true,
-		        deferValidation: true
-		    });
-		}
 	},
 	template : '<div class="form-group" data-bind="css: { \'has-error\' : value.isModified() && !value.isValid() }">\
-		<label-field params = "idLabel : idLabel, label : label, idField : id, required : required "></label-field>\
+		<label-field params = "idLabel : idLabel, label : label, idField : params.id, required : required "></label-field>\
 		<select class="form-control"\
 		data-bind="mvselectpopover: {value: value, url: url, source: source, options: options, maxlength: maxlength, labelPopover: labelPopover}">\
 			<option value=""></option>\
