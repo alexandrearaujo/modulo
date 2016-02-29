@@ -25,6 +25,8 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.afterburner.AfterburnerModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 
+import br.com.mv.modulo.components.dialect.MVDialect;
+
 @EnableSpringDataWebSupport
 @Configuration
 public class WebConfig extends WebMvcAutoConfigurationAdapter {
@@ -88,4 +90,10 @@ public class WebConfig extends WebMvcAutoConfigurationAdapter {
                     new ParameterNamesModule(JsonCreator.Mode.PROPERTIES));
         return builder;
     }
+	
+	@Bean
+	public MVDialect mvDialect() {
+		return new MVDialect();
+	}
+
 }
