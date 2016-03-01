@@ -13,9 +13,13 @@ ko.bindingHandlers.mvselectpopover = {
 				$this.popover({
 					html : true,
 					placement: 'bottom',
+					template: '<div class="popover" style="width: 100%">\
+			        <div class="arrow"></div>\
+			        <div class="popover-content">\
+			        </div>\
+			        </div>',
 					content:  function() {
 						return '<div>\
-						<div style="width: 250px"></div>\
 						<div class="row">\
 						<div class="col-md-12">\
 						<label id="labelPopover"></label>\
