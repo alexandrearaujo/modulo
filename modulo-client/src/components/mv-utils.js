@@ -1,16 +1,15 @@
 
+/**
+ * Função para retornar o tamanho em px do texto.
+ */
+$.fn.textWidth = function(text, font) {
+    if (!$.fn.textWidth.fakeEl) $.fn.textWidth.fakeEl = $('<span>').hide().appendTo(document.body);
+    $.fn.textWidth.fakeEl.text(text || this.val() || this.text()).css('font', font || this.css('font'));
+    return $.fn.textWidth.fakeEl.width();
+};
+
 Date.prototype.format = function(format){
 	return this ? moment(this).format(format) : '';
-}
-
-String.prototype.visualLength = function(){
-    var ruler = document.getElementById('visualLength');
-    var length;
-    ruler.innerHTML = this;
-    length = ruler.offsetWidth;
-    ruler.innerHTML = '';
-    
-    return length;
 }
 
 function getHashId()

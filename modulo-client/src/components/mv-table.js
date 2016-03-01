@@ -23,9 +23,6 @@ $.fn.bootstrapTable.defaults.ajaxOptions = {
     }
 };
 
-//Elemento adicionado ao html da pagina para que se possa obter o tamanho da string na tela.
-jQuery('<span id="visualLength"></span>').appendTo('form'); 
-
 function defaultResponseHandler(page){
     return {
         rows:  page.content,
@@ -44,6 +41,7 @@ function Pagination(params, data){
 	});
 }
 
+
 /**
  * Cria popover em celulas de uma tabela quando o texto é maior que 
  * o tamanho da celula.
@@ -52,8 +50,7 @@ function initPopoverTableCell(){
 	$('.table').on({
 	    'mouseenter': function(e) {
 	        var $cell = $(e.currentTarget);
-	        var cellText = $cell.text();
-	        if (cellText.visualLength() > $cell.width()) {
+	        if ($cell.text() && $cell.textWidth() > $cell.width() + 1) {
 	            $cell.popover({
                     container: 'body',
                     html: true,
@@ -66,14 +63,14 @@ function initPopoverTableCell(){
                         return e.currentTarget.textContent;
                     },
                     template:'<div class="popover" role="popover">'
-                        +'<div class="arrow"></div><h3 class="popover-title"></h3>'
+                        +'<div class="arrow"></div>'
                         +'<div class="popover-content" style="max-width:350px; word-wrap: break-word"></div>'
                         +'</div>'
                 });
+	            $cell.popover('show');
 	        }
 	        
-	        $cell.popover('show');
-	    },
+	    }	,
 	    'mouseleave': function(e) {
 	    	$(e.currentTarget).popover('hide');
 	    }

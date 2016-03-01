@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dialect xmlns="http://www.thymeleaf.org/extras/dialect"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.thymeleaf.org/extras/dialect
+	                    http://www.thymeleaf.org/xsd/thymeleaf-extras-dialect-2.1.xsd"
+	prefix="mv"
+	namespace-uri="http://www.mv.com.br/components"
+	namespace-strict="false"
+	class="br.com.mv.modulo.components.dialect.MVDialect">
+	
+	<attribute-processor name="label">
+		<documentation reference="label"></documentation>
+		<restrictions
+			tags="mv:date mv:periodo"/>
+	</attribute-processor>
+	
+	<attribute-processor name="id">
+		<documentation reference="id"></documentation>
+<!-- 		<restrictions -->
+<!-- 			tags="input"/> -->
+	</attribute-processor>
+	
+	<attribute-processor name="required">
+		<documentation reference="required"></documentation>
+<!-- 		<restrictions -->
+<!-- 			tags="input"/> -->
+	</attribute-processor>
+	
+	<attribute-processor name="disabled">
+		<documentation reference="disabled"></documentation>
+<!-- 		<restrictions -->
+<!-- 			tags="input"/> -->
+	</attribute-processor>
+	
+	<attribute-processor name="value">
+		<documentation reference="value"></documentation>
+<!-- 		<restrictions -->
+<!-- 			tags="input"/> -->
+	</attribute-processor>
+	
+	<element-processor name="date"
+		class="br.com.mv.modulo.components.element.MVDateElementProcessor"/>
+	
+	<element-processor name="periodo"
+		class="br.com.mv.modulo.components.element.MVPeriodoElementProcessor"/>
+
+</dialect>

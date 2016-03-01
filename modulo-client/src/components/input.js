@@ -1,16 +1,15 @@
-
 ko.bindingHandlers.inputMask = {
 	init : function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 		var inputMask = valueAccessor(), $element = $(element);
-		if (inputMask) {
+		if (inputMask && !$.isEmptyObject(inputMask)) {
 			var observable = inputMask.value;
-			
+
 			ko.utils.registerEventHandler(element, "change", function(e) {
 				if (ko.isObservable(observable)) {
 					observable($element.cleanVal());
 				}
 			});
-			
+
 			$element.val(inputMask.value());
 			$element.mask(inputMask.mask);
 		}
@@ -18,7 +17,7 @@ ko.bindingHandlers.inputMask = {
 	update : function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 		var inputMask = valueAccessor();
 
-		if (inputMask) {
+		if (inputMask && !$.isEmptyObject(inputMask)) {
 			var observable = inputMask.value;
 			var $element = $(element);
 
