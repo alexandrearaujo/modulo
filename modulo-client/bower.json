@@ -15,7 +15,7 @@
     "bootstrap-timepicker": "0.3.0",
     "bootstrap3-dialog": "latest",
     "bootstrapvalidator": "latest",
-    "bower-knockout-mapping" : "2.5.0",
+    "bower-knockout-mapping" : "2.6.0",
     "col-resizable": "latest",
     "font-awesome": "latest",
     "jquery": "latest",
@@ -29,7 +29,7 @@
     "screenfull": "latest",
     "swfobject": "latest",
     "typeahead.js": "latest",
-    "knockout-validation": "2.0.3"
+    "knockout-validation": "latest"
   },
   "overrides": {
   	"awesome-bootstrap-checkbox": {
