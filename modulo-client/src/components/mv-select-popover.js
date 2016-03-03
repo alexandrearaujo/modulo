@@ -9,7 +9,8 @@ ko.bindingHandlers.mvselectpopover = {
 			if($this.val() == 'novo'){
 				$e.attr('data-toggle','popover-select');
 				$e.data('toggle','popover-select');
-				$('[data-toggle=popover-select]').popover('destroy');
+				$('[data-toggle=popover-select]').popover('hide');
+				valueAccessor().value(null);
 				$this.popover({
 					html : true,
 					placement: 'bottom',
@@ -43,7 +44,7 @@ ko.bindingHandlers.mvselectpopover = {
 				$('body').on('click', function (e) {
 				    if ($(e.target).data('toggle') !== 'popover-select'
 				        && $(e.target).parents('.popover').length === 0) {
-				    	$('[data-toggle=popover-select]').popover('destroy');
+				    	$('[data-toggle=popover-select]').popover('hide');
 				    	if($('[data-toggle=popover-select]').val() == 'novo')
 				    		$('[data-toggle=popover-select]').val('');
 			    		$('[data-toggle=popover-select]').data('toggle', '');
@@ -86,7 +87,7 @@ ko.bindingHandlers.mvselectpopover = {
 				})
 			}else{
 				$e.removeAttr('data-toggle');
-				$e.popover('destroy');
+				$e.popover('hide');
 				valueAccessor().value($this.val());
 			}
 		});

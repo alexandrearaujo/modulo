@@ -30,10 +30,10 @@ ko.components.register('mv-date', {
         this.options = params.options || {};
     },
     template:
-    	'<div class="date-field date form-group" data-bind="mvDate: options, value: params.value, attr: {disabled : params.disabled}">\
+    	'<div class="date-field date form-group" data-bind="mvDate: options, value: params.value, attr: {disabled : params.disabled}, css: { \'has-error\' : required && value.isModified() && !value.isValid() }">\
     		<label-field params = "idLabel : idLabel, label : params.label, idField : params.id, required : params.required "></label-field>\
 	        <div class="input-group  input-date-field date-field">\
-    			<input type="text" class="form-control" data-bind = "attr: {id: params.id, disabled : params.disabled}" />\
+    			<input type="text" class="form-control" data-bind = "attr: {id: params.id, disabled : params.disabled}, tooltipError: { value: value }" />\
 		    	<span data-bind="attr : {disabled : params.disabled}" class="input-group-addon btn">\
 		    		<span class="glyphicon glyphicon-calendar"></span>\
 		    	</span>\
@@ -131,7 +131,7 @@ ko.components.register('mv-text-field',{
 	template : '<div class="form-group" data-bind="css: { \'has-error\' : required && value.isModified() && !value.isValid() }">\
 		<label-field params = "idLabel : idLabel, label : label, idField : params.id, required : required "></label-field>\
 		<input class="form-control" type="text"\
-			data-bind="value: value, disable: disabled, valueUpdate: valueUpdate, inputMask: inputMask, popover: { trigger: \'hover\', placement: \'top\', value: value }" /> \
+			data-bind="value: value, disable: disabled, valueUpdate: valueUpdate, inputMask: inputMask, tooltipError: { value: value }" /> \
 		</div>'
 });
 
@@ -174,7 +174,7 @@ ko.components.register('mv-select-field-popover',{
 	template : '<div class="form-group" data-bind="css: { \'has-error\' : value.isModified() && !value.isValid() }">\
 		<label-field params = "idLabel : idLabel, label : label, idField : params.id, required : required "></label-field>\
 		<select class="form-control"\
-		data-bind="mvselectpopover: {value: value, url: url, source: source, options: options, maxlength: maxlength, labelPopover: labelPopover}">\
+		data-bind="mvselectpopover: {value: value, url: url, source: source, options: options, maxlength: maxlength, labelPopover: labelPopover}, tooltipError: { value: value }"">\
 			<option value=""></option>\
 			<optgroup label="Ações">\
 				<option value="novo">\
