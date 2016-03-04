@@ -2,7 +2,7 @@ ko.bindingHandlers.mvswitch = {
 	init : function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
 		var $e = $(element);
 		
-		$e.bootstrapSwitch();
+		$e.bootstrapSwitch({onText: valueAccessor().onText, offText: valueAccessor().offText});
 		
 		$e.on('switchChange.bootstrapSwitch', function (event, state) {
 			valueAccessor().checked(state);

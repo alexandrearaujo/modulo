@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "private": true,
     "dependencies": {
-    "awesome-bootstrap-checkbox": "latest",
+    "awesome-bootstrap-checkbox": "0.3.7",
     "bootstrap": "latest",
     "bootstrap-confirmation2": "latest",
     "bootstrap-datepicker": "latest",

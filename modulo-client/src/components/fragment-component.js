@@ -187,3 +187,55 @@ ko.components.register('mv-select-field-popover',{
 		</select>\
 		</div>'
 });
+
+ko.components.register('mv-checkbox',{
+	viewModel : function(params) {
+		ViewModelGenericComponent.call(this, params);
+		
+		this.cssClass = params.cssClass || 'checkbox-primary';
+	},
+	template : '<div class="form-group" data-bind="css: { \'has-error\' : value.hasOwnProperty(\'isModified\') value.isModified() && !value.isValid() }">\
+		<label-field params = "idLabel : idLabel, label : label, idField : params.id, required : required "></label-field>\
+		<div class="checkbox" data-bind="css: cssClass" >\
+	    <input type="checkbox" checked data-bind="attr: {id: params.id, disabled : params.disabled}, checked: value, tooltipError: { value: value }"/>\
+	    <label "attr: {for: params.id}">\
+	    </label>\
+		</div>\
+		</div>'
+});
+
+ko.components.register('mv-radiobutton',{
+	viewModel : function(params) {
+		ViewModelGenericComponent.call(this, params);
+		ViewModelValidationRequired.call(this, params);
+		
+		this.cssClass = params.cssClass || 'radio-primary';
+		this.options = params.options || [];
+	},
+	template : '<div class="form-group" data-bind="css: { \'has-error\' : value.hasOwnProperty(\'isModified\') && value.isModified() && !value.isValid() }">\
+		<label-field params = "idLabel : idLabel, label : label, idField : params.id, required : required "></label-field>\
+			<div data-bind="foreach: options, tooltipError: { value: value }">\
+				<div class="radio radio-inline" data-bind="css: $parent.cssClass">\
+					<input type="radio" data-bind="attr: {id: $parent.params.id + $index(), name: $parent.params.id, disabled : $parent.params.disabled},\
+						checkedValue: $data.value, checked: $parent.value"/>\
+					<label data-bind="attr: {for: $parent.params.id + $index()}, text: $data.label">\
+					</label>\
+				</div>\
+			</div>\
+		</div>'
+});
+
+ko.components.register('mv-switch',{
+	viewModel : function(params) {
+		ViewModelGenericComponent.call(this, params);
+		ViewModelValidationRequired.call(this, params);
+		this.cssClass = params.cssClass || 'radio-primary';
+	},
+	template : '<div class="form-group" data-bind="css: { \'has-error\' : value.hasOwnProperty(\'isModified\') && value.isModified() && !value.isValid() }">\
+		<label-field params = "idLabel : idLabel, label : label, idField : params.id, required : required "></label-field>\
+		<p>\
+			<input data-bind="mvswitch: { checked: value, onText: params.onText, offText: params.offText}"\
+				type="checkbox" name="my-checkbox" />\
+		</p>\
+		</div>'
+});
