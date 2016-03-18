@@ -21,16 +21,16 @@
     "jquery": "latest",
     "jQuery-Mask-Plugin": "latest",
     "knockout": "latest",
+    "knockout-validation": "latest",
     "metisMenu": "latest",
     "moment" : "latest",
     "pace": "latest",
     "pagerjs" : "latest",
     "remarkable-bootstrap-notify": "latest",
+    "sammy": "latest",
     "screenfull": "latest",
     "swfobject": "latest",
-    "typeahead.js": "latest",
-    "knockout-validation": "latest",
-    "sammy": "0.7.6"
+    "typeahead.js": "latest"
   },
   "overrides": {
   	"awesome-bootstrap-checkbox": {
@@ -148,6 +148,11 @@
         "dist/knockout.js"
       ]
     },
+    "knockout-validation": {
+      "main": [
+        "dist/knockout.validation.min.js"
+      ]
+    },
     "metisMenu": {
       "main": [
         "dist/metisMenu.min.css",
@@ -175,24 +180,25 @@
         "dist/bootstrap-notify.min.js"
       ]
     },
+    "sammy": {
+      "main": [
+        "lib/min/sammy-latest.min.js"
+      ]
+    },
     "screenfull": {
       "main": [
         "dist/screenfull.js"
       ]
     },
+    "swfobject": {
+      "main": [
+        "swfobject/expressInstall.swf",
+        "swfobject/swfobject.js"
+      ]
+    },
     "typeahead.js": {
       "main": [
         "dist/typeahead.bundle.min.js"
-      ]
-  	},
-    "knockout-validation": {
-      "main": [
-        "dist/knockout.validation.min.js"
-      ]
-  	},
-    "sammy": {
-      "main": [
-        "lib/min/sammy-latest.min.js"
       ]
   	}
   },

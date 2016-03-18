@@ -116,4 +116,13 @@
 			<artifactId>lombok</artifactId>
 		</dependency>
 	</dependencies>
+	
+	<build>
+       <plugins>
+           <plugin>
+               <groupId>org.hibernate.orm.tooling</groupId>
+               <artifactId>hibernate-enhance-maven-plugin</artifactId>
+           </plugin>
+       </plugins>
+    </build>
 </project>
