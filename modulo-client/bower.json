@@ -29,7 +29,8 @@
     "screenfull": "latest",
     "swfobject": "latest",
     "typeahead.js": "latest",
-    "knockout-validation": "latest"
+    "knockout-validation": "latest",
+    "sammy": "0.7.6"
   },
   "overrides": {
   	"awesome-bootstrap-checkbox": {
@@ -187,6 +188,11 @@
     "knockout-validation": {
       "main": [
         "dist/knockout.validation.min.js"
+      ]
+  	},
+    "sammy": {
+      "main": [
+        "lib/min/sammy-latest.min.js"
       ]
   	}
   },
