@@ -3,11 +3,14 @@ package br.com.mv.modulo.model;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import br.com.mv.modulo.model.converters.EnumTipoSituacaoVersaoConverter;
+import br.com.mv.modulo.model.type.EnumTipoSituacaoVersao;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,7 +30,8 @@ public class Versao implements Serializable {
     private String versaoBanco;
     
     @Column(name = "TP_SITUACAO")
-    private Long situacaoVersao;
+    @Convert(converter = EnumTipoSituacaoVersaoConverter.class)
+    private EnumTipoSituacaoVersao situacaoVersao;
     
     @Transient
     private String dataVersao;

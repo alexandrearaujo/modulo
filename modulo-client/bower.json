@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "private": true,
     "dependencies": {
-    "awesome-bootstrap-checkbox": "0.3.7",
+    "awesome-bootstrap-checkbox": "latest",
     "bootstrap": "latest",
     "bootstrap-confirmation2": "latest",
     "bootstrap-datepicker": "latest",
@@ -15,7 +15,7 @@
     "bootstrap-timepicker": "0.3.0",
     "bootstrap3-dialog": "latest",
     "bootstrapvalidator": "latest",
-    "bower-knockout-mapping" : "2.6.0",
+    "bower-knockout-mapping" : "latest",
     "col-resizable": "latest",
     "font-awesome": "latest",
     "jquery": "latest",
@@ -194,7 +194,7 @@
   	
   },
   "resolutions": {
-	"jquery": "2.2.0",
+	"jquery": "2.2.1",
     "bootstrap": "3.3.6"
   }
 }
