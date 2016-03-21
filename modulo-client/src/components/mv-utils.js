@@ -85,3 +85,28 @@ function clearValidation(viewModel) {
 	var errors = ko.validation.group(viewModel);
 	errors.showAllMessages(false);
 }
+
+function loadPage(screen, viewModel) {
+	if(!ko.dataFor(document.getElementById(screen))){
+		var $container = $('#'+screen);
+		
+		$container.html(ko.load.view($container.data().pageUrl))
+		
+		ko.cleanNode(document.getElementById(screen));
+		ko.applyBindings(viewModel, document.getElementById(screen));
+		
+		if(!viewModel.pages)
+			viewModel.pages = [];
+		viewModel.pages.push({id: screen, page: $container.data().pageUrl});
+	}
+	
+	for (var i = 0, n = viewModel.pages.length; i < n; ++i) {
+		var page = viewModel.pages[i];
+		var $container = $('#'+page.id);
+		
+		$container.fadeIn('slow');
+		
+		if(screen != page.id)
+			$container.hide();
+	}
+}

@@ -34,6 +34,17 @@ ko.extenders.deferValidation = function (target, option) {
 	return target;
 };
 
+ko.extenders.upperCase = function (target, option) {
+	if (option) {
+		target.subscribe(function(){
+			if(target())
+				target(target().toUpperCase());
+		});
+	}
+	
+	return target;
+};
+
 function initValidation(){
 	ko.validation.init({
 		messagesOnModified: false,

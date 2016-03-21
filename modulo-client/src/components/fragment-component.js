@@ -21,6 +21,12 @@ function ViewModelValidationRequired(params){
 	}
 }
 
+function ViewModelUpperCase(params){
+	if(params.value){
+		params.value.extend({ upperCase: true	});
+	}
+}
+
 ko.components.register('mv-date', {
     viewModel: function(params) {
     	//Herança
@@ -115,6 +121,7 @@ ko.components.register('mv-text-field',{
 		//Herança
     	ViewModelGenericComponent.call(this, params);
     	ViewModelValidationRequired.call(this, params);
+    	ViewModelUpperCase.call(this, params);
     	
 		this.valueUpdate = params.valueUpdate;
 		this.value = params.mask ? {} : params.value;

@@ -60,24 +60,24 @@ function initNumberField(){
 }
 
 function fncUppercase() {
-	$("input").keyup(function() {
-		var textUpperCase = $(this).val().toUpperCase();
-		if(window.getSelection().toString() === $(this).val()) {
-			$(this).val(textUpperCase);
-			$(this).select();
-		} else {
-			$(this).val(textUpperCase);
-		}
-	});
-	$("textarea").keyup(function() {
-		var textUpperCase = $(this).val().toUpperCase();
-		if(window.getSelection().toString() === $(this).val()) {
-			$(this).val(textUpperCase);
-			$(this).select();
-		} else {
-			$(this).val(textUpperCase);
-		}
-	});
+//	$("input").keyup(function() {
+//		var textUpperCase = $(this).val().toUpperCase();
+//		if(window.getSelection().toString() === $(this).val()) {
+//			$(this).val(textUpperCase);
+//			$(this).select();
+//		} else {
+//			$(this).val(textUpperCase);
+//		}
+//	});
+//	$("textarea").keyup(function() {
+//		var textUpperCase = $(this).val().toUpperCase();
+//		if(window.getSelection().toString() === $(this).val()) {
+//			$(this).val(textUpperCase);
+//			$(this).select();
+//		} else {
+//			$(this).val(textUpperCase);
+//		}
+//	});
 }
 
 function numbersOnly() {
