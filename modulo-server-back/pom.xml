@@ -122,6 +122,9 @@
            <plugin>
                <groupId>org.hibernate.orm.tooling</groupId>
                <artifactId>hibernate-enhance-maven-plugin</artifactId>
+               <configuration>
+                   <dir>${project.build.outputDirectory}${file.separator}br${file.separator}com${file.separator}mv${file.separator}${project.parent.artifactId}${file.separator}model</dir>
+               </configuration>
            </plugin>
        </plugins>
     </build>

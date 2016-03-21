@@ -183,7 +183,6 @@
 	               <artifactId>hibernate-enhance-maven-plugin</artifactId>
 	               <version>${hibernate.version}</version>
 	               <configuration>
-	                   <dir>${project.build.outputDirectory}${file.separator}br${file.separator}com${file.separator}mv${file.separator}${project.parent.artifactId}${file.separator}model</dir>
                        <enableLazyInitialization>true</enableLazyInitialization>
                        <enableDirtyTracking>true</enableDirtyTracking>
                        <enableAssociationManagement>false</enableAssociationManagement>
