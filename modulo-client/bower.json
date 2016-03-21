@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "private": true,
     "dependencies": {
-    "awesome-bootstrap-checkbox": "0.3.7",
+    "awesome-bootstrap-checkbox": "latest",
     "bootstrap": "latest",
     "bootstrap-confirmation2": "latest",
     "bootstrap-datepicker": "latest",
@@ -15,22 +15,22 @@
     "bootstrap-timepicker": "0.3.0",
     "bootstrap3-dialog": "latest",
     "bootstrapvalidator": "latest",
-    "bower-knockout-mapping" : "2.6.0",
+    "bower-knockout-mapping" : "latest",
     "col-resizable": "latest",
     "font-awesome": "latest",
     "jquery": "latest",
     "jQuery-Mask-Plugin": "latest",
     "knockout": "latest",
+    "knockout-validation": "latest",
     "metisMenu": "latest",
     "moment" : "latest",
     "pace": "latest",
     "pagerjs" : "latest",
     "remarkable-bootstrap-notify": "latest",
+    "sammy": "latest",
     "screenfull": "latest",
     "swfobject": "latest",
-    "typeahead.js": "latest",
-    "knockout-validation": "latest",
-    "sammy": "0.7.6"
+    "typeahead.js": "latest"
   },
   "overrides": {
   	"awesome-bootstrap-checkbox": {
@@ -148,6 +148,11 @@
         "dist/knockout.js"
       ]
     },
+    "knockout-validation": {
+      "main": [
+        "dist/knockout.validation.min.js"
+      ]
+    },
     "metisMenu": {
       "main": [
         "dist/metisMenu.min.css",
@@ -175,24 +180,25 @@
         "dist/bootstrap-notify.min.js"
       ]
     },
+    "sammy": {
+      "main": [
+        "lib/min/sammy-latest.min.js"
+      ]
+    },
     "screenfull": {
       "main": [
         "dist/screenfull.js"
       ]
     },
+    "swfobject": {
+      "main": [
+        "swfobject/expressInstall.swf",
+        "swfobject/swfobject.js"
+      ]
+    },
     "typeahead.js": {
       "main": [
         "dist/typeahead.bundle.min.js"
-      ]
-  	},
-    "knockout-validation": {
-      "main": [
-        "dist/knockout.validation.min.js"
-      ]
-  	},
-    "sammy": {
-      "main": [
-        "lib/min/sammy-latest.min.js"
       ]
   	}
   },
@@ -200,7 +206,7 @@
   	
   },
   "resolutions": {
-	"jquery": "2.2.0",
+	"jquery": "2.2.1",
     "bootstrap": "3.3.6"
   }
 }
