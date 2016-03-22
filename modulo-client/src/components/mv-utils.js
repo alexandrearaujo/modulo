@@ -87,8 +87,10 @@ function clearValidation(viewModel) {
 }
 
 function loadPage(screen, viewModel) {
+	
+	var $container = $('#'+screen);
+	
 	if(!ko.dataFor(document.getElementById(screen))){
-		var $container = $('#'+screen);
 		
 		$container.html(ko.load.view($container.data().pageUrl))
 		
@@ -100,11 +102,11 @@ function loadPage(screen, viewModel) {
 		viewModel.pages.push({id: screen, page: $container.data().pageUrl});
 	}
 	
+	$container.fadeIn('slow');
+	
 	for (var i = 0, n = viewModel.pages.length; i < n; ++i) {
 		var page = viewModel.pages[i];
 		var $container = $('#'+page.id);
-		
-		$container.fadeIn('slow');
 		
 		if(screen != page.id)
 			$container.hide();
