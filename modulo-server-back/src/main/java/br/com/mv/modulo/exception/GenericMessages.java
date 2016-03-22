@@ -31,5 +31,9 @@ public class GenericMessages {
 	public String getMessage(String messageKey) {
 		return messageSource.getMessage(messageKey, null, locale);
 	}
+	
+	public String getMessage(String messageKey, Object[] args) {
+		return messageSource.getMessage(messageKey, args, locale);
+	}
 
 }

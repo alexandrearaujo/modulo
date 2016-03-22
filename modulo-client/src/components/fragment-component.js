@@ -127,6 +127,7 @@ ko.components.register('mv-text-field',{
 		this.value = params.mask ? {} : params.value;
 		this.inputMask = params.mask ? {mask : params.mask, value: params.value} : {};
 		this.maxLength = params.maxLength;
+		this.numeric = params.numeric || false;
 		
 		if(params.min){
 			params.value.extend({ min: params.min });
@@ -139,7 +140,8 @@ ko.components.register('mv-text-field',{
 	template : '<div class="form-group" data-bind="css: { \'has-error\' : required && value.isModified() && !value.isValid() }">\
 		<label-field params = "idLabel : idLabel, label : label, idField : params.id, required : required "></label-field>\
 		<input class="form-control" type="text"\
-			data-bind="value: value, disable: disabled, valueUpdate: valueUpdate, inputMask: inputMask, tooltipError: { value: value }, attr: {maxlength: maxLength}" /> \
+			data-bind="value: value, disable: disabled, valueUpdate: valueUpdate, inputMask: inputMask, tooltipError: { value: value }, attr: {maxlength: maxLength}, \
+					   css: { \'numbersOnly\': numeric }" /> \
 		</div>'
 });
 
