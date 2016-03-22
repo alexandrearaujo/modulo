@@ -104,13 +104,13 @@
 		<repository>
 			<id>MVNexus</id>
 			<name>Internal Releases</name>
-			<url>http://echo.mvfor.local/nexus/content/repositories/new-projects-releases/</url>
+			<url>http://teseu.mvrec.local/nexus/content/repositories/new-projects-releases/</url>
 		</repository>
 		
 		<snapshotRepository>
 			<id>MVNexus</id>
 			<name>Internal Snapshots</name>
-			<url>http://echo.mvfor.local/nexus/content/repositories/new-projects-snapshots/</url>
+			<url>http://teseu.mvrec.local/nexus/content/repositories/new-projects-snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 	
