@@ -8,6 +8,13 @@ function sexoFormatter(sexo, row, index){
 	return '';
 }
 
+function simOuNaoFormatter(flag, row, index){
+	if(flag) 
+		return "SIM";	
+	else
+		return "NÃO";	
+}
+
 function cartaoSusFormatter(cartaoSus, row, index){
 	return formatCartaoSus(cartaoSus);
 }
