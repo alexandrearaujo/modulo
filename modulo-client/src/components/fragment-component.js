@@ -21,6 +21,12 @@ function ViewModelValidationRequired(params){
 	}
 }
 
+function ViewModelUpperCase(params){
+	if(params.value){
+		params.value.extend({ upperCase: true	});
+	}
+}
+
 ko.components.register('mv-date', {
     viewModel: function(params) {
     	//Herança
@@ -115,10 +121,13 @@ ko.components.register('mv-text-field',{
 		//Herança
     	ViewModelGenericComponent.call(this, params);
     	ViewModelValidationRequired.call(this, params);
+    	ViewModelUpperCase.call(this, params);
     	
 		this.valueUpdate = params.valueUpdate;
 		this.value = params.mask ? {} : params.value;
 		this.inputMask = params.mask ? {mask : params.mask, value: params.value} : {};
+		this.maxLength = params.maxLength;
+		this.numeric = params.numeric || false;
 		
 		if(params.min){
 			params.value.extend({ min: params.min });
@@ -131,7 +140,8 @@ ko.components.register('mv-text-field',{
 	template : '<div class="form-group" data-bind="css: { \'has-error\' : required && value.isModified() && !value.isValid() }">\
 		<label-field params = "idLabel : idLabel, label : label, idField : params.id, required : required "></label-field>\
 		<input class="form-control" type="text"\
-			data-bind="value: value, disable: disabled, valueUpdate: valueUpdate, inputMask: inputMask, tooltipError: { value: value }" /> \
+			data-bind="value: value, disable: disabled, valueUpdate: valueUpdate, inputMask: inputMask, tooltipError: { value: value }, attr: {maxlength: maxLength}, \
+					   css: { \'numbersOnly\': numeric }" /> \
 		</div>'
 });
 

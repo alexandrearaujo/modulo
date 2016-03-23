@@ -34,7 +34,22 @@
 					<artifactId>spring-core</artifactId>
 					<groupId>org.springframework</groupId>
 				</exclusion>
+				<exclusion>
+					<artifactId>hibernate-entitymanager</artifactId>
+					<groupId>org.hibernate</groupId>
+				</exclusion>
 			</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-java8</artifactId>
+			<version>LATEST</version>
 		</dependency>
 		
 		<dependency>
@@ -101,4 +116,16 @@
 			<artifactId>lombok</artifactId>
 		</dependency>
 	</dependencies>
+	
+	<build>
+       <plugins>
+           <plugin>
+               <groupId>org.hibernate.orm.tooling</groupId>
+               <artifactId>hibernate-enhance-maven-plugin</artifactId>
+               <configuration>
+                   <dir>${project.build.outputDirectory}${file.separator}br${file.separator}com${file.separator}mv${file.separator}${project.parent.artifactId}${file.separator}model</dir>
+               </configuration>
+           </plugin>
+       </plugins>
+    </build>
 </project>

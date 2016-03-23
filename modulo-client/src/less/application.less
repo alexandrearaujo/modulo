@@ -44,8 +44,6 @@ html, body, .container-fluid.main, .row.main {
 .right-side {
 	height: 91%;
 	overflow-y: auto;
-	padding-left: 10px;
-	padding-right: 10px;
 }
 
 .right-side-flex {
@@ -266,4 +264,53 @@ input.tt-input {
 
 .lte8 .tooltip-error:hover .tooltip {
   display: block;
+}
+
+.page-header {
+    margin: 0 0 12px;
+    border-bottom: 1px dotted #e2e2e2;
+    padding-bottom: 16px;
+}
+
+.page-header h1 {
+	padding: 0;
+	margin: 0 8px;
+	font-size: 24px;
+	font-weight: lighter;
+	color: #2679b5;
+}
+
+.breadcrumbs-fixed {
+	right: 0;
+	left: 0; 
+	top: auto; 
+	left: 222px;
+}
+
+.breadcrumbs-fixed>.breadcrumb {
+	z-index: 1024 !important; 
+	width: 100% !important;
+	position: fixed;
+	border-radius: 0px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #ddd;
+}
+
+.breadcrumb>li+li:before {
+    font-family: FontAwesome;
+    font-size: 14px;
+    content: "\f105";
+    color: #b2b6bf;
+    position: relative;
+    top: 1px;
+}
+
+.breadcrumb>li {
+	display: inline-block;
+	color: #2679b5;
+}
+
+.page-content {
+	padding-top: 49px;
 }

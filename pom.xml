@@ -86,6 +86,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 		<spring.version>LATEST</spring.version>
+		<hibernate.version>5.1.0.Final</hibernate.version>
 	</properties>
 	
 	<profiles>
@@ -104,15 +105,25 @@
 		<repository>
 			<id>MVNexus</id>
 			<name>Internal Releases</name>
-			<url>http://echo.mvfor.local/nexus/content/repositories/new-projects-releases/</url>
+			<url>http://teseu.mvrec.local/nexus/content/repositories/releases/</url>
 		</repository>
 		
 		<snapshotRepository>
 			<id>MVNexus</id>
 			<name>Internal Snapshots</name>
-			<url>http://echo.mvfor.local/nexus/content/repositories/new-projects-snapshots/</url>
+			<url>http://teseu.mvrec.local/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-entitymanager</artifactId>
+				<version>5.1.0.Final</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	
 	<build>
 		<pluginManagement>
@@ -120,7 +131,7 @@
 				<plugin>
 					<groupId>com.github.eirslett</groupId>
 					<artifactId>frontend-maven-plugin</artifactId>
-					<version>0.0.28</version>
+					<version>0.0.29</version>
 					<executions>
 						<execution>
 							<id>install node and npm</id>
@@ -130,7 +141,7 @@
 							<configuration>
 								<nodeVersion>v4.2.4</nodeVersion>
 								<npmVersion>3.5.2</npmVersion>
-								<npmRegistryURL>http://echo.mvfor.local/nexus/content/repositories/npm/</npmRegistryURL>
+								<npmRegistryURL>http://teseu.mvrec.local/nexus/content/repositories/npm/</npmRegistryURL>
 							</configuration>
 							<phase>initialize</phase>
 						</execution>
@@ -166,6 +177,59 @@
 						</execution>
 					</executions>
 				</plugin>
+				
+				<plugin>
+	               <groupId>org.hibernate.orm.tooling</groupId>
+	               <artifactId>hibernate-enhance-maven-plugin</artifactId>
+	               <version>${hibernate.version}</version>
+	               <configuration>
+	                   <failOnError>false</failOnError>
+                       <enableAssociationManagement>false</enableAssociationManagement>
+                       <enableDirtyTracking>true</enableDirtyTracking>
+                       <enableExtendedEnhancement>true</enableExtendedEnhancement>
+                       <enableLazyInitialization>true</enableLazyInitialization>
+	               </configuration>
+	               <executions>
+	                   <execution>
+	                       <goals>
+	                           <goal>enhance</goal>
+	                       </goals>
+	                   </execution>
+	               </executions>
+	            </plugin>
+	            
+				<plugin>
+	                <groupId>org.eclipse.m2e</groupId>
+	                <artifactId>lifecycle-mapping</artifactId>
+	                <version>1.0.0</version>
+	                <configuration>
+	                    <lifecycleMappingMetadata>
+	                        <pluginExecutions>
+	                            <pluginExecution>
+	                                <pluginExecutionFilter>
+	                                    <groupId>
+	                                        org.hibernate.orm.tooling
+	                                    </groupId>
+	                                    <artifactId>
+	                                        hibernate-enhance-maven-plugin
+	                                    </artifactId>
+	                                    <versionRange>
+	                                        [5.1.0.Final,)
+	                                    </versionRange>
+	                                    <goals>
+	                                        <goal>enhance</goal>
+	                                    </goals>
+	                                </pluginExecutionFilter>
+	                                <action>
+	                                    <execute>
+	                                        <runOnIncremental>true</runOnIncremental>
+	                                    </execute>
+	                                </action>
+	                            </pluginExecution>
+	                        </pluginExecutions>
+	                    </lifecycleMappingMetadata>
+	                </configuration>
+	            </plugin>
 			</plugins>
 		</pluginManagement>
 		

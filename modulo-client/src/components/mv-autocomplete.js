@@ -56,12 +56,12 @@ ko.bindingHandlers.mvautocomplete = {
 			viewModel : viewModel,
 			source : suggestions.ttAdapter()
 		}).on('typeahead:selected', function(event, data) {
-			var attrValue = findAttr(bindingContext.$parent, valueAccessor().value);
-			var attrText = findAttr(bindingContext.$parent, valueAccessor().valueText);
+//			var attrValue = findAttr(bindingContext.$parent, valueAccessor().value);
+//			var attrText = findAttr(bindingContext.$parent, valueAccessor().valueText);
 			var otherValues = valueAccessor().otherValues;
 
-			attrValue(data.id);
-			attrText(data.text);
+			valueAccessor().value(data.id);
+			valueAccessor().valueText(data.text);
 
 			if (otherValues) {
 				$.map(otherValues, function(a) {
