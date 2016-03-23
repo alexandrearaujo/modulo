@@ -7,7 +7,7 @@
 <meta charset="UTF-8"/>
 <body>
     <ul th:id="${idMenu}" th:fragment="fragmento-menu">
-		<li th:attr="data-controller=${menu.uri}" th:each="menu : __${menus}__" th:unless="${#lists.isEmpty(menus)}">
+		<li data:controller="${menu.uri}" th:each="menu : __${menus}__" th:unless="${#lists.isEmpty(menus)}" data:rootMenu="${menu.cdMenuPai == 0}">
 		  	<a href="javascript:;" th:unless="${#lists.isEmpty(menu.menus)}">
 		  		<i class="glyphicon glyphicon-plus"></i>
 				<span class="link-title" th:text="${menu.rotulo}"></span>
@@ -20,8 +20,8 @@
 	
 	<th:block th:fragment="fragmento-submenu">
 		<ul>
-			<li th:attr="data-controller=${menuFilho.uri}" th:each="menuFilho : __${menus}__">
-				<a th:href="@{__${menuFilho.uri}__}" th:if="${#lists.isEmpty(menuFilho.menus)}">
+			<li data:controller="${menuFilho.uri}" th:each="menuFilho : __${menus}__">
+				<a th:attr="href=@{__${menuFilho.uri}__}" th:if="${#lists.isEmpty(menuFilho.menus)}">
 				  <i class="fa fa-desktop"></i>
 				  <span th:text="${menuFilho.rotulo}"></span>
 				</a> 

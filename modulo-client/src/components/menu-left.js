@@ -31,13 +31,21 @@ function activeOptionMenu() {
 		controller += '/' + window.location.pathname.split('/')[3];
 		menu = $("li[data-controller='/" + controller + "']");
 	}
-	var actionLi = menu;
-	var groupActionUL = actionLi.parent();
-	var menuOption = groupActionUL.parent();
+	if (menu.length === 0) {
+		controller += window.location.hash;
+		menu = $("li[data-controller='/" + controller + "']");
+	}
+	var groupActionUL = menu.parent();
+	var menuOptionLi = groupActionUL.parent();
+	var groupActionParentUL = menuOptionLi.parent();
+	var menuOptionParentLi = groupActionParentUL.parent();
 	if(controller !== "") {
+		menuOptionParentLi.addClass('active');
+		groupActionParentUL.addClass('in');
+		groupActionParentUL.attr('aria-expanded', true);
+		menuOptionLi.addClass('active');
 		groupActionUL.addClass('in');
-		groupActionUL.attr('aria-expanded',true);
-		menuOption.addClass('active');
-		actionLi.addClass('active');
+		groupActionUL.attr('aria-expanded', true);
+		menu.addClass('active');
 	}
 }
