@@ -194,7 +194,7 @@
   	
   },
   "resolutions": {
-	"jquery": "2.2.0",
+	"jquery": "2.2.1",
     "bootstrap": "3.3.6"
   }
 }
