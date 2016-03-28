@@ -12,7 +12,7 @@
 	<attribute-processor name="label">
 		<documentation reference="label"></documentation>
 		<restrictions
-			tags="mv:date mv:periodo"/>
+			tags="mv:data mv:periodo"/>
 	</attribute-processor>
 	
 	<attribute-processor name="id">
@@ -34,12 +34,11 @@
 	</attribute-processor>
 	
 	<attribute-processor name="value">
-		<documentation reference="value"></documentation>
-<!-- 		<restrictions -->
-<!-- 			tags="input"/> -->
+		<documentation reference="Valor do data-bind do Knockout"></documentation>
+		<restrictions tags="mv:data"/>
 	</attribute-processor>
 	
-	<element-processor name="date"
+	<element-processor name="data"
 		class="br.com.mv.modulo.components.element.MVDateElementProcessor"/>
 	
 	<element-processor name="periodo"

@@ -2,18 +2,20 @@ package br.com.mv.modulo.components.element;
 
 import org.thymeleaf.Arguments;
 import org.thymeleaf.Configuration;
-import org.thymeleaf.dom.Attribute;
 import org.thymeleaf.dom.Element;
+import org.thymeleaf.dom.Text;
 import org.thymeleaf.processor.ProcessorResult;
 import org.thymeleaf.processor.element.AbstractElementProcessor;
 import org.thymeleaf.standard.expression.IStandardExpression;
 import org.thymeleaf.standard.expression.IStandardExpressionParser;
 import org.thymeleaf.standard.expression.StandardExpressions;
+import org.thymeleaf.util.Validate;
 
 public class MVDateElementProcessor extends AbstractElementProcessor {
 	
 	public static final int ATTR_PRECEDENCE = 100000;
-	public static final String ELEMENT_NAME = "date";
+	public static final String ELEMENT_NAME = "data";
+	public static final String DIALECT_PREFIX = "mv";
 	
 	
 	protected boolean removeHostElement(Arguments arguments, Element element) {
@@ -39,20 +41,28 @@ public class MVDateElementProcessor extends AbstractElementProcessor {
 
 	@Override
 	protected ProcessorResult processElement(Arguments arguments, Element element) {
-		Attribute mvAttrId = (element.hasAttribute("data-mv-id") ? element.getAttributeFromNormalizedName("data-mv-id") : element.getAttributeFromNormalizedName("mv:id"));
-		Attribute mvAttrValue = (element.hasAttribute("data-mv-value") ? element.getAttributeFromNormalizedName("data-mv-value") : element.getAttributeFromNormalizedName("mv:value"));
-		Attribute mvAttrRequired = (element.hasAttribute("data-mv-required") ? element.getAttributeFromNormalizedName("data-mv-required") : element.getAttributeFromNormalizedName("mv:required"));
-		Attribute mvAttrDisabled = (element.hasAttribute("data-mv-disabled") ? element.getAttributeFromNormalizedName("data-mv-disabled") : element.getAttributeFromNormalizedName("mv:disabled"));
-		Attribute mvAttrLabel = (element.hasAttribute("data-mv-label") ? element.getAttributeFromNormalizedName("data-mv-label") : element.getAttributeFromNormalizedName("mv:label"));
+		String mvAttrId = element.getAttributeValueFromNormalizedName(DIALECT_PREFIX, "id");
+		String mvAttrValue = element.getAttributeValueFromNormalizedName(DIALECT_PREFIX, "value");
+		String mvAttrRequired = element.getAttributeValueFromNormalizedName(DIALECT_PREFIX, "required");
+		String mvAttrDisabled = element.getAttributeValueFromNormalizedName(DIALECT_PREFIX, "disabled");
+		String mvAttrLabel = element.getAttributeValueFromNormalizedName(DIALECT_PREFIX, "label");
 		
-		String mvLabel = getText(arguments, mvAttrLabel.getValue());
+		String mvLabel = mvAttrLabel != null ? getText(arguments, "#{" + mvAttrLabel + "}") : "";
 		
 		Element div = new Element("div");
 		div.setAttribute("class", "date-field date form-group");
-		div.setAttribute("data-bind", "mvDate:{ value: " + mvAttrValue.getValue() + "}");
+		Validate.notNull(mvAttrValue, "Campo value obrigatório");
+		div.setAttribute("data-bind", "mvDate:{ value: " + mvAttrValue + "}");
 		
 		Element label = new Element("label");
-		label.setAttribute("data-bind", "css: {required: " + mvAttrRequired.getValue() + ", \'control-label\': true}, id : " + mvAttrId.getValue() + "Label, attr: { for : '" + mvAttrId.getValue() + "' }, text: '" + mvLabel + "'");
+		label.setAttribute("class", "control-label");
+		if (Boolean.parseBoolean(mvAttrRequired)) {
+			label.setAttribute("class", label.getAttributeValue("class") + " " + "required");
+		}
+		
+		if (mvLabel != null) {
+			label.addChild(new Text(mvLabel));
+		}
 		
 		div.addChild(label);
 		
@@ -62,12 +72,22 @@ public class MVDateElementProcessor extends AbstractElementProcessor {
 		Element input = new Element("input");
 		input.setAttribute("type", "text");
 		input.setAttribute("class", "form-control");
-		input.setAttribute("data-bind", "attr: {id: '" + mvAttrId.getValue() + "', disabled : " + mvAttrDisabled.getValue() + "}");
+		
+		if (mvAttrId != null) {
+			input.setAttribute("id" , mvAttrId);
+			label.setAttribute("id", mvAttrId + "Label");
+			label.setAttribute("for", mvAttrId);
+		}
 		
 		divInterna.addChild(input);
 		
 		Element span = new Element("span");
-		span.setAttribute("data-bind", "attr : {disabled : " + mvAttrDisabled.getValue() + "}");
+		
+		if (Boolean.parseBoolean(mvAttrDisabled)) {
+			span.setAttribute("disabled", "disabled");
+			input.setAttribute("disabled", "disabled");
+		}
+		
 		span.setAttribute("class", "input-group-addon btn");
 		
 		Element spanInterno = new Element("span");
