@@ -37,7 +37,6 @@ jQuery(document).ready(function(){
 	formatMask();
 	fncUppercase();
 	numbersOnly();
-	$('form').bootstrapValidator({});
 	$("td[rel='tooltip']").tooltip({
 	    'placement': 'top',
 	    'container':'body'

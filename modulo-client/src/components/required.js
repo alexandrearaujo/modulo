@@ -19,13 +19,6 @@
     		} else if(!isRequired) {
     			label.removeClass('required');
     		}
-    		
-    		if($element.hasClass('typeahead')) {
-    			var $hidden = $element.parent().prev();
-    			$form.bootstrapValidator('enableFieldValidators', $hidden.prop('name'), isRequired);
-    		} else {
-    			$form.bootstrapValidator('enableFieldValidators', element.name, isRequired);
-    		}
     	});
     };
 }(jQuery));

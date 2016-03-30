@@ -23,7 +23,7 @@ function ViewModelValidationRequired(params){
 
 function ViewModelUpperCase(params){
 	if(params.value){
-		params.value.extend({ upperCase: true });
+		params.value.extend({ upperCase: !params.numeric ? true : false });
 	}
 }
 

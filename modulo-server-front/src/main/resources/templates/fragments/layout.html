@@ -13,8 +13,6 @@
 		<meta name="author" th:content="${author}"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		
-		
-		
 		<meta name="_csrf" th:content="${_csrf?.token}"/>
     	<meta name="_csrf_header" th:content="${_csrf?.headerName}"/>
 		
@@ -29,9 +27,6 @@
 		<!-- Font Awesome -->
 		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/font-awesome/css/font-awesome.min.css')}__}"/>
 		
-		<!-- Bootstrap Validator -->
-		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrapvalidator/dist/css/bootstrapValidator.min.css')}__}"/>
-			
 		<!-- Bootstrap DatePicker -->
 		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css')}__}"/>
 			
@@ -44,7 +39,7 @@
 		<!-- Awesome Bootstrap Checkbox -->
 	    <link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css')}__}"/>
 		
-		<!-- Bootstrap-table -->
+		<!-- Bootstrap-Table -->
 		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-table/dist/bootstrap-table.min.css')}__}"/>
 		
 		<!-- Bootstrap-Modal- -->
@@ -53,7 +48,6 @@
 		
 		<!-- Menu Style -->
 		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/css/menu.css')}__}"/>
-
   		
 		<!-- MV Theme -->
 		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/css/menu-left.css')}__}" />
@@ -68,10 +62,10 @@
 		<!-- Pace -->
   		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/pace/themes/green/pace-theme-minimal.css')}__}"/>
   		
-		<!-- Boorstrap Dialog -->
+		<!-- Bootstrap Dialog -->
   		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap3-dialog/dist/css/bootstrap-dialog.min.css')}__}"/>
   		
-		<!-- Boorstrap Switch -->
+		<!-- Bootstrap Switch -->
   		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css')}__}"/>
 		
 		<!-- Jquery core Javascript -->
@@ -85,13 +79,6 @@
 			
 			<!-- Knockout JS -->
 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/knockout/dist/knockout.js')}__}"></script>
-			
-			<!-- Bootstrap validator with brazilian locale JavaScript -->
-			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrapvalidator/dist/js/bootstrapValidator.min.js')}__}"></script>
-			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrapvalidator/dist/js/language/pt_BR.js')}__}"></script>
-			
-			<!-- Bootstrap Datepicker with brazilian locale (Comentado até as correções serem enviadas para github, enquanto isso usaremos o nosso próprio JS localizado na pasta components) -->
-<!-- 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}__}"></script> -->
 			
 			<!-- Bootstrap FileInput with brazilian locale -->
 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-fileinput/js/fileinput.min.js')}__}"></script>
@@ -118,14 +105,14 @@
 			<!-- Confirmation -->
 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-confirmation2/bootstrap-confirmation.min.js')}__}"></script>			
 			
-			<!-- bootstrap-table -->
+			<!-- Bootstrap-Table -->
 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/col-resizable/colResizable-1.5.min.js')}__}"></script>
 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-table/dist/bootstrap-table.min.js')}__}"></script>
 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-table/dist/locale/bootstrap-table-pt-BR.min.js')}__}"></script>
 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-table/dist/extensions/key-events/bootstrap-table-key-events.min.js')}__}"></script>
 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-table/dist/extensions/resizable/bootstrap-table-resizable.js')}__}"></script>
 			
-			<!-- Bootstrap-Modal- -->
+			<!-- Bootstrap-Modal -->
 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-modal/js/bootstrap-modal.js')}__}"></script>
 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-modal/js/bootstrap-modalmanager.js')}__}"></script>
 			
@@ -135,12 +122,16 @@
 			<!-- Knockout Validation -->
 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/knockout-validation/dist/knockout.validation.min.js')}__}"></script>
 			
-			<!-- Knockout Validation -->
+			<!-- Sammy Routes -->
 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/sammy/lib/min/sammy-latest.min.js')}__}"></script>
 			
 			<!-- Modulo Components -->
 			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/components/components.js')}__}"></script>
 			<script>initValidation()</script>
+			
+			<!-- Bootstrap Datepicker with brazilian locale (Comentado até as correções serem enviadas para github, enquanto isso usaremos o nosso próprio JS localizado na pasta components) -->
+            <!-- <script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}__}"></script> -->
+            <script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js')}__}"></script>
 			
 			<!-- Pace: Configurações para a barra de progresso. -->
 			<script>window.paceOptions = { ajax: { trackMethods : ['GET', 'POST']}};</script>
@@ -155,15 +146,14 @@
 				initValidation();
 			</script>
 			
+			<!-- Bootstrap-Dialog -->
 			<script type="text/javascript" charset='UTF-8' th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap3-dialog/dist/js/bootstrap-dialog.min.js')}__}"></script>
 			
-			<script type="text/javascript" charset='UTF-8' th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/pagerjs/dist/pager.min.js')}__}"></script>
-			
+			<!-- Knockout Mapping -->
 			<script type="text/javascript" charset='UTF-8' th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bower-knockout-mapping/dist/knockout.mapping.min.js')}__}"></script>
 			
+			<!-- Bootstrap-Switch -->
 			<script type="text/javascript" charset='UTF-8' th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-switch/dist/js/bootstrap-switch.min.js')}__}"></script>
-			
-			<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js')}__}"></script>
 		</th:block>
 	</body>
 </html>

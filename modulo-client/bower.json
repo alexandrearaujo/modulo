@@ -14,7 +14,6 @@
     "bootstrap-table": "latest",
     "bootstrap-timepicker": "0.3.0",
     "bootstrap3-dialog": "latest",
-    "bootstrapvalidator": "latest",
     "bower-knockout-mapping" : "latest",
     "col-resizable": "latest",
     "font-awesome": "latest",
@@ -25,7 +24,6 @@
     "metisMenu": "latest",
     "moment" : "latest",
     "pace": "latest",
-    "pagerjs" : "latest",
     "remarkable-bootstrap-notify": "latest",
     "sammy": "latest",
     "screenfull": "latest",
@@ -108,13 +106,6 @@
         "dist/bootstrap-dialog.min.js"
       ]
     },
-    "bootstrapvalidator": {
-      "main": [
-        "dist/css/bootstrapValidator.min.css",
-        "dist/js/bootstrapValidator.min.js",
-        "dist/js/language/pt_BR.js"
-      ]
-    },
     "bower-knockout-mapping": {
       "main": [
         "dist/knockout.mapping.min.js"
@@ -170,11 +161,6 @@
         "themes/green/pace-theme-minimal.css"
       ]
     },
-    "pagerjs": {
-      "main": [
-        "dist/pager.min.js"
-      ]
-    },
     "remarkable-bootstrap-notify": {
       "main": [
         "dist/bootstrap-notify.min.js"
@@ -206,7 +192,7 @@
   	
   },
   "resolutions": {
-	"jquery": "2.2.1",
+	"jquery": "2.2.2",
     "bootstrap": "3.3.6"
   }
 }
