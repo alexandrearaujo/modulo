@@ -12,7 +12,7 @@
 	<attribute-processor name="label">
 		<documentation reference="label"></documentation>
 		<restrictions
-			tags="mv:data mv:periodo"/>
+			tags="mv:data mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="id">
@@ -35,7 +35,7 @@
 	
 	<attribute-processor name="value">
 		<documentation reference="Valor do data-bind do Knockout"></documentation>
-		<restrictions tags="mv:data"/>
+		<restrictions tags="mv:data mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="bind">
@@ -53,5 +53,8 @@
 	
 	<element-processor name="periodo"
 		class="br.com.mv.modulo.components.element.MVPeriodoElementProcessor"/>
+	
+	<element-processor name="text"
+		class="br.com.mv.modulo.components.element.TextElementProcessor"/>
 
 </dialect>
