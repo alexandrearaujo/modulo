@@ -32,10 +32,17 @@ public class MVDateElementProcessor extends AbstractElementProcessor {
 		String mvAttrValue = element.getAttributeValueFromNormalizedName(DIALECT_PREFIX, "value");
 		String mvAttrDisabled = element.getAttributeValueFromNormalizedName(DIALECT_PREFIX, "disabled");
 		
-		Element div = new Element("div");
-		div.setAttribute("class", "date-field date form-group");
 		Validate.notNull(mvAttrValue, "Campo value obrigatório");
-		div.setAttribute("data-bind", "mvDate:{ value: " + mvAttrValue + "}");
+		
+		MVDivFormGroupElementGenerator mvDivExternaElementGenerator = new MVDivFormGroupElementGenerator();
+		mvDivExternaElementGenerator.setMvClass("date-field date");
+		mvDivExternaElementGenerator.setMvDataBind(", mvDate: options");
+		mvDivExternaElementGenerator.setMvDataBind(", value: " + mvAttrValue);
+		mvDivExternaElementGenerator.setMvDataBind(", attr: {disabled : " + Boolean.parseBoolean(mvAttrDisabled) + "}");
+		Element div = mvDivExternaElementGenerator.getDiv();
+//		Element div = new Element("div");
+//		div.setAttribute("class", "date-field date form-group");
+//		div.setAttribute("data-bind", "mvDate:{ value: " + mvAttrValue + "}");
 		
 		MVLabelElementGenerator mvLabelElementGenerator = new MVLabelElementGenerator(arguments, element);
 		div.addChild(mvLabelElementGenerator.getLabel());

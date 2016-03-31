@@ -38,6 +38,16 @@
 		<restrictions tags="mv:data"/>
 	</attribute-processor>
 	
+	<attribute-processor name="bind">
+		<documentation reference="Valor do data-bind do Knockout"></documentation>
+<!-- 		<restrictions tags="mv:data"/> -->
+	</attribute-processor>
+	
+	<attribute-processor name="bind-css">
+		<documentation reference="Valor do data-bind do Knockout"></documentation>
+<!-- 		<restrictions tags="mv:data"/> -->
+	</attribute-processor>
+	
 	<element-processor name="data"
 		class="br.com.mv.modulo.components.element.MVDateElementProcessor"/>
 	
