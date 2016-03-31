@@ -1,5 +1,6 @@
 package br.com.mv.modulo.components.element;
 
+import org.apache.commons.lang3.StringUtils;
 import org.thymeleaf.Arguments;
 import org.thymeleaf.dom.Element;
 import org.thymeleaf.processor.ProcessorResult;
@@ -31,18 +32,20 @@ public class MVDateElementProcessor extends AbstractElementProcessor {
 	protected ProcessorResult processElement(Arguments arguments, Element element) {
 		String mvAttrValue = element.getAttributeValueFromNormalizedName(DIALECT_PREFIX, "value");
 		String mvAttrDisabled = element.getAttributeValueFromNormalizedName(DIALECT_PREFIX, "disabled");
+		String mvAttrOptions = element.getAttributeValueFromNormalizedName(DIALECT_PREFIX, "options");
 		
 		Validate.notNull(mvAttrValue, "Campo value obrigatório");
 		
-		MVDivFormGroupElementGenerator mvDivExternaElementGenerator = new MVDivFormGroupElementGenerator();
-		mvDivExternaElementGenerator.setMvClass("date-field date");
-		mvDivExternaElementGenerator.setMvDataBind(", mvDate: options");
-		mvDivExternaElementGenerator.setMvDataBind(", value: " + mvAttrValue);
-		mvDivExternaElementGenerator.setMvDataBind(", attr: {disabled : " + Boolean.parseBoolean(mvAttrDisabled) + "}");
-		Element div = mvDivExternaElementGenerator.getDiv();
-//		Element div = new Element("div");
-//		div.setAttribute("class", "date-field date form-group");
-//		div.setAttribute("data-bind", "mvDate:{ value: " + mvAttrValue + "}");
+		MVDivFormGroupElementGenerator mvDivFormGroupElementGenerator = new MVDivFormGroupElementGenerator();
+		mvDivFormGroupElementGenerator.setMvClass("date-field date");
+		
+		if (StringUtils.isNotBlank(mvAttrOptions)) {
+			mvDivFormGroupElementGenerator.setMvDataBind("mvDate: " + mvAttrOptions);
+		}
+		
+		mvDivFormGroupElementGenerator.setMvDataBind("value: " + mvAttrValue);
+		mvDivFormGroupElementGenerator.addMvDataBindAttr("disabled", String.valueOf(Boolean.parseBoolean(mvAttrDisabled)));
+		Element div = mvDivFormGroupElementGenerator.getDiv();
 		
 		MVLabelElementGenerator mvLabelElementGenerator = new MVLabelElementGenerator(arguments, element);
 		div.addChild(mvLabelElementGenerator.getLabel());

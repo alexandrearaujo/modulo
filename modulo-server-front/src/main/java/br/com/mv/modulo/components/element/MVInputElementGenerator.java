@@ -13,7 +13,7 @@ public class MVInputElementGenerator extends MVElementGenerator {
 		
 		input.setAttribute("type", "text");
 		input.setAttribute("class", "form-control");
-		input.setAttribute("tooltipError", "{ value: " + mvAttrValue + " }");
+		input.setAttribute("data-bind", "tooltipError : { value: " + mvAttrValue + " }");
 		
 		if (mvAttrId != null) {
 			input.setAttribute("id" , mvAttrId);
