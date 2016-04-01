@@ -32,6 +32,11 @@
 			tags="mv:data mv:periodo mv:text"/>
 	</attribute-processor>
 	
+	<attribute-processor name="options">
+		<documentation reference="Opções do date-picker"></documentation>
+		<restrictions tags="mv:data"/>
+	</attribute-processor>
+	
 	<attribute-processor name="value">
 		<documentation reference="Valor do data-bind do Knockout"></documentation>
 		<restrictions tags="mv:data mv:text"/>
