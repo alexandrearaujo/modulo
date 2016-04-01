@@ -6,6 +6,7 @@ ko.bindingHandlers.tooltipError = {
     		var options = valueAccessor() || {};
     		options.title = value.error();
     		options.trigger = 'hover';
+    		options.container = 'body';
     		options.placement = 'top';
     		options.template = '<div class="tooltip tooltip-error" role="tooltip">'
     			+'<div class="tooltip-arrow" style="border-top-color: #F2DEDE"></div>'
