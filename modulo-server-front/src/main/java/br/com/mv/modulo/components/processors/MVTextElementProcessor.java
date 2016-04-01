@@ -21,11 +21,15 @@ public class MVTextElementProcessor extends AbstractElementProcessor {
 	
 	@Override
 	protected ProcessorResult processElement(Arguments arguments, Element context) {
-		MVFormGroup formGroup = new MVFormGroup(context);
-		MVLabel label = new MVLabel(context);
-		MVInput input = new MVInput(context);
+		MVFormGroup formGroup = new MVFormGroup(arguments, context);
+		boolean hasLabel = context.getAttributeValueFromNormalizedName(DIALECT_PREFIX, "label") != null;
+
+		if(hasLabel){
+			MVLabel label = new MVLabel(arguments, context);
+			formGroup.addChild(label);
+		}
 		
-		formGroup.addChild(label);
+		MVInput input = new MVInput(arguments, context);
 		formGroup.addChild(input);
 		
 		context.addChild(formGroup.render().getEl());

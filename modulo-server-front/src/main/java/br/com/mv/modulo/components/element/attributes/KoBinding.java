@@ -1,18 +1,20 @@
 package br.com.mv.modulo.components.element.attributes;
 
-import java.util.HashMap;
+import java.io.Serializable;
 
 import org.apache.commons.lang3.StringUtils;
 
 @SuppressWarnings("serial")
-public class KoBinding extends HashMap<String,String> implements MVAttribute{
+public class KoBinding extends MVAttribute implements Serializable{
 	
 	public void setValue(String value) {
 		this.put("value", value);
 	}
 	
 	public void setText(String text) {
-		this.put("text", "'"+text+"'");
+		if(StringUtils.isNotBlank(text)){
+			this.put("text", "'"+text+"'");
+		}
 	}
 
 	public void setVisible(String visible) {
@@ -32,7 +34,7 @@ public class KoBinding extends HashMap<String,String> implements MVAttribute{
 	}
 
 	public void setDisable(String disable) {
-		this.put("enable", disable);
+		this.put("disable", disable);
 	}
 
 	public void setHasFocus(String hasFocus) {
@@ -56,21 +58,14 @@ public class KoBinding extends HashMap<String,String> implements MVAttribute{
 	}
 	
 	@Override
-	public String put(String key, String value) {
-		if(StringUtils.isNotEmpty(value)){
-			return super.put(key, value);
-		}
-		return "";
-	}
-	
-	public String stringify(){
-		
-		if(this.isEmpty()){
+	public String stringify() {
+
+		if (map.isEmpty()) {
 			return "";
 		}
-		
-		StringBuilder json = new StringBuilder("");
-		json.append(this.toString().replace("{", "").replaceAll("}", "").replace("=", ":"));
+
+		StringBuilder json = new StringBuilder();
+		json.append(super.stringify().replace("{", "").replace("}", ""));
 		return json.toString();
 	}
 }

@@ -9,28 +9,27 @@
 	namespace-strict="false"
 	class="br.com.mv.modulo.components.dialect.MVDialect">
 	
+	
 	<attribute-processor name="label">
-		<documentation reference="label"></documentation>
+		<documentation reference="Chave do arquivo de internacionalização"></documentation>
 		<restrictions
 			tags="mv:data mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="id">
-		<documentation reference="id"></documentation>
-<!-- 		<restrictions -->
-<!-- 			tags="input"/> -->
+		<documentation reference="Identificador do elemento html. Atributo é obrigatório"></documentation>
 	</attribute-processor>
 	
 	<attribute-processor name="required">
 		<documentation reference="required"></documentation>
-<!-- 		<restrictions -->
-<!-- 			tags="input"/> -->
+		<restrictions
+			tags="mv:data mv:periodo mv:text"/>
 	</attribute-processor>
 	
-	<attribute-processor name="disabled">
-		<documentation reference="disabled"></documentation>
-<!-- 		<restrictions -->
-<!-- 			tags="input"/> -->
+	<attribute-processor name="disable">
+		<documentation reference="disable"></documentation>
+		<restrictions
+			tags="mv:data mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="value">
@@ -38,15 +37,64 @@
 		<restrictions tags="mv:data mv:text"/>
 	</attribute-processor>
 	
+	<attribute-processor name="mask">
+		<documentation reference="Mascara a ser utilizada. Ex: 999.999.999-99"></documentation>
+		<restrictions tags="mv:text"/>
+	</attribute-processor>
+	
 	<attribute-processor name="bind">
 		<documentation reference="Valor do data-bind do Knockout"></documentation>
 <!-- 		<restrictions tags="mv:data"/> -->
 	</attribute-processor>
 	
-	<attribute-processor name="bind-css">
-		<documentation reference="Valor do data-bind do Knockout"></documentation>
-<!-- 		<restrictions tags="mv:data"/> -->
+	<!-- BEGIN EVENTS -->
+	
+	<attribute-processor name="focusIn">
+		<documentation reference="Evento acionado quando o elemento esta prestes a adquirir o foco."></documentation>
+		<restrictions tags="mv:data mv:periodo mv:text"/>
 	</attribute-processor>
+	
+	<attribute-processor name="focusOut">
+		<documentation reference="Evento acionado quando o elemento esta prestes a perder o foco."></documentation>
+		<restrictions tags="mv:data mv:periodo mv:text"/>
+	</attribute-processor>
+	
+	<attribute-processor name="focus">
+		<documentation reference="Evento acionado quando o elemento adquire foco."></documentation>
+		<restrictions tags="mv:data mv:periodo mv:text"/>
+	</attribute-processor>
+	
+	<attribute-processor name="blur">
+		<documentation reference="Evento acionado quando o elemento perdeu o foco."></documentation>
+		<restrictions tags="mv:data mv:periodo mv:text"/>
+	</attribute-processor>
+	
+	<attribute-processor name="change">
+		<documentation reference="Evento acionado quando o valor do elemento e alterado."></documentation>
+		<restrictions tags="mv:data mv:periodo mv:text"/>
+	</attribute-processor>
+	
+	<attribute-processor name="keyPress">
+		<documentation reference="Evento acionado quando a tecla foi pressionada."></documentation>
+		<restrictions tags="mv:data mv:periodo mv:text"/>
+	</attribute-processor>
+	
+	<attribute-processor name="keyUp">
+		<documentation reference="Evento acionado quando a tecla foi liberada."></documentation>
+		<restrictions tags="mv:data mv:periodo mv:text"/>
+	</attribute-processor>
+	
+	<attribute-processor name="keyDown">
+		<documentation reference="Evento acionado quando a tecla esta acionada."></documentation>
+		<restrictions tags="mv:data mv:periodo mv:text"/>
+	</attribute-processor>
+	
+	<attribute-processor name="select">
+		<documentation reference="Evento acionado quando algum parte do texto contido no elemento esta sendo selecionado."></documentation>
+		<restrictions tags="mv:data mv:periodo mv:text"/>
+	</attribute-processor>
+	
+	<!-- END EVENTS -->
 	
 	<element-processor name="data"
 		class="br.com.mv.modulo.components.element.MVDateElementProcessor"/>
