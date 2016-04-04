@@ -6,7 +6,7 @@ import org.thymeleaf.processor.ProcessorResult;
 import org.thymeleaf.processor.element.AbstractElementProcessor;
 
 import br.com.mv.modulo.components.element.MVFormGroup;
-import br.com.mv.modulo.components.element.MVInput;
+import br.com.mv.modulo.components.element.MVInputText;
 import br.com.mv.modulo.components.element.MVLabel;
 
 public class MVTextElementProcessor extends AbstractElementProcessor {
@@ -29,7 +29,7 @@ public class MVTextElementProcessor extends AbstractElementProcessor {
 			formGroup.addChild(label);
 		}
 		
-		MVInput input = new MVInput(arguments, context);
+		MVInputText input = new MVInputText(arguments, context);
 		formGroup.addChild(input);
 		
 		context.addChild(formGroup.render().getEl());

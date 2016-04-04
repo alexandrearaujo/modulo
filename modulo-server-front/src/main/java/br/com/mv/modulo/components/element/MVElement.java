@@ -78,15 +78,36 @@ public abstract class MVElement {
 	
 	private void build(DomAttribute domAttribute){
 		try {
-			for (Method method : getClass().getDeclaredMethods()) {
+			executeMethodsSuperClass(domAttribute, getClass().getSuperclass());
+			executeMethods(domAttribute);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void executeMethods(DomAttribute domAttribute)throws Exception{
+		for (Method method : getClass().getDeclaredMethods()) {
+			if(method.getName().startsWith("set")){
+				String property = WordUtils.uncapitalize(method.getName().replace("set", ""));
+				Statement s = new Statement(this, method.getName(), new Object[]{domAttribute.getAttributeValue(property)});
+				s.execute();
+			}
+		}
+	}
+	
+	private void executeMethodsSuperClass(DomAttribute domAttribute, @SuppressWarnings("rawtypes") Class superClass) throws Exception{
+		
+		if(!superClass.getName().equals(MVElement.class.getName())){
+		
+			executeMethodsSuperClass(domAttribute, superClass.getSuperclass());
+			
+			for (Method method : superClass.getDeclaredMethods()) {
 				if(method.getName().startsWith("set")){
 					String property = WordUtils.uncapitalize(method.getName().replace("set", ""));
 					Statement s = new Statement(this, method.getName(), new Object[]{domAttribute.getAttributeValue(property)});
 					s.execute();
 				}
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 	
