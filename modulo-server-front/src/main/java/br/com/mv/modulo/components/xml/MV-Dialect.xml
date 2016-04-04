@@ -11,9 +11,8 @@
 	
 	
 	<attribute-processor name="label">
-		<documentation reference="Chave do arquivo de internacionalização"></documentation>
-		<restrictions
-			tags="mv:data mv:periodo mv:text"/>
+		<documentation reference="Chave contida no arquivo de internacionalização"></documentation>
+		<restrictions tags="mv:data mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="id">
@@ -21,15 +20,23 @@
 	</attribute-processor>
 	
 	<attribute-processor name="required">
-		<documentation reference="required"></documentation>
-		<restrictions
-			tags="mv:data mv:periodo mv:text"/>
+		<documentation reference="Flag para indicar a obrigatoriedade ou não do elemento. Pode ser usado tanto como propriedade de um View Model ou como um booleano"></documentation>
+		<restrictions tags="mv:data mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="disable">
-		<documentation reference="disable"></documentation>
-		<restrictions
-			tags="mv:data mv:periodo mv:text"/>
+		<documentation reference="Flag para disabilitar ou não o elemento. Pode ser usado tanto como propriedade de um View Model ou como um booleano"></documentation>
+		<restrictions tags="mv:data mv:periodo mv:text"/>
+	</attribute-processor>
+	
+	<attribute-processor name="visible">
+		<documentation reference="Flag para visualizar ou não o elemento. Pode ser usado tanto como propriedade de um View Model ou como um booleano"></documentation>
+		<restrictions tags="mv:data mv:periodo mv:text"/>
+	</attribute-processor>
+	
+	<attribute-processor name="maxlength">
+		<documentation reference="Quantidade máxima de caracteres que pode ser digitados no elemento"></documentation>
+		<restrictions tags="mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="options">
@@ -43,13 +50,12 @@
 	</attribute-processor>
 	
 	<attribute-processor name="mask">
-		<documentation reference="Mascara a ser utilizada. Ex: 999.999.999-99"></documentation>
+		<documentation reference="Mascara a ser utilizada. Ex: '999.999.999-99' deve ser usado com as simples ('') quando for estatica"></documentation>
 		<restrictions tags="mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="bind">
 		<documentation reference="Valor do data-bind do Knockout"></documentation>
-<!-- 		<restrictions tags="mv:data"/> -->
 	</attribute-processor>
 	
 	<!-- BEGIN EVENTS -->

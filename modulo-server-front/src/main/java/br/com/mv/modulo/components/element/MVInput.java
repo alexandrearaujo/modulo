@@ -17,8 +17,8 @@ public class MVInput extends MVElement {
 		koBinding.put("valueUpdate", value);
 	}
 
-	public void setMaxLength(String value) {
-		koBinding.put("maxLength", value);
+	public void setMaxlength(String value) {
+		koAttr.setMaxlength(value);
 	}
 
 	public void setFocus(String value) {

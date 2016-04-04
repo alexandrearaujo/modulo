@@ -13,8 +13,8 @@ public class KoAttr extends MVAttribute implements Serializable{
 		this.put("for", tagFor);
 	}
 	
-	public void setMaxLength(String maxLength) {
-		this.put("maxLength", maxLength);
+	public void setMaxlength(String maxLength) {
+		this.put("maxlength", maxLength);
 	}
 
 	public String stringify(){
