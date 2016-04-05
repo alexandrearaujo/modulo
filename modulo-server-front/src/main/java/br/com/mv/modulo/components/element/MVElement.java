@@ -14,13 +14,14 @@ import org.thymeleaf.standard.expression.StandardExpressions;
 import org.thymeleaf.util.Validate;
 
 import br.com.mv.modulo.components.element.attributes.DomAttribute;
-import br.com.mv.modulo.components.element.attributes.KoAttr;
 import br.com.mv.modulo.components.element.attributes.KoBinding;
 import br.com.mv.modulo.components.element.attributes.KoCss;
 import br.com.mv.modulo.components.element.attributes.KoDataBind;
 import br.com.mv.modulo.components.element.attributes.KoEvent;
-import br.com.mv.modulo.components.element.attributes.MvInputMask;
-import br.com.mv.modulo.components.element.attributes.MvTooltipError;
+import br.com.mv.modulo.components.element.attributes.MVAttribute;
+import br.com.mv.modulo.components.element.attributes.MVInputMask;
+import br.com.mv.modulo.components.element.attributes.MVTooltipError;
+import br.com.mv.modulo.components.element.attributes.ThDomAttribute;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,39 +32,46 @@ public abstract class MVElement {
 	
 	private Arguments arguments;
 
+	protected DomAttribute domAttribute;
+	
 	protected KoCss koCss;
-
-	protected KoAttr koAttr;
 
 	protected KoBinding koBinding;
 
 	protected KoEvent koEvent;
 	
-	protected MvInputMask maskBinding;
+	protected MVInputMask maskBinding;
 	
-	protected MvTooltipError tooltipError;
+	protected MVTooltipError tooltipError;
+	
+	protected ThDomAttribute thDomAttribute;
+	
+	private KoDataBind dataBind;
 	
 	public MVElement(Arguments arguments, Element context) {
-		DomAttribute domAttribute = new DomAttribute(context.getAttributeMap());
+		ThDomAttribute domAttribute = new ThDomAttribute(context.getAttributeMap());
 		Validate.notNull(domAttribute.get("id"), "Atributo 'id' é obrigatório");
+		Validate.notNull(domAttribute.get("value"), "Atributo 'value' é obrigatório");
 		
 		this.arguments = arguments;
-		this.koAttr = new KoAttr();
+		this.domAttribute = new DomAttribute();
+		this.dataBind = new KoDataBind();
 		this.koBinding = new KoBinding();
 		this.koEvent = new KoEvent();
 		this.koCss = new KoCss();
-		this.maskBinding = new MvInputMask();
-		this.tooltipError = new MvTooltipError();
+		this.maskBinding = new MVInputMask();
+		this.tooltipError = new MVTooltipError();
 		
-		this.build(domAttribute);
+		this.beforeBuildDataBind(domAttribute);
+		this.buildDataBind(domAttribute);
+		this.afterBuildDataBind(domAttribute);
+		
 	}
 	
 	private String getDataBind() {
-		KoDataBind dataBind = new KoDataBind();
 
 		dataBind.add(koBinding);
 		dataBind.add(koEvent);
-		dataBind.add(koAttr);
 		dataBind.add(koCss);
 		dataBind.add(maskBinding);
 		dataBind.add(tooltipError);
@@ -72,11 +80,12 @@ public abstract class MVElement {
 	}
 
 	public MVElement render() {
+		domAttribute.getAttributes().entrySet().stream().forEach(attr -> el.setAttribute(attr.getKey(), attr.getValue()) );
 		el.setAttribute("data-bind", getDataBind());
 		return this;
 	}
 	
-	private void build(DomAttribute domAttribute){
+	private void buildDataBind(ThDomAttribute domAttribute){
 		try {
 			executeMethodsSuperClass(domAttribute, getClass().getSuperclass());
 			executeMethods(domAttribute);
@@ -85,7 +94,15 @@ public abstract class MVElement {
 		}
 	}
 	
-	private void executeMethods(DomAttribute domAttribute)throws Exception{
+	protected void addDataBind(MVAttribute mvAttribute){
+		dataBind.add(mvAttribute);
+	}
+	
+	protected void afterBuildDataBind(ThDomAttribute domAttribute){}
+	
+	protected void beforeBuildDataBind(ThDomAttribute domAttribute){}
+	
+	private void executeMethods(ThDomAttribute domAttribute)throws Exception{
 		for (Method method : getClass().getDeclaredMethods()) {
 			if(method.getName().startsWith("set")){
 				String property = WordUtils.uncapitalize(method.getName().replace("set", ""));
@@ -95,7 +112,7 @@ public abstract class MVElement {
 		}
 	}
 	
-	private void executeMethodsSuperClass(DomAttribute domAttribute, @SuppressWarnings("rawtypes") Class superClass) throws Exception{
+	private void executeMethodsSuperClass(ThDomAttribute domAttribute, @SuppressWarnings("rawtypes") Class superClass) throws Exception{
 		
 		if(!superClass.getName().equals(MVElement.class.getName())){
 		

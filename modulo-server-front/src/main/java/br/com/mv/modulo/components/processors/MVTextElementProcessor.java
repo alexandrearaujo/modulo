@@ -5,9 +5,9 @@ import org.thymeleaf.dom.Element;
 import org.thymeleaf.processor.ProcessorResult;
 import org.thymeleaf.processor.element.AbstractElementProcessor;
 
-import br.com.mv.modulo.components.element.MVFormGroup;
 import br.com.mv.modulo.components.element.MVInputText;
 import br.com.mv.modulo.components.element.MVLabel;
+import br.com.mv.modulo.components.element.container.MVFormGroup;
 
 public class MVTextElementProcessor extends AbstractElementProcessor {
 

@@ -11,12 +11,9 @@ public class MVLabel extends MVElement {
 	
 	public void setId(String id){
 		StringBuilder idLabel = new StringBuilder();
-		idLabel.append("'").append(id).append("Label'");
-		koAttr.setId(idLabel.toString());
-
-		StringBuilder idField = new StringBuilder();
-		idField.append("'").append(id).append("'");
-		koAttr.setFor(idField.toString());
+		idLabel.append(id).append("Label");
+		domAttribute.setId(idLabel.toString());
+		domAttribute.setFor(id);
 	}
 	
 	public void setLabel(String label){

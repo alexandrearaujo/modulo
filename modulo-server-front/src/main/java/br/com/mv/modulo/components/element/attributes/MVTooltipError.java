@@ -3,7 +3,8 @@ package br.com.mv.modulo.components.element.attributes;
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class MvValidation extends MVAttribute implements Serializable{
+public class MVTooltipError extends MVAttribute implements Serializable{
+	
 	public void setValue(String value){
 		put("value", value);
 	}

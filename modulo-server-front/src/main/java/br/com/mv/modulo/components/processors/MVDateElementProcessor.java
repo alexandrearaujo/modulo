@@ -5,10 +5,17 @@ import org.thymeleaf.dom.Element;
 import org.thymeleaf.processor.ProcessorResult;
 import org.thymeleaf.processor.element.AbstractElementProcessor;
 
+import br.com.mv.modulo.components.element.MVLabel;
+import br.com.mv.modulo.components.element.date.MVDate;
+import br.com.mv.modulo.components.element.date.MVDateFormGroup;
+import br.com.mv.modulo.components.element.date.MVDateIconCalendar;
+import br.com.mv.modulo.components.element.date.MVDateInputGroup;
+import br.com.mv.modulo.components.element.date.MVDateInputGroupAddon;
+
 public class MVDateElementProcessor extends AbstractElementProcessor {
 	
 	public static final int ATTR_PRECEDENCE = 100000;
-	public static final String ELEMENT_NAME = "data";
+	public static final String ELEMENT_NAME = "date";
 	public static final String DIALECT_PREFIX = "mv";
 	
 	
@@ -27,51 +34,30 @@ public class MVDateElementProcessor extends AbstractElementProcessor {
 	
 
 	@Override
-	protected ProcessorResult processElement(Arguments arguments, Element element) {
-//		String mvAttrValue = element.getAttributeValueFromNormalizedName(DIALECT_PREFIX, "value");
-//		String mvAttrDisabled = element.getAttributeValueFromNormalizedName(DIALECT_PREFIX, "disabled");
-//		
-//		Validate.notNull(mvAttrValue, "Campo value obrigatório");
-//		
-//		MVDivFormGroupElementGenerator mvDivExternaElementGenerator = new MVDivFormGroupElementGenerator();
-//		mvDivExternaElementGenerator.setMvClass("date-field date");
-//		mvDivExternaElementGenerator.setMvDataBind(", mvDate: options");
-//		mvDivExternaElementGenerator.setMvDataBind(", value: " + mvAttrValue);
-//		mvDivExternaElementGenerator.setMvDataBind(", attr: {disabled : " + Boolean.parseBoolean(mvAttrDisabled) + "}");
-//		Element div = mvDivExternaElementGenerator.getEl();
-////		Element div = new Element("div");
-////		div.setAttribute("class", "date-field date form-group");
-////		div.setAttribute("data-bind", "mvDate:{ value: " + mvAttrValue + "}");
-//		
-//		MVLabelElementGenerator mvLabelElementGenerator = new MVLabelElementGenerator(arguments, element);
-//		div.addChild(mvLabelElementGenerator.getLabel());
-//		
-//		Element divInterna = new Element("div");
-//		divInterna.setAttribute("class", "input-group input-date-field date-field");
-//		
-//		MVInputElementGenerator mvInputElementGenerator = new MVInputElementGenerator(arguments, element);
-//		divInterna.addChild(mvInputElementGenerator.getInput());
-//		
-//		Element span = new Element("span");
-//		
-//		if (Boolean.parseBoolean(mvAttrDisabled)) {
-//			span.setAttribute("disabled", "disabled");
-//		}
-//		
-//		span.setAttribute("class", "input-group-addon btn");
-//		
-//		Element spanInterno = new Element("span");
-//		spanInterno.setAttribute("class", "glyphicon glyphicon-calendar");
-//		
-//		span.addChild(spanInterno);
-//		
-//		divInterna.addChild(span);
-//		
-//		div.addChild(divInterna);
-//		
-//		element.addChild(div);
-//
-//        element.getParent().extractChild(element);
+	protected ProcessorResult processElement(Arguments arguments, Element context) {
+		MVDateFormGroup formGroup = new MVDateFormGroup(arguments, context);
+		MVDateInputGroup inputGroup = new MVDateInputGroup(arguments, context);
+		MVDate date = new MVDate(arguments, context);
+		MVDateInputGroupAddon inputGroupAddon = new MVDateInputGroupAddon(arguments, context);
+		MVDateIconCalendar iconCalendar = new MVDateIconCalendar(arguments, context);
+		inputGroupAddon.addChild(iconCalendar);
+		
+		boolean hasLabel = context.getAttributeValueFromNormalizedName(DIALECT_PREFIX, "label") != null;
+
+		if(hasLabel){
+			MVLabel label = new MVLabel(arguments, context);
+			formGroup.addChild(label);
+		}
+		
+		
+		inputGroup.addChild(date);
+		inputGroup.addChild(inputGroupAddon);
+		
+		formGroup.addChild(inputGroup);
+		
+		context.addChild(formGroup.render().getEl());
+
+        context.getParent().extractChild(context);
         
         return ProcessorResult.OK;
 	}

@@ -5,8 +5,8 @@ import org.thymeleaf.dom.Element;
 
 public class MVInput extends MVElement {
 
-	public void setValue(String value) {
-		koBinding.setValue(value);
+	public void setId(String value){
+		domAttribute.setId(value);
 	}
 	
 	public void setDisable(String value) {
@@ -18,7 +18,7 @@ public class MVInput extends MVElement {
 	}
 
 	public void setMaxlength(String value) {
-		koAttr.setMaxlength(value);
+		domAttribute.setMaxlength(value);
 	}
 
 	public void setFocus(String value) {
@@ -55,11 +55,6 @@ public class MVInput extends MVElement {
 
 	public void setSelect(String value) {
 		koEvent.setSelect(value);
-	}
-	
-	public void setMask(String value) {
-		maskBinding.setMask(value);
-		maskBinding.setValue(koBinding.get("value"));
 	}
 	
 	public void setTooltipError(String value) {

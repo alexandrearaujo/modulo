@@ -1,20 +1,14 @@
 package br.com.mv.modulo.components.element.attributes;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
 
 @SuppressWarnings("serial")
-public class KoDataBind extends ArrayList<String>{
+public class KoDataBind extends ArrayList<MVAttribute>{
 
-	public boolean add(MVAttribute e) {
-		if(StringUtils.isNotEmpty(e.stringify())){
-			return super.add(e.stringify());
-		}
-		
-		return false;
-	}
-	
 	public String stringify() {
 
 		if (this.isEmpty()) {
@@ -22,7 +16,9 @@ public class KoDataBind extends ArrayList<String>{
 		}
 
 		StringBuilder json = new StringBuilder();
-		json.append(this.toString().replace("[", StringUtils.EMPTY).replace("]", StringUtils.EMPTY));
+		List<String> bindings = this.stream().filter(attr-> !attr.map.isEmpty())
+											 .map(attr->attr.stringify()).collect(Collectors.toList());
+		json.append(bindings.toString().replace("[", StringUtils.EMPTY).replace("]", StringUtils.EMPTY));
 		return json.toString();
 	}
 }

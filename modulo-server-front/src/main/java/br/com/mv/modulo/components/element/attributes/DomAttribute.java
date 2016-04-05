@@ -1,29 +1,26 @@
 package br.com.mv.modulo.components.element.attributes;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.Map;
 
-import org.thymeleaf.dom.Attribute;
-
 @SuppressWarnings("serial")
-public class DomAttribute implements Serializable{
-	
-	private Map<String, Attribute> map;
-	
-	public DomAttribute(Map<String, Attribute> map){
-		this.map = map;
+public class DomAttribute extends MVAttribute implements Serializable{
+	public void setId(String id) {
+		this.put("id", id);
 	}
 	
-	public Attribute get(String key) {
-		key = "mv:" + key;
-		return map.get(key);
+	public void setFor(String tagFor) {
+		this.put("for", tagFor);
 	}
 	
-	public String getAttributeValue(String key) {
-		Attribute attribute = get(key);
-		if(attribute == null){
-			return "";
-		}
-		return attribute.getValue();
+	public void setMaxlength(String maxLength) {
+		this.put("maxlength", maxLength);
 	}
+	
+	public Map<String, String> getAttributes(){
+		return Collections.unmodifiableMap(map);
+	}
+	
+	
 }

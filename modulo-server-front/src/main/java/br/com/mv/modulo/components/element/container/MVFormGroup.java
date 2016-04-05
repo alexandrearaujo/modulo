@@ -1,4 +1,4 @@
-package br.com.mv.modulo.components.element;
+package br.com.mv.modulo.components.element.container;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.thymeleaf.Arguments;
 import org.thymeleaf.dom.Element;
 
-public class MVFormGroup extends MVContainer{
+public class MVFormGroup extends MVDiv{
 	
 	//FIXME:REMOVER ESTAS PROPRIDADES E ALTERAR A MANEIRA COMO É FEITA A VALIDAÇÃO.
 	private Map<String, String> hasError;
@@ -28,7 +28,7 @@ public class MVFormGroup extends MVContainer{
 	
 	public MVFormGroup(Arguments arguments, Element context) {
 		super(arguments, context);
-		this.koCss.addClassCss("form-group");
+		this.el.setAttribute("class", "form-group");
 		
 		//FIXME:REMOVER O TRECHO ABAIXO E ALTERAR A MANEIRA COMO É FEITA A VALIDAÇÃO.
 		StringBuilder hasError = new StringBuilder(); 

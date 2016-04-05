@@ -5,7 +5,7 @@ import java.io.Serializable;
 import org.apache.commons.lang3.StringUtils;
 
 @SuppressWarnings("serial")
-public class MvInputMask extends MVAttribute implements Serializable{
+public class MVInputMask extends MVAttribute implements Serializable{
 
 	public void setMask(String value){
 		put("mask", value);

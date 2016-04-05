@@ -12,26 +12,27 @@
 	
 	<attribute-processor name="label">
 		<documentation reference="Chave contida no arquivo de internacionalização"></documentation>
-		<restrictions tags="mv:data mv:periodo mv:text"/>
+		<restrictions tags="mv:date mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="id">
 		<documentation reference="Identificador do elemento html. Atributo é obrigatório"></documentation>
+		<restrictions tags="mv:date mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="required">
 		<documentation reference="Flag para indicar a obrigatoriedade ou não do elemento. Pode ser usado tanto como propriedade de um View Model ou como um booleano"></documentation>
-		<restrictions tags="mv:data mv:periodo mv:text"/>
+		<restrictions tags="mv:date mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="disable">
 		<documentation reference="Flag para disabilitar ou não o elemento. Pode ser usado tanto como propriedade de um View Model ou como um booleano"></documentation>
-		<restrictions tags="mv:data mv:periodo mv:text"/>
+		<restrictions tags="mv:date mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="visible">
 		<documentation reference="Flag para visualizar ou não o elemento. Pode ser usado tanto como propriedade de um View Model ou como um booleano"></documentation>
-		<restrictions tags="mv:data mv:periodo mv:text"/>
+		<restrictions tags="mv:date mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="maxlength">
@@ -39,19 +40,24 @@
 		<restrictions tags="mv:text"/>
 	</attribute-processor>
 	
-	<attribute-processor name="options">
-		<documentation reference="Opções do date-picker"></documentation>
-		<restrictions tags="mv:data"/>
-	</attribute-processor>
-	
 	<attribute-processor name="value">
 		<documentation reference="Valor do data-bind do Knockout"></documentation>
-		<restrictions tags="mv:data mv:text"/>
+		<restrictions tags="mv:date mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="mask">
 		<documentation reference="Mascara a ser utilizada. Ex: '999.999.999-99' deve ser usado com as simples ('') quando for estatica"></documentation>
 		<restrictions tags="mv:text"/>
+	</attribute-processor>
+	
+	<attribute-processor name="options">
+		<documentation reference="Options utilizadas em formato JSON do componente Bootstrap DatePicker. Documentacao: http://goo.gl/bPwB8o 
+								  Ex. de uso: { autoclose : true, format: 'dd/mm/yyyy', startDate: '22/03/2016'}
+								  DEFAULT: todayHighlight = true,
+										   format = 'dd/mm/yyyy',
+										   autoclose = true,
+										   language = 'pt-BR'"></documentation>
+		<restrictions tags="mv:date"/>
 	</attribute-processor>
 	
 	<attribute-processor name="bind">
@@ -62,52 +68,52 @@
 	
 	<attribute-processor name="focusIn">
 		<documentation reference="Evento acionado quando o elemento esta prestes a adquirir o foco."></documentation>
-		<restrictions tags="mv:data mv:periodo mv:text"/>
+		<restrictions tags="mv:date mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="focusOut">
 		<documentation reference="Evento acionado quando o elemento esta prestes a perder o foco."></documentation>
-		<restrictions tags="mv:data mv:periodo mv:text"/>
+		<restrictions tags="mv:date mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="focus">
 		<documentation reference="Evento acionado quando o elemento adquire foco."></documentation>
-		<restrictions tags="mv:data mv:periodo mv:text"/>
+		<restrictions tags="mv:date mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="blur">
 		<documentation reference="Evento acionado quando o elemento perdeu o foco."></documentation>
-		<restrictions tags="mv:data mv:periodo mv:text"/>
+		<restrictions tags="mv:date mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="change">
 		<documentation reference="Evento acionado quando o valor do elemento e alterado."></documentation>
-		<restrictions tags="mv:data mv:periodo mv:text"/>
+		<restrictions tags="mv:date mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="keyPress">
 		<documentation reference="Evento acionado quando a tecla foi pressionada."></documentation>
-		<restrictions tags="mv:data mv:periodo mv:text"/>
+		<restrictions tags="mv:date mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="keyUp">
 		<documentation reference="Evento acionado quando a tecla foi liberada."></documentation>
-		<restrictions tags="mv:data mv:periodo mv:text"/>
+		<restrictions tags="mv:date mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="keyDown">
 		<documentation reference="Evento acionado quando a tecla esta acionada."></documentation>
-		<restrictions tags="mv:data mv:periodo mv:text"/>
+		<restrictions tags="mv:date mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="select">
 		<documentation reference="Evento acionado quando algum parte do texto contido no elemento esta sendo selecionado."></documentation>
-		<restrictions tags="mv:data mv:periodo mv:text"/>
+		<restrictions tags="mv:date mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<!-- END EVENTS -->
 	
-	<element-processor name="data"
+	<element-processor name="date"
 		class="br.com.mv.modulo.components.element.MVDateElementProcessor"/>
 	
 	<element-processor name="periodo"

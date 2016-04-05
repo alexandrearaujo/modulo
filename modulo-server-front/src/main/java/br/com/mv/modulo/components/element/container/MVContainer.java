@@ -1,4 +1,4 @@
-package br.com.mv.modulo.components.element;
+package br.com.mv.modulo.components.element.container;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,13 +6,14 @@ import java.util.List;
 import org.thymeleaf.Arguments;
 import org.thymeleaf.dom.Element;
 
-public class MVContainer extends MVElement{
+import br.com.mv.modulo.components.element.MVElement;
+
+public abstract class MVContainer extends MVElement{
 	private List<MVElement> nodes;
 	
 	public MVContainer(Arguments arguments, Element context){
 		super(arguments, context);
 		
-		this.el = new Element("div");
 		this.nodes = new ArrayList<>();
 	}
 	
