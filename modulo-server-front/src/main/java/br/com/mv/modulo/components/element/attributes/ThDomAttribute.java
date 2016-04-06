@@ -20,7 +20,7 @@ public class ThDomAttribute implements Serializable{
 	}
 	
 	public String getAttributeValue(String key) {
-		Attribute attribute = get(key);
+		Attribute attribute = get(key.toLowerCase());
 		if(attribute == null){
 			return "";
 		}

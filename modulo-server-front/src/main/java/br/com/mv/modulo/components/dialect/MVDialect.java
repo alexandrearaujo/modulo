@@ -9,6 +9,7 @@ import org.thymeleaf.dialect.AbstractXHTMLEnabledDialect;
 import org.thymeleaf.dialect.IExpressionEnhancingDialect;
 import org.thymeleaf.processor.IProcessor;
 
+import br.com.mv.modulo.components.processors.MVAutocompleteElementProcessor;
 import br.com.mv.modulo.components.processors.MVDateElementProcessor;
 import br.com.mv.modulo.components.processors.MVPeriodoElementProcessor;
 import br.com.mv.modulo.components.processors.MVTextElementProcessor;
@@ -32,6 +33,7 @@ public class MVDialect extends AbstractXHTMLEnabledDialect implements IExpressio
 		processors.add(new MVDateElementProcessor());
 		processors.add(new MVPeriodoElementProcessor());
 		processors.add(new MVTextElementProcessor());
+		processors.add(new MVAutocompleteElementProcessor());
 		return processors;
 	}
 

@@ -43,7 +43,8 @@ public class MVDateFormGroup extends MVFormGroup{
 	
 	public MVDateFormGroup(Arguments arguments, Element context) {
 		super(arguments, context);
-		this.el.setAttribute("class", "date date-field form-group");
+		this.domAttribute.addClassCss("date");
+		this.domAttribute.addClassCss("date-field");
 	}
 
 }

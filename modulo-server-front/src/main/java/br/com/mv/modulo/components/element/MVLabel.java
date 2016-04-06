@@ -23,7 +23,7 @@ public class MVLabel extends MVElement {
 	public MVLabel(Arguments arguments, Element context) {
 		super(arguments, context);
 		this.setEl(new Element("label"));
-		koCss.addClassCss("control-label");
+		domAttribute.addClassCss("control-label");
 	}
 	
 }

@@ -9,7 +9,8 @@ public class MVDateIconCalendar extends MVSpan{
 
 	public MVDateIconCalendar(Arguments arguments, Element context) {
 		super(arguments, context);
-		this.el.setAttribute("class", "glyphicon glyphicon-calendar");
+		this.domAttribute.addClassCss("glyphicon");
+		this.domAttribute.addClassCss("glyphicon-calendar");
 	}
 
 }

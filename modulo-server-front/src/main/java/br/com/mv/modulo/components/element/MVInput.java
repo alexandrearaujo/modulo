@@ -65,8 +65,7 @@ public class MVInput extends MVElement {
 		super(arguments, context);
 
 		this.el = new Element("input");
-
-		koCss.addClassCss("form-control");
+		domAttribute.addClassCss("form-control");
 		
 		// TODO:numeric only colocar em outro componente?
 		// koCss.put("'numbersOnly'",

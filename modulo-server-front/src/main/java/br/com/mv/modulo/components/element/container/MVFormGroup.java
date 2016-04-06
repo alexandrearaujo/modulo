@@ -28,7 +28,7 @@ public class MVFormGroup extends MVDiv{
 	
 	public MVFormGroup(Arguments arguments, Element context) {
 		super(arguments, context);
-		this.el.setAttribute("class", "form-group");
+		domAttribute.addClassCss("form-group");
 		
 		//FIXME:REMOVER O TRECHO ABAIXO E ALTERAR A MANEIRA COMO É FEITA A VALIDAÇÃO.
 		StringBuilder hasError = new StringBuilder(); 

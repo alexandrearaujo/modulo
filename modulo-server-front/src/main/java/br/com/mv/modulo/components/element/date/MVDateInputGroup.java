@@ -9,6 +9,7 @@ public class MVDateInputGroup extends MVInputGroup{
 
 	public MVDateInputGroup(Arguments arguments, Element context) {
 		super(arguments, context);
-		this.el.setAttribute("class", "input-date-field date-field");
+		this.domAttribute.addClassCss("input-date-field");
+		this.domAttribute.addClassCss("date-field");
 	}
 }

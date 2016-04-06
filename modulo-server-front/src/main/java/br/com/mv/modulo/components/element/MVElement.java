@@ -68,20 +68,25 @@ public abstract class MVElement {
 		
 	}
 	
-	private String getDataBind() {
-
+	private void addDataBindAttributes() {
 		dataBind.add(koBinding);
 		dataBind.add(koEvent);
 		dataBind.add(koCss);
 		dataBind.add(maskBinding);
 		dataBind.add(tooltipError);
-		
-		return dataBind.stringify();
 	}
 
 	public MVElement render() {
+		addDataBindAttributes();
+		
 		domAttribute.getAttributes().entrySet().stream().forEach(attr -> el.setAttribute(attr.getKey(), attr.getValue()) );
-		el.setAttribute("data-bind", getDataBind());
+		
+		if(!dataBind.stringify().isEmpty())
+			el.setAttribute("data-bind", dataBind.stringify());
+		
+		if(!domAttribute.getClassesCss().isEmpty())
+			el.setAttribute("class", domAttribute.getClassesCss());
+		
 		return this;
 	}
 	

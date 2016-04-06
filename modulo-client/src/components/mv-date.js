@@ -4,9 +4,9 @@ $.fn.datepicker.defaults.autoclose = true;
 $.fn.datepicker.defaults.language = 'pt-BR';
 
 ko.bindingHandlers.mvDate = {
-	init : function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
-		var params = bindingContext.$component ? bindingContext.$component.params : valueAcessor(),
-			options = $.extend({}, $.fn.datepicker.defaults, valueAccessor()),
+	init : function(element, valueAccessor) {
+		var params = valueAccessor(),
+			options = $.extend({}, $.fn.datepicker.defaults, valueAccessor().options),
 			observable = params.value, 
 			$pickerRenderEl = $(element);
 
@@ -25,47 +25,46 @@ ko.bindingHandlers.mvDate = {
 				observable(null);
 			}
 		});
+		
+		ko.utils.domNodeDisposal.addDisposeCallback(element, function() {
+			$pickerRenderEl.datepicker("destroy");
+		});
 
 		ko.utils.registerEventHandler(element, "changeDate", function(event) {
-			var date, dateFormat, 
-				formatParts = options.format.split('/')
+			//Altera o observable quando o elemento é alterado
+			var formatParts = options.format.split('/')
 				fieldParts = $(event.currentTarget).find('input').val().split('/');
-			
+
 			var formatEquals = formatParts.every(function(el, index){
 				return el.length === fieldParts[index].length && formatParts.length === fieldParts.length ;
 			});
 			
 			if (observable && formatEquals) {
-				date = $pickerRenderEl.datepicker("getDate");
-				dateFormat = date ? date.format(options.format.toUpperCase()) : null;
-
-				observable(dateFormat);
+				observable($(event.currentTarget).find('input').val());
+			}else if(!$(event.currentTarget).find('input').val() && observable()){
+				observable(null);
 			}
-		});
-
-		ko.utils.domNodeDisposal.addDisposeCallback(element, function() {
-			$pickerRenderEl.datepicker("destroy");
 		});
 		
 		$pickerRenderEl.is('input') ? $pickerRenderEl.mask('99/99/9999') : $('#' + $pickerRenderEl.find('input').attr('id')).mask('99/99/9999');
 		$pickerRenderEl.datepicker(options);
 	},
-	update : function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
-		var params = bindingContext.$component ? bindingContext.$component.params : valueAcessor(),
-			observable = params.value,
-			options = $.extend({}, $.fn.datepicker.defaults, valueAccessor()),
-			$pickerRenderEl, value, date, fieldParts,
-			formatParts = options.format.split('/');
-		
-		
+	update : function(element, valueAccessor) {
+		//Atualiza o elemento quando o observable é alterado.
+		var params = valueAccessor(),
+		observable = params.value,
+		options = $.extend({}, $.fn.datepicker.defaults, valueAccessor()),
+		$pickerRenderEl, value, date, fieldParts,
+		formatParts = options.format.split('/');
+	
 		if (observable()) {
 			fieldParts = observable().split('/');
-
+	
 			var formatEquals = formatParts.every(function(el, index){
 				return el.length === fieldParts[index].length && formatParts.length === fieldParts.length ;
 			});
-
-
+	
+	
 			if(formatEquals){
 				value = ko.utils.unwrapObservable(observable());
 				date = value ? moment(value, options.format.toUpperCase()).toDate() : null;
@@ -74,6 +73,10 @@ ko.bindingHandlers.mvDate = {
 				$pickerRenderEl.datepicker("setDate", date);
 				$pickerRenderEl.val(value);
 			}
+		}else{
+			$pickerRenderEl = $(element);
+			$pickerRenderEl.datepicker("setDate", null);
+			$pickerRenderEl.val('');
 		}
 	}
-};
+}

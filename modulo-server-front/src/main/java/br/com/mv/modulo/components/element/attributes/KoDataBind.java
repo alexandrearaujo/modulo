@@ -18,7 +18,7 @@ public class KoDataBind extends ArrayList<MVAttribute>{
 		StringBuilder json = new StringBuilder();
 		List<String> bindings = this.stream().filter(attr-> !attr.map.isEmpty())
 											 .map(attr->attr.stringify()).collect(Collectors.toList());
-		json.append(bindings.toString().replace("[", StringUtils.EMPTY).replace("]", StringUtils.EMPTY));
-		return json.toString();
+		json.append(StringUtils.removeStart(bindings.toString(), "["));
+		return StringUtils.removeEnd(json.toString(), "]");
 	}
 }

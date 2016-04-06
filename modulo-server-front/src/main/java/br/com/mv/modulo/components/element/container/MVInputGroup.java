@@ -7,7 +7,7 @@ public class MVInputGroup extends MVDiv{
 
 	public MVInputGroup(Arguments arguments, Element context) {
 		super(arguments, context);
-		this.koCss.addClassCss("input-group");
+		domAttribute.addClassCss("input-group");
 	}
 
 }

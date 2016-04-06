@@ -13,7 +13,8 @@ public class MVDateInputGroupAddon extends MVSpan{
 	
 	public MVDateInputGroupAddon(Arguments arguments, Element context) {
 		super(arguments, context);
-		this.el.setAttribute("class", "input-group-addon btn");
+		this.domAttribute.addClassCss("input-group-addon");
+		this.domAttribute.addClassCss("btn");
 	}
 
 }

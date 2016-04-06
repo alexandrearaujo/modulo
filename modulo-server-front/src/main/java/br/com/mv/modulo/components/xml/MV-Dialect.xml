@@ -1,54 +1,69 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
 <dialect xmlns="http://www.thymeleaf.org/extras/dialect"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.thymeleaf.org/extras/dialect
 	                    http://www.thymeleaf.org/xsd/thymeleaf-extras-dialect-2.1.xsd"
-	prefix="mv"
+	prefix="mv"	
 	namespace-uri="http://www.mv.com.br/components"
 	namespace-strict="false"
 	class="br.com.mv.modulo.components.dialect.MVDialect">
 	
+	<!-- ATRIBUTOS GERAIS -->
 	
 	<attribute-processor name="label">
 		<documentation reference="Chave contida no arquivo de internacionalização"></documentation>
-		<restrictions tags="mv:date mv:periodo mv:text"/>
+		<restrictions tags="mv:autocomplete mv:date mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="id">
 		<documentation reference="Identificador do elemento html. Atributo é obrigatório"></documentation>
-		<restrictions tags="mv:date mv:periodo mv:text"/>
+		<restrictions tags="mv:autocomplete mv:date mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="required">
 		<documentation reference="Flag para indicar a obrigatoriedade ou não do elemento. Pode ser usado tanto como propriedade de um View Model ou como um booleano"></documentation>
-		<restrictions tags="mv:date mv:periodo mv:text"/>
+		<restrictions tags="mv:autocomplete mv:date mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="disable">
 		<documentation reference="Flag para disabilitar ou não o elemento. Pode ser usado tanto como propriedade de um View Model ou como um booleano"></documentation>
-		<restrictions tags="mv:date mv:periodo mv:text"/>
+		<restrictions tags="mv:autocomplete mv:date mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="visible">
 		<documentation reference="Flag para visualizar ou não o elemento. Pode ser usado tanto como propriedade de um View Model ou como um booleano"></documentation>
-		<restrictions tags="mv:date mv:periodo mv:text"/>
+		<restrictions tags="mv:autocomplete mv:date mv:periodo mv:text"/>
 	</attribute-processor>
 	
 	<attribute-processor name="maxlength">
 		<documentation reference="Quantidade máxima de caracteres que pode ser digitados no elemento"></documentation>
-		<restrictions tags="mv:text"/>
+		<restrictions tags="mv:autocomplete mv:text"/>
+	</attribute-processor>
+
+	<attribute-processor name="bind">
+		<documentation reference="Valor do data-bind do Knockout"></documentation>
 	</attribute-processor>
 	
 	<attribute-processor name="value">
 		<documentation reference="Valor do data-bind do Knockout"></documentation>
-		<restrictions tags="mv:date mv:text"/>
+		<restrictions tags="mv:autocomplete mv:date mv:text"/>
 	</attribute-processor>
+	
+	<!-- END ATRIBUTOS GERAIS -->
+	
+	
+	<!-- TEXT -->
 	
 	<attribute-processor name="mask">
 		<documentation reference="Mascara a ser utilizada. Ex: '999.999.999-99' deve ser usado com as simples ('') quando for estatica"></documentation>
 		<restrictions tags="mv:text"/>
 	</attribute-processor>
+	
+	<!-- END TEXT -->
+	
+	
+	<!-- DATE -->
 	
 	<attribute-processor name="options">
 		<documentation reference="Options utilizadas em formato JSON do componente Bootstrap DatePicker. Documentacao: http://goo.gl/bPwB8o 
@@ -60,9 +75,55 @@
 		<restrictions tags="mv:date"/>
 	</attribute-processor>
 	
-	<attribute-processor name="bind">
-		<documentation reference="Valor do data-bind do Knockout"></documentation>
+	<!-- END DATE -->
+	
+	<!-- AUTOCOMPLETE -->
+	
+	<attribute-processor name="source">
+		<documentation reference="Url do método do Controller utilizado para popular o autocomplete.
+								  Obs.: Primeiro parametro deve ser passado obrigatoriamente. 
+								  Ex.: listarItemAgendamentos?descricao "></documentation>
+		<restrictions tags="mv:autocomplete"/>
 	</attribute-processor>
+	
+	<attribute-processor name="optionsValue">
+		<documentation reference="Atributo que representa o valor do item exibido."></documentation>
+		<restrictions tags="mv:autocomplete"/>
+	</attribute-processor>
+	
+	<attribute-processor name="optionsLabel">
+		<documentation reference="Atributo que representa uma descrição customizavel do item exibido. Ex.: {id} - {descricao}"></documentation>
+		<restrictions tags="mv:autocomplete"/>
+	</attribute-processor>
+	
+	<attribute-processor name="optionsText">
+		<documentation reference="Atributo que representa a descrição do item exibido."></documentation>
+		<restrictions tags="mv:autocomplete"/>
+	</attribute-processor>
+	
+	<attribute-processor name="value">
+		<documentation reference="Atributo do view model que irá receber o valor do item selecionado."></documentation>
+		<restrictions tags="mv:autocomplete"/>
+	</attribute-processor>
+	
+	<attribute-processor name="valueText">
+		<documentation reference="Atributo do view model que irá receber a descrição do item selecionado."></documentation>
+		<restrictions tags="mv:autocomplete"/>
+	</attribute-processor>
+	
+	<attribute-processor name="params">
+		<documentation reference="Adiciona novos parâmetro para filtrar os registros do autocomplete.
+						  Ex.: [{Nome do parametro : valor do parametro}, {estabelecimento : $root.estabelecimento()}] "></documentation>
+		<restrictions tags="mv:autocomplete"/>
+	</attribute-processor>
+	
+	<attribute-processor name="other-values">
+		<documentation reference="Outros atributos além value e valueText que podem ser usados para popular o view model.
+								  Ex.: otherValues: [{atributoViewModel : atributoItemSelecionado }]"></documentation>
+		<restrictions tags="mv:autocomplete"/>
+	</attribute-processor>
+	
+	<!-- END AUTOCOMPLETE -->
 	
 	<!-- BEGIN EVENTS -->
 	
@@ -113,13 +174,16 @@
 	
 	<!-- END EVENTS -->
 	
+	<element-processor name="autocomplete"
+		class="br.com.mv.modulo.components.processors.MVAutocompleteElementProcessor"/>
+	
 	<element-processor name="date"
-		class="br.com.mv.modulo.components.element.MVDateElementProcessor"/>
+		class="br.com.mv.modulo.components.processors.MVDateElementProcessor"/>
 	
 	<element-processor name="periodo"
-		class="br.com.mv.modulo.components.element.MVPeriodoElementProcessor"/>
+		class="br.com.mv.modulo.components.processors.MVPeriodoElementProcessor"/>
 	
 	<element-processor name="text"
-		class="br.com.mv.modulo.components.element.TextElementProcessor"/>
+		class="br.com.mv.modulo.components.processors.MVTextElementProcessor"/>
 
 </dialect>
