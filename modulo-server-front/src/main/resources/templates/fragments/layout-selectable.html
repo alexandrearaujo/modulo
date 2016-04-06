@@ -21,7 +21,8 @@
 			    th:autofocus="${autofocus}" 
 			    th:placeholder="${placeholder}" 
 			    th:id="${idField}"
-			    data:bind="${dataBind}">
+			    data:bind="${dataBind}"
+			    data:toggle="${tooltip}">
 			    
 			   <option th:if="${prompt}" th:text="${textPrompt}" th:value="${valuePrompt}" />
 			   <option th:if="${list}" th:each="i : ${list}" th:text="${i.__${text}__}" th:value="${i.__${value}__}"/>
