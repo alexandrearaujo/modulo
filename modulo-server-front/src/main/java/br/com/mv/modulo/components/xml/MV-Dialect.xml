@@ -47,7 +47,7 @@
 	
 	<attribute-processor name="value">
 		<documentation reference="Valor do data-bind do Knockout"></documentation>
-		<restrictions tags="mv:date mv:text"/>
+		<restrictions tags="mv:date mv:text mv:autocomplete"/>
 	</attribute-processor>
 	
 	<!-- END ATRIBUTOS GERAIS -->
@@ -98,11 +98,6 @@
 	
 	<attribute-processor name="optionsText">
 		<documentation reference="Atributo que representa a descrição do item exibido."></documentation>
-		<restrictions tags="mv:autocomplete"/>
-	</attribute-processor>
-	
-	<attribute-processor name="value">
-		<documentation reference="Atributo do view model que irá receber o valor do item selecionado."></documentation>
 		<restrictions tags="mv:autocomplete"/>
 	</attribute-processor>
 	
