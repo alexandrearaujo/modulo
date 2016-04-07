@@ -14,6 +14,7 @@ import org.thymeleaf.standard.expression.StandardExpressions;
 import org.thymeleaf.util.Validate;
 
 import br.com.mv.modulo.components.element.attributes.DomAttribute;
+import br.com.mv.modulo.components.element.attributes.KoAttr;
 import br.com.mv.modulo.components.element.attributes.KoBinding;
 import br.com.mv.modulo.components.element.attributes.KoCss;
 import br.com.mv.modulo.components.element.attributes.KoDataBind;
@@ -33,6 +34,8 @@ public abstract class MVElement {
 	private Arguments arguments;
 
 	protected DomAttribute domAttribute;
+	
+	protected KoAttr koAttr;
 	
 	protected KoCss koCss;
 
@@ -59,6 +62,7 @@ public abstract class MVElement {
 		this.koBinding = new KoBinding();
 		this.koEvent = new KoEvent();
 		this.koCss = new KoCss();
+		this.koAttr = new KoAttr();
 		this.maskBinding = new MVInputMask();
 		this.tooltipError = new MVTooltipError();
 		
@@ -70,6 +74,7 @@ public abstract class MVElement {
 	
 	private void addDataBindAttributes() {
 		dataBind.add(koBinding);
+		dataBind.add(koAttr);
 		dataBind.add(koEvent);
 		dataBind.add(koCss);
 		dataBind.add(maskBinding);

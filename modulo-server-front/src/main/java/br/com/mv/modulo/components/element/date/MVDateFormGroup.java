@@ -16,7 +16,7 @@ public class MVDateFormGroup extends MVFormGroup{
 	}
 	
 	public void setDisable(String value){
-		koBinding.setDisable(value);
+		dateBinding.setDisable(value);
 	}
 	
 	public void setOptions(String options){

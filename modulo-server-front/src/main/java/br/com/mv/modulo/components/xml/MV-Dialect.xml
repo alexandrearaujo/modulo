@@ -47,7 +47,7 @@
 	
 	<attribute-processor name="value">
 		<documentation reference="Valor do data-bind do Knockout"></documentation>
-		<restrictions tags="mv:autocomplete mv:date mv:text"/>
+		<restrictions tags="mv:date mv:text"/>
 	</attribute-processor>
 	
 	<!-- END ATRIBUTOS GERAIS -->
@@ -125,6 +125,31 @@
 	
 	<!-- END AUTOCOMPLETE -->
 	
+	<!-- SELECT -->
+	
+	<attribute-processor name="options">
+		<documentation reference="Array javascript que irá poular o select"></documentation>
+		<restrictions tags="mv:select"/>
+	</attribute-processor>
+	
+	<attribute-processor name="optionsCaption">
+		<documentation reference="Adiciona um item no select com o texto informado. Ex.: Selecione uma opção"></documentation>
+		<restrictions tags="mv:select"/>
+	</attribute-processor>
+	
+	<attribute-processor name="optionsText">
+		<documentation reference="Atributo que irá representar o texto que será exibido em cada um dos itens do select"></documentation>
+		<restrictions tags="mv:select"/>
+	</attribute-processor>
+
+	<attribute-processor name="optionsValue">
+		<documentation reference="Atributo que irá representar o valor de cada um dos itens do select"></documentation>
+		<restrictions tags="mv:select"/>
+	</attribute-processor>
+	
+	<!-- END SELECT -->
+	
+	
 	<!-- BEGIN EVENTS -->
 	
 	<attribute-processor name="focusIn">
@@ -183,6 +208,9 @@
 	<element-processor name="periodo"
 		class="br.com.mv.modulo.components.processors.MVPeriodoElementProcessor"/>
 	
+	<element-processor name="select"
+		class="br.com.mv.modulo.components.processors.MVSelectElementProcessor"/>
+		
 	<element-processor name="text"
 		class="br.com.mv.modulo.components.processors.MVTextElementProcessor"/>
 

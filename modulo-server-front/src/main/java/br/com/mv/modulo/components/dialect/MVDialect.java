@@ -12,6 +12,7 @@ import org.thymeleaf.processor.IProcessor;
 import br.com.mv.modulo.components.processors.MVAutocompleteElementProcessor;
 import br.com.mv.modulo.components.processors.MVDateElementProcessor;
 import br.com.mv.modulo.components.processors.MVPeriodoElementProcessor;
+import br.com.mv.modulo.components.processors.MVSelectElementProcessor;
 import br.com.mv.modulo.components.processors.MVTextElementProcessor;
 
 public class MVDialect extends AbstractXHTMLEnabledDialect implements IExpressionEnhancingDialect {
@@ -34,12 +35,12 @@ public class MVDialect extends AbstractXHTMLEnabledDialect implements IExpressio
 		processors.add(new MVPeriodoElementProcessor());
 		processors.add(new MVTextElementProcessor());
 		processors.add(new MVAutocompleteElementProcessor());
+		processors.add(new MVSelectElementProcessor());
 		return processors;
 	}
 
 	@Override
 	public Map<String, Object> getAdditionalExpressionObjects(IProcessingContext processingContext) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

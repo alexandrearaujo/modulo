@@ -11,6 +11,10 @@ public class MVDateBinding extends MVAttribute implements Serializable{
 		put("options", options);
 	}
 	
+	public void setDisable(String disable){
+		put("disable", disable);
+	}
+	
 	public void setValue(String value){
 		if(StringUtils.isNotBlank(get("options"))){
 			put("value", value);

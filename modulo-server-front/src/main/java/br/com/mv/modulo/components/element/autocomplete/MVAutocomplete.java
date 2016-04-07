@@ -15,6 +15,10 @@ public class MVAutocomplete extends MVInputText{
 		autocompleteBinding.setValue(value);
 	}
 	
+	public void setDisable(String value){
+		koBinding.setDisable(value);
+	}
+	
 	public void setSource(String source) {
 		autocompleteBinding.setSource(source);
 	}

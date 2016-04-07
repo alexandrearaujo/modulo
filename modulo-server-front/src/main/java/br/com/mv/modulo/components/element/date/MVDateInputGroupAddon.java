@@ -9,6 +9,7 @@ public class MVDateInputGroupAddon extends MVSpan{
 
 	public void setDisable(String value){
 		koBinding.setDisable(value);
+		koAttr.setDisable(value);
 	}
 	
 	public MVDateInputGroupAddon(Arguments arguments, Element context) {

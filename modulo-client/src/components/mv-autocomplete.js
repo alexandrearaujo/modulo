@@ -1,3 +1,4 @@
+
 ko.bindingHandlers.mvautocomplete = {
 	init : function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
 		var suggestions = new Bloodhound({
@@ -56,8 +57,6 @@ ko.bindingHandlers.mvautocomplete = {
 			viewModel : viewModel,
 			source : suggestions.ttAdapter()
 		}).on('typeahead:selected', function(event, data) {
-//			var attrValue = findAttr(bindingContext.$parent, valueAccessor().value);
-//			var attrText = findAttr(bindingContext.$parent, valueAccessor().valueText);
 			var otherValues = valueAccessor().otherValues;
 
 			valueAccessor().value(data.id);

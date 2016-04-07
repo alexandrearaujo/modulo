@@ -26,6 +26,10 @@ public class MVFormGroup extends MVDiv{
 		hasError.put("required", value);
 	}
 	
+	public void setVisible(String value) {
+		koBinding.setVisible(value);
+	}
+	
 	public MVFormGroup(Arguments arguments, Element context) {
 		super(arguments, context);
 		domAttribute.addClassCss("form-group");

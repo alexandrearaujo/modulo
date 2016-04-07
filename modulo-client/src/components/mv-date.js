@@ -15,7 +15,7 @@ ko.bindingHandlers.mvDate = {
 		 * quando o mesmo estiver desabilitado
 		 */
 		ko.utils.registerEventHandler(element, "show", function(e) {
-			if (params.disabled) {
+			if (params.disable) {
 				$pickerRenderEl.datepicker('hide')
 			}
 		});
