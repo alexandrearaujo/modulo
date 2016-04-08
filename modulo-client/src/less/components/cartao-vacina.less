@@ -213,27 +213,31 @@
     border-color: #4d7498;
 }
 
-@media (min-width: 768px) {
+//768 992 1200
+
+@media (max-width: 768px) {
 	.cartao-vacina {
-		max-width: 65%;
+		max-width: 63%;
+	}
+	.legenda-group {
+  		max-width: 63%;
 	}
 	
 	.cartao-vacina-group {
 	   	max-width: 100%;
 	}
-	
-	.legenda-group {
-  		max-width: 65%;
-	}
 }
 
-@media (max-height: 768px) {
+@media (min-width: 769px) and (max-width: 992px) {
 	.cartao-vacina {
-		max-height: 70%;
+		max-width: 76%;
+	}
+	.legenda-group {
+  		max-width: 76%;
 	}
 	
 	.cartao-vacina-group {
-	   	max-height: 100%;
+	   	max-width: 100%;
 	}
 }
 
@@ -249,6 +253,20 @@
 	  }
 }
 
+
+@media (min-width: 1200px) {
+	.cartao-vacina {
+		max-width: 75%;
+	}
+	.legenda-group {
+  		max-width: 75%;
+	}
+	
+	.cartao-vacina-group {
+	   	max-width: 100%;
+	}
+}
+
 @media (min-width: 1366px) {
 	  .cartao-vacina {
 	   	max-width: 80%;
@@ -262,4 +280,14 @@
 	  .legenda-group {
 	  	max-width: 80%;
 	  }
+}
+
+@media (max-height: 768px) {
+	.cartao-vacina {
+		max-height: 70%;
+	}
+	
+	.cartao-vacina-group {
+	   	max-height: 100%;
+	}
 }
