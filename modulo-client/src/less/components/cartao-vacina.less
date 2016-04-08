@@ -9,11 +9,8 @@
 }
 
 .cartao-vacina{
-  border: 1px solid transparent;
-  border-radius: 4px;
-  border-color: pink;
-  width:80%;
-  height:80%;
+  border: 1px solid;
+  border-color: #4D7498;
   display:flex;
   overflow: scroll;
   position: relative;
@@ -27,11 +24,13 @@
   background-color: #fff;
   border: 1px solid transparent;
   border-radius: 4px;
-  border-color: #3cb371;
+  //border-color: #3cb371;
+  background-color : #4D7498;
   text-align: center;
   vertical-align:middle;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .08);
           box-shadow: 0 1px 1px rgba(0, 0, 0, .08);
+  color:white;
 }
 
 .text{
@@ -39,28 +38,34 @@
 	font-size: 10px;
 	margin: 0.2em 0.2em 0.2em 0.2em;
 	word-wrap: break-word;
+	height: inherit;
+	width: inherit;
+	display : table-cell;
+	vertical-align : middle;
 }
 
 .vacina{
   cursor:default;
   margin: 0.2em 0.2em 0.2em 0.2em;
   width: 12em;
-  height: 3em;
+  height: 2em;
   text-align: center;
   vertical-align:middle;
 }
 
 .vacina > .vacina-title{
-  border: 1px solid transparent;
+  //border: 1px solid;
   border-radius: 4px;
-  border-color: #3CB371;
-  //background-color : #D1FFD1;
+  //border-color: #3CB371;
+  background-color : #4d7498;
+  color: white;
+  
 }
 
 .empty-cell{
   margin: 0.2em 0.2em 0.2em 0.2em;
   width: 12em;
-  height: 3em;
+  height: 2.3em;
 }
 
 .dose-vacina {
@@ -77,6 +82,8 @@
 
 .dose-vacina:hover {
    border-color: #4F8C81;
+   -webkit-box-shadow: inset 0 1px 1px rgba(0,.075,0,0), 0 0 8px rgba(112, 233, 102, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0,.075,0,0), 0 0 8px rgba(112, 233, 102, 0.6);
 }
 
 .dose-vacina span{
@@ -97,10 +104,16 @@
 
 .dose-vacina-empty:hover{
   border-color: #c6c6c6;
+   -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, .08);
+          box-shadow: 0 0px 0px rgba(0, 0, 0, .08);
 }
 
 .dose-vacina-selected {
-  border-color: #4F8C81;
+  //border-color: #4F8C81;
+  border-color: #4D7498;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
 }
 
 .dose-vacina-aplicada {
@@ -129,6 +142,9 @@
   	position:fixed;
   	width: 100%;
   	height: 100%;
+  	border-radius: .25em;
+  	border-color: #d9534f;
+  	border: 1px solid transparent;
 }
 
 .legenda {
@@ -160,44 +176,54 @@
   background-color: #d9534f;
 }
 
-::-webkit-scrollbar {
+.cartao-vacina::-webkit-scrollbar {
 	width: 4px;
 	height: 6px;
 }
 
-::-webkit-scrollbar:vertical {
-	width: 4px;
+.cartao-vacina::-webkit-scrollbar:vertical {
+	width: 6px;
 	height: 6px;
 }
 
-::-webkit-scrollbar:horizontal {
+.cartao-vacina::-webkit-scrollbar:horizontal {
 	width: 6px;
-	height: 4px;
+	height: 6px;
 }
 
-::-webkit-scrollbar-button:vertical {
-	width: 6px;
-	height:4px;
-}
-
-::-webkit-scrollbar-button:horizontal {
-	width: 6px;
-	height:4px;
-}
-
-::-webkit-scrollbar-track {
+.cartao-vacina::-webkit-scrollbar-track {
 	background-color: rgba(113,112,107,0.1);
 	-webkit-border-radius: 5px;
 }
-::-webkit-scrollbar-thumb:vertical {
+.cartao-vacina::-webkit-scrollbar-thumb:vertical {
 	background-color: rgba(0,0,0,.2);
 	-webkit-border-radius: 6px;
 }
-::-webkit-scrollbar-thumb:vertical:hover,
-::-webkit-scrollbar-thumb:horizontal:hover {
-	background: #5cb85c;
+
+.cartao-vacina::-webkit-scrollbar-thumb:vertical:hover,
+.cartao-vacina::-webkit-scrollbar-thumb:horizontal:hover {
+	background: #4d7498;
 }
-::-webkit-scrollbar-thumb:horizontal {
+
+.cartao-vacina::-webkit-scrollbar-thumb:horizontal {
 	background-color: rgba(0,0,0,.2);
 	-webkit-border-radius: 6px;
+}
+
+.cartao-vacina::-webkit-scrollbar-corner {
+    border-color: #4d7498;
+}
+
+@media screen and (max-width: 768px) {
+	  .cartao-vacina {
+	   	max-width: 70%;
+	   	max-height: 50%;
+	  }
+}
+
+@media screen and (min-width: 800px) {
+	  .cartao-vacina {
+	   	max-width: 80%;
+	   	max-height: 70%;
+	  }
 }
