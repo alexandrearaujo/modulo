@@ -17,6 +17,7 @@
     "font-awesome": "4.5.0",
     "jquery": "2.1.4",
     "jQuery-Mask-Plugin": "1.13.4",
+    "jquery-maskmoney": "3.0.2",
     "knockout": "3.4.0",
     "metisMenu": "2.2.0",
     "moment" : "2.11.0",
@@ -109,6 +110,11 @@
     "jQuery-Mask-Plugin": {
       "main": [
         "dist/jquery.mask.min.js"
+      ]
+    },
+    "jquery-maskmoney": {
+      "main": [
+        "dist/jquery.maskMoney.min.js"
       ]
     },
     "knockout": {
