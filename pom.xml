@@ -105,13 +105,13 @@
 		<repository>
 			<id>MVNexus</id>
 			<name>Internal Releases</name>
-			<url>http://neuxs.mvfor.local/content/repositories/releases/</url>
+			<url>http://nexus.mvfor.local/content/repositories/releases/</url>
 		</repository>
 		
 		<snapshotRepository>
 			<id>MVNexus</id>
 			<name>Internal Snapshots</name>
-			<url>http://neuxs.mvfor.local/nexus/content/repositories/snapshots/</url>
+			<url>http://nexus.mvfor.local/content/repositories/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 	
@@ -141,7 +141,7 @@
 							<configuration>
 								<nodeVersion>v4.2.4</nodeVersion>
 								<npmVersion>3.5.2</npmVersion>
-								<npmRegistryURL>http://neuxs.mvfor.local/content/groups/npm-all/</npmRegistryURL>
+								<npmRegistryURL>http://nexus.mvfor.local/content/groups/npm-all/</npmRegistryURL>
 							</configuration>
 							<phase>initialize</phase>
 						</execution>
