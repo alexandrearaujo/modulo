@@ -154,16 +154,18 @@ ko.components.register('mv-select-field',{
 		this.options = params.options;
 		this.optionsText = params.optionsText;
 		this.optionsValue = params.optionsValue;
+		this.enable = params.enable || true;
 		this.optionsCaption = params.optionsCaption || ' ';
 	},
-	template : '<div class="form-group" data-bind="css: { \'has-error\' : value.isModified() && !value.isValid() }">\
-					<label-field params = "idLabel : idLabel, label : label, idField : id, required : required "></label-field>\
+	template : '<div class="form-group" data-bind="css: { \'has-error\' : required && value.isModified() && !value.isValid() }">\
+					<label-field params = "idLabel : idLabel, label : label, idField : params.id, required : required "></label-field>\
 					<select class="form-control"\
 						data-bind="options: options ,\
 				   		optionsText: optionsText, \
 				   		optionsValue: optionsValue, \
 				   		optionsCaption: optionsCaption,\
-				   		value: value" />\
+				   		value: value,\
+						enable: enable" />\
 				</div>'
 });
 

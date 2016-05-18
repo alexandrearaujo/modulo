@@ -57,6 +57,10 @@ public class MVInput extends MVElement {
 		koEvent.setSelect(value);
 	}
 	
+	public void setValue(String value) {
+		koBinding.setValue(value);
+	}
+	
 	public void setTooltipError(String value) {
 		tooltipError.setValue(koBinding.get("value"));
 	}
