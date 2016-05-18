@@ -131,7 +131,7 @@
 				<plugin>
 					<groupId>com.github.eirslett</groupId>
 					<artifactId>frontend-maven-plugin</artifactId>
-					<version>0.0.29</version>
+					<version>1.0</version>
 					<executions>
 						<execution>
 							<id>install node and npm</id>
@@ -139,8 +139,8 @@
 								<goal>install-node-and-npm</goal>
 							</goals>
 							<configuration>
-								<nodeVersion>v4.2.4</nodeVersion>
-								<npmVersion>3.5.2</npmVersion>
+								<nodeVersion>v4.4.4</nodeVersion>
+								<npmVersion>3.9.0</npmVersion>
 								<npmRegistryURL>http://nexus.mvfor.local/content/groups/npm-all/</npmRegistryURL>
 							</configuration>
 							<phase>initialize</phase>
@@ -159,7 +159,7 @@
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>sonar-maven-plugin</artifactId>
-					<version>3.0.1</version>
+					<version>3.0.2</version>
 				</plugin>
 				
 				<plugin>
