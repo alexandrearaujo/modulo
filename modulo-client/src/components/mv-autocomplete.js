@@ -71,7 +71,7 @@ ko.bindingHandlers.mvautocomplete = {
 				});
 			}
 			
-			if(valueAccessor().hasOwnProperty('change'))
+			if(valueAccessor().hasOwnProperty('change') && valueAccessor().change)
 				valueAccessor().change(viewModel);
 		});
 	},

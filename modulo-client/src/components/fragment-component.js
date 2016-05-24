@@ -63,11 +63,12 @@ ko.components.register('mv-auto-complete',{
 		};
 		this.otherValues = params.otherValues;
 		this.change = params.change;
+		this.enable = params.enable || true;
 	},
 	template : '<div class="form-group" data-bind="css: { \'has-error\' : required && value.isModified() && !value.isValid() }">\
 					<label-field params = "idLabel : idLabel, label : label, idField : params.id, required : required "></label-field>\
 					<input class="typeahead" type="text"\
-						data-bind="tooltipError: { value: value }, mvautocomplete: { source: source,\
+						data-bind="enable: enable, tooltipError: { value: value }, mvautocomplete: { source: source,\
 						optionsValue: optionsValue, optionsText: optionsText, \
 						optionsLabel: optionsLabel , \
 						value: value, valueText: valueText, \
@@ -158,6 +159,7 @@ ko.components.register('mv-select-field',{
 		this.enable = params.enable || true;
 		this.enable = params.enable || true;
 		this.optionsCaption = params.optionsCaption || ' ';
+		this.event = params.event;
 	},
 	template : '<div class="form-group" data-bind="css: { \'has-error\' : required && value.isModified() && !value.isValid() }">\
 					<label-field params = "idLabel : idLabel, label : label, idField : params.id, required : required "></label-field>\
@@ -167,6 +169,7 @@ ko.components.register('mv-select-field',{
 				   		optionsValue: optionsValue, \
 				   		optionsCaption: optionsCaption,\
 				   		value: value,\
+						event: event,\
 						enable: enable,\
 						tooltipError: { value: value }" />\
 				</div>'
