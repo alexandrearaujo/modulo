@@ -70,7 +70,14 @@ ko.bindingHandlers.mvautocomplete = {
 					}
 				});
 			}
+			
+			if(valueAccessor().hasOwnProperty('change') && valueAccessor().change)
+				valueAccessor().change(viewModel);
 		});
+	},
+	update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+		var $e = $(element);
+		$e.val(valueAccessor().valueText());
 	}
 };
 

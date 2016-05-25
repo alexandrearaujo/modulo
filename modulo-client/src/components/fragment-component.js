@@ -47,13 +47,12 @@ ko.components.register('mv-date', {
     	</div>'
 });
 
-ko.components.register('mv-autocomplete',{
+ko.components.register('mv-auto-complete',{
 	viewModel : function(params) {
 		
 		//Herança
     	ViewModelGenericComponent.call(this, params);
     	ViewModelValidationRequired.call(this, params);
-    	
 		this.valueText = params.valueText;
 		this.optionsValue = params.optionsValue || {};
 		this.optionsText = params.optionsText || {};
@@ -63,15 +62,18 @@ ko.components.register('mv-autocomplete',{
 			return []
 		};
 		this.otherValues = params.otherValues;
+		this.change = params.change;
+		this.enable = params.enable || true;
 	},
-	template : '<div class="form-group">\
-					<label-field params = "idLabel : idLabel, label : label, idField : params.id, required : params.required "></label-field>\
+	template : '<div class="form-group" data-bind="css: { \'has-error\' : required && value.isModified() && !value.isValid() }">\
+					<label-field params = "idLabel : idLabel, label : label, idField : params.id, required : required "></label-field>\
 					<input class="typeahead" type="text"\
-						data-bind="mvautocomplete: { source: source,\
+						data-bind="enable: enable, tooltipError: { value: value }, mvautocomplete: { source: source,\
 						optionsValue: optionsValue, optionsText: optionsText, \
 						optionsLabel: optionsLabel , \
 						value: value, valueText: valueText, \
 						params: params(), \
+						change: change,\
 						otherValues: otherValues}" /> \
 				</div>'
 });
@@ -84,7 +86,7 @@ ko.components.register('label-field', {
         this.idField = params.idField;
     },	
     template:
-    	'<label data-bind="css: {required: required, \'control-label\': true}, id : idLabel, attr: { for : idField }, text: label"><span ></span></label>'	    
+    	'<label data-bind="css: {required: required && label, \'control-label\': true}, id : idLabel, attr: { for : idField }, text: label"><span ></span></label>'	    
 });
 
 ko.components.register('mv-period', {
@@ -154,16 +156,22 @@ ko.components.register('mv-select-field',{
 		this.options = params.options;
 		this.optionsText = params.optionsText;
 		this.optionsValue = params.optionsValue;
+		this.enable = params.enable || true;
+		this.enable = params.enable || true;
 		this.optionsCaption = params.optionsCaption || ' ';
+		this.event = params.event;
 	},
-	template : '<div class="form-group" data-bind="css: { \'has-error\' : value.isModified() && !value.isValid() }">\
-					<label-field params = "idLabel : idLabel, label : label, idField : id, required : required "></label-field>\
+	template : '<div class="form-group" data-bind="css: { \'has-error\' : required && value.isModified() && !value.isValid() }">\
+					<label-field params = "idLabel : idLabel, label : label, idField : params.id, required : required "></label-field>\
 					<select class="form-control"\
 						data-bind="options: options ,\
 				   		optionsText: optionsText, \
 				   		optionsValue: optionsValue, \
 				   		optionsCaption: optionsCaption,\
-				   		value: value" />\
+				   		value: value,\
+						event: event,\
+						enable: enable,\
+						tooltipError: { value: value }" />\
 				</div>'
 });
 
