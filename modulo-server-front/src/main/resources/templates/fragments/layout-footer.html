@@ -12,7 +12,7 @@
 			  		<i class="glyphicon glyphicon glyphicon-user mv-color-green"></i>
 			  	</button>
 			  	<span class="logged-user-name pull-left" th:text="${#strings.toUpperCase(#authentication?.name)} + ' - ' + ${#authentication?.principal?.authority?.descricao}"></span>
-			  	<th:block th:if="${#authentication?.principal?.class.toString() == 'class br.com.mv.security.model.User'and #authentication?.principal?.vinculoProfissional}">
+			  	<th:block th:if="${#authentication?.principal?.class.toString() == 'class br.com.mv.security.model.User'and #authentication?.principal?.vinculoProfissional != null}">
 				  	<span class="logged-user-name" th:text="${#authentication?.principal?.vinculoProfissional?.ocupacao?.nome} + ' - ' + ${#authentication?.principal?.vinculoProfissional?.estabelecimento?.nomeFantasia}"></span>
 			  	</th:block>
 			</div>
