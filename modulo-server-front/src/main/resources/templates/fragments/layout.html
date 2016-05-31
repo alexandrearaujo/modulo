@@ -70,6 +70,9 @@
 		
 		<!-- Jquery core Javascript -->
 		<script type="text/javascript" charset="UTF-8" th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/jquery/dist/jquery.min.js')}__}"></script>
+		
+		<!-- Dropzone -->
+  		<link rel="stylesheet" type="text/css" media="all" th:href="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/dropzone/dist/min/dropzone.min.css')}__}"/>
 	</head>
 
 	<body>
@@ -154,6 +157,9 @@
 			
 			<!-- Bootstrap-Switch -->
 			<script type="text/javascript" charset='UTF-8' th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/bootstrap-switch/dist/js/bootstrap-switch.min.js')}__}"></script>
+			
+			<!-- Dropzone -->
+			<script type="text/javascript" charset='UTF-8' th:src="@{__${@mvcResourceUrlProvider.getForLookupPath('/lib/dropzone/dist/min/dropzone.min.js')}__}"></script>
 		</th:block>
 	</body>
 </html>

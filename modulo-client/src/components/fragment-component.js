@@ -248,11 +248,12 @@ ko.components.register('mv-switch',{
 		ViewModelGenericComponent.call(this, params);
 		ViewModelValidationRequired.call(this, params);
 		this.cssClass = params.cssClass || 'radio-primary';
+		this.event = params.event;
 	},
 	template : '<div class="form-group" data-bind="css: { \'has-error\' : value.hasOwnProperty(\'isModified\') && value.isModified() && !value.isValid() }">\
 					<label-field params = "idLabel : idLabel, label : label, idField : params.id, required : required "></label-field>\
 					<p>\
-					<input data-bind="mvswitch: { checked: value, onText: params.onText, offText: params.offText}"\
+					<input data-bind="mvswitch: { checked: value, onText: params.onText, offText: params.offText}, event: event"\
 						type="checkbox" name="my-checkbox" />\
 					</p>\
 				</div>'
