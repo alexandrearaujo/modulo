@@ -26,7 +26,8 @@
 				th:disabled="${disabled}" 
 				th:pattern="${pattern}" 
 				th:autocomplete="${autocomplete} != 'on' ? 'off' : ${autocomplete}"
-				data:bind="${dataBind}"/>
+				data:bind="${dataBind}"
+				data:upperCase="${upperCase == null} ? true : false"/>
 		
 		<input	th:if="${field == null and numRows == null and (email == null or !email)}"
 				type="text" 
@@ -43,7 +44,8 @@
 				th:disabled="${disabled}" 
 				th:pattern="${pattern}" 
 				th:autocomplete="${autocomplete} != 'on' ? 'off' : ${autocomplete}"
-				data:bind="${dataBind}"/>
+				data:bind="${dataBind}"
+				data:upperCase="${upperCase == null} ? true : false"/>
 				
 	    <input  th:if="${field != null and (email != null and email)}"
 	    		type="email"
@@ -60,7 +62,8 @@
 			    th:autocomplete="${autocomplete} != 'on' ? 'off' : ${autocomplete}" 
 			    th:readonly="${readonly}" 
 			    data:fv-emailaddress-message="#{validEmail}"
-			    data:bind="${dataBind}"/>
+			    data:bind="${dataBind}"
+			    data:upperCase="${upperCase == null} ? true : false"/>
 			    
 		<input  th:if="${(email != null and email) and field == null}"
 	    		type="email"
@@ -77,7 +80,8 @@
 			    th:autocomplete="${autocomplete} != 'on' ? 'off' : ${autocomplete}" 
 			    th:readonly="${readonly}" 
 			    data:fv-emailaddress-message="#{validEmail}"
-			    data:bind="${dataBind}"/>
+			    data:bind="${dataBind}"
+			    data:upperCase="${upperCase == null} ? true : false"/>
 
 		<textarea	th:if="${numRows != null and field != null}" 
 					class="form-control" 
@@ -216,7 +220,8 @@
 					data:url="@{__${urlServer}__}"
 					data:parameters="${parameters}"
 					data:fncName="${fncName}"  
-					data:bind="${dataBindHidden}" />
+					data:bind="${dataBindHidden}"
+					data:upperCase="${upperCase == null} ? true : false" />
 					    
 			<input  th:unless="${fieldHidden}" 
 					th:required="${required}" 
@@ -234,7 +239,8 @@
 					data:url="@{__${urlServer}__}"
 					data:parameters="${parameters}"
 					data:fncName="${fncName}" 
-					data:bind="${dataBindHidden}" />
+					data:bind="${dataBindHidden}"
+					data:upperCase="${upperCase == null} ? true : false" />
 						
 			<input  th:if="${field}" 
 					th:id="${idField}" 
@@ -252,7 +258,8 @@
 					data:parameters="${parameters}"
 					data:fncName="${fncName}"
 					data:bind="${dataBind}"  
-					th:maxlength="${maxLength}" />
+					th:maxlength="${maxLength}"
+					data:upperCase="${upperCase == null} ? true : false" />
 						   
 			<input  th:unless="${field}" 
 					th:id="${idField}" 
@@ -270,7 +277,8 @@
 					data:parameters="${parameters}"
 					data:fncName="${fncName}"
 					data:bind="${dataBind}"  
-					th:maxlength="${maxLength}" />
+					th:maxlength="${maxLength}"
+					data:upperCase="${upperCase == null} ? true : false" />
 		</div>
 	</div>
 </body>
