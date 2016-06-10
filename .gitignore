@@ -26,3 +26,4 @@ node
 .springBeans
 bin
 atlassian-ide-plugin.xml
+npm-debug.log
