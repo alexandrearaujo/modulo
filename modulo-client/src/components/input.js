@@ -22,6 +22,11 @@ function initNumberField(){
 }
 
 function fncUppercase() {
+	$("input").focus(function() {
+		if($(this).attr('data-uppercase') == 'false')
+			$(this).css('text-transform','none');
+	});
+	
 	$("input").keyup(function() {
 		if($(this).attr('data-uppercase') == 'true'){
 			var textUpperCase = $(this).val().toUpperCase();
