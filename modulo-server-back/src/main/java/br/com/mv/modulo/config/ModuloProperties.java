@@ -12,5 +12,7 @@ public class ModuloProperties {
 	private String reportPrintServerURI;
 	
 	private String cadastrosBasicosFlexAppURI;
+	
+	private String contextPath;
 
 }
