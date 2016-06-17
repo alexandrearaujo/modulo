@@ -3,7 +3,9 @@ function ajaxSetup(){
 		beforeSend: function( xhr ) {
 			var token = $("meta[name='_csrf']").attr("content");
 			var header = $("meta[name='_csrf_header']").attr("content");
-			xhr.setRequestHeader(header, token);
+			if (token && !$.isEmptyObject(token) && header && !$.isEmptyObject(header)) {
+				xhr.setRequestHeader(header, token);
+			}
 	 	},
 	 	headers: {
             'Accept': 'application/json',
