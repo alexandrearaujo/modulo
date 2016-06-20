@@ -17,7 +17,7 @@
     "bower-knockout-mapping" : "latest",
     "col-resizable": "latest",
     "font-awesome": "latest",
-    "jquery": "latest",
+    "jquery": "2.2.4",
     "jQuery-Mask-Plugin": "latest",
     "knockout": "latest",
     "knockout-validation": "latest",
@@ -192,7 +192,7 @@
   	
   },
   "resolutions": {
-	"jquery": "3.0.0",
+	"jquery": "2.2.4",
     "bootstrap": "3.3.6"
   }
 }
