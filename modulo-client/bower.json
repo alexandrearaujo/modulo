@@ -192,7 +192,7 @@
   	
   },
   "resolutions": {
-	"jquery": "2.2.3",
+	"jquery": "3.0.0",
     "bootstrap": "3.3.6"
   }
 }
