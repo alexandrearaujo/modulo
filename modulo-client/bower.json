@@ -21,6 +21,7 @@
     "jQuery-Mask-Plugin": "latest",
     "knockout": "latest",
     "knockout-validation": "latest",
+    "lz-string": "latest",
     "metisMenu": "latest",
     "moment" : "latest",
     "pace": "latest",
@@ -142,6 +143,11 @@
     "knockout-validation": {
       "main": [
         "dist/knockout.validation.min.js"
+      ]
+    },
+    "lz-string": {
+      "main": [
+        "libs/lz-string.min.js"
       ]
     },
     "metisMenu": {
