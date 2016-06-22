@@ -22,13 +22,20 @@ function initNumberField(){
 }
 
 function fncUppercase() {
+	$("input").focus(function() {
+		if($(this).attr('data-uppercase') == 'false')
+			$(this).css('text-transform','none');
+	});
+	
 	$("input").keyup(function() {
-		var textUpperCase = $(this).val().toUpperCase();
-		if(window.getSelection().toString() === $(this).val()) {
-			$(this).val(textUpperCase);
-			$(this).select();
-		} else {
-			$(this).val(textUpperCase);
+		if($(this).attr('data-uppercase') == 'true'){
+			var textUpperCase = $(this).val().toUpperCase();
+			if(window.getSelection().toString() === $(this).val()) {
+				$(this).val(textUpperCase);
+				$(this).select();
+			} else {
+				$(this).val(textUpperCase);
+			}
 		}
 	});
 	$("textarea").keyup(function() {
