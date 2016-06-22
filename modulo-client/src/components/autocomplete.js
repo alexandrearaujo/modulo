@@ -91,7 +91,7 @@ AutoComplete.prototype.autocomplete = function(vurl, target, fncName, hasParamet
 	
 	$('#'+target['object']).typeahead(
 		{
-			minLength: Number($.parametro({chave:'numerocaracteriniciapesquisaautocomplete'}).valor),
+			minLength: 3,
 			highlight: true
 		},
 		{ 
