@@ -91,7 +91,7 @@ AutoComplete.prototype.autocomplete = function(vurl, target, fncName, hasParamet
 	
 	$('#'+target['object']).typeahead(
 		{
-			minLength: 3,
+			minLength: autoCompleteMinLengthParameter(),
 			highlight: true
 		},
 		{ 
@@ -107,6 +107,16 @@ AutoComplete.prototype.autocomplete = function(vurl, target, fncName, hasParamet
 		validateAutocompleteField(this, idHidden);
 	});
 }; 
+
+function autoCompleteMinLengthParameter() {
+	if (localStorage.getItem('numerocaracteriniciapesquisaautocomplete')) {
+		return localStorage.getItem('numerocaracteriniciapesquisaautocomplete');
+	} else {
+		var parametro = Number($.parametro({chave:'numerocaracteriniciapesquisaautocomplete'}).valor);
+		localStorage.setItem('numerocaracteriniciapesquisaautocomplete', parametro);
+		return parametro;
+	}
+}
 
 function validateAutocompleteField(element, idHiddenField){
 	var jQueryTarget = $(element);
